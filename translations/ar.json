@@ -1,0 +1,19 @@
+{
+  "failure": "فشل",
+  "isRequired": "مطلوب",
+  "emailIsRequired": "البريد الإلكتروني مطلوب",
+  "invalidEmailAddress": "عنوان البريد الإلكتروني غير صالح",
+  "passwordIsRequired": "كلمة المرور مطلوبة",
+  "passwordValidationHint": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+  "confirmPasswordIsRequired": "تأكيد كلمة المرور مطلوب",
+  "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+  "phoneNumberIsRequired": "رقم الهاتف مطلوب",
+  "phoneNumberValidationHint": "يجب أن يكون رقم الهاتف صالحًا",
+  "mustContains": "يجب أن يحتوي",
+  "loading": "جار التحميل",
+  "success": "نجاح",
+  "error": "خطأ",
+  "noInternetConnection": "لا يوجد اتصال بالإنترنت",
+  "appName": "تطبيق اللياقة",
+  "offlineMessage": "أنت غير متصل حاليًا"
+}

@@ -1,0 +1,19 @@
+name: Validate Branch Name
+
+on:
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  validate-branch-name:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate Branch Name
+        run: |
+          chmod +x ./validate_branch_name.sh
+          ./validate_branch_name.sh "${{ github.head_ref }}"

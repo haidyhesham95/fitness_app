@@ -1,0 +1,19 @@
+{
+  "failure": "Failure",
+  "isRequired": "is required",
+  "emailIsRequired": "Email is required",
+  "invalidEmailAddress": "Invalid email address",
+  "passwordIsRequired": "Password is required",
+  "passwordValidationHint": "Password must be at least 8 characters",
+  "confirmPasswordIsRequired": "Confirm password is required",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "phoneNumberIsRequired": "Phone number is required",
+  "phoneNumberValidationHint": "Phone number must be valid",
+  "mustContains": "Must contain",
+  "loading": "Loading",
+  "success": "Success",
+  "error": "Error",
+  "noInternetConnection": "No internet connection",
+  "appName": "Fitness App",
+  "offlineMessage": "You are currently offline"
+}
