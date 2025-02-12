@@ -8,7 +8,9 @@ class Assets {
   static const String fontsBalooThambi2SemiBold = 'assets/fonts/BalooThambi2-SemiBold.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String imagesError = 'assets/images/error.png';
+  static const String imagesFit = 'assets/images/fit.png';
   static const String imagesFloweryLoader = 'assets/images/flowery_loader.json';
+  static const String imagesForgetPasswordBg = 'assets/images/forget_password_bg.png';
   static const String imagesLoading = 'assets/images/loading.json';
   static const String imagesNetwork = 'assets/images/network.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
