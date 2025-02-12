@@ -13,8 +13,6 @@ Future<void> main() async {
   Bloc.observer = MyBlocObserver();
   configureDependencies();
 
-  // Pass all uncaught "fatal" errors from the framework to Crashlytics
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   runApp(
     FitnessApp(),
   );
