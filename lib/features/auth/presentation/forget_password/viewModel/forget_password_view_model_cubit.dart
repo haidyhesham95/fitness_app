@@ -3,6 +3,7 @@ import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/core/networking/error/error_handler.dart';
 import 'package:fitness_app/core/networking/error/error_model.dart';
 import 'package:fitness_app/features/auth/domain/use_cases/auth_use_case.dart';
+import 'package:fitness_app/features/auth/presentation/forget_password/viewModel/forget_password_actions.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
@@ -18,9 +19,15 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
   @factoryMethod
   ForgetPasswordViewModelCubit(this._useCase) : super(ForgetPasswordViewModelInitial());
 
-  void doAction() {}
+  void doAction(ForgetPasswordActions action) {
+    switch (action) {
+      case ForgetPasswordSubmit():
+        _forgetPassword(action.email);
+        break;
+    }
+  }
 
-  Future<void> forgetPassword(String email) async {
+  Future<void> _forgetPassword(String email) async {
     emit(ForgetPasswordViewModelLoading());
     final result = await _useCase.forgetPassword(email);
     switch (result) {
