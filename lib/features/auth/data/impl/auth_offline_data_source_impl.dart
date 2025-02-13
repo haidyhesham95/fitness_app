@@ -6,7 +6,6 @@ import 'package:injectable/injectable.dart';
 @Injectable(as: OfflineDataSource)
 class OfflineDataSourceImplementation implements OfflineDataSource {
 
-  @factoryMethod
   OfflineDataSourceImplementation();
 
   @override

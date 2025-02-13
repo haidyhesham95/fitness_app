@@ -13,7 +13,6 @@ import 'package:injectable/injectable.dart';
 class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
   final ApiManager _apiManager;
 
-  @factoryMethod
   AuthOnlineDataSourceImpl(this._apiManager);
 
   @override

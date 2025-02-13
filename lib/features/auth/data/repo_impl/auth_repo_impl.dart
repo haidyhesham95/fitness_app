@@ -11,7 +11,6 @@ import 'package:injectable/injectable.dart';
 class AuthRepositoryImpl implements AuthRepository {
   final AuthOnlineDataSource _onlineDataSource;
 
-  @factoryMethod
   AuthRepositoryImpl(this._onlineDataSource);
 
   @override

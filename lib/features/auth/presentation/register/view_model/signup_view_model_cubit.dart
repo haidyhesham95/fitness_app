@@ -20,7 +20,6 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
   GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
 
   void doAction(SignupAction action) {
-    // print("Password before action: ${passwordController.text}");
     switch (action) {
     case SignupActionSelected():
         signUpButtonPressed();
@@ -47,7 +46,6 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
         email: emailController.text,
         password: passwordController.text,
       ));
-      // print('Password After Sign Up : ${passwordController.text}');
     }
   }
 

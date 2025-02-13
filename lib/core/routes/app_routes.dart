@@ -1,6 +1,4 @@
 import 'package:fitness_app/core/routes/base_routes.dart';
-import 'package:fitness_app/features/auth/presentation/login/view/login_view.dart';
-import 'package:fitness_app/features/auth/presentation/register/view/signup_view.dart';
 import 'package:fitness_app/features/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,10 +14,6 @@ class AppRoutes {
     switch (settings.name) {
       case homeScreen:
         return BaseRoute(page: const HomeScreen());
-       case login:
-        return BaseRoute(page: const LoginView());
-       case register:
-        return BaseRoute(page: const RegisterView());
 
       default:
         return BaseRoute(page: const PageUnderBuildScreen());    }

@@ -1,3 +1,5 @@
+import 'package:fitness_app/core/services/shared_preference/shared_pref_keys.dart';
+import 'package:fitness_app/core/services/shared_preference/shared_preference_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +42,7 @@ class FitnessApp extends StatelessWidget {
                         AppLocalizationsSetup.localeResolutionCallback,
                     localizationsDelegates:
                         AppLocalizationsSetup.localizationsDelegates,
-                    initialRoute: AppRoutes.register,
+                    initialRoute: AppRoutes.login,
                     debugShowCheckedModeBanner: false,
                     builder: (context, child) {
                       return Scaffold(
@@ -70,8 +72,8 @@ class FitnessApp extends StatelessWidget {
   }
 }
 
-// String _getInitialRoute() {
-//   return SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey) != null
-//       ? AppRoutes.homeScreen
-//       : AppRoutes.homeScreen;
-// }
+String _getInitialRoute() {
+  return SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey) != null
+      ? AppRoutes.homeScreen
+      : AppRoutes.homeScreen;
+}

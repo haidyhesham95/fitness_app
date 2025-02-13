@@ -10,7 +10,6 @@ import 'package:fitness_app/features/auth/domain/entities/response/login_respons
 class AuthUseCase {
   final AuthRepository _authRepository;
 
-  @factoryMethod
   AuthUseCase(this._authRepository);
 
   Future<DataResult<LoginResponseEntity>> login(

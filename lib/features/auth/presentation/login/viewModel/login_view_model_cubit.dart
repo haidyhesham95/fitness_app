@@ -13,7 +13,6 @@ part 'login_view_model_state.dart';
 class LoginViewModel extends Cubit<LoginViewModelState> {
   final AuthUseCase _loginUseCase;
 
-  @factoryMethod
   LoginViewModel(this._loginUseCase) : super(LoginViewModelInitial());
 
   void doAction(LoginScreenAction action) {

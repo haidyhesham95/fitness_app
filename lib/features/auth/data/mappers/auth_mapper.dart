@@ -44,44 +44,6 @@ class AuthMapper{
       createdAt: userDto.createdAt,
     );
   }
-
-  // static SignUpRequestDto signUpToDto(SignUpRequestEntity request){
-  //   return SignUpRequestDto(
-  //     firstName: request.firstName,
-  //     lastName: request.lastName,
-  //     email: request.email,
-  //     gender: request.gender,
-  //     age: request.age,
-  //     weight: request.weight,
-  //     height: request.height,
-  //     activityLevel: request.activityLevel,
-  //     goal: request.goal,
-  //   );
-  // }
-  // static SignUpResponseEntity signUpToEntity(SignUpResponseDto response) {
-  //   return SignUpResponseEntity(
-  //     message: response.message,
-  //     token: response.token,
-  //     user: mapUserFromDtoToEntity(response.user),
-  //   );
-  // }
-  // static User mapUserFromDtoToEntity(UserDto? userDto) {
-  //   if (userDto == null) return const User();
-  //     return User(
-  //       firstName: userDto.firstName,
-  //       lastName: userDto.lastName,
-  //       email: userDto.email,
-  //       gender: userDto.gender,
-  //       age: userDto.age,
-  //       weight: userDto.weight,
-  //       height: userDto.height,
-  //       activityLevel: userDto.activityLevel,
-  //       goal: userDto.goal,
-  //       photo: userDto.photo,
-  //       id: userDto.Id,
-  //       createdAt: userDto.createdAt,
-  //     );
-  //   }
   static LoginRequestDto toDto(LoginRequestEntity request) {
     return LoginRequestDto(email: request.email, password: request.password);
   }
