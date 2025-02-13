@@ -6,8 +6,6 @@ import 'core/app_cubit/app_state.dart';
 import 'core/localization/app_localizations_setup.dart';
 import 'core/routes/app_routes.dart';
 import 'core/services/connectivity_controller.dart';
-import 'core/services/shared_preference/shared_pref_keys.dart';
-import 'core/services/shared_preference/shared_preference_helper.dart';
 import 'core/utils/screens/no_network_screen.dart';
 import 'di/di.dart';
 
@@ -42,7 +40,7 @@ class FitnessApp extends StatelessWidget {
                         AppLocalizationsSetup.localeResolutionCallback,
                     localizationsDelegates:
                         AppLocalizationsSetup.localizationsDelegates,
-                    initialRoute: _getInitialRoute(),
+                    initialRoute: AppRoutes.register,
                     debugShowCheckedModeBanner: false,
                     builder: (context, child) {
                       return Scaffold(
@@ -72,8 +70,8 @@ class FitnessApp extends StatelessWidget {
   }
 }
 
-String _getInitialRoute() {
-  return SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey) != null
-      ? AppRoutes.homeScreen
-      : AppRoutes.homeScreen;
-}
+// String _getInitialRoute() {
+//   return SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey) != null
+//       ? AppRoutes.homeScreen
+//       : AppRoutes.homeScreen;
+// }

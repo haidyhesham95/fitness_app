@@ -92,15 +92,15 @@ dependencies:
   geolocator: ^13.0.2   # For location services and permissions
   geocoding: ^3.0.0
 
-
-  # Firebase ML Kit
-  firebase_core:
-  firebase_crashlytics: ^4.3.1
-  firebase_analytics: ^11.3.6
-  cloud_firestore:
-  firebase_database:
-  firebase_messaging:
-  flutter_local_notifications: ^18.0.1
+#
+#  # Firebase ML Kit
+#  firebase_core:
+#  firebase_crashlytics: ^4.3.1
+#  firebase_analytics: ^11.3.6
+#  cloud_firestore:
+#  firebase_database:
+#  firebase_messaging:
+#  flutter_local_notifications: ^18.0.1
 
 dev_dependencies:
   flutter_test:
