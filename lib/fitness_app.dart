@@ -42,7 +42,7 @@ class FitnessApp extends StatelessWidget {
                         AppLocalizationsSetup.localeResolutionCallback,
                     localizationsDelegates:
                         AppLocalizationsSetup.localizationsDelegates,
-                    initialRoute: AppRoutes.login,
+                    initialRoute: _getInitialRoute(),
                     debugShowCheckedModeBanner: false,
                     builder: (context, child) {
                       return Scaffold(
