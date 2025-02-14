@@ -4,7 +4,6 @@ import 'package:fitness_app/features/auth/presentation/login/view/login_view.dar
 import 'package:fitness_app/features/auth/presentation/login/viewModel/login_view_model_cubit.dart';
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
-import 'package:fitness_app/features/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../utils/screens/under_build_screen.dart';
