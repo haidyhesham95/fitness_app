@@ -17,7 +17,7 @@ abstract class NetworkFactory {
       baseUrl: ApiConstants.baseUrl,
     );
 
-    dio.interceptors.add(providerInterceptor()); // Using the provided LogInterceptor
+    dio.interceptors.add(prettyDioLogger());
 
     dio.interceptors.add(
       InterceptorsWrapper(
@@ -34,8 +34,11 @@ abstract class NetworkFactory {
       ),
     );
 
+    return dio;
+  }
 
-    dio.interceptors.add(PrettyDioLogger(
+  PrettyDioLogger prettyDioLogger() {
+    return PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
       responseBody: true,
@@ -44,19 +47,6 @@ abstract class NetworkFactory {
       compact: true,
       maxWidth: 90,
       enabled: kDebugMode,
-    ));
-
-    return dio;
-  }
-
-  LogInterceptor providerInterceptor() {
-    return LogInterceptor(
-      error: true,
-      request: true,
-      requestBody: true,
-      requestHeader: true,
-      responseBody: true,
-      responseHeader: true,
     );
   }
 }
