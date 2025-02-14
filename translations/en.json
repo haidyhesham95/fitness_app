@@ -15,5 +15,9 @@
   "error": "Error",
   "noInternetConnection": "No internet connection",
   "appName": "Fitness App",
-  "offlineMessage": "You are currently offline"
+  "offlineMessage": "You are currently offline",
+  "enterYourEmail": "Enter Your Email",
+  "forgetPassword": "Forget Password",
+  "sentOTP": "Sent OTP",
+  "email": "Email"
 }

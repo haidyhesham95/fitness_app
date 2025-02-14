@@ -16,4 +16,8 @@ class LangKeys {
   static const String noInternetConnection = 'noInternetConnection';
   static const String appName = 'appName';
   static const String offlineMessage = 'offlineMessage';
+  static const String enterYourEmail = 'enterYourEmail';
+  static const String forgetPassword = 'forgetPassword';
+  static const String sentOTP = 'sentOTP';
+  static const String email = 'email';
 }

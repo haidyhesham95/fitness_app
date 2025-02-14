@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/networking/common/regester_context_module.dart';
+import 'package:fitness_app/core/utils/extension/media_query_values.dart';
 import 'package:fitness_app/core/utils/validators.dart';
 import 'package:fitness_app/core/utils/widgets/custom_toast.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/forget_password_request_entity.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/utils/widgets/buttons/custom_button.dart';
 import '../../../../../core/utils/widgets/custom_glassy_container.dart';
 import '../../../../../core/utils/widgets/custom_text_form_feild.dart';
@@ -41,8 +43,8 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   @override
   Widget build(BuildContext context) {
     return CustomBlurBg(
-      title: 'Enter Your Email',
-      subTitle: 'Forget password',
+      title: context.translate(LangKeys.enterYourEmail),
+      subTitle: context.translate(LangKeys.forgetPassword),
       widget: Padding(
         padding: const EdgeInsets.all(8),
         child: CustomGlassyContainer(
@@ -55,10 +57,12 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 listener: (context, state) {
                   switch (state) {
                     case ForgetPasswordViewModelLoading():
-                      CustomToast.showLoadingToast(message: 'Loading...');
+                      CustomToast.showLoadingToast(
+                          message: context.translate(LangKeys.loading));
                       break;
                     case ForgetPasswordViewModelSuccess():
-                      CustomToast.showSuccessToast(message: 'Success');
+                      CustomToast.showSuccessToast(
+                          message: context.translate(LangKeys.success));
                       break;
                     case ForgetPasswordViewModelError():
                       CustomToast.showErrorToast(
@@ -80,13 +84,13 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                           return Validators.validateEmail(value, context);
                         },
                         icon: Icons.email_outlined,
-                        hintTxt: 'Email',
+                        hintTxt: context.translate(LangKeys.email),
                       ),
                       BlocBuilder<ForgetPasswordViewModelCubit,
                           ForgetPasswordViewModelState>(
                         builder: (context, state) {
                           return CustomButton(
-                            txt: 'Sent OTP',
+                            txt: context.translate(LangKeys.sentOTP),
                             onTap: () {
                               if (formKey.currentState!.validate()) {
                                 viewModel.doAction(ForgetPasswordSubmit(
