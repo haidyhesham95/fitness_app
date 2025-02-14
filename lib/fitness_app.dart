@@ -46,6 +46,7 @@ class FitnessApp extends StatelessWidget {
                     debugShowCheckedModeBanner: false,
                     builder: (context, child) {
                       return Scaffold(
+                        resizeToAvoidBottomInset: false,
                         body: Builder(
                           builder: (context) {
                             ConnectivityController.instance.init();

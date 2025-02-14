@@ -20,13 +20,16 @@ class _ApiManager implements ApiManager {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<ForgetPasswordResponseDto> forgetPassword(String email) async {
+  Future<ForgetPasswordResponseDto> forgetPassword(
+    ForgetPasswordRequestDto request,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = email;
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _options = _setStreamType<ForgetPasswordResponseDto>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             'api/v1/auth/forgotPassword',

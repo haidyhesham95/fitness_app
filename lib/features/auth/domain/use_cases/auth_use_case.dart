@@ -1,3 +1,4 @@
+import 'package:fitness_app/features/auth/domain/entities/request/forget_password_request_entity.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/networking/common/api_result.dart';
@@ -11,5 +12,5 @@ class AuthUseCase {
   @factoryMethod
   AuthUseCase(this._authRepo);
 
-  Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword(String email) async => await _authRepo.forgetPassword(email);
+  Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword(ForgetPasswordRequestEntity request) async => await _authRepo.forgetPassword(request);
 }

@@ -16,8 +16,8 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
       child: TextFormField(
+        style: const TextStyle(color: Colors.white),
         validator: validator,
         controller: controller,
         textAlign: TextAlign.start,
