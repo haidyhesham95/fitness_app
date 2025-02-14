@@ -12,7 +12,7 @@ part 'signup_view_model_state.dart';
 @injectable
 class SignUpViewModel extends Cubit<SignUpViewModelState> {
   SignUpViewModel(this._signupUseCase) : super(SignupInitial());
-  final AuthUseCase _signupUseCase;
+  final SignUpUseCase _signupUseCase;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController firstNameController = TextEditingController();

@@ -4,7 +4,7 @@ import 'package:fitness_app/features/auth/domain/entities/request/login_request_
 import 'package:fitness_app/features/auth/domain/entities/response/login_response_entity.dart';
 import 'package:fitness_app/features/auth/domain/entities/response/sign_up_response_entity.dart';
 
-abstract class AuthOnlineDataSource {
+abstract interface class AuthOnlineDataSource {
 
   Future<DataResult<SignUpResponseEntity>> signUp(
       {required SignUpRequestEntity request});
