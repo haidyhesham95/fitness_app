@@ -9,7 +9,6 @@ class CustomGlassyContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassContainer(
-      height: 170,
       width: double.infinity,
       blur: 34.6,
       color: Colors.black.withValues(alpha: 0.002),

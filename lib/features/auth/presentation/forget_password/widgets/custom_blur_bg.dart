@@ -21,14 +21,12 @@ class CustomBlurBg extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Background image
         Positioned.fill(
           child: Image.asset(
             Assets.imagesForgetPasswordBg,
             fit: BoxFit.cover,
           ),
         ),
-        // Blur effect
         Positioned.fill(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
@@ -37,7 +35,6 @@ class CustomBlurBg extends StatelessWidget {
             ),
           ),
         ),
-        // Top-center Fit image
         Align(
           alignment: Alignment.topCenter,
           child: Padding(
@@ -49,12 +46,10 @@ class CustomBlurBg extends StatelessWidget {
             ),
           ),
         ),
-        // Scrollable content in center
         SingleChildScrollView(
           child: SizedBox(
             height: MediaQuery.of(context)
-                .size
-                .height, // Allow full scrollable height
+                .size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

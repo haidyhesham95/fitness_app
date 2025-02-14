@@ -13,6 +13,7 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 
 import '../core/app_cubit/app_cubit.dart' as _i693;
 import '../core/networking/api/api_manager.dart' as _i282;
@@ -42,8 +43,7 @@ extension GetItInjectableX on _i174.GetIt {
     final networkFactory = _$NetworkFactory();
     final appModule = _$AppModule();
     gh.factory<_i693.AppCubit>(() => _i693.AppCubit());
-    gh.factory<_i361.LogInterceptor>(
-        () => networkFactory.providerInterceptor());
+    gh.factory<_i528.PrettyDioLogger>(() => networkFactory.prettyDioLogger());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => appModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
