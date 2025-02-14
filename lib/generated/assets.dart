@@ -7,11 +7,20 @@ class Assets {
   static const String fontsBalooThambi2Regular = 'assets/fonts/BalooThambi2-Regular.ttf';
   static const String fontsBalooThambi2SemiBold = 'assets/fonts/BalooThambi2-SemiBold.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
+  static const String imagesApple = 'assets/images/Apple.png';
   static const String imagesError = 'assets/images/error.png';
+  static const String imagesFacebook = 'assets/images/facebook.png';
+  static const String imagesFit = 'assets/images/fit.png';
   static const String imagesFloweryLoader = 'assets/images/flowery_loader.json';
+  static const String imagesForgetPasswordBg = 'assets/images/forget_password_bg.png';
+  static const String imagesGoogle = 'assets/images/google.png';
   static const String imagesLoading = 'assets/images/loading.json';
   static const String imagesNetwork = 'assets/images/network.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
+  static const String svgEye = 'assets/svg/eye.svg';
+  static const String svgLock = 'assets/svg/lock.svg';
+  static const String svgMail = 'assets/svg/mail.svg';
+  static const String svgUser = 'assets/svg/user.svg';
   static const String translationsAr = 'translations/ar.json';
   static const String translationsEn = 'translations/en.json';
 

@@ -43,6 +43,8 @@ dependencies:
   badges:
   row_item:
   dio:
+  google_fonts:
+  glassmorphism_ui:
   flutter_map:
   latlong2:
   location:
@@ -92,16 +94,6 @@ dependencies:
   geolocator: ^13.0.2   # For location services and permissions
   geocoding: ^3.0.0
 
-
-  # Firebase ML Kit
-  firebase_core:
-  firebase_crashlytics: ^4.3.1
-  firebase_analytics: ^11.3.6
-  cloud_firestore:
-  firebase_database:
-  firebase_messaging:
-  flutter_local_notifications: ^18.0.1
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -132,6 +124,7 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - assets/svg/
     - lib/generated/assets.dart
     - translations/ar.json
     - translations/en.json
