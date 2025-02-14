@@ -9,7 +9,6 @@ import '../entities/response/forget_password_response_entity.dart';
 class AuthUseCase {
   final AuthRepo _authRepo;
 
-  @factoryMethod
   AuthUseCase(this._authRepo);
 
   Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword(ForgetPasswordRequestEntity request) async => await _authRepo.forgetPassword(request);
