@@ -18,6 +18,19 @@ import '../core/app_cubit/app_cubit.dart' as _i693;
 import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regester_context_module.dart' as _i407;
 import '../core/networking/network_factory.dart' as _i377;
+import '../features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart'
+    as _i551;
+import '../features/auth/data/data_sources/contracts/online_data_sources/auth_online_data_source.dart'
+    as _i97;
+import '../features/auth/data/data_sources/impl/auth_offline_data_source_impl.dart'
+    as _i1036;
+import '../features/auth/data/data_sources/impl/auth_online_data_source_impl.dart'
+    as _i326;
+import '../features/auth/data/repositories/auth_repo_impl.dart' as _i990;
+import '../features/auth/domain/contracts/auth_repo.dart' as _i665;
+import '../features/auth/domain/use_cases/auth_use_case.dart' as _i839;
+import '../features/auth/presentation/forget_password/viewModel/forget_password_view_model_cubit.dart'
+    as _i289;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -38,7 +51,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => appModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
+    gh.factory<_i551.AuthOfflineDataSource>(
+        () => _i1036.AuthOfflineDataSourceImpl());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
+    gh.factory<_i97.AuthOnlineDataSource>(
+        () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i665.AuthRepo>(
+        () => _i990.AuthRepoImpl(gh<_i97.AuthOnlineDataSource>()));
+    gh.factory<_i839.AuthUseCase>(
+        () => _i839.AuthUseCase(gh<_i665.AuthRepo>()));
+    gh.factory<_i289.ForgetPasswordViewModelCubit>(
+        () => _i289.ForgetPasswordViewModelCubit(gh<_i839.AuthUseCase>()));
     return this;
   }
 }
