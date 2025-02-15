@@ -1,29 +1,27 @@
+import 'package:fitness_app/core/services/shared_preference/shared_pref_keys.dart';
+import 'package:fitness_app/core/services/shared_preference/shared_preference_helper.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../../../../core/services/shared_preference/shared_preference_helper.dart';
 import '../contracts/offline_data_sources/auth_offline_data_source.dart';
 
 @Injectable(as: AuthOfflineDataSource)
 class AuthOfflineDataSourceImpl implements AuthOfflineDataSource {
-  static const String _TOKENkEY = 'TOKENkEY';
-  final SharedPrefHelper _sharedPrefHelper;
-
   @factoryMethod
-  AuthOfflineDataSourceImpl(this._sharedPrefHelper);
+  AuthOfflineDataSourceImpl();
 
   @override
   Future<void> cacheToken(String token) async {
-    return await _sharedPrefHelper.setString(
-        key: _TOKENkEY, stringValue: token);
+    return await SharedPrefHelper()
+        .setString(key: SharedPrefKeys.tokenKey, stringValue: token);
   }
 
   @override
   Future<void> deleteToken() async {
-    return await _sharedPrefHelper.removePreference(key: _TOKENkEY);
+    return await SharedPrefHelper()
+        .removePreference(key: SharedPrefKeys.tokenKey);
   }
 
   @override
   Future<String?> getToken() async {
-    return await _sharedPrefHelper.getString(key: _TOKENkEY);
+    return await SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);
   }
 }

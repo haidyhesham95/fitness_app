@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../features/auth/presentation/forget_password/views/create_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/forget_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/verify_otp_view.dart';
+import '../../features/auth/presentation/gooal_activity/views/goals_view.dart';
 import '../utils/screens/under_build_screen.dart';
 
 class AppRoutes {
@@ -13,6 +14,7 @@ class AppRoutes {
   static const String forgetPasswordView = 'forgetPasswordView';
   static const String verifyOtpView = 'verifyOtpView';
   static const String createPasswordView = 'createPasswordView';
+  static const String goalsView = 'goalsView';
   static Route<void> onGenerateRoute(RouteSettings settings) {
 
    // final args = settings.arguments;
@@ -25,6 +27,8 @@ class AppRoutes {
         return BaseRoute(page: const VerifyOtpView());
       case createPasswordView:
         return BaseRoute(page: const CreatePasswordView());
+      case goalsView:
+        return BaseRoute(page: const GoalsView());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());    }
   }
