@@ -24,8 +24,7 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
       getIt<AuthOfflineDataSource>();
 
   @factoryMethod
-  ForgetPasswordViewModelCubit(this._useCase)
-      : super(ForgetPasswordViewModelInitial());
+  ForgetPasswordViewModelCubit(this._useCase) : super(ForgetPasswordViewModelInitial());
 
   void doAction(ForgetPasswordActions action) {
     switch (action) {

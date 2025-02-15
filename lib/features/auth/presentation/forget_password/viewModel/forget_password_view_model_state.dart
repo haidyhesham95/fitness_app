@@ -14,7 +14,6 @@ final class ForgetPasswordViewModelLoading
 final class ForgetPasswordViewModelSuccess
     extends ForgetPasswordViewModelState {
   final ForgetPasswordResponseEntity response;
-
   ForgetPasswordViewModelSuccess(this.response);
 }
 

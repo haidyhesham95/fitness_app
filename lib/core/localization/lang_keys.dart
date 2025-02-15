@@ -16,4 +16,20 @@ class LangKeys {
   static const String noInternetConnection = 'noInternetConnection';
   static const String appName = 'appName';
   static const String offlineMessage = 'offlineMessage';
+  static const String enterYourEmail = 'enterYourEmail';
+  static const String forgetPassword = 'forgetPassword';
+  static const String sentOTP = 'sentOTP';
+  static const String email = 'email';
+  static const String otpCode = 'otpCode';
+  static const String enterYourOtpCheckYourEmail = 'enterYourOtpCheckYourEmail';
+  static const String confirm = 'confirm';
+  static const String didNotReceiveVerificationCode =
+      'didNotReceiveVerificationCode';
+  static const String resendCode = 'resendCode';
+  static const String enterOtp = 'enterOtp';
+  static const String makeSureItsCharactersOrMore =
+      'makeSureItsCharactersOrMore';
+  static const String createNewPassword = 'createNewPassword';
+  static const String password = 'password';
+  static const String done = 'done';
 }

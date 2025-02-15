@@ -6,7 +6,6 @@ import '../../../styles/fonts/my_fonts.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.txt, this.onTap});
-
   final String txt;
   final void Function()? onTap;
 

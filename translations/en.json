@@ -15,5 +15,19 @@
   "error": "Error",
   "noInternetConnection": "No internet connection",
   "appName": "Fitness App",
-  "offlineMessage": "You are currently offline"
+  "offlineMessage": "You are currently offline",
+  "enterYourEmail": "Enter Your Email",
+  "forgetPassword": "Forget Password",
+  "sentOTP": "Sent OTP",
+  "email": "Email",
+  "otpCode": "OTP CODE",
+  "enterYourOtpCheckYourEmail": "Enter your OTP check your email",
+  "confirm": "Confirm",
+  "didNotReceiveVerificationCode": "Didn't receive verification code?",
+  "resendCode": "Resend Code?",
+  "enterOtp": "Enter OTP",
+  "makeSureItsCharactersOrMore": "Make sure it's 8 characters or more",
+  "createNewPassword": "Create New Password",
+  "password": "Password",
+  "done": "Done"
 }

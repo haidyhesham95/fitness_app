@@ -6,9 +6,8 @@ import '../entities/request/verify_otp_request_enity.dart';
 import '../entities/response/forget_password_response_entity.dart';
 import '../entities/response/reset_password_response_entity.dart';
 
-abstract class AuthRepo {
-  Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword(
-      ForgetPasswordRequestEntity request);
+abstract class AuthRepo{
+  Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword(ForgetPasswordRequestEntity request);
 
   Future<DataResult<void>> verifyOtp(VerifyOtpRequestEntity request);
 

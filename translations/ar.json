@@ -15,5 +15,19 @@
   "error": "خطأ",
   "noInternetConnection": "لا يوجد اتصال بالإنترنت",
   "appName": "تطبيق اللياقة",
-  "offlineMessage": "أنت غير متصل حاليًا"
+  "offlineMessage": "أنت غير متصل حاليًا",
+  "enterYourEmail": "ادخل بريدك الالكتروني",
+  "forgetPassword": "نسيت كلمة المرور",
+  "sentOTP": "ارسال رمز التحقق",
+  "email": "البريد الالكتروني",
+  "otpCode": "رمز التحقق",
+  "enterYourOtpCheckYourEmail": "ادخل رمز التحقق وتحقق من بريدك الالكتروني",
+  "confirm": "تأكيد",
+  "didNotReceiveVerificationCode": "لم تستلم رمز التحقق؟",
+  "resendCode": "اعادة الارسال؟",
+  "enterOtp": "ادخل رمز التحقق",
+  "makeSureItsCharactersOrMore": "تأكد من انها 8 احرف او اكثر",
+  "createNewPassword": "انشاء كلمة مرور جديدة",
+  "password": "كلمة المرور",
+  "done": "تم"
 }
