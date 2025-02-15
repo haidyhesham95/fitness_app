@@ -20,4 +20,11 @@ class LangKeys {
   static const String forgetPassword = 'forgetPassword';
   static const String sentOTP = 'sentOTP';
   static const String email = 'email';
+  static const String otpCode = 'otpCode';
+  static const String enterYourOtpCheckYourEmail = 'enterYourOtpCheckYourEmail';
+  static const String confirm = 'confirm';
+  static const String didNotReceiveVerificationCode =
+      'didNotReceiveVerificationCode';
+  static const String resendCode = 'resendCode';
+  static const String enterOtp = 'enterOtp';
 }

@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/networking/common/regester_context_module.dart';
+import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/core/utils/extension/media_query_values.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/validators.dart';
@@ -64,7 +65,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                     case ForgetPasswordViewModelSuccess():
                       CustomToast.showSuccessToast(
                           message: context.translate(LangKeys.success));
-                      context.pushNamed("");
+                      context.pushNamed(AppRoutes.verifyOtpView);
                       break;
                     case ForgetPasswordViewModelError():
                       CustomToast.showErrorToast(

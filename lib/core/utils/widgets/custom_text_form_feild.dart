@@ -17,6 +17,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextFormField(
+        cursorColor: MyColors.baseColor,
         style: const TextStyle(color: Colors.white),
         validator: validator,
         controller: controller,

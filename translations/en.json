@@ -19,5 +19,11 @@
   "enterYourEmail": "Enter Your Email",
   "forgetPassword": "Forget Password",
   "sentOTP": "Sent OTP",
-  "email": "Email"
+  "email": "Email",
+  "otpCode": "OTP CODE",
+  "enterYourOtpCheckYourEmail": "Enter your OTP check your email",
+  "confirm": "Confirm",
+  "didNotReceiveVerificationCode": "Didn't receive verification code?",
+  "resendCode": "Resend Code?",
+  "enterOtp": "Enter OTP"
 }

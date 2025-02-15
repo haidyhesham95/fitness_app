@@ -19,5 +19,11 @@
   "enterYourEmail": "ادخل بريدك الالكتروني",
   "forgetPassword": "نسيت كلمة المرور",
   "sentOTP": "ارسال رمز التحقق",
-  "email": "البريد الالكتروني"
+  "email": "البريد الالكتروني",
+  "otpCode": "رمز التحقق",
+  "enterYourOtpCheckYourEmail": "ادخل رمز التحقق وتحقق من بريدك الالكتروني",
+  "confirm": "تأكيد",
+  "didNotReceiveVerificationCode": "لم تستلم رمز التحقق؟",
+  "resendCode": "اعادة الارسال؟",
+  "enterOtp": "ادخل رمز التحقق"
 }
