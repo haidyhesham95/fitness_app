@@ -1,4 +1,6 @@
+import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/routes/app_routes.dart';
+import 'package:fitness_app/core/utils/extension/media_query_values.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/validators.dart';
 import 'package:fitness_app/core/utils/widgets/base/snack_bar.dart';
@@ -28,14 +30,14 @@ class LoginView extends StatelessWidget {
           case LoginViewModelSuccess():
             context.pushReplacementNamed(AppRoutes.homeScreen);
             aweSnackBar(
-                msg: 'Success',
+                msg:context.translate(LangKeys.success),
                 context: context,
                 type: MessageTypeConst.success,
-                title: 'Success');
+                title: context.translate(LangKeys.success));
             break;
           case LoginViewModelError():
             aweSnackBar(
-              title: 'Error !!',
+              title: context.translate(LangKeys.error),
               msg: state.errorMessage.error!,
               context: context,
               type: MessageTypeConst.failure,
@@ -49,7 +51,7 @@ class LoginView extends StatelessWidget {
           children: [
             CustomBlurBg(
                 widget: CustomBlur(
-                  title: 'Login',
+                  title: context.translate(LangKeys.login),
                   widget: Padding(
                     padding: const EdgeInsets.all(4),
                     child: Padding(
@@ -60,13 +62,13 @@ class LoginView extends StatelessWidget {
                         children: [
                           CustomTextFormField(
                             prefixImage: Assets.svgMail,
-                            hintTxt: 'Email',
+                            hintTxt: context.translate(LangKeys.email),
                             controller: cubit.emailController,
                             validator: (value) =>
                                 Validators.validateEmail(value, context),
                           ),
                           CustomTextFormField(
-                            hintTxt: 'Password',
+                            hintTxt:context.translate(LangKeys.password),
                             prefixImage: Assets.svgLock,
                             suffixIcon: Assets.svgEye,
                             controller: cubit.passwordController,
@@ -78,8 +80,8 @@ class LoginView extends StatelessWidget {
                     ),
                   ),
                 ),
-                title: 'Hey There',
-                subTitle: 'WELCOME BACK'),
+                title:context.translate(LangKeys.heyThere) ,
+                subTitle: context.translate(LangKeys.welcomeBack)),
           ],
         ),
       ),

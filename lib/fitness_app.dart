@@ -1,5 +1,3 @@
-import 'package:fitness_app/core/services/shared_preference/shared_pref_keys.dart';
-import 'package:fitness_app/core/services/shared_preference/shared_preference_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +6,8 @@ import 'core/app_cubit/app_state.dart';
 import 'core/localization/app_localizations_setup.dart';
 import 'core/routes/app_routes.dart';
 import 'core/services/connectivity_controller.dart';
+import 'core/services/shared_preference/shared_pref_keys.dart';
+import 'core/services/shared_preference/shared_preference_helper.dart';
 import 'core/utils/screens/no_network_screen.dart';
 import 'di/di.dart';
 
@@ -15,7 +15,7 @@ class FitnessApp extends StatelessWidget {
   FitnessApp({super.key});
 
   final GlobalKey<NavigatorState> navigatorKey =
-      getIt<GlobalKey<NavigatorState>>();
+  getIt<GlobalKey<NavigatorState>>();
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +39,14 @@ class FitnessApp extends StatelessWidget {
                     locale: Locale(cubit.currentLanguage),
                     supportedLocales: AppLocalizationsSetup.supportedLocales,
                     localeResolutionCallback:
-                        AppLocalizationsSetup.localeResolutionCallback,
+                    AppLocalizationsSetup.localeResolutionCallback,
                     localizationsDelegates:
-                        AppLocalizationsSetup.localizationsDelegates,
+                    AppLocalizationsSetup.localizationsDelegates,
                     initialRoute: _getInitialRoute(),
                     debugShowCheckedModeBanner: false,
                     builder: (context, child) {
                       return Scaffold(
+                        resizeToAvoidBottomInset: false,
                         body: Builder(
                           builder: (context) {
                             ConnectivityController.instance.init();

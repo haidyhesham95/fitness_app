@@ -1,4 +1,6 @@
+import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/routes/app_routes.dart';
+import 'package:fitness_app/core/utils/extension/media_query_values.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/validators.dart';
 import 'package:fitness_app/core/utils/widgets/base/snack_bar.dart';
@@ -29,14 +31,14 @@ class SignUpView extends StatelessWidget {
         case SignupSuccess():
           context.pushReplacementNamed(AppRoutes.login);
           aweSnackBar(
-              msg: 'Success',
+              msg: context.translate(LangKeys.success),
               context: context,
               type: MessageTypeConst.success,
-              title: 'Success');
+              title: context.translate(LangKeys.success));
           break;
         case SignupError():
           aweSnackBar(
-            title: 'Error !!',
+            title: context.translate(LangKeys.error),
             msg: state.message.error!,
             context: context,
             type: MessageTypeConst.failure,
@@ -50,7 +52,7 @@ class SignUpView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(top: 8.h),
           child: SignUpBlur(
-            title: 'Register',
+            title: context.translate(LangKeys.register),
             widget: Padding(
               padding: EdgeInsets.all(4.sp),
               child: Padding(
@@ -61,22 +63,22 @@ class SignUpView extends StatelessWidget {
                   children: [
                      CustomTextFormField(
                       prefixImage: Assets.svgUser,
-                      hintTxt: 'First Name',
+                      hintTxt: context.translate(LangKeys.firstName),
                       controller: signUpCubit.firstNameController,
                     ),
                      CustomTextFormField(
                       prefixImage: Assets.svgUser,
-                      hintTxt: 'Last Name',
+                      hintTxt: context.translate(LangKeys.lastName),
                       controller: signUpCubit.lastNameController,
                      ),
                      CustomTextFormField(
                       prefixImage: Assets.svgMail,
-                      hintTxt: 'Email',
+                      hintTxt: context.translate(LangKeys.email),
                       controller: signUpCubit.emailController,
                        validator: (value)=> Validators.validateEmail(value, context),
                      ),
                       CustomTextFormField(
-                      hintTxt: 'Password',
+                      hintTxt: context.translate(LangKeys.password),
                       prefixImage: Assets.svgLock,
                       suffixIcon: Assets.svgEye,
                         controller: signUpCubit.passwordController,
@@ -88,7 +90,7 @@ class SignUpView extends StatelessWidget {
             ),
           ),
         ),
-      ), title: 'Hey There', subTitle: 'CREATE AN ACCOUNT'),
+      ), title: context.translate(LangKeys.heyThere), subTitle: context.translate(LangKeys.createAnAccount)),
     );
   }
 }

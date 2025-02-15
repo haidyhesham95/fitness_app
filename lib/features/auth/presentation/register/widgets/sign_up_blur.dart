@@ -1,7 +1,9 @@
 import 'dart:ui';
+import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/core/styles/colors/my_colors.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
+import 'package:fitness_app/core/utils/extension/media_query_values.dart';
 import 'package:fitness_app/core/utils/widgets/buttons/custom_button.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/auth/presentation/widgets/custom_text_span.dart';
@@ -34,38 +36,35 @@ class SignUpBlur extends StatelessWidget {
                 color: MyColors.containerColor.withValues(alpha: 0.6),
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: SizedBox(
-                height: 477.h,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      title,
-                      style: MyFonts.styleExtraBold800_24
-                          .copyWith(color: MyColors.white),
-                      textAlign: TextAlign.center,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    title,
+                    style: MyFonts.styleExtraBold800_24
+                        .copyWith(color: MyColors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                  widget,
+                  SizedBox(height: 10.h,),
+                  socialDesign(context),
+                  SizedBox(height: 24.h,),
+                  GestureDetector(
+                    onTap: (){
+                      signUpCubit.signUpButtonPressed();
+                    },
+                      child:CustomButton(txt: context.translate(LangKeys.next))),
+                  SizedBox(height: 24.h,),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, AppRoutes.login);
+                    },
+                    child:  CustomTextSpanWidget(
+                      title: context.translate(LangKeys.alreadyHaveAccount),
+                      subTitle: context.translate(LangKeys.login),
                     ),
-                    widget,
-                    SizedBox(height: 10.h,),
-                    socialDesign(),
-                    SizedBox(height: 24.h,),
-                    GestureDetector(
-                      onTap: (){
-                        signUpCubit.signUpButtonPressed();
-                      },
-                        child: const CustomButton(txt: 'Next')),
-                    SizedBox(height: 24.h,),
-                    GestureDetector(
-                      onTap: (){
-                        Navigator.pushNamed(context, AppRoutes.login);
-                      },
-                      child: const CustomTextSpanWidget(
-                        title: 'Already Have An Account? ',
-                        subTitle: 'Login',
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

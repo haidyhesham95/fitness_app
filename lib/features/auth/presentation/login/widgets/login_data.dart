@@ -1,6 +1,8 @@
- import 'package:fitness_app/core/routes/app_routes.dart';
+ import 'package:fitness_app/core/localization/lang_keys.dart';
+import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/core/styles/colors/my_colors.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
+import 'package:fitness_app/core/utils/extension/media_query_values.dart';
 import 'package:fitness_app/core/utils/widgets/buttons/custom_button.dart';
 import 'package:fitness_app/features/auth/presentation/login/viewModel/login_view_model_cubit.dart';
 import 'package:fitness_app/features/auth/presentation/widgets/custom_text_span.dart';
@@ -17,7 +19,7 @@ Widget loginWidget(BuildContext context){
       Align(
         alignment: Alignment.centerRight,
         child: Text(
-          "Forget Password ?",
+          context.translate(LangKeys.forgetPassword),
           style: MyFonts.styleRegular400_12.copyWith(
               color: MyColors.baseColor,
               decoration: TextDecoration.underline,
@@ -25,14 +27,14 @@ Widget loginWidget(BuildContext context){
         ),
       ),
       SizedBox(height: 24.h,),
-      socialDesign(),
+      socialDesign(context),
       SizedBox(height: 30.h),
       GestureDetector(
         onTap: (){
           cubit.signInButtonPressed();
         },
-        child: const CustomButton(
-          txt: 'Login',
+        child:  CustomButton(
+          txt:context.translate(LangKeys.login),
         ),
       ),
       SizedBox(height: 10.h),
@@ -40,7 +42,7 @@ Widget loginWidget(BuildContext context){
         onTap: (){
           Navigator.pushReplacementNamed(context, AppRoutes.signUp);
         },
-        child: const CustomTextSpanWidget(title: 'Don\'t Have An Account Yet? ', subTitle: 'Register',
+        child:  CustomTextSpanWidget(title: context.translate(LangKeys.doNotHaveAccount), subTitle:context.translate(LangKeys.register),
         ),
       ),
     ],

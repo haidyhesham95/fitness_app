@@ -16,4 +16,19 @@ class LangKeys {
   static const String noInternetConnection = 'noInternetConnection';
   static const String appName = 'appName';
   static const String offlineMessage = 'offlineMessage';
+  static const String login = 'Login';
+  static const String email = 'Email';
+  static const String password = 'Password';
+  static const String heyThere = 'Hey There';
+  static const String welcomeBack = 'WELCOME BACK';
+  static const String forgetPassword = 'Forget Password ?';
+  static const String doNotHaveAccount  = 'Don\'t Have An Account Yet? ';
+  static const String register  = 'Register';
+  static const String firstName  = 'First Name';
+  static const String lastName  = 'Last Name';
+  static const String createAnAccount  = 'CREATE AN ACCOUNT';
+  static const String next  = 'Next';
+  static const String alreadyHaveAccount  = 'Already Have An Account? ';
+  static const String or  = 'Or';
+
 }

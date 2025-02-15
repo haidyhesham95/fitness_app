@@ -18,30 +18,24 @@ class CustomBlur extends StatelessWidget {
     return Stack(
       children: [
         Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 0.w),
-            child: Container(
-              padding: EdgeInsets.all(24.w),
-              decoration: BoxDecoration(
-                color: MyColors.containerColor.withValues(alpha: 0.6),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: SizedBox(
-                height: 398.h,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      title,
-                      style: MyFonts.styleExtraBold800_24
-                          .copyWith(color: MyColors.white),
-                      textAlign: TextAlign.center,
-                    ),
-                    widget,
-                    loginWidget(context),
-                  ],
+          child: Container(
+            padding: EdgeInsets.all(24.w),
+            decoration: BoxDecoration(
+              color: MyColors.containerColor.withValues(alpha: 0.6),
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  title,
+                  style: MyFonts.styleExtraBold800_24
+                      .copyWith(color: MyColors.white),
+                  textAlign: TextAlign.center,
                 ),
-              ),
+                widget,
+                loginWidget(context),
+              ],
             ),
           ),
         ),
