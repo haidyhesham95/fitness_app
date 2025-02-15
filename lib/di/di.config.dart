@@ -30,6 +30,8 @@ import '../features/auth/data/data_sources/impl/auth_online_data_source_impl.dar
 import '../features/auth/data/repositories/auth_repo_impl.dart' as _i990;
 import '../features/auth/domain/contracts/auth_repo.dart' as _i665;
 import '../features/auth/domain/use_cases/auth_use_case.dart' as _i839;
+import '../features/auth/presentation/forget_password/viewModel/forget_password_view_model_cubit.dart'
+    as _i289;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -58,7 +60,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i990.AuthRepoImpl(gh<_i97.AuthOnlineDataSource>()));
     gh.factory<_i839.AuthUseCase>(
         () => _i839.AuthUseCase(gh<_i665.AuthRepo>()));
-import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
+    gh.factory<_i289.ForgetPasswordViewModelCubit>(
+        () => _i289.ForgetPasswordViewModelCubit(gh<_i839.AuthUseCase>()));
     return this;
   }
 }
