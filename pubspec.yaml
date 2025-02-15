@@ -112,7 +112,8 @@ dev_dependencies:
   json_serializable:
   dartz:
   test:
-  flutter_native_splash:
+  flutter_native_splash: ^2.4.4
+  icons_launcher: ^3.0.0
   mockito:
 
 # For information on the generic Dart part of this file, see the
