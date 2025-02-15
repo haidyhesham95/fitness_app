@@ -10,18 +10,21 @@ class CustomTextFormField extends StatelessWidget {
       required this.icon,
       this.controller,
       this.validator,
-      this.suffixIcon});
+      this.suffixIcon,
+      this.isPassword});
 
   final String hintTxt;
   final IconData icon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final Widget? suffixIcon;
+  final bool? isPassword;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextFormField(
+        obscureText: isPassword ?? false,
         cursorColor: MyColors.baseColor,
         style: const TextStyle(color: Colors.white),
         validator: validator,

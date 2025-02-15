@@ -65,7 +65,10 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                     case ForgetPasswordViewModelSuccess():
                       CustomToast.showSuccessToast(
                           message: context.translate(LangKeys.success));
-                      context.pushNamed(AppRoutes.verifyOtpView);
+                      context.pushNamed(AppRoutes.verifyOtpView,
+                          arguments: ForgetPasswordRequestEntity(
+                            email: emailController.text.trim(),
+                          ));
                       break;
                     case ForgetPasswordViewModelError():
                       CustomToast.showErrorToast(
