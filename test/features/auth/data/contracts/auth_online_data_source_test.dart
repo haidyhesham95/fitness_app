@@ -64,11 +64,6 @@ void main() {
       token: '',
       message: 'success'
   );
-  var loginResponseEntity = LoginResponseEntity(
-      token: '',
-      message: 'success',
-      error: 'error'
-  );
   var loginRequestEntity = LoginRequestEntity(
       email: 'somayamahmoud12@gmail.com',
       password: 'Somaya@123'
