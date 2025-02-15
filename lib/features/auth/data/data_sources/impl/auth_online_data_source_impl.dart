@@ -3,8 +3,10 @@ import 'package:fitness_app/core/networking/api_execute.dart';
 import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/features/auth/data/mapper/auth_mapper.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/forget_password_request_entity.dart';
+import 'package:fitness_app/features/auth/domain/entities/request/reset_password_request_entity.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/verify_otp_request_enity.dart';
 import 'package:fitness_app/features/auth/domain/entities/response/forget_password_response_entity.dart';
+import 'package:fitness_app/features/auth/domain/entities/response/reset_password_response_entity.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../models/request/forget_password_request_dto.dart';
@@ -32,6 +34,16 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
       final response = await _apiManager
           .verifyOtp(AuthMapper.mapToVerifyOtpRequestDto(request));
       return response;
+    });
+  }
+
+  @override
+  Future<DataResult<ResetPasswordResponseEntity>> resetPassword(
+      ResetPasswordRequestEntity request) {
+    return executeApi(() async {
+      final response = await _apiManager
+          .resetPassword(AuthMapper.mapToResetPasswordRequestDto(request));
+      return AuthMapper.mapToResetPasswordResponseEntity(response);
     });
   }
 }

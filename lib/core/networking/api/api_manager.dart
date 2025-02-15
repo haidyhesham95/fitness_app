@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:fitness_app/features/auth/data/models/request/reset_password_request_dto.dart';
 import 'package:fitness_app/features/auth/data/models/request/verify_otp_request_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/forget_response_dto.dart';
+import 'package:fitness_app/features/auth/data/models/response/reset_password_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -21,4 +23,8 @@ abstract class  ApiManager {
 
   @POST(ApiConstants.verifyOtp)
   Future verifyOtp(@Body() VerifyOtpRequestDto request);
+
+  @PUT(ApiConstants.resetPassword)
+  Future<ResetPasswordResponseDto> resetPassword(
+      @Body() ResetPasswordRequestDto request);
 }
