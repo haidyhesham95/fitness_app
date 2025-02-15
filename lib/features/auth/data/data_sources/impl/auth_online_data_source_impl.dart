@@ -3,6 +3,7 @@ import 'package:fitness_app/core/networking/api_execute.dart';
 import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/features/auth/data/mapper/auth_mapper.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/forget_password_request_entity.dart';
+import 'package:fitness_app/features/auth/domain/entities/request/verify_otp_request_enity.dart';
 import 'package:fitness_app/features/auth/domain/entities/response/forget_password_response_entity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -22,6 +23,15 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
     return executeApi(()async {
       final response = await _apiManager.forgetPassword(AuthMapper.toForgetPasswordRequestDto(request));
       return AuthMapper.toForgetPasswordResponseEntity(response);
+    });
+  }
+
+  @override
+  Future<DataResult<void>> verifyOtp(VerifyOtpRequestEntity request) {
+    return executeApi(() async {
+      final response = await _apiManager
+          .verifyOtp(AuthMapper.mapToVerifyOtpRequestDto(request));
+      return response;
     });
   }
 }
