@@ -1,4 +1,6 @@
-import '../../styles/colors/my_colors.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
+
+import '../../styles/colors/dark_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -61,12 +63,12 @@ class AppTextFormField extends StatelessWidget {
     return TextFormField(
       autofocus: autofocus,
       controller: controller,
-      cursorColor: MyColors.gray,
+      cursorColor: context.colors.gray,
       style:  TextStyle(
         // height:height,
         fontSize: fontSize??16.sp,
         fontWeight: FontWeight.w500,
-        color: MyColors.gray,
+        color: context.colors.gray,
       ),
       validator:  validator == null ? null: (value) => validator!(value),
 
@@ -89,11 +91,11 @@ class AppTextFormField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4),
-          borderSide: const BorderSide(color: MyColors.gray),
+          borderSide: BorderSide(color: context.colors.gray),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4),
-          borderSide: const BorderSide(color: MyColors.gray),
+          borderSide: BorderSide(color: context.colors.gray),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4),
@@ -113,12 +115,12 @@ class AppTextFormField extends StatelessWidget {
 
         labelStyle:
             MyFonts.styleRegular400_14.copyWith(
-              color: MyColors.gray,
+              color: context.colors.gray,
             ),
         hintText: hintText,
         hintStyle: hintStyle ??
             MyFonts.styleRegular400_14.copyWith(
-              color: MyColors.hintStyle,
+              color: DarkColors.hintStyle,
             ),
         errorStyle: MyFonts.styleRegular400_12.copyWith(
           color: Colors.red,

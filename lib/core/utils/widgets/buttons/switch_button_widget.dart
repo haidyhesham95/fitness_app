@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../styles/colors/my_colors.dart';
+import '../../../styles/colors/dark_colors.dart';
 import '../../../styles/fonts/my_fonts.dart';
 
 class SwitchButtonWidget extends StatefulWidget {
@@ -30,10 +30,10 @@ class _SwitchButtonWidgetState extends State<SwitchButtonWidget> {
             alignment: Alignment.centerLeft,
             child: Switch(
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              inactiveTrackColor: MyColors.white,
-              inactiveThumbColor: MyColors.baseColor,
-              activeColor: MyColors.white,
-              activeTrackColor: MyColors.baseColor,
+              inactiveTrackColor: DarkColors.white,
+              inactiveThumbColor: DarkColors.baseColor,
+              activeColor: DarkColors.white,
+              activeTrackColor: DarkColors.baseColor,
               value: widget.value.value,
               onChanged: (value) {
                 setState(() {
@@ -46,7 +46,7 @@ class _SwitchButtonWidgetState extends State<SwitchButtonWidget> {
         Expanded(
           child: Text(
             widget.text,
-            style: MyFonts.styleMedium500_18.copyWith(color: MyColors.black),
+            style: MyFonts.styleMedium500_18.copyWith(color: DarkColors.black),
           ),
         ),
       ],

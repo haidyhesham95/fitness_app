@@ -1,4 +1,4 @@
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/assets.dart';

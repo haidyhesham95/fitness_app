@@ -1,11 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import '../../../../generated/assets.dart';
 import '../../../localization/lang_keys.dart';
-import '../../../styles/colors/my_colors.dart';
+import '../../../styles/colors/dark_colors.dart';
 import '../../../styles/fonts/my_fonts.dart';
 import '../spacing.dart';
 
@@ -44,7 +44,7 @@ class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixi
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Lottie.asset(
-              Assets.imagesFloweryLoader,
+              Assets.jsonFitnessLoader,
               height: 80.sp,
               alignment: Alignment.bottomCenter,
               fit: BoxFit.scaleDown,
@@ -59,7 +59,7 @@ class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixi
                     (context.translate(LangKeys.appName)),
                     textStyle: MyFonts.styleBold700_24.copyWith(
                       fontFamily: 'Baloo Thambi 2',
-                      color: MyColors.baseColor,
+                      color: DarkColors.baseColor,
                     ),
                     scalingFactor: 1.5,
                     textAlign: TextAlign.center,

@@ -1,6 +1,6 @@
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 
-import '../../styles/colors/my_colors.dart';
+import '../../styles/colors/dark_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../di/di.dart';
 import '../../localization/lang_keys.dart';
@@ -39,7 +39,7 @@ class AnimatedStatusDialog {
     final statusValue = _getStatusValues(status, context);
 
     return AlertDialog(
-      backgroundColor: MyColors.white,
+      backgroundColor: DarkColors.white,
       title: Text(
         statusValue.title,
         style: MyFonts.styleBold700_18.copyWith(color: statusValue.startColor),
@@ -59,7 +59,7 @@ class AnimatedStatusDialog {
     switch (status) {
       case Status.loading:
         return  _StatusValue(
-          startColor: MyColors.blue,
+          startColor: DarkColors.blue,
           title:  context.translate(LangKeys.loading),
           imagePath: AnimatedImage.loading,
         );

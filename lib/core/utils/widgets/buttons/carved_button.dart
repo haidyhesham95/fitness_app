@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../styles/colors/my_colors.dart';
+import '../../../styles/colors/dark_colors.dart';
 import '../../../styles/fonts/my_fonts.dart';
 
 
@@ -33,7 +33,7 @@ class CurvedButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          backgroundColor:color ?? MyColors.baseColor ,
+          backgroundColor:color ?? DarkColors.baseColor ,
           shape: RoundedRectangleBorder(
             side: BorderSide(
               color: colorBorderSide ?? Colors.transparent,
@@ -44,7 +44,7 @@ class CurvedButton extends StatelessWidget {
         child: Text(
           title,
           style: style ?? MyFonts.styleMedium500_16
-              .copyWith(color: textColor ?? MyColors.white),
+              .copyWith(color: textColor ?? DarkColors.white),
         ),
       ),
     );

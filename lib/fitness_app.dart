@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/styles/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,6 +38,7 @@ class FitnessApp extends StatelessWidget {
                   final cubit = context.read<AppCubit>();
                   return MaterialApp(
                     locale: Locale(cubit.currentLanguage),
+                    theme: darkTheme,
                     supportedLocales: AppLocalizationsSetup.supportedLocales,
                     localeResolutionCallback:
                         AppLocalizationsSetup.localeResolutionCallback,
@@ -75,5 +77,5 @@ class FitnessApp extends StatelessWidget {
 String _getInitialRoute() {
   return SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey) != null
       ? AppRoutes.homeScreen
-      : AppRoutes.homeScreen;
+      : AppRoutes.onBoarding;
 }
