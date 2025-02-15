@@ -25,5 +25,9 @@
   "confirm": "تأكيد",
   "didNotReceiveVerificationCode": "لم تستلم رمز التحقق؟",
   "resendCode": "اعادة الارسال؟",
-  "enterOtp": "ادخل رمز التحقق"
+  "enterOtp": "ادخل رمز التحقق",
+  "makeSureItsCharactersOrMore": "تأكد من انها 8 احرف او اكثر",
+  "createNewPassword": "انشاء كلمة مرور جديدة",
+  "password": "كلمة المرور",
+  "done": "تم"
 }

@@ -5,13 +5,18 @@ import '../../styles/fonts/my_fonts.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField(
-      {super.key, required this.hintTxt, required this.icon, this.controller, this.validator});
+      {super.key,
+      required this.hintTxt,
+      required this.icon,
+      this.controller,
+      this.validator,
+      this.suffixIcon});
 
   final String hintTxt;
   final IconData icon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
         controller: controller,
         textAlign: TextAlign.start,
         decoration: InputDecoration(
+          suffixIcon: suffixIcon ?? null,
           contentPadding: EdgeInsets.zero,
           prefixIcon: Icon(
             icon,

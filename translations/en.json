@@ -25,5 +25,9 @@
   "confirm": "Confirm",
   "didNotReceiveVerificationCode": "Didn't receive verification code?",
   "resendCode": "Resend Code?",
-  "enterOtp": "Enter OTP"
+  "enterOtp": "Enter OTP",
+  "makeSureItsCharactersOrMore": "Make sure it's 8 characters or more",
+  "createNewPassword": "Create New Password",
+  "password": "Password",
+  "done": "Done"
 }
