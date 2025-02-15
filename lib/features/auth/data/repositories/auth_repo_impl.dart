@@ -2,8 +2,10 @@ import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/features/auth/data/data_sources/contracts/online_data_sources/auth_online_data_source.dart';
 import 'package:fitness_app/features/auth/domain/contracts/auth_repo.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/forget_password_request_entity.dart';
+import 'package:fitness_app/features/auth/domain/entities/request/reset_password_request_entity.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/verify_otp_request_enity.dart';
 import 'package:fitness_app/features/auth/domain/entities/response/forget_password_response_entity.dart';
+import 'package:fitness_app/features/auth/domain/entities/response/reset_password_response_entity.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: AuthRepo)
@@ -21,5 +23,11 @@ class AuthRepoImpl implements AuthRepo{
   @override
   Future<DataResult<void>> verifyOtp(VerifyOtpRequestEntity request) async {
     return await _onlineDataSource.verifyOtp(request);
+  }
+
+  @override
+  Future<DataResult<ResetPasswordResponseEntity>> resetPassword(
+      ResetPasswordRequestEntity request) async {
+    return await _onlineDataSource.resetPassword(request);
   }
 }
