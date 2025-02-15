@@ -8,6 +8,7 @@ import 'package:fitness_app/features/auth/presentation/forget_password/viewModel
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
+import '../../../domain/entities/request/reset_password_request_entity.dart';
 import '../../../domain/entities/request/verify_otp_request_enity.dart';
 import '../../../domain/entities/response/forget_password_response_entity.dart';
 import '../../../domain/entities/response/reset_password_response_entity.dart';
@@ -29,6 +30,9 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
         break;
       case VerifyOtpSubmit():
         _verifyOtp(action.request);
+        break;
+      case ResetPasswordSubmit():
+        _resetPassword(action.request);
         break;
     }
   }
@@ -55,6 +59,19 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
         break;
       case Fail<void>():
         emit(verifyOtpError(ErrorHandler.handle(result.exception!)));
+        break;
+    }
+  }
+
+  Future<void> _resetPassword(ResetPasswordRequestEntity request) async {
+    emit(resetPasswordLoading());
+    final result = await _useCase.resetPassword(request);
+    switch (result) {
+      case Success<ResetPasswordResponseEntity>():
+        emit(resetPasswordSuccess(result.data));
+        break;
+      case Fail<ResetPasswordResponseEntity>():
+        emit(resetPasswordError(ErrorHandler.handle(result.exception!)));
         break;
     }
   }
