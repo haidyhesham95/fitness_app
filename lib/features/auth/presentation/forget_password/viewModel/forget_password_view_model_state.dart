@@ -32,3 +32,21 @@ final class verifyOtpError extends ForgetPasswordViewModelState {
 
   verifyOtpError(this.errorMessage);
 }
+
+/* reset password states */
+
+final class resetPasswordInitial extends ForgetPasswordViewModelState {}
+
+final class resetPasswordLoading extends ForgetPasswordViewModelState {}
+
+final class resetPasswordSuccess extends ForgetPasswordViewModelState {
+  final ResetPasswordResponseEntity response;
+
+  resetPasswordSuccess(this.response);
+}
+
+final class resetPasswordError extends ForgetPasswordViewModelState {
+  final ErrorModel errorMessage;
+
+  resetPasswordError(this.errorMessage);
+}

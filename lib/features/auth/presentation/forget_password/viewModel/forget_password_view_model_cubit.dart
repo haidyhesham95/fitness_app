@@ -10,6 +10,7 @@ import 'package:meta/meta.dart';
 
 import '../../../domain/entities/request/verify_otp_request_enity.dart';
 import '../../../domain/entities/response/forget_password_response_entity.dart';
+import '../../../domain/entities/response/reset_password_response_entity.dart';
 
 part 'forget_password_view_model_state.dart';
 
