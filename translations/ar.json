@@ -29,5 +29,9 @@
   "makeSureItsCharactersOrMore": "تأكد من انها 8 احرف او اكثر",
   "createNewPassword": "انشاء كلمة مرور جديدة",
   "password": "كلمة المرور",
-  "done": "تم"
+  "done": "تم",
+  "whatIsYourGoal": "ما هو هدفك؟",
+  "thisHelpsUsCreateYourPersonalizedPlan": "هذا يساعدنا في انشاء الخطة الشخصية الخاصة بك",
+  "next": "التالي",
+  "yourRegularPhysicalActivityLevel": "مستوى النشاط الرياضي العادي؟"
 }

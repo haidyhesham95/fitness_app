@@ -45,6 +45,7 @@ dependencies:
   flutter_otp_text_field:
   google_fonts: ^6.2.1
   row_item:
+  radial_progress: ^0.1.0
   dio:
   flutter_map:
   latlong2:

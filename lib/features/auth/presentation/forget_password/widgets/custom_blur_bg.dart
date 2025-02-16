@@ -1,7 +1,10 @@
 import 'dart:ui';
 
+import 'package:fitness_app/core/utils/extension/navigation.dart';
+import 'package:fitness_app/core/utils/widgets/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:radial_progress/radial_progress.dart';
 
 import '../../../../../core/styles/colors/my_colors.dart';
 import '../../../../../core/styles/fonts/my_fonts.dart';
@@ -11,11 +14,17 @@ class CustomBlurBg extends StatelessWidget {
   const CustomBlurBg(
       {super.key,
       required this.widget,
-      required this.title,
-      required this.subTitle});
+      this.title,
+      this.subTitle,
+      this.isGoalOrActivity = false,
+      this.progress,
+      this.value});
 
   final Widget widget;
-  final String title, subTitle;
+  final String? title, subTitle;
+  final bool? isGoalOrActivity;
+  final double? progress;
+  final String? value;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +47,39 @@ class CustomBlurBg extends StatelessWidget {
         Align(
           alignment: Alignment.topCenter,
           child: Padding(
-            padding: EdgeInsets.only(top: 46.h),
-            child: Image.asset(
-              Assets.imagesFit,
-              width: 70.w,
-              height: 48.h,
+            padding: EdgeInsets.only(top: 46.h, left: 24.w, right: 24.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                isGoalOrActivity == true
+                    ? GestureDetector(
+                        onTap: () {
+                          context.pop();
+                        },
+                        child: Container(
+                          height: 24.h,
+                          width: 24.w,
+                          decoration: BoxDecoration(
+                            color: MyColors.baseColor,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.arrow_back_ios_new_outlined,
+                              color: MyColors.white,
+                              size: 16,
+                            ),
+                          ),
+                        ),
+                      )
+                    : const SizedBox(),
+                Image.asset(
+                  Assets.imagesFit,
+                  width: 70.w,
+                  height: 48.h,
+                ),
+                const SizedBox()
+              ],
             ),
           ),
         ),
@@ -52,16 +89,34 @@ class CustomBlurBg extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                isGoalOrActivity == true
+                    ? RadialProgressWidget(
+                        animationDuration: const Duration(milliseconds: 3000),
+                        percent: progress ?? 0,
+                        diameter: 40,
+                        bgLineColor: Colors.transparent,
+                        progressLineWidth: 5,
+                        progressLineColors: [MyColors.baseColor],
+                        startAngle: StartAngle.top,
+                        centerChild: Text(
+                          value ?? "",
+                          maxLines: 1,
+                          style: MyFonts.styleMedium500_14
+                              .copyWith(color: MyColors.baseColor),
+                        ),
+                      )
+                    : const SizedBox(),
+                verticalSpacing(16.h),
                 ListTile(
                   title: Text(
-                    title,
+                    title ?? "",
                     style: MyFonts.styleExtraBold800_20
-                        .copyWith(color: Colors.grey),
+                        .copyWith(color: Colors.white),
                   ),
                   subtitle: Text(
-                    subTitle,
+                    subTitle ?? "",
                     style: MyFonts.styleRegular400_18
-                        .copyWith(color: MyColors.white),
+                        .copyWith(color: MyColors.gray),
                   ),
                 ),
                 widget

@@ -7,6 +7,7 @@ class Assets {
   static const String fontsBalooThambi2Regular = 'assets/fonts/BalooThambi2-Regular.ttf';
   static const String fontsBalooThambi2SemiBold = 'assets/fonts/BalooThambi2-SemiBold.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
+  static const String imagesArrowBack = 'assets/images/arrow_back.png';
   static const String imagesError = 'assets/images/error.png';
   static const String imagesFit = 'assets/images/fit.png';
   static const String imagesFloweryLoader = 'assets/images/flowery_loader.json';

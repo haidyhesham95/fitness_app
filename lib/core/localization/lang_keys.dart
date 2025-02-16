@@ -32,4 +32,10 @@ class LangKeys {
   static const String createNewPassword = 'createNewPassword';
   static const String password = 'password';
   static const String done = 'done';
+  static const String whatIsYourGoal = 'whatIsYourGoal';
+  static const String thisHelpsUsCreateYourPersonalizedPlan =
+      'thisHelpsUsCreateYourPersonalizedPlan';
+  static const String next = 'next';
+  static const String yourRegularPhysicalActivityLevel =
+      'yourRegularPhysicalActivityLevel';
 }

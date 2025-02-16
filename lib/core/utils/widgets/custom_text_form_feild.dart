@@ -7,14 +7,14 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField(
       {super.key,
       required this.hintTxt,
-      required this.icon,
+      this.icon,
       this.controller,
       this.validator,
       this.suffixIcon,
       this.isPassword});
 
   final String hintTxt;
-  final IconData icon;
+  final IconData? icon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final Widget? suffixIcon;
@@ -33,8 +33,10 @@ class CustomTextFormField extends StatelessWidget {
         decoration: InputDecoration(
           suffixIcon: suffixIcon ?? null,
           contentPadding: EdgeInsets.zero,
-          prefixIcon: Icon(
-            icon,
+          prefixIcon: icon == null
+              ? const SizedBox()
+              : Icon(
+                  icon,
             color: MyColors.gray,
             size: 20,
           ),

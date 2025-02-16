@@ -29,5 +29,9 @@
   "makeSureItsCharactersOrMore": "Make sure it's 8 characters or more",
   "createNewPassword": "Create New Password",
   "password": "Password",
-  "done": "Done"
+  "done": "Done",
+  "whatIsYourGoal": "What is your goal?",
+  "thisHelpsUsCreateYourPersonalizedPlan": "This helps us create your personalized plan",
+  "next": "Next",
+  "yourRegularPhysicalActivityLevel": "Your regular physical activity level?"
 }
