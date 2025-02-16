@@ -40,6 +40,18 @@
   "or": "Or",
   "first_name": "First Name",
   "last_name": "Last Name",
-  "next": "Next"
+  "noInternetConnection": "No internet connection",
+  "appName": "Fitness App",
+  "offlineMessage": "You are currently offline",
+  "price_of_excellence": "The Price Of Excellence Is Discipline",
+  "excellence_quote": "Excellence isn’t given, it’s earned. Stay disciplined, push limits, and unlock your best self!",
+  "fitness_fun": "Fitness has never been so much fun",
+  "fitness_motivation": "Sweat, smile, repeat! Fitness has never been this fun and rewarding!",
+  "no_more_excuses": "NO MORE EXCUSES, Do It Now",
+  "start_now": "No more waiting, no more excuses! Start now and own your fitness journey!",
+  "do_it": "Do It",
+  "next": "Next",
+  "skip": "Skip",
+  "back": "Back"
 
 }

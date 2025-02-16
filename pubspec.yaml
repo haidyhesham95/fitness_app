@@ -44,7 +44,6 @@ dependencies:
   row_item:
   dio:
   google_fonts:
-  glassmorphism_ui:
   flutter_map:
   latlong2:
   location:
@@ -81,6 +80,8 @@ dependencies:
   image_picker:
   animate_do:
   another_stepper: ^1.2.2
+  glassmorphism_ui: ^0.3.0
+
 
 
   # add injectable to your dependencies
@@ -125,6 +126,7 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - assets/json/
     - assets/svg/
     - lib/generated/assets.dart
     - translations/ar.json
