@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class MyFonts {
   // style Text Styles
-  static TextStyle styleRegular400_12 = const TextStyle(
+  static TextStyle styleRegular400_12 = GoogleFonts.balooThambi2(
     fontWeight: FontWeight.w400,
     fontSize: 12,
   );
@@ -21,11 +22,11 @@ class MyFonts {
     fontSize: 16,
   );
 
-  static TextStyle styleRegular400_18 = const TextStyle(
+  static TextStyle styleRegular400_18 = GoogleFonts.balooThambi2(
     fontWeight: FontWeight.w400,
     fontSize: 18,
   );
- static TextStyle styleRegular400_20 = const TextStyle(
+  static TextStyle styleRegular400_20 = const TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 20,
   );
@@ -110,6 +111,19 @@ class MyFonts {
     fontWeight: FontWeight.w700,
     fontSize: 24,
   );
+  static TextStyle styleExtraBold800_20 = GoogleFonts.balooThambi2(
+    fontWeight: FontWeight.w800,
+    fontSize: 20,
+  );
 
+  static TextStyle styleExtraBold800_24 = GoogleFonts.balooThambi2(
+    fontWeight: FontWeight.w800,
+    fontSize: 24,
+  );
+
+  static TextStyle styleExtraBold800_14 = GoogleFonts.balooThambi2(
+    fontWeight: FontWeight.w800,
+    fontSize: 14,
+  );
 // English Text Styles
 }

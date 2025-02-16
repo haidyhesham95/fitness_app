@@ -15,7 +15,7 @@ class FitnessApp extends StatelessWidget {
   FitnessApp({super.key});
 
   final GlobalKey<NavigatorState> navigatorKey =
-      getIt<GlobalKey<NavigatorState>>();
+  getIt<GlobalKey<NavigatorState>>();
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +39,14 @@ class FitnessApp extends StatelessWidget {
                     locale: Locale(cubit.currentLanguage),
                     supportedLocales: AppLocalizationsSetup.supportedLocales,
                     localeResolutionCallback:
-                        AppLocalizationsSetup.localeResolutionCallback,
+                    AppLocalizationsSetup.localeResolutionCallback,
                     localizationsDelegates:
-                        AppLocalizationsSetup.localizationsDelegates,
+                    AppLocalizationsSetup.localizationsDelegates,
                     initialRoute: _getInitialRoute(),
                     debugShowCheckedModeBanner: false,
                     builder: (context, child) {
                       return Scaffold(
+                        resizeToAvoidBottomInset: false,
                         body: Builder(
                           builder: (context) {
                             ConnectivityController.instance.init();
@@ -75,5 +76,5 @@ class FitnessApp extends StatelessWidget {
 String _getInitialRoute() {
   return SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey) != null
       ? AppRoutes.homeScreen
-      : AppRoutes.homeScreen;
+      : AppRoutes.login;
 }
