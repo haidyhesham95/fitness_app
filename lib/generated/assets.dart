@@ -10,8 +10,13 @@ class Assets {
   static const String imagesError = 'assets/images/error.png';
   static const String imagesFloweryLoader = 'assets/images/flowery_loader.json';
   static const String imagesLoading = 'assets/images/loading.json';
+  static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesNetwork = 'assets/images/network.png';
+  static const String imagesOn1 = 'assets/images/On_1.svg';
+  static const String imagesOn2 = 'assets/images/On_2.svg';
+  static const String imagesOn3 = 'assets/images/On_3.svg';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
+  static const String imagesSplash = 'assets/images/splash.png';
   static const String translationsAr = 'translations/ar.json';
   static const String translationsEn = 'translations/en.json';
 
