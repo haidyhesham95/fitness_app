@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import '../../../../generated/assets.dart';
 import '../../../localization/lang_keys.dart';
-import '../../../styles/colors/dark_colors.dart';
 import '../../../styles/fonts/my_fonts.dart';
 import '../spacing.dart';
 
@@ -59,7 +58,7 @@ class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixi
                     (context.translate(LangKeys.appName)),
                     textStyle: MyFonts.styleBold700_24.copyWith(
                       fontFamily: 'Baloo Thambi 2',
-                      color: DarkColors.baseColor,
+                      color: context.colors.baseColor,
                     ),
                     scalingFactor: 1.5,
                     textAlign: TextAlign.center,

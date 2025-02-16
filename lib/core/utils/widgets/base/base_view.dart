@@ -1,7 +1,7 @@
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../styles/colors/dark_colors.dart';
 
 class BaseView extends StatelessWidget {
   const BaseView({super.key, required this.child});
@@ -11,7 +11,7 @@ class BaseView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: DarkColors.white,
+        backgroundColor: context.colors.transparent,
         body: Padding(
           padding: EdgeInsets.only(top: 50.h, left: 16.w, right: 16.w),
           child: child,

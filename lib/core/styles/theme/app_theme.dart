@@ -1,12 +1,12 @@
-import 'package:fitness_app/core/styles/colors/dark_colors.dart';
-import 'package:fitness_app/core/styles/colors/light_colors.dart';
+import 'package:fitness_app/core/styles/colors/dark_color.dart';
+import 'package:fitness_app/core/styles/colors/light_color.dart';
 import 'package:flutter/material.dart';
 
 import 'app_color_theme.dart';
 
 ThemeData lightTheme = ThemeData(
-  scaffoldBackgroundColor: LightColors.bgColor,
-  appBarTheme: const AppBarTheme(color: LightColors.transparent),
+  scaffoldBackgroundColor: LightColor.bgColor,
+  appBarTheme: const AppBarTheme(color: LightColor.transparent),
 
   extensions: const <ThemeExtension<dynamic>>[
     AppColorTheme.light,
@@ -15,8 +15,8 @@ ThemeData lightTheme = ThemeData(
 );
 
 ThemeData darkTheme = ThemeData(
-  scaffoldBackgroundColor: DarkColors.bg,
-  appBarTheme: const AppBarTheme(color: DarkColors.transparent),
+  scaffoldBackgroundColor: DarkColor.bg,
+  appBarTheme: const AppBarTheme(color: DarkColor.transparent),
   extensions:  <ThemeExtension<dynamic>>[
     AppColorTheme.dark,
   ],

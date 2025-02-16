@@ -1,6 +1,6 @@
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 
-import '../../../styles/colors/dark_colors.dart';
 import '../../../styles/fonts/my_fonts.dart';
 
 
@@ -33,7 +33,7 @@ class CurvedButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          backgroundColor:color ?? DarkColors.baseColor ,
+          backgroundColor:color ?? context.colors.baseColor ,
           shape: RoundedRectangleBorder(
             side: BorderSide(
               color: colorBorderSide ?? Colors.transparent,
@@ -44,7 +44,7 @@ class CurvedButton extends StatelessWidget {
         child: Text(
           title,
           style: style ?? MyFonts.styleMedium500_16
-              .copyWith(color: textColor ?? DarkColors.white),
+              .copyWith(color: textColor ?? context.colors.white),
         ),
       ),
     );

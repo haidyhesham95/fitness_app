@@ -1,5 +1,5 @@
-import 'package:fitness_app/core/styles/colors/dark_colors.dart';
-import 'package:fitness_app/core/styles/colors/light_colors.dart';
+import 'package:fitness_app/core/styles/colors/dark_color.dart';
+import 'package:fitness_app/core/styles/colors/light_color.dart';
 import 'package:flutter/material.dart';
 
 class AppColorTheme extends ThemeExtension<AppColorTheme> {
@@ -14,6 +14,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     required this.underlineDecoration,
     required this.containerBackground,
     required this.transparent,
+    required this.red,
   });
 
   final Color baseColor;
@@ -26,6 +27,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
   final Color underlineDecoration;
   final Color containerBackground;
   final Color transparent;
+  final Color red;
 
   @override
   ThemeExtension<AppColorTheme> copyWith({
@@ -39,6 +41,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     Color? underlineDecoration,
     Color? containerBackground,
     Color? transparent,
+    Color? red,
   }) {
     return AppColorTheme(
       baseColor: baseColor ?? this.baseColor,
@@ -51,6 +54,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
       underlineDecoration: underlineDecoration ?? this.underlineDecoration,
       containerBackground: containerBackground ?? this.containerBackground,
       transparent: transparent ?? this.transparent,
+      red: red ?? this.red,
     );
   }
 
@@ -73,33 +77,36 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
         underlineDecoration: underlineDecoration,
         containerBackground: containerBackground,
         transparent: transparent,
+        red: red,
       );
     }
   }
 
   static const AppColorTheme dark = AppColorTheme(
-    baseColor: DarkColors.baseColor,
-    gray: DarkColors.gray,
-    hintText: DarkColors.hintStyle,
-    blue: DarkColors.blue,
-    white: DarkColors.white,
-    black: DarkColors.black,
-    icon: DarkColors.iconsColor,
-    underlineDecoration: DarkColors.decorationUnderLine,
-    containerBackground: DarkColors.container,
-    transparent: DarkColors.transparent,
+    baseColor: DarkColor.baseColor,
+    gray: DarkColor.gray,
+    hintText: DarkColor.hintStyle,
+    blue: DarkColor.blue,
+    white: DarkColor.white,
+    black: DarkColor.black,
+    icon: DarkColor.iconsColor,
+    underlineDecoration: DarkColor.decorationUnderLine,
+    containerBackground: DarkColor.container,
+    transparent: DarkColor.transparent,
+    red: DarkColor.red,
   );
 
   static const AppColorTheme light = AppColorTheme(
-    baseColor: LightColors.baseColor,
-    gray: LightColors.gray,
-    hintText: LightColors.hintStyle,
-    blue: LightColors.blue,
-    white: LightColors.white,
-    black: LightColors.black,
-    icon: LightColors.iconsColor,
-    underlineDecoration: LightColors.decorationUnderLine,
-    containerBackground: LightColors.container,
-    transparent: LightColors.transparent,
+    baseColor: LightColor.baseColor,
+    gray: LightColor.gray,
+    hintText: LightColor.hintStyle,
+    blue: LightColor.blue,
+    white: LightColor.white,
+    black: LightColor.black,
+    icon: LightColor.iconsColor,
+    underlineDecoration: LightColor.decorationUnderLine,
+    containerBackground: LightColor.container,
+    transparent: LightColor.transparent,
+    red: LightColor.red,
   );
 }

@@ -1,6 +1,6 @@
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 
-import '../../../styles/colors/dark_colors.dart';
 import '../../../styles/fonts/my_fonts.dart';
 
 
@@ -20,15 +20,15 @@ class CustomAppBar extends StatelessWidget {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: const Icon(
+                child:  Icon(
                   Icons.arrow_back_ios,
-                  color: DarkColors.black,
+                  color: context.colors.black,
                 ),
               )
             : const SizedBox(),
         Text(
           appBarTxt!,
-          style: MyFonts.styleMedium500_20.copyWith(color: DarkColors.black),
+          style: MyFonts.styleMedium500_20.copyWith(color: context.colors.black),
         ),
       ],
     );

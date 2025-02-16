@@ -1,6 +1,6 @@
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 
-import '../../styles/colors/dark_colors.dart';
 import '../../styles/fonts/my_fonts.dart';
 
 
@@ -12,7 +12,7 @@ AppBar customAppBar({
   List<Widget>? actions
 }) {
   return AppBar(
-    backgroundColor: Colors.white,
+    backgroundColor: context.colors.white,
     automaticallyImplyLeading: false,
     title:  Row(
       children: [
@@ -25,9 +25,9 @@ AppBar customAppBar({
                     Navigator.pop(context);
                   }
                 },
-                child: const Icon(
+                child:  Icon(
                   Icons.arrow_back_ios,
-                  color: DarkColors.black,
+                  color: context.colors.black,
                 ),
               )
             : const SizedBox(),

@@ -1,6 +1,4 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
-
-import '../../styles/colors/dark_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -120,7 +118,7 @@ class AppTextFormField extends StatelessWidget {
         hintText: hintText,
         hintStyle: hintStyle ??
             MyFonts.styleRegular400_14.copyWith(
-              color: DarkColors.hintStyle,
+              color: context.colors.hintText,
             ),
         errorStyle: MyFonts.styleRegular400_12.copyWith(
           color: Colors.red,
