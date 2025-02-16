@@ -41,7 +41,7 @@ void main() {
       rePassword: 'Somaya@123'
   );
   var signUpResponse = SignUpResponseDto(
-    token: '',
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjdiMTFlZjg5MWJiYTMxOTJjNzY2MDJhIiwiaWF0IjoxNzM5NjYxMDQ4fQ.oqUSFMKAvJMW04jLTvR2pGStdwa0r99DLBWmRPMS2DE',
     user: userDto,
     message:'success'
   );
@@ -71,8 +71,8 @@ void main() {
   setUp(() async {
    mockApiManager = MockApiManager();
   });
-  group('when call signUp or login should get them from api manager', (){
 
+  group('when call signUp or login should get them from api manager', (){
     // test signUp
     test('when call signUp from online data source it should call apiManager.signUp with correct body', ()async{
       SignUpUser expectedUser = AuthMapper.mapUserFromDtoToEntity(userDto);

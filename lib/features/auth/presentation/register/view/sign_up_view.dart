@@ -1,5 +1,6 @@
 import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/routes/app_routes.dart';
+import 'package:fitness_app/core/styles/colors/my_colors.dart';
 import 'package:fitness_app/core/utils/extension/media_query_values.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/validators.dart';
@@ -23,11 +24,10 @@ class SignUpView extends StatelessWidget {
       listener: (context, state) {
       switch(state) {
         case SignupInitial():
-          // TODO: Handle this case.
-          throw UnimplementedError();
         case SignupLoading():
-          // TODO: Handle this case.
-          throw UnimplementedError();
+          const  CircularProgressIndicator(
+            color: MyColors.baseColor,
+          );
         case SignupSuccess():
           context.pushReplacementNamed(AppRoutes.login);
           aweSnackBar(

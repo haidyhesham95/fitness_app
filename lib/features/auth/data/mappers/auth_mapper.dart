@@ -16,6 +16,8 @@ class AuthMapper{
       age: request.age,
       weight: request.weight,
       height: request.height,
+      password: request.password,
+      rePassword: request.rePassword,
       activityLevel: request.activityLevel,
       goal: request.goal,
     );

@@ -42,7 +42,7 @@ Widget loginWidget(BuildContext context){
         onTap: (){
           Navigator.pushReplacementNamed(context, AppRoutes.signUp);
         },
-        child:  CustomTextSpanWidget(title: context.translate(LangKeys.doNotHaveAccount), subTitle:context.translate(LangKeys.register),
+        child:  CustomTextSpanWidget(title: context.translate(LangKeys.doNotHaveAnAccount), subTitle:context.translate(LangKeys.register),
         ),
       ),
     ],

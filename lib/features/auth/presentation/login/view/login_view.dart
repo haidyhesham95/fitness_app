@@ -1,5 +1,6 @@
 import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/routes/app_routes.dart';
+import 'package:fitness_app/core/styles/colors/my_colors.dart';
 import 'package:fitness_app/core/utils/extension/media_query_values.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/validators.dart';
@@ -23,12 +24,12 @@ class LoginView extends StatelessWidget {
       listener: (context, state) {
         switch (state) {
           case LoginViewModelInitial():
-            // TODO: Handle this case.
-            throw UnimplementedError();
+
           case LoginViewModelLoading():
-            const CircularProgressIndicator();
+             const CircularProgressIndicator(
+              color: MyColors.baseColor,
+            );
           case LoginViewModelSuccess():
-            context.pushReplacementNamed(AppRoutes.homeScreen);
             aweSnackBar(
                 msg:context.translate(LangKeys.success),
                 context: context,

@@ -30,6 +30,9 @@ class CustomTextFormField extends StatelessWidget {
         validator: validator,
         controller: controller,
         textAlign: TextAlign.start,
+        style: const TextStyle(
+          color: MyColors.white
+        ),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.zero,
           errorStyle:  const TextStyle(
