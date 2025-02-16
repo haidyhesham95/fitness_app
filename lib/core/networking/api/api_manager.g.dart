@@ -10,6 +10,8 @@ part of 'api_manager.dart';
 
 class _ApiManager implements ApiManager {
   _ApiManager(this._dio, {this.baseUrl}) {
+
+  _ApiManager(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??= 'https://fitness.elevateegy.com/';
   }
 
@@ -70,6 +72,7 @@ class _ApiManager implements ApiManager {
     }
     return _value;
   }
+  final ParseErrorLogger? errorLogger;
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&

@@ -15,12 +15,17 @@ class Assets {
   static const String imagesForgetPasswordBg = 'assets/images/forget_password_bg.png';
   static const String imagesGoogle = 'assets/images/google.png';
   static const String imagesLoading = 'assets/images/loading.json';
+  static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesNetwork = 'assets/images/network.png';
+  static const String imagesOn1 = 'assets/images/On_1.svg';
+  static const String imagesOn2 = 'assets/images/On_2.svg';
+  static const String imagesOn3 = 'assets/images/On_3.svg';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
   static const String svgEye = 'assets/svg/eye.svg';
   static const String svgLock = 'assets/svg/lock.svg';
   static const String svgMail = 'assets/svg/mail.svg';
   static const String svgUser = 'assets/svg/user.svg';
+  static const String imagesSplash = 'assets/images/splash.png';
   static const String translationsAr = 'translations/ar.json';
   static const String translationsEn = 'translations/en.json';
 

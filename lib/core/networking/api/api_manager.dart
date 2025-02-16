@@ -5,6 +5,7 @@ import 'package:fitness_app/features/auth/data/models/request/signup_request_dto
 import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/signup_response_dto.dart';
 import 'package:injectable/injectable.dart';
+import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 part 'api_manager.g.dart';
 
