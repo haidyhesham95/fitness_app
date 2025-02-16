@@ -60,7 +60,7 @@ class SignUpBlur extends StatelessWidget {
                       Navigator.pushNamed(context, AppRoutes.login);
                     },
                     child:  CustomTextSpanWidget(
-                      title: context.translate(LangKeys.alreadyHaveAccount),
+                      title: context.translate(LangKeys.alreadyHaveAnAccount),
                       subTitle: context.translate(LangKeys.login),
                     ),
                   ),
