@@ -1,6 +1,5 @@
+import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
-
-import '../../styles/app_images.dart';
 
 class PageUnderBuildScreen extends StatelessWidget {
   const PageUnderBuildScreen({super.key});
@@ -10,10 +9,10 @@ class PageUnderBuildScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-        constraints: const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
+        constraints:  const BoxConstraints.expand(),
+        decoration:  const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppImages.pageUnderBuild),
+            image: AssetImage(Assets.imagesPageUnderBuild),
             fit: BoxFit.fill,
           ),
         ),
