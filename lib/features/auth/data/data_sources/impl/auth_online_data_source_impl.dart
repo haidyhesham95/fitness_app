@@ -9,7 +9,6 @@ import 'package:fitness_app/features/auth/domain/entities/response/forget_passwo
 import 'package:fitness_app/features/auth/domain/entities/response/reset_password_response_entity.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../models/request/forget_password_request_dto.dart';
 import '../contracts/online_data_sources/auth_online_data_source.dart';
 
 @Injectable(as: AuthOnlineDataSource)

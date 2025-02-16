@@ -1,6 +1,5 @@
 import 'package:fitness_app/core/styles/colors/my_colors.dart';
 import 'package:fitness_app/core/utils/extension/media_query_values.dart';
-import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/validators.dart';
 import 'package:fitness_app/core/utils/widgets/buttons/custom_button.dart';
 import 'package:fitness_app/core/utils/widgets/custom_glassy_container.dart';

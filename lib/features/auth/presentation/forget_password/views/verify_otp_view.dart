@@ -14,8 +14,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/routes/app_routes.dart';
-import '../../../domain/entities/request/forget_password_request_entity.dart';
-import '../viewModel/forget_password_actions.dart';
 import '../widgets/custom_confirm_button.dart';
 
 class VerifyOtpView extends StatefulWidget {
