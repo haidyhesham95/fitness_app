@@ -1,7 +1,6 @@
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../../core/styles/colors/my_colors.dart';
 import '../../../../../../core/styles/fonts/my_fonts.dart';
 
 class CustomContainerGoal extends StatefulWidget {
@@ -24,14 +23,15 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(50),
-          border: Border.all(color: MyColors.white),
+          border: Border.all(color: context.colors.white),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               widget.txt,
-              style: MyFonts.styleBold700_12.copyWith(color: MyColors.gray),
+              style:
+                  MyFonts.styleBold700_12.copyWith(color: context.colors.gray),
             ),
             GestureDetector(
               onTap: () {
@@ -41,7 +41,7 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
               },
               child: Icon(
                 isChecked ? Icons.radio_button_checked : Icons.radio_button_off,
-                color: MyColors.gray,
+                color: context.colors.gray,
               ),
             ),
           ],

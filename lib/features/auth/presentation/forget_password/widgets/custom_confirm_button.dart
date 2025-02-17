@@ -1,4 +1,4 @@
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/localization/lang_keys.dart';
@@ -21,7 +21,7 @@ class CustomConfirmButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: CustomButton(
         txt: context.translate(LangKeys.confirm),
-        onTap: () {
+        onPressed: () {
           otpCode.isNotEmpty != ""
               ? viewModel.doAction(
                   VerifyOtpSubmit(VerifyOtpRequestEntity(resetCode: otpCode)))

@@ -16,7 +16,7 @@ import '../../features/auth/presentation/forget_password/views/verify_otp_view.d
 import '../utils/screens/under_build_screen.dart';
 
 class AppRoutes {
-  static const String login = '/';
+  static const String login = 'login';
   static const String homeScreen = 'homeScreen';
   static const String forgetPasswordView = 'forgetPasswordView';
   static const String verifyOtpView = 'verifyOtpView';
@@ -24,8 +24,6 @@ class AppRoutes {
   static const String goalView = 'goalView';
   static const String activityView = 'activityView';
   static const String onBoarding = '/';
-  static const String homeScreen='homeScreen';
-  static const String login = 'login';
   static const String signUp = "signUpView";
   static Route<void> onGenerateRoute(RouteSettings settings) {
 

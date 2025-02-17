@@ -23,7 +23,6 @@ class _ApiManager implements ApiManager {
   Future<ForgetPasswordResponseDto> forgetPassword(
     ForgetPasswordRequestDto request,
   ) async {
-  Future<LoginResponseDto> login(LoginRequestDto request) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -34,6 +33,29 @@ class _ApiManager implements ApiManager {
           .compose(
             _dio.options,
             'api/v1/auth/forgotPassword',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ForgetPasswordResponseDto _value;
+    try {
+      _value = ForgetPasswordResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<LoginResponseDto> login(LoginRequestDto request) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _options = _setStreamType<LoginResponseDto>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -48,9 +70,6 @@ class _ApiManager implements ApiManager {
     late LoginResponseDto _value;
     try {
       _value = LoginResponseDto.fromJson(_result.data!);
-    late ForgetPasswordResponseDto _value;
-    try {
-      _value = ForgetPasswordResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -60,6 +79,33 @@ class _ApiManager implements ApiManager {
 
   @override
   Future<SignUpResponseDto> signup(SignUpRequestDto request) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _options = _setStreamType<SignUpResponseDto>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'api/v1/auth/signup',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SignUpResponseDto _value;
+    try {
+      _value = SignUpResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<dynamic> verifyOtp(VerifyOtpRequestDto request) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -90,11 +136,6 @@ class _ApiManager implements ApiManager {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
-    final _options = _setStreamType<SignUpResponseDto>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'api/v1/auth/signup',
     final _options = _setStreamType<ResetPasswordResponseDto>(
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
@@ -109,9 +150,6 @@ class _ApiManager implements ApiManager {
     late ResetPasswordResponseDto _value;
     try {
       _value = ResetPasswordResponseDto.fromJson(_result.data!);
-    late SignUpResponseDto _value;
-    try {
-      _value = SignUpResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

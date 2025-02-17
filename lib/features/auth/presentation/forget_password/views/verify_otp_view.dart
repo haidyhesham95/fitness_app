@@ -1,7 +1,6 @@
 import 'package:fitness_app/core/networking/common/regester_context_module.dart';
-import 'package:fitness_app/core/styles/colors/my_colors.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/widgets/custom_glassy_container.dart';
 import 'package:fitness_app/core/utils/widgets/custom_toast.dart';
@@ -78,19 +77,14 @@ class _VerifyOtpViewState extends State<VerifyOtpView> {
                     Text(
                       context.translate(LangKeys.didNotReceiveVerificationCode),
                       style: MyFonts.styleRegular400_16
-                          .copyWith(color: MyColors.white),
+                          .copyWith(color: context.colors.white),
                     ),
                     verticalSpacing(4.h),
                     GestureDetector(
-                      // onTap: (){
-                      //   viewModel.doAction(ForgetPasswordSubmit(
-                      //       ForgetPasswordRequestEntity(
-                      //           email: args.email)));
-                      // },
                       child: Text(
                         context.translate(LangKeys.resendCode),
                         style: MyFonts.styleSemiBold600_16
-                            .copyWith(color: MyColors.baseColor),
+                            .copyWith(color: context.colors.baseColor),
                       ),
                     ),
                     verticalSpacing(24.h),

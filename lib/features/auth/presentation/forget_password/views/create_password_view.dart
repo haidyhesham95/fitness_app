@@ -1,5 +1,4 @@
-import 'package:fitness_app/core/styles/colors/my_colors.dart';
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/validators.dart';
 import 'package:fitness_app/core/utils/widgets/buttons/custom_button.dart';
 import 'package:fitness_app/core/utils/widgets/custom_glassy_container.dart';
@@ -99,14 +98,14 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
                           _isPasswordVisible
                               ? Icons.visibility_off
                               : Icons.visibility,
-                          color: MyColors.white,
+                          color: context.colors.white,
                           size: 20,
                         ),
                       ),
                     ),
                     CustomButton(
                       txt: context.translate(LangKeys.done),
-                      onTap: () {
+                      onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           viewModel.doAction(ResetPasswordSubmit(
                               ResetPasswordRequestEntity(
@@ -115,6 +114,7 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
                                       _passwordController.text.trim())));
                         }
                       },
+                      width: null,
                     )
                   ],
                 ),

@@ -1,4 +1,4 @@
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class GoalView extends StatelessWidget {
           context.translate(LangKeys.thisHelpsUsCreateYourPersonalizedPlan),
       button: CustomButton(
           txt: context.translate(LangKeys.next),
-          onTap: () {
+          onPressed: () {
             context.pushNamed(AppRoutes.activityView);
           }),
     );

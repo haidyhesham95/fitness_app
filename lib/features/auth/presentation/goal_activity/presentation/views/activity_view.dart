@@ -1,4 +1,4 @@
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/localization/lang_keys.dart';
@@ -15,7 +15,8 @@ class ActivityView extends StatelessWidget {
       progress: 0.99,
       containerTxt: "Rookie",
       title: context.translate(LangKeys.yourRegularPhysicalActivityLevel),
-      button: CustomButton(txt: context.translate(LangKeys.next), onTap: () {}),
+      button:
+          CustomButton(txt: context.translate(LangKeys.next), onPressed: () {}),
     );
   }
 }

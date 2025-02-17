@@ -1,12 +1,11 @@
 import 'dart:ui';
 
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/widgets/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:radial_progress/radial_progress.dart';
-
-import '../../../../../core/styles/colors/my_colors.dart';
 import '../../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../../generated/assets.dart';
 
@@ -60,13 +59,13 @@ class CustomBlurBg extends StatelessWidget {
                           height: 24.h,
                           width: 24.w,
                           decoration: BoxDecoration(
-                            color: MyColors.baseColor,
+                            color: context.colors.baseColor,
                             borderRadius: BorderRadius.circular(50),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Icon(
                               Icons.arrow_back_ios_new_outlined,
-                              color: MyColors.white,
+                              color: context.colors.white,
                               size: 16,
                             ),
                           ),
@@ -96,13 +95,13 @@ class CustomBlurBg extends StatelessWidget {
                         diameter: 40,
                         bgLineColor: Colors.transparent,
                         progressLineWidth: 5,
-                        progressLineColors: [MyColors.baseColor],
+                        progressLineColors: [context.colors.baseColor],
                         startAngle: StartAngle.top,
                         centerChild: Text(
                           value ?? "",
                           maxLines: 1,
                           style: MyFonts.styleMedium500_14
-                              .copyWith(color: MyColors.baseColor),
+                              .copyWith(color: context.colors.baseColor),
                         ),
                       )
                     : const SizedBox(),
@@ -116,7 +115,7 @@ class CustomBlurBg extends StatelessWidget {
                   subtitle: Text(
                     subTitle ?? "",
                     style: MyFonts.styleRegular400_18
-                        .copyWith(color: MyColors.gray),
+                        .copyWith(color: context.colors.gray),
                   ),
                 ),
                 widget

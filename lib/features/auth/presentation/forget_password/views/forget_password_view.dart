@@ -1,6 +1,6 @@
 import 'package:fitness_app/core/networking/common/regester_context_module.dart';
 import 'package:fitness_app/core/routes/app_routes.dart';
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/validators.dart';
 import 'package:fitness_app/core/utils/widgets/custom_toast.dart';
@@ -97,7 +97,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                         builder: (context, state) {
                           return CustomButton(
                             txt: context.translate(LangKeys.sentOTP),
-                            onTap: () {
+                            onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 viewModel.doAction(ForgetPasswordSubmit(
                                     ForgetPasswordRequestEntity(

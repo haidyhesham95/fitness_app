@@ -1,6 +1,5 @@
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
-
-import '../../styles/colors/my_colors.dart';
 import '../../styles/fonts/my_fonts.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -25,7 +24,7 @@ class CustomTextFormField extends StatelessWidget {
     return SizedBox(
       child: TextFormField(
         obscureText: isPassword ?? false,
-        cursorColor: MyColors.baseColor,
+        cursorColor: context.colors.baseColor,
         style: const TextStyle(color: Colors.white),
         validator: validator,
         controller: controller,
@@ -37,10 +36,11 @@ class CustomTextFormField extends StatelessWidget {
               ? const SizedBox()
               : Icon(
                   icon,
-            color: MyColors.gray,
-            size: 20,
+                  color: context.colors.gray,
+                  size: 20,
           ),
-          hintStyle: MyFonts.styleRegular400_12.copyWith(color: MyColors.gray),
+          hintStyle:
+              MyFonts.styleRegular400_12.copyWith(color: context.colors.gray),
           hintText: hintTxt,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(50),

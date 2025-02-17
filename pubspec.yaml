@@ -39,7 +39,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons:
   fluttertoast:
-  glassmorphism_ui: ^0.3.0
   bloc_test:
   badges:
   flutter_otp_text_field:
@@ -47,7 +46,6 @@ dependencies:
   row_item:
   radial_progress: ^0.1.0
   dio:
-  google_fonts:
   flutter_map:
   latlong2:
   location:

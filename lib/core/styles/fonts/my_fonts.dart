@@ -118,19 +118,9 @@ class MyFonts {
         fontWeight: FontWeight.w800,
         fontSize: 20,
   );
-  static TextStyle styleExtraBold800_20 = GoogleFonts.balooThambi2(
-    fontWeight: FontWeight.w800,
-    fontSize: 20,
-  );
 
   static TextStyle styleExtraBold800_24 = GoogleFonts.balooThambi2(
     fontWeight: FontWeight.w800,
     fontSize: 24,
   );
-
-  static TextStyle styleExtraBold800_14 = GoogleFonts.balooThambi2(
-    fontWeight: FontWeight.w800,
-    fontSize: 14,
-  );
-// English Text Styles
 }
