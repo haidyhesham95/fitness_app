@@ -3,6 +3,10 @@ import 'package:fitness_app/features/auth/data/models/request/reset_password_req
 import 'package:fitness_app/features/auth/data/models/request/verify_otp_request_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/forget_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/reset_password_response_dto.dart';
+import 'package:fitness_app/features/auth/data/models/request/login_request_dto.dart';
+import 'package:fitness_app/features/auth/data/models/request/signup_request_dto.dart';
+import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart';
+import 'package:fitness_app/features/auth/data/models/response/signup_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -20,6 +24,11 @@ abstract class  ApiManager {
 
   @POST(ApiConstants.forgetPassword)
   Future<ForgetPasswordResponseDto> forgetPassword(@Body() ForgetPasswordRequestDto request);
+  @POST(ApiConstants.signInApi)
+  Future<LoginResponseDto> login(@Body() LoginRequestDto request);
+  @POST(ApiConstants.signUpApi)
+  Future<SignUpResponseDto> signup(@Body() SignUpRequestDto request);
+
 
   @POST(ApiConstants.verifyOtp)
   Future verifyOtp(@Body() VerifyOtpRequestDto request);

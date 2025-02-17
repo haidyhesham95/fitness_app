@@ -47,6 +47,7 @@ dependencies:
   row_item:
   radial_progress: ^0.1.0
   dio:
+  google_fonts:
   flutter_map:
   latlong2:
   location:
@@ -83,6 +84,8 @@ dependencies:
   image_picker:
   animate_do:
   another_stepper: ^1.2.2
+  glassmorphism_ui: ^0.3.0
+
 
 
   # add injectable to your dependencies
@@ -96,16 +99,6 @@ dependencies:
   geolocator: ^13.0.2   # For location services and permissions
   geocoding: ^3.0.0
 
-
-  # Firebase ML Kit
-  firebase_core:
-  firebase_crashlytics: ^4.3.1
-  firebase_analytics: ^11.3.6
-  cloud_firestore:
-  firebase_database:
-  firebase_messaging:
-  flutter_local_notifications: ^18.0.1
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -116,7 +109,8 @@ dev_dependencies:
   json_serializable:
   dartz:
   test:
-  flutter_native_splash:
+  flutter_native_splash: ^2.4.4
+  icons_launcher: ^3.0.0
   mockito:
 
 # For information on the generic Dart part of this file, see the
@@ -136,6 +130,8 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - assets/json/
+    - assets/svg/
     - lib/generated/assets.dart
     - translations/ar.json
     - translations/en.json

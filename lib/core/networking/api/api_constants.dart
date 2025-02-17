@@ -3,4 +3,6 @@ class ApiConstants {
   static const String forgetPassword = "api/v1/auth/forgotPassword";
   static const String verifyOtp = "api/v1/auth/verifyResetCode";
   static const String resetPassword = "api/v1/auth/resetPassword";
+  static const String signUpApi = 'api/v1/auth/signup';
+  static const String signInApi = 'api/v1/auth/signin';
 }

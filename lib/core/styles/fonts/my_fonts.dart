@@ -26,7 +26,7 @@ class MyFonts {
     fontWeight: FontWeight.w400,
     fontSize: 18,
   );
- static TextStyle styleRegular400_20 = const TextStyle(
+  static TextStyle styleRegular400_20 = const TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 20,
   );
@@ -92,6 +92,9 @@ class MyFonts {
   static TextStyle styleBold700_14 = const TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: 14,
+  );  static TextStyle styleExtraBold800_14 = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: 14,
   );
 
   static TextStyle styleBold700_16 = GoogleFonts.balooThambi2(
@@ -114,6 +117,15 @@ class MyFonts {
   static TextStyle styleExtraBold800_20 = GoogleFonts.balooThambi2(
         fontWeight: FontWeight.w800,
         fontSize: 20,
+  );
+  static TextStyle styleExtraBold800_20 = GoogleFonts.balooThambi2(
+    fontWeight: FontWeight.w800,
+    fontSize: 20,
+  );
+
+  static TextStyle styleExtraBold800_24 = GoogleFonts.balooThambi2(
+    fontWeight: FontWeight.w800,
+    fontSize: 24,
   );
 
   static TextStyle styleExtraBold800_14 = GoogleFonts.balooThambi2(
