@@ -35,7 +35,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.zero,
-          errorStyle:   TextStyle(
+          errorStyle:   const TextStyle(
             height: 0.5,
           ),
           prefixIcon: prefixImage != null
@@ -44,7 +44,7 @@ class CustomTextFormField extends StatelessWidget {
                   width: 20.w,
                   height: 20.h,
                   fit: BoxFit.scaleDown,
-                  color: context.colors.iconsColor,
+            colorFilter: ColorFilter.mode(context.colors.iconsColor, BlendMode.srcIn),
                 )
               : (prefixIcon != null
                   ? Icon(prefixIcon, color: context.colors.iconsColor, size: 20)
@@ -55,7 +55,7 @@ class CustomTextFormField extends StatelessWidget {
             width: 20.w,
             height: 20.h,
             fit: BoxFit.scaleDown,
-            color: context.colors.iconsColor,
+            colorFilter: ColorFilter.mode(context.colors.iconsColor, BlendMode.srcIn),
           )
               : (suffixIcon != null
               ? Icon(prefixIcon, color: context.colors.iconsColor, size: 20)

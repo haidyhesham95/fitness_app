@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';

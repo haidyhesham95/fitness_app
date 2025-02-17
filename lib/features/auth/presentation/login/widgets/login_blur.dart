@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/features/auth/presentation/login/widgets/login_data.dart';
