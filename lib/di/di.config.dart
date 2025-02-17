@@ -40,6 +40,8 @@ import '../features/auth/domain/use_case/signup_use_case.dart' as _i1064;
 import '../features/auth/domain/use_cases/auth_use_case.dart' as _i839;
 import '../features/auth/presentation/forget_password/viewModel/forget_password_view_model_cubit.dart'
     as _i289;
+import '../features/auth/presentation/goal_activity/presentation/viewModel/goal_cubit/goal_view_model_cubit.dart'
+    as _i808;
 import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dart'
     as _i690;
 import '../features/auth/presentation/register/view_model/signup_view_model_cubit.dart'
@@ -86,6 +88,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i690.LoginViewModel(gh<_i876.LoginUseCase>()));
     gh.factory<_i289.ForgetPasswordViewModelCubit>(
         () => _i289.ForgetPasswordViewModelCubit(gh<_i839.AuthUseCase>()));
+    gh.factory<_i808.GoalViewModelCubit>(
+        () => _i808.GoalViewModelCubit(gh<_i1064.SignUpUseCase>()));
     gh.factory<_i864.SignUpViewModel>(
         () => _i864.SignUpViewModel(gh<_i1064.SignUpUseCase>()));
     return this;

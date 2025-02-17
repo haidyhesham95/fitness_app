@@ -60,7 +60,7 @@
   "whatIsYourGoal": "What is your goal?",
   "thisHelpsUsCreateYourPersonalizedPlan": "This helps us create your personalized plan",
   "next": "Next",
-  "yourRegularPhysicalActivityLevel": "Your regular physical activity level?"
+  "yourRegularPhysicalActivityLevel": "Your regular physical activity level?",
   "offlineMessage": "You are currently offline",
   "price_of_excellence": "The Price Of Excellence Is Discipline",
   "excellence_quote": "Excellence isn’t given, it’s earned. Stay disciplined, push limits, and unlock your best self!",
@@ -71,6 +71,16 @@
   "do_it": "Do It",
   "next": "Next",
   "skip": "Skip",
-  "back": "Back"
+  "back": "Back",
+  "gainWeight": "Gain Weight",
+  "loseWeight": "Lose Weight",
+  "getFitter": "Get Fitter",
+  "gainMoreFlexible": "Gain More Flexible",
+  "learnTheBasics": "Learn The Basics",
+  "rookie": "Rookie",
+  "beginner": "Beginner",
+  "intermediate": "Intermediate",
+  "advanced": "Advanced",
+  "trueBeast": "True Beast"
 
 }

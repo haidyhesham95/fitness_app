@@ -15,7 +15,13 @@ class GoalView extends StatelessWidget {
     return CustomGoalView(
       value: "5/6",
       progress: 0.8,
-      containerTxt: "Gain Weight",
+      items: [
+        context.translate(LangKeys.gainWeight),
+        context.translate(LangKeys.loseWeight),
+        context.translate(LangKeys.getFitter),
+        context.translate(LangKeys.gainMoreFlexible),
+        context.translate(LangKeys.trueBeast),
+      ],
       title: context.translate(LangKeys.whatIsYourGoal),
       subTitle:
           context.translate(LangKeys.thisHelpsUsCreateYourPersonalizedPlan),

@@ -13,7 +13,13 @@ class ActivityView extends StatelessWidget {
     return CustomGoalView(
       value: "6/6",
       progress: 0.99,
-      containerTxt: "Rookie",
+      items: [
+        context.translate(LangKeys.rookie),
+        context.translate(LangKeys.beginner),
+        context.translate(LangKeys.intermediate),
+        context.translate(LangKeys.advanced),
+        context.translate(LangKeys.trueBeast),
+      ],
       title: context.translate(LangKeys.yourRegularPhysicalActivityLevel),
       button:
           CustomButton(txt: context.translate(LangKeys.next), onPressed: () {}),

@@ -57,4 +57,14 @@ class LangKeys {
   static const String next = 'next';
   static const String yourRegularPhysicalActivityLevel =
       'yourRegularPhysicalActivityLevel';
+  static const String gainWeight = 'gainWeight';
+  static const String loseWeight = 'loseWeight';
+  static const String getFitter = 'getFitter';
+  static const String gainMoreFlexible = 'gainMoreFlexible';
+  static const String learnTheBasic = 'learnTheBasic';
+  static const String rookie = 'rookie';
+  static const String beginner = 'beginner';
+  static const String intermediate = 'intermediate';
+  static const String advanced = 'advanced';
+  static const String trueBeast = 'trueBeast';
 }

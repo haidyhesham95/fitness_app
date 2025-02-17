@@ -5,19 +5,20 @@ import '../../../forget_password/widgets/custom_blur_bg.dart';
 import 'custom_container_goal.dart';
 
 class CustomGoalView extends StatelessWidget {
-  const CustomGoalView(
-      {super.key,
-      this.title,
-      this.subTitle,
-      this.containerTxt,
-      required this.button,
-      this.progress,
-      this.value});
+  const CustomGoalView({
+    super.key,
+    this.title,
+    this.subTitle,
+    required this.items,
+    required this.button,
+    this.progress,
+    this.value,
+  });
 
-  final String? title, subTitle, containerTxt;
+  final String? title, subTitle, value;
+  final List<String> items;
   final Widget button;
   final double? progress;
-  final String? value;
 
   @override
   Widget build(BuildContext context) {
@@ -30,21 +31,7 @@ class CustomGoalView extends StatelessWidget {
           child: Column(
             spacing: 16.h,
             children: [
-              CustomContainerGoal(
-                txt: containerTxt ?? "",
-              ),
-              CustomContainerGoal(
-                txt: containerTxt ?? "",
-              ),
-              CustomContainerGoal(
-                txt: containerTxt ?? "",
-              ),
-              CustomContainerGoal(
-                txt: containerTxt ?? "",
-              ),
-              CustomContainerGoal(
-                txt: containerTxt ?? "",
-              ),
+              ...items.map((item) => CustomContainerGoal(txt: item)).toList(),
               button,
             ],
           ),
