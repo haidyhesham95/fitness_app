@@ -1,6 +1,6 @@
 import 'dart:ui';
-import 'package:fitness_app/core/styles/colors/my_colors.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/features/auth/presentation/login/widgets/login_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +21,7 @@ class CustomBlur extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(24.w),
             decoration: BoxDecoration(
-              color: MyColors.containerColor.withValues(alpha: 0.6),
+              color: context.colors.containerColor.withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(30),
             ),
             child: Column(
@@ -30,7 +30,7 @@ class CustomBlur extends StatelessWidget {
                 Text(
                   title,
                   style: MyFonts.styleExtraBold800_24
-                      .copyWith(color: MyColors.white),
+                      .copyWith(color: context.colors.white),
                   textAlign: TextAlign.center,
                 ),
                 widget,

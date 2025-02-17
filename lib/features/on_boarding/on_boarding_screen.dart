@@ -1,7 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:fitness_app/core/localization/lang_keys.dart';
+import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/widgets/buttons/custom_button.dart';
 import 'package:fitness_app/features/on_boarding/boarding_page.dart';
 import 'package:fitness_app/generated/assets.dart';
@@ -74,13 +76,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               );
             },
           ),
-          if (_currentPage < onboardingData.length )
+          if (_currentPage != onboardingData.length - 1 )
             Positioned(
               top: 60,
               right: 20,
               width: 60.w,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  context.pushReplacementNamed(AppRoutes.login);
+                },
                 child: Text(
                   context.translate(LangKeys.skip),
                   style: MyFonts.styleRegular400_14
@@ -139,7 +143,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: CustomButton(
                         onPressed: () {
                           if (_currentPage == onboardingData.length - 1) {
-                            // Navigate to home or next screen
+                            context.pushReplacementNamed(AppRoutes.login);
                           } else {
                             _controller.nextPage(
                               duration: const Duration(milliseconds: 500),

@@ -124,9 +124,5 @@ class MyFonts {
     fontSize: 24,
   );
 
-  static TextStyle styleExtraBold800_14 = GoogleFonts.balooThambi2(
-    fontWeight: FontWeight.w800,
-    fontSize: 14,
-  );
 // English Text Styles
 }
