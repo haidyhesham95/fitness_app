@@ -48,7 +48,6 @@ class LangKeys {
   static const String noMoreExcuses = 'no_more_excuses';
   static const String startNow = 'start_now';
   static const String doIt = 'do_it';
-  static const String next = 'next';
   static const String skip = 'skip';
   static const String back = 'back';
 }

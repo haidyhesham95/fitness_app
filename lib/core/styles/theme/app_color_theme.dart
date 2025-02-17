@@ -10,9 +10,9 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     required this.blue,
     required this.white,
     required this.black,
-    required this.icon,
+    required this.iconsColor,
     required this.underlineDecoration,
-    required this.containerBackground,
+    required this.containerColor,
     required this.transparent,
     required this.red,
   });
@@ -23,9 +23,9 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
   final Color blue;
   final Color white;
   final Color black;
-  final Color icon;
+  final Color iconsColor;
   final Color underlineDecoration;
-  final Color containerBackground;
+  final Color containerColor;
   final Color transparent;
   final Color red;
 
@@ -50,9 +50,9 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
       blue: blue ?? this.blue,
       white: white ?? this.white,
       black: black ?? this.black,
-      icon: icon ?? this.icon,
+      iconsColor: icon ?? this.iconsColor,
       underlineDecoration: underlineDecoration ?? this.underlineDecoration,
-      containerBackground: containerBackground ?? this.containerBackground,
+      containerColor: containerBackground ?? this.containerColor,
       transparent: transparent ?? this.transparent,
       red: red ?? this.red,
     );
@@ -73,9 +73,9 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
         blue: blue,
         white: white,
         black: black,
-        icon: icon,
+        iconsColor: iconsColor,
         underlineDecoration: underlineDecoration,
-        containerBackground: containerBackground,
+        containerColor: containerColor,
         transparent: transparent,
         red: red,
       );
@@ -89,9 +89,9 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     blue: DarkColor.blue,
     white: DarkColor.white,
     black: DarkColor.black,
-    icon: DarkColor.iconsColor,
+    iconsColor: DarkColor.iconsColor,
     underlineDecoration: DarkColor.decorationUnderLine,
-    containerBackground: DarkColor.container,
+    containerColor: DarkColor.container,
     transparent: DarkColor.transparent,
     red: DarkColor.red,
   );
@@ -103,9 +103,9 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     blue: LightColor.blue,
     white: LightColor.white,
     black: LightColor.black,
-    icon: LightColor.iconsColor,
+    iconsColor: LightColor.iconsColor,
     underlineDecoration: LightColor.decorationUnderLine,
-    containerBackground: LightColor.container,
+    containerColor: LightColor.container,
     transparent: LightColor.transparent,
     red: LightColor.red,
   );

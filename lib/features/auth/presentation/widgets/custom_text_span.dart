@@ -1,5 +1,5 @@
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
-import 'package:fitness_app/core/styles/colors/my_colors.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 
 class CustomTextSpanWidget extends StatelessWidget {
@@ -35,9 +35,9 @@ class CustomTextSpanWidget extends StatelessWidget {
                     subTitle,
                     style: highlightedTextStyle ??
                         MyFonts.styleExtraBold800_14.copyWith(
-                          color: MyColors.decorationUnderLineColor,
+                          color: context.colors.underlineDecoration,
                           decoration: TextDecoration.underline,
-                          decorationColor: MyColors.decorationUnderLineColor,
+                          decorationColor: context.colors.underlineDecoration,
                         ),
                   ),
                 ),

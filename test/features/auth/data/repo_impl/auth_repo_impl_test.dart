@@ -1,6 +1,5 @@
 import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/features/auth/data/contracts/auth_online_data_source.dart';
-import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart';
 import 'package:fitness_app/features/auth/data/repo_impl/auth_repo_impl.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/login_request_entity.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/signup_request_entity.dart';

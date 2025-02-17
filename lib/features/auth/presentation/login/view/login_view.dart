@@ -1,9 +1,7 @@
 import 'package:fitness_app/core/localization/lang_keys.dart';
-import 'package:fitness_app/core/routes/app_routes.dart';
-import 'package:fitness_app/core/styles/colors/my_colors.dart';
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
-import 'package:fitness_app/core/utils/extension/navigation.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/validators.dart';
+import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
 import 'package:fitness_app/core/utils/widgets/base/snack_bar.dart';
 import 'package:fitness_app/core/utils/widgets/custom_text_form_field.dart';
 import 'package:fitness_app/features/auth/presentation/login/viewModel/login_view_model_cubit.dart';
@@ -26,9 +24,7 @@ class LoginView extends StatelessWidget {
           case LoginViewModelInitial():
 
           case LoginViewModelLoading():
-             const CircularProgressIndicator(
-              color: MyColors.baseColor,
-            );
+              const AppLoader();
           case LoginViewModelSuccess():
             aweSnackBar(
                 msg:context.translate(LangKeys.success),

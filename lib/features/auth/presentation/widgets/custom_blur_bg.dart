@@ -1,7 +1,7 @@
 import 'dart:ui';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../generated/assets.dart';
 
@@ -65,7 +65,7 @@ class CustomBlurBg extends StatelessWidget {
                   subtitle: Text(
                     subTitle,
                     style: MyFonts.styleExtraBold800_20
-                        .copyWith(color: MyColors.white),
+                        .copyWith(color: context.colors.white),
                   ),
                 ),
                 widget

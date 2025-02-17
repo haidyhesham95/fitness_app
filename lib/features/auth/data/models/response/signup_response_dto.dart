@@ -20,7 +20,6 @@ class SignUpResponseDto {
     return _$SignUpResponseDtoFromJson(json);
   }
 
-  get error => null;
 
   Map<String, dynamic> toJson() {
     return _$SignUpResponseDtoToJson(this);
