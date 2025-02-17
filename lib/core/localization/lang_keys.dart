@@ -41,4 +41,13 @@ class LangKeys {
   static const String lastName = 'last_name';
   static const String or = 'or';
   static const String next = 'next';
+  static const String priceOfExcellence = 'price_of_excellence';
+  static const String excellenceQuote = 'excellence_quote';
+  static const String fitnessFun = 'fitness_fun';
+  static const String fitnessMotivation = 'fitness_motivation';
+  static const String noMoreExcuses = 'no_more_excuses';
+  static const String startNow = 'start_now';
+  static const String doIt = 'do_it';
+  static const String skip = 'skip';
+  static const String back = 'back';
 }

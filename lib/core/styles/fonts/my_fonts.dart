@@ -92,6 +92,9 @@ class MyFonts {
   static TextStyle styleBold700_14 = const TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: 14,
+  );  static TextStyle styleExtraBold800_14 = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: 14,
   );
 
   static TextStyle styleBold700_16 = const TextStyle(
@@ -121,9 +124,5 @@ class MyFonts {
     fontSize: 24,
   );
 
-  static TextStyle styleExtraBold800_14 = GoogleFonts.balooThambi2(
-    fontWeight: FontWeight.w800,
-    fontSize: 14,
-  );
 // English Text Styles
 }

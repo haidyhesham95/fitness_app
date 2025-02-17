@@ -1,7 +1,6 @@
 import 'package:fitness_app/core/localization/lang_keys.dart';
-import 'package:fitness_app/core/styles/colors/my_colors.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,14 +13,14 @@ Widget socialDesign(BuildContext context) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Expanded(child: Divider(color:MyColors.iconsColor)),
+            Expanded(child: Divider(color:context.colors.iconsColor)),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Text(context.translate(LangKeys.or),
                   style: MyFonts.styleRegular400_16
-                      .copyWith(color: MyColors.iconsColor)),
+                      .copyWith(color: context.colors.iconsColor)),
             ),
-            const Expanded(child: Divider(color:MyColors.iconsColor)),
+             Expanded(child: Divider(color:context.colors.iconsColor)),
           ],
         ),
       ),

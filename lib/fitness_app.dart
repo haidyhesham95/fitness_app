@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/styles/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ class FitnessApp extends StatelessWidget {
   FitnessApp({super.key});
 
   final GlobalKey<NavigatorState> navigatorKey =
-  getIt<GlobalKey<NavigatorState>>();
+      getIt<GlobalKey<NavigatorState>>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +38,16 @@ class FitnessApp extends StatelessWidget {
                   final cubit = context.read<AppCubit>();
                   return MaterialApp(
                     locale: Locale(cubit.currentLanguage),
+                    theme: darkTheme,
                     supportedLocales: AppLocalizationsSetup.supportedLocales,
                     localeResolutionCallback:
-                    AppLocalizationsSetup.localeResolutionCallback,
+                        AppLocalizationsSetup.localeResolutionCallback,
                     localizationsDelegates:
-                    AppLocalizationsSetup.localizationsDelegates,
+                        AppLocalizationsSetup.localizationsDelegates,
                     initialRoute: _getInitialRoute(),
                     debugShowCheckedModeBanner: false,
                     builder: (context, child) {
                       return Scaffold(
-                        resizeToAvoidBottomInset: false,
                         body: Builder(
                           builder: (context) {
                             ConnectivityController.instance.init();
@@ -76,5 +77,5 @@ class FitnessApp extends StatelessWidget {
 String _getInitialRoute() {
   return SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey) != null
       ? AppRoutes.homeScreen
-      : AppRoutes.login;
+      : AppRoutes.onBoarding;
 }

@@ -9,8 +9,6 @@ part of 'api_manager.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _ApiManager implements ApiManager {
-  _ApiManager(this._dio, {this.baseUrl}) {
-
   _ApiManager(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??= 'https://fitness.elevateegy.com/';
   }
@@ -18,6 +16,8 @@ class _ApiManager implements ApiManager {
   final Dio _dio;
 
   String? baseUrl;
+
+  final ParseErrorLogger? errorLogger;
 
   @override
   Future<LoginResponseDto> login(LoginRequestDto request) async {
@@ -41,6 +41,7 @@ class _ApiManager implements ApiManager {
     try {
       _value = LoginResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -68,11 +69,11 @@ class _ApiManager implements ApiManager {
     try {
       _value = SignUpResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
   }
-  final ParseErrorLogger? errorLogger;
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&

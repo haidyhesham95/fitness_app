@@ -65,7 +65,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i690.LoginViewModel(gh<_i876.LoginUseCase>()));
     gh.factory<_i864.SignUpViewModel>(
         () => _i864.SignUpViewModel(gh<_i1064.SignUpUseCase>()));
-    gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
     return this;
   }
 }

@@ -1,9 +1,7 @@
-import 'dart:ui';
 import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/routes/app_routes.dart';
-import 'package:fitness_app/core/styles/colors/my_colors.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
-import 'package:fitness_app/core/utils/extension/media_query_values.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/widgets/buttons/custom_button.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/auth/presentation/widgets/custom_text_span.dart';
@@ -33,7 +31,7 @@ class SignUpBlur extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(24.w),
               decoration: BoxDecoration(
-                color: MyColors.containerColor.withValues(alpha: 0.6),
+                color: context.colors.containerColor.withValues(alpha: 0.6),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Column(
@@ -42,18 +40,15 @@ class SignUpBlur extends StatelessWidget {
                   Text(
                     title,
                     style: MyFonts.styleExtraBold800_24
-                        .copyWith(color: MyColors.white),
+                        .copyWith(color: context.colors.white),
                     textAlign: TextAlign.center,
                   ),
                   widget,
                   SizedBox(height: 10.h,),
                   socialDesign(context),
                   SizedBox(height: 24.h,),
-                  GestureDetector(
-                    onTap: (){
-                      signUpCubit.signUpButtonPressed();
-                    },
-                      child:CustomButton(txt: context.translate(LangKeys.next))),
+                  CustomButton(txt: context.translate(LangKeys.next), width: double.infinity, onPressed: () {                       signUpCubit.signUpButtonPressed();
+                  },),
                   SizedBox(height: 24.h,),
                   GestureDetector(
                     onTap: (){
