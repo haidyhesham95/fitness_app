@@ -1,10 +1,14 @@
 import 'package:fitness_app/features/auth/domain/entities/request/forget_password_request_entity.dart';
 
 import '../../../../core/networking/common/api_result.dart';
+import '../entities/request/login_request_entity.dart';
 import '../entities/request/reset_password_request_entity.dart';
+import '../entities/request/signup_request_entity.dart';
 import '../entities/request/verify_otp_request_enity.dart';
 import '../entities/response/forget_password_response_entity.dart';
+import '../entities/response/login_response_entity.dart';
 import '../entities/response/reset_password_response_entity.dart';
+import '../entities/response/sign_up_response_entity.dart';
 
 abstract interface class AuthRepo {
   Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword(ForgetPasswordRequestEntity request);
@@ -13,4 +17,9 @@ abstract interface class AuthRepo {
 
   Future<DataResult<ResetPasswordResponseEntity>> resetPassword(
       ResetPasswordRequestEntity request);
+
+  Future<DataResult<LoginResponseEntity>> login(LoginRequestEntity request);
+
+  Future<DataResult<SignUpResponseEntity>> signUp(
+      {required SignUpRequestEntity request});
 }

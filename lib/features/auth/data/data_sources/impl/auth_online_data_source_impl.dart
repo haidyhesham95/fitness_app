@@ -3,10 +3,14 @@ import 'package:fitness_app/core/networking/api_execute.dart';
 import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/features/auth/data/mapper/auth_mapper.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/forget_password_request_entity.dart';
+import 'package:fitness_app/features/auth/domain/entities/request/login_request_entity.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/reset_password_request_entity.dart';
+import 'package:fitness_app/features/auth/domain/entities/request/signup_request_entity.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/verify_otp_request_enity.dart';
 import 'package:fitness_app/features/auth/domain/entities/response/forget_password_response_entity.dart';
+import 'package:fitness_app/features/auth/domain/entities/response/login_response_entity.dart';
 import 'package:fitness_app/features/auth/domain/entities/response/reset_password_response_entity.dart';
+import 'package:fitness_app/features/auth/domain/entities/response/sign_up_response_entity.dart';
 import 'package:injectable/injectable.dart';
 
 import '../contracts/online_data_sources/auth_online_data_source.dart';
@@ -42,6 +46,23 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
       final response = await _apiManager
           .resetPassword(AuthMapper.mapToResetPasswordRequestDto(request));
       return AuthMapper.mapToResetPasswordResponseEntity(response);
+    });
+  }
+
+  @override
+  Future<DataResult<LoginResponseEntity>> login(LoginRequestEntity request) {
+    return executeApi(() async {
+      var response = await _apiManager.login(AuthMapper.toDto(request));
+      return AuthMapper.toEntity(response);
+    });
+  }
+
+  @override
+  Future<DataResult<SignUpResponseEntity>> signUp(
+      {required SignUpRequestEntity request}) {
+    return executeApi(() async {
+      var response = await _apiManager.signup(AuthMapper.signUpToDto(request));
+      return AuthMapper.signUpToEntity(response);
     });
   }
 }

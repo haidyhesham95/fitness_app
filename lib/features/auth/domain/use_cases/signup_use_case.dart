@@ -1,16 +1,17 @@
+import 'package:fitness_app/features/auth/domain/contracts/auth_repo.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/signup_request_entity.dart';
 import 'package:fitness_app/features/auth/domain/entities/response/sign_up_response_entity.dart';
-import 'package:fitness_app/features/auth/domain/repositories/auth_repo.dart';
 import 'package:injectable/injectable.dart';
 import 'package:fitness_app/core/networking/common/api_result.dart';
 
 @injectable
 class SignUpUseCase {
-  final AuthRepository _authRepository;
-  SignUpUseCase(this._authRepository);
+  final AuthRepo _authRepo;
+
+  SignUpUseCase(this._authRepo);
 
   Future<DataResult<SignUpResponseEntity>> signUp(
       SignUpRequestEntity request) async {
-    return await _authRepository.signUp(request: request);
+    return await _authRepo.signUp(request: request);
   }
 }

@@ -4,7 +4,7 @@ import 'package:fitness_app/core/networking/error/error_handler.dart';
 import 'package:fitness_app/core/networking/error/error_model.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/login_request_entity.dart';
 import 'package:fitness_app/features/auth/domain/entities/response/login_response_entity.dart';
-import 'package:fitness_app/features/auth/domain/use_case/login_use_case.dart';
+import 'package:fitness_app/features/auth/domain/use_cases/login_use_case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'login_action.dart';

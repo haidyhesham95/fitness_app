@@ -1,11 +1,11 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
-import 'package:fitness_app/features/auth/presentation/goal_activity/presentation/viewModel/goal_activity_view_model_cubit.dart';
+import 'package:fitness_app/features/auth/presentation/register/view_model/signup_action.dart';
+import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../../core/networking/common/regester_context_module.dart';
-import '../../../../../../core/styles/fonts/my_fonts.dart';
-import '../../../../../../core/utils/widgets/custom_toast.dart';
+import '../../../../../../../core/networking/common/regester_context_module.dart';
+import '../../../../../../../core/styles/fonts/my_fonts.dart';
+import '../../../../../../../core/utils/widgets/custom_toast.dart';
 
 class CustomContainerGoal extends StatefulWidget {
   const CustomContainerGoal(
@@ -24,8 +24,7 @@ class CustomContainerGoal extends StatefulWidget {
 
 class _CustomContainerGoalState extends State<CustomContainerGoal> {
   bool isChecked = false;
-  final GoalActivityViewModelCubit viewModel =
-      getIt<GoalActivityViewModelCubit>();
+  final SignUpViewModel viewModel = getIt<SignUpViewModel>();
 
   @override
   void initState() {
@@ -37,8 +36,7 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
     return widget.isGoalPage == true
         ? BlocProvider(
             create: (_) => viewModel,
-            child: BlocBuilder<GoalActivityViewModelCubit,
-                GoalActivityViewModelState>(
+            child: BlocBuilder<SignUpViewModel, SignUpViewModelState>(
               builder: (context, state) {
                 return Container(
                   width: double.infinity,
@@ -56,12 +54,8 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
                     value: widget.txt,
                     groupValue: viewModel.goal,
                     onChanged: (value) {
-                      setState(() {
-                        viewModel.goal = value!;
-                      });
-                      viewModel.setGoal(value!);
-                      debugPrint(
-                          "--------------------------${viewModel.getGoal()}");
+                      viewModel
+                          .doAction(SelectGoalAction(goal: value.toString()));
                     },
                     activeColor: context.colors.gray,
                     controlAffinity: ListTileControlAffinity.trailing,
@@ -71,8 +65,7 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
             ))
         : BlocProvider(
             create: (_) => viewModel,
-            child: BlocConsumer<GoalActivityViewModelCubit,
-                GoalActivityViewModelState>(
+            child: BlocConsumer<SignUpViewModel, SignUpViewModelState>(
               builder: (context, state) {
                 return Container(
                   width: double.infinity,
@@ -90,11 +83,8 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
                     value: widget.keyValue,
                     groupValue: viewModel.activity,
                     onChanged: (value) {
-                      setState(() {
-                        viewModel.activity = value!;
-                      });
-                      viewModel.getActivityAction(
-                          widget.keyValue, viewModel.getGoal());
+                      viewModel.doAction(
+                          SelectActivityAction(activity: value.toString()));
                     },
                     activeColor: context.colors.gray,
                     controlAffinity: ListTileControlAffinity.trailing,
@@ -102,9 +92,9 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
                 );
               },
               listener: (context, state) {
-                if (state is ActionError) {
+                if (state is SignupError) {
                   CustomToast.showErrorToast(
-                      message: state.errorMessage.error.toString());
+                      message: state.message.error.toString());
                 }
               },
             ),
