@@ -19,7 +19,7 @@ part 'forget_password_view_model_state.dart';
 
 @injectable
 class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
-  final AuthUseCase _useCase;
+  final ForgetPasswordUseCase _useCase;
   final AuthOfflineDataSource _offlineDataSource =
       getIt<AuthOfflineDataSource>();
 

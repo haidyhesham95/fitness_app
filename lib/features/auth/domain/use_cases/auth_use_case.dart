@@ -9,10 +9,10 @@ import '../entities/response/forget_password_response_entity.dart';
 import '../entities/response/reset_password_response_entity.dart';
 
 @injectable
-class AuthUseCase {
+class ForgetPasswordUseCase {
   final AuthRepo _authRepo;
 
-  AuthUseCase(this._authRepo);
+  ForgetPasswordUseCase(this._authRepo);
 
   Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword(
           ForgetPasswordRequestEntity request) async =>

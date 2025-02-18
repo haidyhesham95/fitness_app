@@ -84,14 +84,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i876.LoginUseCase(gh<_i82.AuthRepository>()));
     gh.factory<_i1064.SignUpUseCase>(
         () => _i1064.SignUpUseCase(gh<_i82.AuthRepository>()));
-    gh.factory<_i839.AuthUseCase>(
-        () => _i839.AuthUseCase(gh<_i665.AuthRepo>()));
+    gh.factory<_i839.ForgetPasswordUseCase>(
+        () => _i839.ForgetPasswordUseCase(gh<_i665.AuthRepo>()));
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i876.LoginUseCase>()));
-    gh.factory<_i289.ForgetPasswordViewModelCubit>(
-        () => _i289.ForgetPasswordViewModelCubit(gh<_i839.AuthUseCase>()));
     gh.factory<_i864.SignUpViewModel>(
         () => _i864.SignUpViewModel(gh<_i1064.SignUpUseCase>()));
+    gh.factory<_i289.ForgetPasswordViewModelCubit>(() =>
+        _i289.ForgetPasswordViewModelCubit(gh<_i839.ForgetPasswordUseCase>()));
     return this;
   }
 }
