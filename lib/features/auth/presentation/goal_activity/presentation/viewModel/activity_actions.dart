@@ -1,9 +1,9 @@
 import 'package:fitness_app/features/auth/domain/entities/request/signup_request_entity.dart';
 
-sealed class GoalAction {}
+sealed class ActivityActions {}
 
-class GetGoals extends GoalAction {
+class SelectActivityAction extends ActivityActions {
   final SignUpRequestEntity request;
 
-  GetGoals(this.request);
+  SelectActivityAction(this.request);
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../core/utils/widgets/custom_glassy_container.dart';
+
+import '../../../../../../core/utils/widgets/base/custom_glassy_container.dart';
 import '../../../forget_password/widgets/custom_blur_bg.dart';
-import 'custom_container_goal.dart';
+import 'custom_radio_container.dart';
 
 class CustomGoalView extends StatelessWidget {
   const CustomGoalView({
@@ -13,12 +14,14 @@ class CustomGoalView extends StatelessWidget {
     required this.button,
     this.progress,
     this.value,
+    this.isGoalPage,
   });
 
   final String? title, subTitle, value;
-  final List<String> items;
+  final dynamic items;
   final Widget button;
   final double? progress;
+  final bool? isGoalPage;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,24 @@ class CustomGoalView extends StatelessWidget {
           child: Column(
             spacing: 16.h,
             children: [
-              ...items.map((item) => CustomContainerGoal(txt: item)).toList(),
+              if (items is List) ...[
+                ...items
+                    .map((item) => CustomContainerGoal(
+                          txt: item,
+                          isGoalPage: isGoalPage,
+                          keyValue: item,
+                        ))
+                    .toList(),
+              ] else if (items is Map) ...[
+                ...items.keys
+                    .map((key) => CustomContainerGoal(
+                          txt: items[key],
+                          isGoalPage: isGoalPage,
+                          keyValue: key,
+                        ))
+                    .toList(),
+              ] else
+                Container(),
               button,
             ],
           ),
@@ -43,3 +63,4 @@ class CustomGoalView extends StatelessWidget {
     );
   }
 }
+

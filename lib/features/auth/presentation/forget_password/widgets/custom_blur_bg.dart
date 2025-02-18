@@ -88,6 +88,7 @@ class CustomBlurBg extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                verticalSpacing(30.h),
                 isGoalOrActivity == true
                     ? RadialProgressWidget(
                         animationDuration: const Duration(milliseconds: 3000),
