@@ -16,19 +16,6 @@ class LangKeys {
   static const String noInternetConnection = 'no_internet_connection';
   static const String appName = 'app_name';
   static const String offlineMessage = 'offline_message';
-  static const String enterYourEmail = 'enter_your_email';
-  static const String sentOTP = 'sent_otp';
-  static const String email = 'email';
-  static const String otpCode = 'otp_code';
-  static const String enterYourOtpCheckYourEmail = 'enter_your_otp_check_your_email';
-  static const String confirm = 'confirm';
-  static const String didNotReceiveVerificationCode = 'did_not_receive_verification_code';
-  static const String resendCode = 'resend_code';
-  static const String enterOtp = 'enter_otp';
-  static const String makeSureItsCharactersOrMore = 'make_sure_its_characters_or_more';
-  static const String createNewPassword = 'create_new_password';
-  static const String password = 'password';
-  static const String done = 'done';
   static const String login = 'login';
   static const String register = 'register';
   static const String alreadyHaveAnAccount = 'already_have_an_account';
@@ -36,11 +23,9 @@ class LangKeys {
   static const String heyThere = 'hey_there';
   static const String welcomeBack = 'welcome_back';
   static const String createAnAccount = 'create_an_account';
-  static const String forgetPassword = 'forget_password';
   static const String firstName = 'first_name';
   static const String lastName = 'last_name';
   static const String or = 'or';
-  static const String next = 'next';
   static const String priceOfExcellence = 'price_of_excellence';
   static const String excellenceQuote = 'excellence_quote';
   static const String fitnessFun = 'fitness_fun';
@@ -50,4 +35,36 @@ class LangKeys {
   static const String doIt = 'do_it';
   static const String skip = 'skip';
   static const String back = 'back';
+  static const String enterYourEmail = 'enterYourEmail';
+  static const String forgetPassword = 'forgetPassword';
+  static const String sentOTP = 'sentOTP';
+  static const String email = 'email';
+  static const String otpCode = 'otpCode';
+  static const String enterYourOtpCheckYourEmail = 'enterYourOtpCheckYourEmail';
+  static const String confirm = 'confirm';
+  static const String didNotReceiveVerificationCode =
+      'didNotReceiveVerificationCode';
+  static const String resendCode = 'resendCode';
+  static const String enterOtp = 'enterOtp';
+  static const String makeSureItsCharactersOrMore =
+      'makeSureItsCharactersOrMore';
+  static const String createNewPassword = 'createNewPassword';
+  static const String password = 'password';
+  static const String done = 'done';
+  static const String whatIsYourGoal = 'whatIsYourGoal';
+  static const String thisHelpsUsCreateYourPersonalizedPlan =
+      'thisHelpsUsCreateYourPersonalizedPlan';
+  static const String next = 'next';
+  static const String yourRegularPhysicalActivityLevel =
+      'yourRegularPhysicalActivityLevel';
+  static const String gainWeight = 'gainWeight';
+  static const String loseWeight = 'loseWeight';
+  static const String getFitter = 'getFitter';
+  static const String gainMoreFlexible = 'gainMoreFlexible';
+  static const String learnTheBasic = 'learnTheBasic';
+  static const String rookie = 'rookie';
+  static const String beginner = 'beginner';
+  static const String intermediate = 'intermediate';
+  static const String advanced = 'advanced';
+  static const String trueBeast = 'trueBeast';
 }

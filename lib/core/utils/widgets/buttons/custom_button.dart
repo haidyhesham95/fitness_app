@@ -1,6 +1,6 @@
-import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
-import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
+import '../../../styles/fonts/my_fonts.dart';
+import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
@@ -8,7 +8,7 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.txt,
     this.height,
-    required this.width,
+    this.width,
     this.color,
     required this.onPressed,
   });
@@ -31,7 +31,7 @@ class CustomButton extends StatelessWidget {
               side: BorderSide(color:  context.colors.baseColor)))),
       child: SizedBox(
         height: height ?? 38.h,
-        width: width,
+        width: width ?? double.infinity,
         child: Center(
           child: Text(
             txt,

@@ -5,13 +5,13 @@ class CustomGlassyContainer extends StatelessWidget {
   const CustomGlassyContainer({
     super.key,
     required this.child,
-    required this.height,
-     this.blur,
+    this.height,
+    this.blur,
     this.borderRadius,
   });
 
   final Widget child;
-  final double height;
+  final double? height;
   final double? blur;
   final BorderRadius? borderRadius;
 
