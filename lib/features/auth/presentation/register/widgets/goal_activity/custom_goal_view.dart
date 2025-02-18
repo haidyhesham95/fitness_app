@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../../core/utils/widgets/base/custom_glassy_container.dart';
+import '../../../../../../../core/utils/widgets/base/custom_glassy_container.dart';
 import '../../../forget_password/widgets/custom_blur_bg.dart';
 import 'custom_radio_container.dart';
 

@@ -42,7 +42,10 @@ class SignUpView extends StatelessWidget {
             type: MessageTypeConst.failure,
           );
           break;
-      }
+
+          default:
+            null;
+        }
       },
       child: CustomBlurBg(widget:
       Form(

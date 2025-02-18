@@ -18,3 +18,7 @@ class SignupError extends SignUpViewModelState {
 
   SignupError(this.message);
 }
+
+final class GoalUpdateState extends SignUpViewModelState {}
+
+final class ActivityUpdateState extends SignUpViewModelState {}

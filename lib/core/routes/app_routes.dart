@@ -1,22 +1,17 @@
 import 'package:fitness_app/core/networking/common/regester_context_module.dart';
 import 'package:fitness_app/core/routes/base_routes.dart';
-import 'package:fitness_app/features/auth/presentation/goal_activity/presentation/views/activity_view.dart';
-import 'package:fitness_app/features/auth/presentation/goal_activity/presentation/views/goal_view.dart';
 import 'package:fitness_app/features/auth/presentation/login/view/login_view.dart';
 import 'package:fitness_app/features/auth/presentation/login/viewModel/login_view_model_cubit.dart';
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
-import 'package:fitness_app/features/auth/presentation/login/view/login_view.dart';
-import 'package:fitness_app/features/auth/presentation/login/viewModel/login_view_model_cubit.dart';
-import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
-import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../features/auth/presentation/forget_password/views/create_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/forget_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/verify_otp_view.dart';
+import '../../features/auth/presentation/register/view/goal_activity/activity_view.dart';
+import '../../features/auth/presentation/register/view/goal_activity/goal_view.dart';
 import '../utils/screens/under_build_screen.dart';
 
 class AppRoutes {
@@ -44,14 +39,6 @@ class AppRoutes {
              const SignUpView(),));
       case onBoarding:
         return BaseRoute(page:  OnboardingScreen());
-      case login:
-        return BaseRoute(
-            page: BlocProvider(create: (context) => getIt.get<LoginViewModel>(),child:
-              const LoginView(),));
-       case signUp:
-         return BaseRoute(
-             page: BlocProvider(create: (context) => getIt.get<SignUpViewModel>(),child:
-             const SignUpView(),));
       case forgetPasswordView:
         return BaseRoute(page: const ForgetPasswordView());
       case verifyOtpView:

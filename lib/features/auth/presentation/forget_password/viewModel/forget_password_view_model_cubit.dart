@@ -4,7 +4,6 @@ import 'package:fitness_app/core/networking/error/error_handler.dart';
 import 'package:fitness_app/core/networking/error/error_model.dart';
 import 'package:fitness_app/features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/forget_password_request_entity.dart';
-import 'package:fitness_app/features/auth/domain/use_cases/auth_use_case.dart';
 import 'package:fitness_app/features/auth/presentation/forget_password/viewModel/forget_password_actions.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -14,6 +13,7 @@ import '../../../domain/entities/request/reset_password_request_entity.dart';
 import '../../../domain/entities/request/verify_otp_request_enity.dart';
 import '../../../domain/entities/response/forget_password_response_entity.dart';
 import '../../../domain/entities/response/reset_password_response_entity.dart';
+import '../../../domain/use_cases/forget_password_use_case.dart';
 
 part 'forget_password_view_model_state.dart';
 
