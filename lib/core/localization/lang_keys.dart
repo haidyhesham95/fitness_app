@@ -67,4 +67,16 @@ class LangKeys {
   static const String intermediate = 'intermediate';
   static const String advanced = 'advanced';
   static const String trueBeast = 'trueBeast';
+  static const String tellUsAboutYourself = 'tellUsAboutYourself';
+  static const String weNeedToKnowYourGender = 'weNeedToKnowYourGender';
+  static const String male = 'male';
+  static const String female = 'female';
+  static const String cm = 'cm';
+  static const String kg = 'kg';
+  static const String year = 'year';
+  static const String howOldAreYou = 'howOldAreYou';
+  static const String whatIsYourHeight = 'whatIsYourHeight';
+  static const String whatIsYourWeight = 'whatIsYourWeight';
+  static const String thisHelpsUsPersonalizeYourPlan = 'thisHelpsUsPersonalizeYourPlan';
+
 }

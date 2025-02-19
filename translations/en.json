@@ -81,6 +81,17 @@
   "beginner": "Beginner",
   "intermediate": "Intermediate",
   "advanced": "Advanced",
-  "trueBeast": "True Beast"
+  "trueBeast": "True Beast",
+  "tellUsAboutYourself": "Tell us about yourself!",
+  "weNeedToKnowYourGender": "We need to know your gender",
+  "male": "Male",
+  "female": "Female",
+  "cm": "cm",
+  "kg": "kg",
+  "year": "Year",
+  "howOldAreYou": "How old are you?",
+  "whatIsYourHeight": "What is your height?",
+  "whatIsYourWeight": "What is your weight?",
+  "thisHelpsUsPersonalizeYourPlan": "This helps us personalize your plan"
 
 }

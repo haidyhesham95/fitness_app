@@ -47,7 +47,8 @@ class SignUpView extends StatelessWidget {
             null;
         }
       },
-      child: CustomBlurBg(widget:
+      child: CustomBlurBg(
+          widget:
       Form(
         key:signUpCubit.signUpFormKey,
         child: Padding(

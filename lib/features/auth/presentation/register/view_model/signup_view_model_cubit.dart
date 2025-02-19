@@ -8,7 +8,9 @@ import 'package:fitness_app/features/auth/domain/use_cases/signup_use_case.dart'
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_action.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+
 part 'signup_view_model_state.dart';
+
 @injectable
 class SignUpViewModel extends Cubit<SignUpViewModelState> {
   SignUpViewModel(this._signupUseCase) : super(SignupInitial());
@@ -20,19 +22,38 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
   GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
   String goal = "";
   String activity = "";
+  int selectedHeight = 170;
+  int selectedWeight = 65;
+  int selectedAge = 25;
+  String selectedGender = '';
 
   Future<void> doAction(SignupAction action) async {
     switch (action) {
-    case SignupActionSelected():
-        signUpButtonPressed();
+      case SignupActionSelected():
+        _signUpButtonPressed();
+        break;
       case SelectActivityAction():
         _setActivity(action.activity);
         break;
       case SelectGoalAction():
         _setGoal(action.goal);
         break;
+      case SelectHeightAction():
+        _setHeight(action.height);
+        break;
+      case SelectAgeAction():
+        _setAge(action.age);
+        break;
+      case SelectWeightAction():
+        _setWeight(action.weight);
+        break;
+      case SelectGenderAction():
+        _setGender(action.gender);
+        break;
     }
   }
+
+
   void _signUp(SignUpRequestEntity request) async {
     emit(SignupLoading());
     var result = await _signupUseCase.signUp(request);
@@ -46,18 +67,22 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
         break;
     }
   }
-  void signUpButtonPressed() {
-    if (signUpFormKey.currentState!.validate() &&
-        getGoal.isNotEmpty &&
-        getActivity.isNotEmpty) {
-      _signUp(SignUpRequestEntity(
-        firstName: firstNameController.text,
-        lastName: lastNameController.text,
-        email: emailController.text,
-        password: passwordController.text,
-          goal: getGoal,
-          activityLevel: getActivity));
-    }
+
+
+  void _signUpButtonPressed() {
+    _signUp(SignUpRequestEntity(
+      firstName: firstNameController.text.trim(),
+      lastName: lastNameController.text.trim(),
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+      rePassword: passwordController.text.trim(),
+      gender: selectedGender,
+      age: selectedAge,
+      height: selectedHeight,
+      weight: selectedWeight,
+      goal: goal,
+      activityLevel: activity,
+    ));
   }
 
   void _setActivity(String activity) {
@@ -73,4 +98,32 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
   String get getGoal => goal;
 
   String get getActivity => activity;
+
+  void _setGender(String gender) {
+    selectedGender = gender;
+    emit(GenderUpdateState(selectedGender));
+  }
+
+
+  void _setHeight(int height) {
+    if (selectedHeight != height) {
+      selectedHeight = height;
+      emit(HeightUpdateState());
+    }
+  }
+
+  void _setWeight(int weight) {
+    if (selectedWeight != weight) {
+      selectedWeight = weight;
+      emit(WeightUpdateState());
+    }
+  }
+
+  void _setAge(int age) {
+    if (selectedAge != age) {
+      selectedAge = age;
+      emit(AgeUpdateState());
+    }
+  }
+
 }

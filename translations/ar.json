@@ -81,5 +81,16 @@
   "beginner": "ابتدائي",
   "intermediate": "متوسط",
   "advanced": "متقدم",
-  "trueBeast": "خبير"
+  "trueBeast": "خبير",
+  "tellUsAboutYourself": "أخبرنا عن نفسك!",
+  "weNeedToKnowYourGender": "نحتاج إلى معرفة جنسك",
+  "male": "ذكر",
+  "female": "أنثى",
+  "cm": "سم",
+  "kg": "كجم",
+  "year": "سنة",
+  "howOldAreYou": "كم عمرك؟",
+  "whatIsYourHeight": "ما هو طولك؟",
+  "whatIsYourWeight": "ما هو وزنك؟",
+  "thisHelpsUsPersonalizeYourPlan": "هذا يساعدنا في تخصيص خطتك"
 }

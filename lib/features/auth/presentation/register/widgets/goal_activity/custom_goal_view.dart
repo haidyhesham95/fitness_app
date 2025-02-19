@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../core/utils/widgets/base/custom_glassy_container.dart';
 import '../../../forget_password/widgets/custom_blur_bg.dart';
+import '../../view_model/signup_view_model_cubit.dart';
 import 'custom_radio_container.dart';
 
 class CustomGoalView extends StatelessWidget {
@@ -14,6 +15,7 @@ class CustomGoalView extends StatelessWidget {
     this.progress,
     this.value,
     this.isGoalPage,
+    required this.viewModel,
   });
 
   final String? title, subTitle, value;
@@ -21,6 +23,7 @@ class CustomGoalView extends StatelessWidget {
   final Widget button;
   final double? progress;
   final bool? isGoalPage;
+  final SignUpViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,7 @@ class CustomGoalView extends StatelessWidget {
                           txt: item,
                           isGoalPage: isGoalPage,
                           keyValue: item,
+                  viewModel: viewModel,
                         ))
                     .toList(),
               ] else if (items is Map) ...[
@@ -47,6 +51,7 @@ class CustomGoalView extends StatelessWidget {
                           txt: items[key],
                           isGoalPage: isGoalPage,
                           keyValue: key,
+                  viewModel: viewModel,
                         ))
                     .toList(),
               ] else
