@@ -1,11 +1,11 @@
 import 'dart:ui';
 
 import 'package:fitness_app/core/utils/extension/my_context.dart';
-import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/widgets/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:radial_progress/radial_progress.dart';
+
 import '../../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../../generated/assets.dart';
 
@@ -53,7 +53,7 @@ class CustomBlurBg extends StatelessWidget {
                 isGoalOrActivity == true
                     ? GestureDetector(
                         onTap: () {
-                          context.pop();
+                          Navigator.pop(context);
                         },
                         child: Container(
                           height: 24.h,
@@ -63,11 +63,8 @@ class CustomBlurBg extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                           ),
                           child: Center(
-                            child: Icon(
-                              Icons.arrow_back_ios_new_outlined,
-                              color: context.colors.white,
-                              size: 16,
-                            ),
+                            child: Image.asset(Assets.imagesArrowBack,
+                                width: 10.w, height: 10.h),
                           ),
                         ),
                       )
@@ -102,7 +99,7 @@ class CustomBlurBg extends StatelessWidget {
                           value ?? "",
                           maxLines: 1,
                           style: MyFonts.styleMedium500_14
-                              .copyWith(color: context.colors.baseColor),
+                              .copyWith(color: context.colors.white),
                         ),
                       )
                     : const SizedBox(),

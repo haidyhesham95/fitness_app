@@ -11,12 +11,13 @@ class Assets {
   static const String imagesArrowBack = 'assets/images/arrow_back.png';
   static const String imagesError = 'assets/images/error.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
+  static const String imagesFemale = 'assets/images/female.svg';
   static const String imagesFit = 'assets/images/fit.png';
-  static const String imagesFloweryLoader = 'assets/images/flowery_loader.json';
   static const String imagesForgetPasswordBg = 'assets/images/forget_password_bg.png';
   static const String imagesGoogle = 'assets/images/google.png';
   static const String imagesLoading = 'assets/images/loading.json';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String imagesMale = 'assets/images/male.svg';
   static const String imagesNetwork = 'assets/images/network.png';
   static const String imagesOn1 = 'assets/images/on_1.png';
   static const String imagesOn2 = 'assets/images/on_2.png';

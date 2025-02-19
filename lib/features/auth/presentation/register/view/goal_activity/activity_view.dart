@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../../core/localization/lang_keys.dart';
 import '../../../../../../../core/utils/widgets/buttons/custom_button.dart';
+import '../../../../../../core/routes/app_routes.dart';
 import '../../widgets/goal_activity/custom_goal_view.dart';
 
 class ActivityView extends StatelessWidget {
@@ -30,6 +31,7 @@ class ActivityView extends StatelessWidget {
         txt: context.translate(LangKeys.next),
         onPressed: () async {
           viewModel.doAction(SignupActionSelected());
+          Navigator.pushNamed(context, AppRoutes.login);
         },
       ),
       isGoalPage: false,

@@ -47,7 +47,12 @@ class SignUpBlur extends StatelessWidget {
                   SizedBox(height: 10.h,),
                   socialDesign(context),
                   SizedBox(height: 24.h,),
-                  CustomButton(txt: context.translate(LangKeys.next), width: double.infinity, onPressed: () {                       signUpCubit.signUpButtonPressed();
+                  CustomButton(txt: context.translate(LangKeys.next), width: double.infinity, onPressed: () {
+                    if(signUpCubit.signUpFormKey.currentState!.validate()){
+                      Navigator.pushNamed(context, AppRoutes.genderView);
+                    }
+                    //Navigator.pushNamed(context, AppRoutes.genderView);
+                  //  signUpCubit.signUpButtonPressed();
                   },),
                   SizedBox(height: 24.h,),
                   GestureDetector(

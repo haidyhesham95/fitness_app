@@ -1,8 +1,8 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
-import 'package:fitness_app/features/auth/presentation/register/view_model/signup_action.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../../../../core/localization/lang_keys.dart';
 import '../../../../../../../core/networking/common/regester_context_module.dart';
 import '../../../../../../../core/routes/app_routes.dart';
@@ -31,9 +31,10 @@ class GoalView extends StatelessWidget {
       button: CustomButton(
         txt: context.translate(LangKeys.next),
         onPressed: () {
-          if (viewModel.getGoal.isNotEmpty) {
-            context.pushNamed(AppRoutes.activityView);
-          }
+          context.pushNamed(AppRoutes.activityView);
+          // if (viewModel.getGoal.isNotEmpty) {
+          //   context.pushNamed(AppRoutes.activityView);
+          // }
         },
       ),
       isGoalPage: true,

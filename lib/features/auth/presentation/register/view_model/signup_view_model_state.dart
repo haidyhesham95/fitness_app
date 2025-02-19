@@ -22,3 +22,8 @@ class SignupError extends SignUpViewModelState {
 final class GoalUpdateState extends SignUpViewModelState {}
 
 final class ActivityUpdateState extends SignUpViewModelState {}
+final class HeightUpdateState extends SignUpViewModelState {}
+final class WeightUpdateState extends SignUpViewModelState {}
+final class AgeUpdateState extends SignUpViewModelState {}
+final class GenderUpdateState extends SignUpViewModelState {}
+
