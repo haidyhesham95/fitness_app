@@ -9,7 +9,7 @@ import '../../view_model/signup_action.dart';
 import '../../view_model/signup_view_model_cubit.dart';
 
 class OldView extends StatefulWidget {
-  final SignUpViewModel viewModel; // تم تمرير ViewModel كـ parameter
+  final SignUpViewModel viewModel;
 
   const OldView({super.key, required this.viewModel});
 
