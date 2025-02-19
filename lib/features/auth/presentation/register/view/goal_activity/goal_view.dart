@@ -2,19 +2,18 @@ import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../../../core/localization/lang_keys.dart';
-import '../../../../../../../core/networking/common/regester_context_module.dart';
 import '../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../core/utils/widgets/buttons/custom_button.dart';
 import '../../widgets/goal_activity/custom_goal_view.dart';
 
 class GoalView extends StatelessWidget {
-  const GoalView({super.key});
+  const GoalView({super.key, required this.viewModel});
+
+  final SignUpViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
-    final SignUpViewModel viewModel = getIt<SignUpViewModel>();
     return CustomGoalView(
       value: "5/6",
       progress: 0.8,
@@ -28,13 +27,13 @@ class GoalView extends StatelessWidget {
       title: context.translate(LangKeys.whatIsYourGoal),
       subTitle:
           context.translate(LangKeys.thisHelpsUsCreateYourPersonalizedPlan),
+      viewModel: viewModel,
       button: CustomButton(
         txt: context.translate(LangKeys.next),
         onPressed: () {
-          context.pushNamed(AppRoutes.activityView);
-          // if (viewModel.getGoal.isNotEmpty) {
-          //   context.pushNamed(AppRoutes.activityView);
-          // }
+          if (viewModel.goal.isNotEmpty) {
+            context.pushNamed(AppRoutes.activityView, arguments: viewModel);
+          }
         },
       ),
       isGoalPage: true,

@@ -8,7 +8,7 @@ import 'package:fitness_app/features/auth/presentation/forget_password/viewModel
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../../core/networking/common/regester_context_module.dart';
+import '../../../../../core/networking/common/register_context_module.dart';
 import '../../../domain/entities/request/reset_password_request_entity.dart';
 import '../../../domain/entities/request/verify_otp_request_enity.dart';
 import '../../../domain/entities/response/forget_password_response_entity.dart';

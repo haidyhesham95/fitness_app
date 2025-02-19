@@ -6,30 +6,24 @@ import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../../../../core/localization/lang_keys.dart';
 import '../../../../../../core/routes/app_routes.dart';
-import '../../../../../../core/utils/enum/enum_gender.dart';
 import '../../../../../../core/utils/widgets/base/custom_glassy_container.dart';
 import '../../../../../../core/utils/widgets/buttons/custom_button.dart';
-import '../../../../../../di/di.dart';
 import '../../../forget_password/widgets/custom_blur_bg.dart';
 
+
 class GenderView extends StatefulWidget {
-  const GenderView({super.key});
+  const GenderView({super.key, required this.viewModel});
+
+  final SignUpViewModel viewModel;
 
   @override
   State<GenderView> createState() => _GenderViewState();
 }
 
 class _GenderViewState extends State<GenderView> {
-  late final SignUpViewModel viewModel;
-
-  @override
-  void initState() {
-    super.initState();
-    viewModel = getIt<SignUpViewModel>();
-  }
-
   @override
   Widget build(BuildContext context) {
     return CustomBlurBg(
@@ -46,13 +40,13 @@ class _GenderViewState extends State<GenderView> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      viewModel
-                          .doAction(SelectGenderAction(gender: Gender.male));
+                      widget.viewModel
+                          .doAction(SelectGenderAction(gender: "male"));
                     });
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: viewModel.SelectedGender == Gender.male
+                      color: widget.viewModel.selectedGender == "male"
                           ? context.colors.baseColor
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(95),
@@ -63,13 +57,13 @@ class _GenderViewState extends State<GenderView> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      viewModel
-                          .doAction(SelectGenderAction(gender: Gender.female));
+                      widget.viewModel
+                          .doAction(SelectGenderAction(gender: "female"));
                     });
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: viewModel.SelectedGender == Gender.female
+                      color: widget.viewModel.selectedGender == "female"
                           ? context.colors.baseColor
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(95),
@@ -77,12 +71,13 @@ class _GenderViewState extends State<GenderView> {
                     child: SvgPicture.asset(Assets.imagesFemale),
                   ),
                 ),
-                viewModel.SelectedGender != null
+                widget.viewModel.selectedGender !=''
                     ? CustomButton(
                         txt: context.translate(LangKeys.next),
-                        onPressed: viewModel.SelectedGender != null
+                        onPressed: widget.viewModel.selectedGender !=''
                             ? () {
-                                context.pushNamed(AppRoutes.oldView);
+                                context.pushNamed(AppRoutes.oldView,
+                                    arguments: widget.viewModel);
                               }
                             : null,
                       )
@@ -94,7 +89,7 @@ class _GenderViewState extends State<GenderView> {
       ),
       title: context.translate(LangKeys.tellUsAboutYourself),
       subTitle: context.translate(LangKeys.weNeedToKnowYourGender),
-      isGoalOrActivity: viewModel.SelectedGender != null ? true : false,
+      isGoalOrActivity: widget.viewModel.selectedGender  != '' ? true : false,
     );
   }
 }

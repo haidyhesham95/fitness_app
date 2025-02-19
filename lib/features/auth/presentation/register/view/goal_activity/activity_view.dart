@@ -1,4 +1,3 @@
-import 'package:fitness_app/core/networking/common/regester_context_module.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_action.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
@@ -10,12 +9,11 @@ import '../../../../../../core/routes/app_routes.dart';
 import '../../widgets/goal_activity/custom_goal_view.dart';
 
 class ActivityView extends StatelessWidget {
-  const ActivityView({super.key});
+  const ActivityView({super.key, required this.viewModel});
+  final SignUpViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
-    final SignUpViewModel viewModel = getIt<SignUpViewModel>();
-
     return CustomGoalView(
       value: "6/6",
       progress: 0.99,
@@ -27,11 +25,16 @@ class ActivityView extends StatelessWidget {
         'level5': context.translate(LangKeys.trueBeast),
       },
       title: context.translate(LangKeys.yourRegularPhysicalActivityLevel),
+      viewModel: viewModel,
       button: CustomButton(
         txt: context.translate(LangKeys.next),
-        onPressed: () async {
-          viewModel.doAction(SignupActionSelected());
-          Navigator.pushNamed(context, AppRoutes.login);
+        onPressed: () {
+      if (viewModel.activity.isNotEmpty) {
+        viewModel.doAction(SignupActionSelected());
+        Navigator.pushNamed(context, AppRoutes.login);
+      }
+
+
         },
       ),
       isGoalPage: false,

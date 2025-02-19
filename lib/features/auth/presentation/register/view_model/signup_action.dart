@@ -1,5 +1,3 @@
-import 'package:fitness_app/core/utils/enum/enum_gender.dart';
-
 sealed class SignupAction {}
 class SignupActionSelected extends SignupAction {}
 
@@ -28,7 +26,7 @@ class SelectWeightAction extends SignupAction {
 }
 
 class SelectGenderAction extends SignupAction {
-  final Gender gender;
+  final String gender;
 
   SelectGenderAction({required this.gender});
 }

@@ -17,7 +17,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 
 import '../core/app_cubit/app_cubit.dart' as _i693;
 import '../core/networking/api/api_manager.dart' as _i282;
-import '../core/networking/common/regester_context_module.dart' as _i407;
+import '../core/networking/common/register_context_module.dart' as _i407;
 import '../core/networking/network_factory.dart' as _i377;
 import '../features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart'
     as _i551;

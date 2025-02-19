@@ -3,7 +3,6 @@ import 'package:fitness_app/features/auth/presentation/register/view_model/signu
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../../../core/networking/common/regester_context_module.dart';
 import '../../../../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../../../../core/utils/widgets/custom_toast.dart';
 
@@ -12,11 +11,12 @@ class CustomContainerGoal extends StatefulWidget {
       {super.key,
       required this.txt,
       required this.isGoalPage,
-      required this.keyValue});
+      required this.keyValue, required this.viewModel});
 
   final String txt;
   final bool? isGoalPage;
   final String keyValue;
+  final SignUpViewModel viewModel;
 
   @override
   State<CustomContainerGoal> createState() => _CustomContainerGoalState();
@@ -24,7 +24,6 @@ class CustomContainerGoal extends StatefulWidget {
 
 class _CustomContainerGoalState extends State<CustomContainerGoal> {
   bool isChecked = false;
-  final SignUpViewModel viewModel = getIt<SignUpViewModel>();
 
   @override
   void initState() {
@@ -35,7 +34,7 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
   Widget build(BuildContext context) {
     return widget.isGoalPage == true
         ? BlocProvider(
-            create: (_) => viewModel,
+            create: (_) => widget.viewModel,
             child: BlocBuilder<SignUpViewModel, SignUpViewModelState>(
               builder: (context, state) {
                 return Container(
@@ -52,9 +51,9 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
                           .copyWith(color: context.colors.gray),
                     ),
                     value: widget.txt,
-                    groupValue: viewModel.goal,
+                    groupValue: widget.viewModel.goal,
                     onChanged: (value) {
-                      viewModel
+                      widget.viewModel
                           .doAction(SelectGoalAction(goal: value.toString()));
                     },
                     activeColor: context.colors.gray,
@@ -64,7 +63,7 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
               },
             ))
         : BlocProvider(
-            create: (_) => viewModel,
+            create: (_) => widget.viewModel,
             child: BlocConsumer<SignUpViewModel, SignUpViewModelState>(
               builder: (context, state) {
                 return Container(
@@ -81,9 +80,9 @@ class _CustomContainerGoalState extends State<CustomContainerGoal> {
                           .copyWith(color: context.colors.gray),
                     ),
                     value: widget.keyValue,
-                    groupValue: viewModel.activity,
+                    groupValue: widget.viewModel.activity,
                     onChanged: (value) {
-                      viewModel.doAction(
+                      widget.viewModel.doAction(
                           SelectActivityAction(activity: value.toString()));
                     },
                     activeColor: context.colors.gray,

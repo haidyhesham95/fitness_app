@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/localization/lang_keys.dart';
-import '../../../../../core/networking/common/regester_context_module.dart';
+import '../../../../../core/networking/common/register_context_module.dart';
 import '../../../../../core/utils/widgets/custom_toast.dart';
 import '../viewModel/forget_password_view_model_cubit.dart';
 

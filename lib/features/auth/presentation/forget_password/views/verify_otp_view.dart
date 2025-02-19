@@ -1,4 +1,4 @@
-import 'package:fitness_app/core/networking/common/regester_context_module.dart';
+import 'package:fitness_app/core/networking/common/register_context_module.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';

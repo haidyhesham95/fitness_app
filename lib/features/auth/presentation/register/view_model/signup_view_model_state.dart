@@ -25,5 +25,9 @@ final class ActivityUpdateState extends SignUpViewModelState {}
 final class HeightUpdateState extends SignUpViewModelState {}
 final class WeightUpdateState extends SignUpViewModelState {}
 final class AgeUpdateState extends SignUpViewModelState {}
-final class GenderUpdateState extends SignUpViewModelState {}
+final class GenderUpdateState extends SignUpViewModelState {
+  final String gender;
+
+  GenderUpdateState(this.gender);
+}
 
