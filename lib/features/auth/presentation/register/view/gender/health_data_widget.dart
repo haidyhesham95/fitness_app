@@ -40,8 +40,6 @@ class HealthDataPage extends StatelessWidget {
           case SignUpStep.age:
             title = context.translate(LangKeys.howOldAreYou);
             text = context.translate(LangKeys.year);
-            // value = "2/6";
-            // progress = 0.2;
             initialValue = viewModel.selectedAge;
             minValue = 10;
             maxValue = 100;
