@@ -32,7 +32,7 @@ class CustomGoalView extends StatelessWidget {
       progress: progress,
       widget: CustomGlassyContainer(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 34.w, vertical: 24.h),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
           child: Column(
             spacing: 16.h,
             children: [
@@ -63,7 +63,7 @@ class CustomGoalView extends StatelessWidget {
       ),
       title: title,
       subTitle: subTitle,
-      isGoalOrActivity: true,
+      isShow: true,
     );
   }
 }

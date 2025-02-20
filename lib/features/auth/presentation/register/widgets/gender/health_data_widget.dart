@@ -27,7 +27,7 @@ class HealthDataWidget extends StatelessWidget {
         padding: EdgeInsets.only(top: 8.0.h),
         child: CustomGlassyContainer(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 34.w, vertical: 24.h),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
             child: Column(
               children: [
                 Text(text,
@@ -56,7 +56,7 @@ class HealthDataWidget extends StatelessWidget {
       title: title,
       subTitle:
           context.translate(LangKeys.thisHelpsUsCreateYourPersonalizedPlan),
-      isGoalOrActivity: true,
+      isShow: true,
     );
   }
 }

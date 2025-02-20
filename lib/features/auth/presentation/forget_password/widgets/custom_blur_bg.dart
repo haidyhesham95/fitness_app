@@ -15,13 +15,13 @@ class CustomBlurBg extends StatelessWidget {
       required this.widget,
       this.title,
       this.subTitle,
-      this.isGoalOrActivity = false,
+      this.isShow = false,
       this.progress,
       this.value});
 
   final Widget widget;
   final String? title, subTitle;
-  final bool? isGoalOrActivity;
+  final bool? isShow;
   final double? progress;
   final String? value;
 
@@ -50,7 +50,7 @@ class CustomBlurBg extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                isGoalOrActivity == true
+                isShow == true
                     ? GestureDetector(
                         onTap: () {
                           Navigator.pop(context);
@@ -86,7 +86,7 @@ class CustomBlurBg extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 verticalSpacing(30.h),
-                isGoalOrActivity == true
+                isShow == true
                     ? RadialProgressWidget(
                         animationDuration: const Duration(milliseconds: 3000),
                         percent: progress ?? 0,

@@ -9,6 +9,8 @@ import 'package:fitness_app/features/auth/presentation/register/view_model/signu
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
+import '../widgets/gender/sign_up_step.dart';
+
 part 'signup_view_model_state.dart';
 
 @injectable
@@ -26,7 +28,7 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
   int selectedWeight = 65;
   int selectedAge = 25;
   String selectedGender = '';
-
+  SignUpStep currentStep = SignUpStep.age;
   Future<void> doAction(SignupAction action) async {
     switch (action) {
       case SignupActionSelected():
@@ -49,6 +51,9 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
         break;
       case SelectGenderAction():
         _setGender(action.gender);
+        break;
+      case NextStepAction():
+        _goToNextStep();
         break;
     }
   }
@@ -84,7 +89,27 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
       activityLevel: activity,
     ));
   }
+  void _goToNextStep() {
+    switch (currentStep) {
+      case SignUpStep.age:
+        currentStep = SignUpStep.weight;
+        break;
+      case SignUpStep.weight:
+        currentStep = SignUpStep.height;
+        break;
+      case SignUpStep.height:
+        currentStep = SignUpStep.goal;
+        break;
+      case SignUpStep.goal:
+        currentStep = SignUpStep.activity;
+        break;
+      case SignUpStep.activity:
+        _signUpButtonPressed();
+        break;
 
+    }
+    emit(StepUpdatedState(currentStep));
+  }
   void _setActivity(String activity) {
     this.activity = activity;
     emit(ActivityUpdateState());

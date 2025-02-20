@@ -31,7 +31,7 @@ class GenderView extends StatelessWidget {
             padding: EdgeInsets.only(top: 8.0.h),
             child: CustomGlassyContainer(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 34.w, vertical: 24.h),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
                 child: Column(
                   spacing: 24.h,
                   children: [
@@ -69,7 +69,7 @@ class GenderView extends StatelessWidget {
                         txt: context.translate(LangKeys.next),
                         onPressed: () {
                           context.pushNamed(
-                            AppRoutes.oldView,
+                            AppRoutes.healthDataPage,
                             arguments: viewModel,
                           );
                         },
@@ -81,7 +81,7 @@ class GenderView extends StatelessWidget {
           ),
           title: context.translate(LangKeys.tellUsAboutYourself),
           subTitle: context.translate(LangKeys.weNeedToKnowYourGender),
-          isGoalOrActivity: viewModel.selectedGender.isNotEmpty ? true : false,
+          isShow: viewModel.selectedGender.isNotEmpty ? true : false,
         );
       },
     );
