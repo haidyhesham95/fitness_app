@@ -38,3 +38,4 @@ class SelectAgeAction extends SignupAction {
   SelectAgeAction({required this.age});
 }
 
+class NextStepAction extends SignupAction {}
