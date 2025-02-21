@@ -17,13 +17,18 @@ class CustomBlurBg extends StatelessWidget {
       this.subTitle,
       this.isShow = false,
       this.progress,
-      this.value});
+      this.value
+      ,this.image
+      ,this.text
+      ,this.isShowTextBar = false
+      ,this.height
+      });
 
   final Widget widget;
   final String? title, subTitle;
-  final bool? isShow;
-  final double? progress;
-  final String? value;
+  final bool? isShow , isShowTextBar;
+  final double? progress ,height;
+  final String? value , image ,text;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class CustomBlurBg extends StatelessWidget {
       children: [
         Positioned.fill(
           child: Image.asset(
-            Assets.imagesForgetPasswordBg,
+           image ?? Assets.imagesForgetPasswordBg,
             fit: BoxFit.cover,
           ),
         ),
@@ -46,7 +51,7 @@ class CustomBlurBg extends StatelessWidget {
         Align(
           alignment: Alignment.topCenter,
           child: Padding(
-            padding: EdgeInsets.only(top: 46.h, left: 24.w, right: 24.w),
+            padding: EdgeInsets.only(top: 46.h, left: 16.w, right: 16.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -69,6 +74,13 @@ class CustomBlurBg extends StatelessWidget {
                         ),
                       )
                     : const SizedBox(),
+                isShowTextBar == true ?
+                Text(
+                  text ?? "",
+                  style: MyFonts.styleSemiBold600_24.copyWith(
+                      color: context.colors.white),
+
+                   ):
                 Image.asset(
                   Assets.imagesFit,
                   width: 70.w,
@@ -80,12 +92,14 @@ class CustomBlurBg extends StatelessWidget {
           ),
         ),
         SingleChildScrollView(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                verticalSpacing(30.h),
+                verticalSpacing(height ?? 16.h),
                 isShow == true
                     ? RadialProgressWidget(
                         animationDuration: const Duration(milliseconds: 3000),
@@ -103,7 +117,7 @@ class CustomBlurBg extends StatelessWidget {
                         ),
                       )
                     : const SizedBox(),
-                verticalSpacing(16.h),
+                verticalSpacing(height ?? 16.h),
                 ListTile(
                   title: Text(
                     title ?? "",

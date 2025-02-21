@@ -77,6 +77,6 @@ class FitnessApp extends StatelessWidget {
 
 String _getInitialRoute() {
   return SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey) != null
-      ? AppRoutes.homeScreen
+      ? AppRoutes.profileView
       : AppRoutes.onBoarding;
 }
