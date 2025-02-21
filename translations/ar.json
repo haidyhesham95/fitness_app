@@ -92,5 +92,10 @@
   "howOldAreYou": "كم عمرك؟",
   "whatIsYourHeight": "ما هو طولك؟",
   "whatIsYourWeight": "ما هو وزنك؟",
-  "thisHelpsUsPersonalizeYourPlan": "هذا يساعدنا في تخصيص خطتك"
+  "thisHelpsUsPersonalizeYourPlan": "هذا يساعدنا في تخصيص خطتك",
+  "edit_profile": "تعديل الملف الشخصي",
+  "tap_to_edit": "اضغط للتعديل",
+  "your_weight": "وزنك",
+  "your_goal": "هدفك",
+  "your_activity_level": "مستوى نشاطك"
 }

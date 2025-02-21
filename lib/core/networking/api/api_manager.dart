@@ -7,10 +7,11 @@ import 'package:fitness_app/features/auth/data/models/request/login_request_dto.
 import 'package:fitness_app/features/auth/data/models/request/signup_request_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/signup_response_dto.dart';
+import 'package:fitness_app/features/profile/data/models/request/edit_profile_request_dto.dart';
+import 'package:fitness_app/features/profile/data/models/response/edit_profile_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
-
 import '../../../features/auth/data/models/request/forget_password_request_dto.dart';
 import 'api_constants.dart';
 part 'api_manager.g.dart';
@@ -36,4 +37,7 @@ abstract class  ApiManager {
   @PUT(ApiConstants.resetPassword)
   Future<ResetPasswordResponseDto> resetPassword(
       @Body() ResetPasswordRequestDto request);
+  @PUT(ApiConstants.editProfileApi)
+  Future<EditProfileResponseDto> editProfile(
+      @Body() EditProfileRequestDto request);
 }

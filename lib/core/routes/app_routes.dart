@@ -6,6 +6,8 @@ import 'package:fitness_app/features/auth/presentation/register/view/gender/gend
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
+import 'package:fitness_app/features/profile/presentation/view/edit_profile_view.dart';
+import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/forget_password/views/create_password_view.dart';
@@ -32,6 +34,7 @@ class AppRoutes {
   static const String oldView = "oldView";
   static const String heightView = "heightView";
   static const String weightView = "weightView";
+  static const String editProfileView = "editProfileView";
   static Route<void> onGenerateRoute(RouteSettings settings) {
 
     final args = settings.arguments;
@@ -77,6 +80,11 @@ class AppRoutes {
         return BaseRoute(page: WeightView(
           viewModel: args as SignUpViewModel,
         ));
+      case editProfileView:
+        return BaseRoute(
+            page: BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>(),child:
+            const EditProfileView(),));
+
       default:
         return BaseRoute(page: const PageUnderBuildScreen());    }
   }

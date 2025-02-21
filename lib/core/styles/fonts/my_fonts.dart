@@ -70,7 +70,7 @@ class MyFonts {
     fontSize: 14,
   );
 
-  static TextStyle styleSemiBold600_16 = const TextStyle(
+  static TextStyle styleSemiBold600_16 =  GoogleFonts.balooThambi2(
     fontWeight: FontWeight.w600,
     fontSize: 16,
   );
@@ -79,9 +79,13 @@ class MyFonts {
     fontWeight: FontWeight.w600,
     fontSize: 18,
   );
-  static TextStyle styleSemiBold600_20 = const TextStyle(
+  static TextStyle styleSemiBold600_20 = GoogleFonts.balooThambi2(
     fontWeight: FontWeight.w600,
     fontSize: 20,
+  );
+  static TextStyle styleSemiBold600_24 = GoogleFonts.balooThambi2(
+    fontWeight: FontWeight.w600,
+    fontSize: 24,
   );
 
   static TextStyle styleBold700_12 = GoogleFonts.balooThambi2(

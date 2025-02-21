@@ -42,21 +42,17 @@ class LangKeys {
   static const String otpCode = 'otpCode';
   static const String enterYourOtpCheckYourEmail = 'enterYourOtpCheckYourEmail';
   static const String confirm = 'confirm';
-  static const String didNotReceiveVerificationCode =
-      'didNotReceiveVerificationCode';
+  static const String didNotReceiveVerificationCode = 'didNotReceiveVerificationCode';
   static const String resendCode = 'resendCode';
   static const String enterOtp = 'enterOtp';
-  static const String makeSureItsCharactersOrMore =
-      'makeSureItsCharactersOrMore';
+  static const String makeSureItsCharactersOrMore = 'makeSureItsCharactersOrMore';
   static const String createNewPassword = 'createNewPassword';
   static const String password = 'password';
   static const String done = 'done';
   static const String whatIsYourGoal = 'whatIsYourGoal';
-  static const String thisHelpsUsCreateYourPersonalizedPlan =
-      'thisHelpsUsCreateYourPersonalizedPlan';
+  static const String thisHelpsUsCreateYourPersonalizedPlan = 'thisHelpsUsCreateYourPersonalizedPlan';
   static const String next = 'next';
-  static const String yourRegularPhysicalActivityLevel =
-      'yourRegularPhysicalActivityLevel';
+  static const String yourRegularPhysicalActivityLevel = 'yourRegularPhysicalActivityLevel';
   static const String gainWeight = 'gainWeight';
   static const String loseWeight = 'loseWeight';
   static const String getFitter = 'getFitter';
@@ -79,4 +75,9 @@ class LangKeys {
   static const String whatIsYourWeight = 'whatIsYourWeight';
   static const String thisHelpsUsPersonalizeYourPlan = 'thisHelpsUsPersonalizeYourPlan';
 
+  static const String editProfile = 'edit_profile';
+  static const String tapToEdit = 'tap_to_edit';
+  static const String yourWeight = 'your_weight';
+  static const String yourGoal = 'your_goal';
+  static const String yourActivityLevel = 'your_activity_level';
 }

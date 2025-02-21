@@ -17,7 +17,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 
 import '../core/app_cubit/app_cubit.dart' as _i693;
 import '../core/networking/api/api_manager.dart' as _i282;
-import '../core/networking/common/register_context_module.dart' as _i407;
+import '../core/networking/common/register_context_module.dart' as _i885;
 import '../core/networking/network_factory.dart' as _i377;
 import '../features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart'
     as _i551;
@@ -39,6 +39,15 @@ import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dar
     as _i690;
 import '../features/auth/presentation/register/view_model/signup_view_model_cubit.dart'
     as _i864;
+import '../features/profile/data/data_sources/contracts/profile_online_data_source.dart'
+    as _i46;
+import '../features/profile/data/data_sources/impl/profile_online_data_source_impl.dart'
+    as _i74;
+import '../features/profile/data/repositories/profile_repo_impl.dart' as _i933;
+import '../features/profile/domain/repositories/profile_repo.dart' as _i49;
+import '../features/profile/domain/use_cases/profile_use_case.dart' as _i804;
+import '../features/profile/presentation/view_model/profile_view_model_cubit.dart'
+    as _i761;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -63,6 +72,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
     gh.factory<_i97.AuthOnlineDataSource>(
         () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i46.ProfileOnlineDataSource>(
+        () => _i74.ProfileOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i49.ProfileRepo>(
+        () => _i933.ProfileRepoImpl(gh<_i46.ProfileOnlineDataSource>()));
     gh.factory<_i665.AuthRepo>(
         () => _i990.AuthRepoImpl(gh<_i97.AuthOnlineDataSource>()));
     gh.factory<_i230.ForgetPasswordUseCase>(
@@ -71,16 +84,22 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i496.LoginUseCase(gh<_i665.AuthRepo>()));
     gh.factory<_i853.SignUpUseCase>(
         () => _i853.SignUpUseCase(gh<_i665.AuthRepo>()));
+    gh.factory<_i804.ProfileUseCase>(
+        () => _i804.ProfileUseCase(gh<_i49.ProfileRepo>()));
     gh.factory<_i289.ForgetPasswordViewModelCubit>(() =>
         _i289.ForgetPasswordViewModelCubit(gh<_i230.ForgetPasswordUseCase>()));
     gh.factory<_i864.SignUpViewModel>(
         () => _i864.SignUpViewModel(gh<_i853.SignUpUseCase>()));
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
+    gh.factory<_i761.ProfileViewModelCubit>(() => _i761.ProfileViewModelCubit(
+          gh<_i804.ProfileUseCase>(),
+          gh<_i551.AuthOfflineDataSource>(),
+        ));
     return this;
   }
 }
 
 class _$NetworkFactory extends _i377.NetworkFactory {}
 
-class _$AppModule extends _i407.AppModule {}
+class _$AppModule extends _i885.AppModule {}

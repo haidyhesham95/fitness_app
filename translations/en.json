@@ -92,6 +92,10 @@
   "howOldAreYou": "How old are you?",
   "whatIsYourHeight": "What is your height?",
   "whatIsYourWeight": "What is your weight?",
-  "thisHelpsUsPersonalizeYourPlan": "This helps us personalize your plan"
-
+  "thisHelpsUsPersonalizeYourPlan": "This helps us personalize your plan",
+  "edit_profile": "Edit Profile",
+  "tap_to_edit": "tap To Edit",
+  "your_weight": "Your Weight",
+  "your_goal": "Your Goal",
+  "your_activity_level": "Your activity level"
 }
