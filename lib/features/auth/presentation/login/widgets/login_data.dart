@@ -41,13 +41,12 @@ Widget loginWidget(BuildContext context) {
         width: double.infinity,
         onPressed: () {
           cubit.signInButtonPressed();
-          Navigator.pushReplacementNamed(context, AppRoutes.profileView);
         },
       ),
       SizedBox(height: 10.h),
       GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, AppRoutes.signUp);
+          Navigator.pushReplacementNamed(context, AppRoutes.signUp);
         },
         child: CustomTextSpanWidget(
           title: context.translate(LangKeys.doNotHaveAnAccount),

@@ -15,8 +15,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     required this.containerColor,
     required this.transparent,
     required this.red,
-    required this.bgColor,
-    required this.darkGray,
   });
 
   final Color baseColor;
@@ -30,8 +28,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
   final Color containerColor;
   final Color transparent;
   final Color red;
-  final Color bgColor;
-  final Color darkGray;
 
   @override
   ThemeExtension<AppColorTheme> copyWith({
@@ -46,9 +42,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     Color? containerBackground,
     Color? transparent,
     Color? red,
-    Color? bgColor,
-    Color? darkGray,
-
   }) {
     return AppColorTheme(
       baseColor: baseColor ?? this.baseColor,
@@ -62,8 +55,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
       containerColor: containerBackground ?? this.containerColor,
       transparent: transparent ?? this.transparent,
       red: red ?? this.red,
-      bgColor: bgColor ?? this.bgColor,
-      darkGray: darkGray ?? this.darkGray,
     );
   }
 
@@ -87,8 +78,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
         containerColor: containerColor,
         transparent: transparent,
         red: red,
-        bgColor: bgColor,
-        darkGray: darkGray,
       );
     }
   }
@@ -105,9 +94,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     containerColor: DarkColor.container,
     transparent: DarkColor.transparent,
     red: DarkColor.red,
-    bgColor: DarkColor.bgColor,
-    darkGray: DarkColor.darkGray,
-
   );
 
   static const AppColorTheme light = AppColorTheme(
@@ -122,7 +108,5 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     containerColor: LightColor.container,
     transparent: LightColor.transparent,
     red: LightColor.red,
-    bgColor: LightColor.bgColor,
-    darkGray: LightColor.darkGray,
   );
 }
