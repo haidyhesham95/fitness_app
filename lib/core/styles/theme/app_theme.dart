@@ -15,7 +15,7 @@ ThemeData lightTheme = ThemeData(
 );
 
 ThemeData darkTheme = ThemeData(
-  scaffoldBackgroundColor: DarkColor.bg,
+  scaffoldBackgroundColor: DarkColor.bgColor,
   appBarTheme: const AppBarTheme(color: DarkColor.transparent),
   extensions:  <ThemeExtension<dynamic>>[
     AppColorTheme.dark,
