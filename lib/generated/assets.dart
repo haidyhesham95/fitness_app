@@ -9,6 +9,7 @@ class Assets {
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String imagesApple = 'assets/images/Apple.png';
   static const String imagesArrowBack = 'assets/images/arrow_back.png';
+  static const String imagesChatBg = 'assets/images/chat_bg.png';
   static const String imagesError = 'assets/images/error.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesFemale = 'assets/images/female.svg';
@@ -24,11 +25,14 @@ class Assets {
   static const String imagesOn3 = 'assets/images/on_3.png';
   static const String imagesOnBoardingBg = 'assets/images/on_boarding_bg.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
+  static const String imagesRobotWithRope = 'assets/images/robot_with_rope.png';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String jsonFitnessLoader = 'assets/json/fitness_loader.json';
+  static const String svgArrowBack = 'assets/svg/arrow_back.svg';
   static const String svgEye = 'assets/svg/eye.svg';
   static const String svgLock = 'assets/svg/lock.svg';
   static const String svgMail = 'assets/svg/mail.svg';
+  static const String svgMenu = 'assets/svg/menu.svg';
   static const String svgUser = 'assets/svg/user.svg';
   static const String translationsAr = 'translations/ar.json';
   static const String translationsEn = 'translations/en.json';
