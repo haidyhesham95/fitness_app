@@ -88,5 +88,9 @@ class LangKeys {
   static const String english = 'english';
   static const String arabic = 'arabic';
   static const String profile = 'profile';
+  static const String no = 'no';
+  static const String yes = 'yes';
+  static const String logOutDescription = 'logOutDescription';
+  static const String logoutSuccessfully = 'logoutSuccessfully';
 
 }

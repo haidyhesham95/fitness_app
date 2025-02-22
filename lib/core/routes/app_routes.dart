@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/forget_password/views/create_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/forget_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/verify_otp_view.dart';
-import '../../features/auth/presentation/register/view/gender/health_data_widget.dart';
+import '../../features/auth/presentation/register/view/gender/health_data_view.dart';
 import '../../features/auth/presentation/register/view/gender/height_view.dart';
 import '../../features/auth/presentation/register/view/gender/old_view.dart';
 import '../../features/auth/presentation/register/view/gender/weight_view.dart';
@@ -81,7 +81,7 @@ class AppRoutes {
           viewModel: args as SignUpViewModel,
         ));
         case healthDataPage:
-        return BaseRoute(page:  HealthDataPage(
+        return BaseRoute(page:  HealthDataView(
           viewModel: args as SignUpViewModel,
         ));
         case profileView:

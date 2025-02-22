@@ -96,6 +96,10 @@
   "logout": "Logout",
   "english": "English",
   "arabic": "Arabic",
-  "profile": "Profile"
+  "profile": "Profile",
+  "no": "No",
+  "yes": "Yes",
+  "logOutDescription": "Are you sure to close the application?",
+  "logoutSuccessfully": "Logout successfully"
 
 }

@@ -1,5 +1,6 @@
 import 'package:fitness_app/core/localization/app_localizations.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/setting_item.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_cubit/app_cubit.dart';
 import '../../../../core/app_cubit/app_state.dart';
 import '../../../../core/localization/lang_keys.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
+import 'logout_dialog.dart';
 
 class SettingList extends StatelessWidget {
   const SettingList({super.key});
@@ -24,7 +27,9 @@ class SettingList extends StatelessWidget {
       SettingItem(
         text: context.translate(LangKeys.changePassword),
         icon: Assets.imagesChange,
-        onTap: () {},
+        onTap: () {
+          context.pushNamed(AppRoutes.forgetPasswordView);
+        },
       ),
       SettingItem(
         title: RichText(
@@ -84,7 +89,9 @@ class SettingList extends StatelessWidget {
       SettingItem(
         text: context.translate(LangKeys.logout),
         icon: Assets.imagesLogout,
-        onTap: () {},
+        onTap: () {
+          showLogoutDialog(context);
+        },
       ),
     ];
 

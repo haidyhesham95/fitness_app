@@ -22,6 +22,7 @@ class CustomBlurBg extends StatelessWidget {
       ,this.text
       ,this.isShowTextBar = false
       ,this.height
+      ,this.onTap
       });
 
   final Widget widget;
@@ -29,6 +30,7 @@ class CustomBlurBg extends StatelessWidget {
   final bool? isShow , isShowTextBar;
   final double? progress ,height;
   final String? value , image ,text;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +59,7 @@ class CustomBlurBg extends StatelessWidget {
               children: [
                 isShow == true
                     ? GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
+                        onTap: onTap ?? () => Navigator.pop(context),
                         child: Container(
                           height: 24.h,
                           width: 24.w,

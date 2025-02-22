@@ -10,17 +10,22 @@ import '../../view_model/signup_view_model_cubit.dart';
 import '../../widgets/gender/sign_up_step.dart';
 import '../../widgets/goal_activity/custom_goal_view.dart';
 
-class HealthDataPage extends StatelessWidget {
+class HealthDataView extends StatefulWidget {
   final SignUpViewModel viewModel;
 
-  const HealthDataPage({super.key, required this.viewModel});
+  const HealthDataView({super.key, required this.viewModel});
 
+  @override
+  State<HealthDataView> createState() => _HealthDataViewState();
+}
+
+class _HealthDataViewState extends State<HealthDataView> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignUpViewModel, SignUpViewModelState>(
-      bloc: viewModel,
+      bloc: widget.viewModel,
       builder: (context, state) {
-        final currentStep = viewModel.currentStep;
+        final currentStep = widget.viewModel.currentStep;
         final int totalSteps = 6;
         final int currentStepIndex = SignUpStep.values.indexOf(currentStep) + 2;
         final String value = "$currentStepIndex/$totalSteps";
@@ -40,31 +45,31 @@ class HealthDataPage extends StatelessWidget {
           case SignUpStep.age:
             title = context.translate(LangKeys.howOldAreYou);
             text = context.translate(LangKeys.year);
-            initialValue = viewModel.selectedAge;
+            initialValue = widget.viewModel.selectedAge;
             minValue = 10;
             maxValue = 100;
             onSelected = (value) {
-              viewModel.doAction(SelectAgeAction(age: value));
+              widget.viewModel.doAction(SelectAgeAction(age: value));
             };
             break;
           case SignUpStep.weight:
             title = context.translate(LangKeys.whatIsYourWeight);
             text = context.translate(LangKeys.kg);
-            initialValue = viewModel.selectedWeight;
+            initialValue = widget.viewModel.selectedWeight;
             minValue = 35;
             maxValue = 300;
             onSelected = (value) {
-              viewModel.doAction(SelectWeightAction(weight: value));
+              widget.viewModel.doAction(SelectWeightAction(weight: value));
             };
             break;
           case SignUpStep.height:
             title = context.translate(LangKeys.whatIsYourHeight);
             text = context.translate(LangKeys.cm);
-            initialValue = viewModel.selectedHeight;
+            initialValue = widget.viewModel.selectedHeight;
             minValue = 100;
             maxValue = 220;
             onSelected = (value) {
-              viewModel.doAction(SelectHeightAction(height: value));
+              widget.viewModel.doAction(SelectHeightAction(height: value));
             };
             break;
           case SignUpStep.goal:
@@ -103,17 +108,17 @@ class HealthDataPage extends StatelessWidget {
                 ? context
                     .translate(LangKeys.thisHelpsUsCreateYourPersonalizedPlan)
                 : null,
-            viewModel: viewModel,
+            viewModel: widget.viewModel,
             button: CustomButton(
               txt: context.translate(LangKeys.next),
               onPressed: () {
                 if (currentStep == SignUpStep.goal &&
-                    viewModel.goal.isNotEmpty) {
-                  viewModel.doAction(NextStepAction());
+                    widget.viewModel.goal.isNotEmpty) {
+                  widget.viewModel.doAction(NextStepAction());
                 } else if (currentStep == SignUpStep.activity &&
-                    viewModel.activity.isNotEmpty) {
-                  viewModel.doAction(SignupActionSelected());
-                  Navigator.pushNamed(context, AppRoutes.login);
+                    widget.viewModel.activity.isNotEmpty) {
+                  widget.viewModel.doAction(SignupActionSelected());
+                  Navigator.pushReplacementNamed(context, AppRoutes.login);
                 }
               },
             ),
@@ -130,7 +135,10 @@ class HealthDataPage extends StatelessWidget {
             maxValue: maxValue!,
             onSelected: onSelected,
             onPressed: () {
-              viewModel.doAction(NextStepAction());
+              widget.viewModel.doAction(NextStepAction());
+            },
+            onTap: () {
+              widget.viewModel.doAction(BackStepAction());
             },
           );
         }
