@@ -30,4 +30,9 @@ final class GenderUpdateState extends SignUpViewModelState {
 
   GenderUpdateState(this.gender);
 }
+final class StepUpdatedState extends SignUpViewModelState {
+  final SignUpStep step;
+
+  StepUpdatedState(this.step);
+}
 

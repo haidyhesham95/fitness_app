@@ -4,6 +4,7 @@ import 'package:fitness_app/features/auth/presentation/register/view_model/signu
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -13,83 +14,76 @@ import '../../../../../../core/utils/widgets/base/custom_glassy_container.dart';
 import '../../../../../../core/utils/widgets/buttons/custom_button.dart';
 import '../../../forget_password/widgets/custom_blur_bg.dart';
 
-
-class GenderView extends StatefulWidget {
-  const GenderView({super.key, required this.viewModel});
-
+class GenderView extends StatelessWidget {
   final SignUpViewModel viewModel;
 
-  @override
-  State<GenderView> createState() => _GenderViewState();
-}
+  const GenderView({super.key, required this.viewModel});
 
-class _GenderViewState extends State<GenderView> {
   @override
   Widget build(BuildContext context) {
-    return CustomBlurBg(
-      value: "1/6",
-      progress: 0,
-      widget: Padding(
-        padding: EdgeInsets.only(top: 8.0.h),
-        child: CustomGlassyContainer(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 34.w, vertical: 24.h),
-            child: Column(
-              spacing: 24.h,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      widget.viewModel
-                          .doAction(SelectGenderAction(gender: "male"));
-                    });
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: widget.viewModel.selectedGender == "male"
-                          ? context.colors.baseColor
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(95),
+    return BlocBuilder<SignUpViewModel, SignUpViewModelState>(
+      bloc: viewModel,
+      builder: (context, state) {
+        return CustomBlurBg(
+          value: "1/6",
+          progress: 0,
+          widget: Padding(
+            padding: EdgeInsets.only(top: 8.0.h),
+            child: CustomGlassyContainer(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+                child: Column(
+                  spacing: 24.h,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        viewModel.doAction(SelectGenderAction(gender: "male"));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: viewModel.selectedGender == "male"
+                              ? context.colors.baseColor
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(95),
+                        ),
+                        child: SvgPicture.asset(Assets.imagesMale),
+                      ),
                     ),
-                    child: SvgPicture.asset(Assets.imagesMale),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      widget.viewModel
-                          .doAction(SelectGenderAction(gender: "female"));
-                    });
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: widget.viewModel.selectedGender == "female"
-                          ? context.colors.baseColor
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(95),
+                    GestureDetector(
+                      onTap: () {
+                        viewModel
+                            .doAction(SelectGenderAction(gender: "female"));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: viewModel.selectedGender == "female"
+                              ? context.colors.baseColor
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(95),
+                        ),
+                        child: SvgPicture.asset(Assets.imagesFemale),
+                      ),
                     ),
-                    child: SvgPicture.asset(Assets.imagesFemale),
-                  ),
-                ),
-                widget.viewModel.selectedGender !=''
-                    ? CustomButton(
+                    if (viewModel.selectedGender.isNotEmpty)
+                      CustomButton(
                         txt: context.translate(LangKeys.next),
-                        onPressed: widget.viewModel.selectedGender !=''
-                            ? () {
-                                context.pushNamed(AppRoutes.oldView,
-                                    arguments: widget.viewModel);
-                              }
-                            : null,
-                      )
-                    : const SizedBox(),
-              ],
+                        onPressed: () {
+                          context.pushNamed(
+                            AppRoutes.healthDataPage,
+                            arguments: viewModel,
+                          );
+                        },
+                      ),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-      title: context.translate(LangKeys.tellUsAboutYourself),
-      subTitle: context.translate(LangKeys.weNeedToKnowYourGender),
-      isGoalOrActivity: widget.viewModel.selectedGender  != '' ? true : false,
+          title: context.translate(LangKeys.tellUsAboutYourself),
+          subTitle: context.translate(LangKeys.weNeedToKnowYourGender),
+          isShow: viewModel.selectedGender.isNotEmpty ? true : false,
+        );
+      },
     );
   }
 }
