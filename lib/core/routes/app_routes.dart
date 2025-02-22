@@ -42,14 +42,14 @@ class AppRoutes {
     final args = settings.arguments;
     switch (settings.name) {
       case homeScreen:
-         case login:
+      case login:
         return BaseRoute(
             page: BlocProvider(create: (context) => getIt.get<LoginViewModel>(),child:
-              const LoginView(),));
-       case signUp:
-         return BaseRoute(
-             page: BlocProvider(create: (context) => getIt.get<SignUpViewModel>(),child:
-             const SignUpView(),));
+            const LoginView(),));
+      case signUp:
+        return BaseRoute(
+            page: BlocProvider(create: (context) => getIt.get<SignUpViewModel>(),child:
+            const SignUpView(),));
       case onBoarding:
         return BaseRoute(page:  OnboardingScreen());
       case forgetPasswordView:
@@ -66,31 +66,30 @@ class AppRoutes {
         return BaseRoute(page:  ActivityView(
           viewModel: args as SignUpViewModel,
         ));
-        case genderView:
+      case genderView:
         return BaseRoute(page:  GenderView(
           viewModel: args as SignUpViewModel,
         ));
-        case oldView:
+      case oldView:
         return BaseRoute(page:  OldView(
           viewModel: args as SignUpViewModel,
         ));
-        case heightView:
+      case heightView:
         return BaseRoute(page:  HeightView(
           viewModel: args as SignUpViewModel,
         ));
-        case weightView:
+      case weightView:
         return BaseRoute(page: WeightView(
-          viewModel: args as SignUpViewModel,
-        ));
-        case healthDataPage:
-        return BaseRoute(page:  HealthDataPage(
           viewModel: args as SignUpViewModel,
         ));
       case editProfileView:
         return BaseRoute(
             page: BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>(),child:
             const EditProfileView(),));
-
+      case healthDataPage:
+        return BaseRoute(page:  HealthDataPage(
+          viewModel: args as SignUpViewModel,
+        ));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());    }
   }
