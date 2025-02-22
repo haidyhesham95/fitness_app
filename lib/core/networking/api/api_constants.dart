@@ -6,4 +6,5 @@ class ApiConstants {
   static const String signUpApi = 'api/v1/auth/signup';
   static const String signInApi = 'api/v1/auth/signin';
   static const String editProfileApi = 'api/v1/auth/editProfile';
+  static const String profileData = 'api/v1/auth/profile-data';
 }

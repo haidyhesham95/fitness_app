@@ -87,6 +87,10 @@ class MyFonts {
     fontWeight: FontWeight.w600,
     fontSize: 24,
   );
+  static TextStyle styleSemiBold600_24 = const TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 24,
+  );
 
   static TextStyle styleBold700_12 = GoogleFonts.balooThambi2(
     fontWeight: FontWeight.w700,

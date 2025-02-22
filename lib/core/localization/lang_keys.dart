@@ -74,6 +74,20 @@ class LangKeys {
   static const String whatIsYourHeight = 'whatIsYourHeight';
   static const String whatIsYourWeight = 'whatIsYourWeight';
   static const String thisHelpsUsPersonalizeYourPlan = 'thisHelpsUsPersonalizeYourPlan';
+  static const String editProfile = 'editProfile';
+  static const String changePassword = 'changePassword';
+  static const String selectLanguage = 'selectLanguage';
+  static const String security = 'security';
+  static const String privacyPolicy = 'privacyPolicy';
+  static const String help = 'help';
+  static const String logout = 'logout';
+  static const String english = 'english';
+  static const String arabic = 'arabic';
+  static const String profile = 'profile';
+  static const String no = 'no';
+  static const String yes = 'yes';
+  static const String logOutDescription = 'logOutDescription';
+  static const String logoutSuccessfully = 'logoutSuccessfully';
 
   static const String editProfile = 'edit_profile';
   static const String tapToEdit = 'tap_to_edit';

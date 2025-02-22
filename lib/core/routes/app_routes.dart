@@ -8,12 +8,13 @@ import 'package:fitness_app/features/auth/presentation/register/view_model/signu
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/presentation/view/edit_profile_view.dart';
 import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
+import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/forget_password/views/create_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/forget_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/verify_otp_view.dart';
-import '../../features/auth/presentation/register/view/gender/health_data_widget.dart';
+import '../../features/auth/presentation/register/view/gender/health_data_view.dart';
 import '../../features/auth/presentation/register/view/gender/height_view.dart';
 import '../../features/auth/presentation/register/view/gender/old_view.dart';
 import '../../features/auth/presentation/register/view/gender/weight_view.dart';
@@ -37,11 +38,12 @@ class AppRoutes {
   static const String weightView = "weightView";
   static const String editProfileView = "editProfileView";
   static const String healthDataPage = "healthDataPage";
+  static const String profileView = "profileView";
   static Route<void> onGenerateRoute(RouteSettings settings) {
 
     final args = settings.arguments;
     switch (settings.name) {
-      case homeScreen:
+
       case login:
         return BaseRoute(
             page: BlocProvider(create: (context) => getIt.get<LoginViewModel>(),child:
@@ -87,9 +89,12 @@ class AppRoutes {
             page: BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>(),child:
             const EditProfileView(),));
       case healthDataPage:
-        return BaseRoute(page:  HealthDataPage(
+        return BaseRoute(page:  HealthDataView(
           viewModel: args as SignUpViewModel,
         ));
+        case profileView:
+        return BaseRoute(page: const ProfileView());
+
       default:
         return BaseRoute(page: const PageUnderBuildScreen());    }
   }

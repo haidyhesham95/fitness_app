@@ -9,6 +9,8 @@ class Assets {
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String imagesApple = 'assets/images/Apple.png';
   static const String imagesArrowBack = 'assets/images/arrow_back.png';
+  static const String imagesBackGround = 'assets/images/back_ground.jpg';
+  static const String imagesChange = 'assets/images/Change.svg';
   static const String imagesEditBg = 'assets/images/edit_bg.png';
   static const String imagesError = 'assets/images/error.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
@@ -16,8 +18,12 @@ class Assets {
   static const String imagesFit = 'assets/images/fit.png';
   static const String imagesForgetPasswordBg = 'assets/images/forget_password_bg.png';
   static const String imagesGoogle = 'assets/images/google.png';
+  static const String imagesHelp = 'assets/images/Help.svg';
+  static const String imagesLanguage = 'assets/images/Language.svg';
   static const String imagesLoading = 'assets/images/loading.json';
+  static const String imagesLockSetting = 'assets/images/Lock_Setting.svg';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String imagesLogout = 'assets/images/logout.svg';
   static const String imagesMale = 'assets/images/male.svg';
   static const String imagesNetwork = 'assets/images/network.png';
   static const String imagesOn1 = 'assets/images/on_1.png';
@@ -25,6 +31,8 @@ class Assets {
   static const String imagesOn3 = 'assets/images/on_3.png';
   static const String imagesOnBoardingBg = 'assets/images/on_boarding_bg.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
+  static const String imagesProfile = 'assets/images/profile.svg';
+  static const String imagesSecurityWarning = 'assets/images/Security_Warning.svg';
   static const String imagesProfile = 'assets/images/profile.png';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String jsonFitnessLoader = 'assets/json/fitness_loader.json';

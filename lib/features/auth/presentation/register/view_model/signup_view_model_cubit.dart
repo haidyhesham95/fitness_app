@@ -15,7 +15,9 @@ part 'signup_view_model_state.dart';
 
 @injectable
 class SignUpViewModel extends Cubit<SignUpViewModelState> {
+
   SignUpViewModel(this._signupUseCase) : super(SignupInitial());
+
   final SignUpUseCase _signupUseCase;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -29,6 +31,8 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
   int selectedAge = 25;
   String selectedGender = '';
   SignUpStep currentStep = SignUpStep.age;
+
+
   Future<void> doAction(SignupAction action) async {
     switch (action) {
       case SignupActionSelected():
@@ -54,6 +58,9 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
         break;
       case NextStepAction():
         _goToNextStep();
+        break;
+      case BackStepAction():
+        _goToPreviousStep();
         break;
     }
   }
@@ -106,10 +113,34 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
       case SignUpStep.activity:
         _signUpButtonPressed();
         break;
-
     }
     emit(StepUpdatedState(currentStep));
   }
+
+
+  void _goToPreviousStep() {
+    switch (currentStep) {
+      case SignUpStep.weight:
+        currentStep = SignUpStep.age;
+        break;
+      case SignUpStep.height:
+        currentStep = SignUpStep.weight;
+        break;
+      case SignUpStep.goal:
+        currentStep = SignUpStep.height;
+        break;
+      case SignUpStep.activity:
+        currentStep = SignUpStep.goal;
+        break;
+      case SignUpStep.age:
+        break;
+    }
+    emit(BackPressed(currentStep)); // Emit the updated state
+  }
+
+
+
+
   void _setActivity(String activity) {
     this.activity = activity;
     emit(ActivityUpdateState());
