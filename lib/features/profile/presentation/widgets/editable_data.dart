@@ -1,12 +1,15 @@
 import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/edit_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fitness_app/core/utils/widgets/custom_text_form_field.dart';
+
+import '../../../../di/di.dart';
 
 class EditableData extends StatelessWidget {
    const EditableData({super.key});
@@ -18,29 +21,41 @@ class EditableData extends StatelessWidget {
      return Column(
        crossAxisAlignment: CrossAxisAlignment.start,
        children: [
-         EditTextWidget(
-           editableText:context.translate(LangKeys.tapToEdit),
-           editableTextColor: context.colors.baseColor,
-           mainText:context.translate(LangKeys.yourWeight),
-           mainTextColor:context.colors.white,
-           parenthesisColor:context.colors.white,
+         GestureDetector(
+           onTap: (){
+             Navigator.of(context).pushNamed(AppRoutes.weightView,arguments: getIt.get<SignUpViewModel>());
+
+           },
+           child: EditTextWidget(
+             editableText:context.translate(LangKeys.tapToEdit),
+             editableTextColor: context.colors.baseColor,
+             mainText:context.translate(LangKeys.yourWeight),
+             mainTextColor:context.colors.white,
+             parenthesisColor:context.colors.white,
+           ),
          ),
          SizedBox(height: 8.h,),
          const CustomTextFormField(hintTxt: '90 Kg',),
          SizedBox(height: 16.h,),
-         EditTextWidget(
-           editableText:context.translate(LangKeys.tapToEdit),
-           editableTextColor: context.colors.baseColor,
-           mainText:context.translate(LangKeys.yourGoal),
-           mainTextColor:context.colors.white,
-           parenthesisColor:context.colors.white,
+         GestureDetector(
+           onTap: (){
+             Navigator.of(context).pushNamed(AppRoutes.goalView,arguments: getIt.get<SignUpViewModel>());
+
+           },
+           child: EditTextWidget(
+             editableText:context.translate(LangKeys.tapToEdit),
+             editableTextColor: context.colors.baseColor,
+             mainText:context.translate(LangKeys.yourGoal),
+             mainTextColor:context.colors.white,
+             parenthesisColor:context.colors.white,
+           ),
          ),
          SizedBox(height: 8.h,),
           CustomTextFormField(hintTxt:context.translate(LangKeys.gainWeight),),
          SizedBox(height: 16.h,),
          GestureDetector(
            onTap: (){
-             Navigator.of(context).pushNamed(AppRoutes.activityView);
+             Navigator.of(context).pushNamed(AppRoutes.activityView,arguments: getIt.get<SignUpViewModel>());
            },
            child: EditTextWidget(
              editableText:context.translate(LangKeys.tapToEdit),
