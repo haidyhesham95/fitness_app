@@ -18,7 +18,7 @@ class BaseView extends StatelessWidget {
     this.blur,
   });
 
-  final Widget child;
+  final List<Widget> child;
   final String image;
   final bool isArrowBackShow;
   final List<Widget>? actions;
@@ -36,7 +36,7 @@ class BaseView extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // Background image
+          /// Background image
           Positioned.fill(
             child: GlassImage(
               height: context.height,
@@ -48,6 +48,7 @@ class BaseView extends StatelessWidget {
               ),
             ),
           ),
+          /// App bar widget
           PositionedDirectional(
               top: 40.h,
               start: 16.w,
@@ -88,12 +89,15 @@ class BaseView extends StatelessWidget {
                   )
                 ],
               )),
+          /// Child
           Positioned(
             top: context.height * .1,
             bottom: 0,
             right: 0,
             left: 0,
-            child: child,
+            child:  CustomScrollView(
+              slivers:child,
+            ),
           ),
         ],
       ),

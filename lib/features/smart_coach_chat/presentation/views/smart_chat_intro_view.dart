@@ -26,42 +26,47 @@ class SmartChatIntroView extends StatelessWidget {
         ],
         title: '${context.translate(LangKeys.hi)} Ahmed ,',
         subTitle: context.translate(LangKeys.smartCoach),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 16.w),
-          child: Column(
-            children: [
-              verticalSpacing(25),
-              Image.asset(Assets.imagesRobotWithRope,
-                  height: context.height * .5),
-              const Spacer(),
-              CustomGlassyContainer(
-                blur: 32,
-                borderRadius: BorderRadius.circular(60),
-                child: Padding(
-                  padding:  EdgeInsets.all(32.sp),
-                  child: Column(
-                    spacing: 16.sp,
-                      children: [
-                    Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 30.w,),
-                      child: Text(
-                        context.translate(LangKeys.assistToday),
-                        textAlign: TextAlign.center,
-                        style: MyFonts.styleExtraBold800_24.copyWith(
-                            color: context.colors.white),
-                      ),
-                    ),
-                    CustomButton(
-                      onPressed: (){},
-                      txt:context.translate(LangKeys.getStarted),
-                    ),
-
-                  ]),
+        child: [
+          SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: 16.w),
+            sliver: SliverMainAxisGroup(
+              slivers: [
+                SliverToBoxAdapter(child: verticalSpacing(25)),
+                SliverToBoxAdapter(
+                  child: Image.asset(Assets.imagesRobotWithRope,
+                      height: context.height * .5),
                 ),
-              ),
-              verticalSpacing(42),
-            ],
-          ),
-        ));
+                SliverToBoxAdapter(child: verticalSpacing(25)),
+                SliverToBoxAdapter(
+                  child: CustomGlassyContainer(
+                    blur: 32,
+                    borderRadius: BorderRadius.circular(60),
+                    child: Padding(
+                      padding: EdgeInsets.all(32.sp),
+                      child: Column(spacing: 16.sp, children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 30.w,
+                          ),
+                          child: Text(
+                            context.translate(LangKeys.assistToday),
+                            textAlign: TextAlign.center,
+                            style: MyFonts.styleExtraBold800_24
+                                .copyWith(color: context.colors.white),
+                          ),
+                        ),
+                        CustomButton(
+                          onPressed: () {},
+                          txt: context.translate(LangKeys.getStarted),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+                SliverToBoxAdapter(child: verticalSpacing(25)),
+              ],
+            ),
+          )
+        ]);
   }
 }
