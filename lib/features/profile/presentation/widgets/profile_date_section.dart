@@ -28,9 +28,6 @@ class _ProfileDateSectionState extends State<ProfileDateSection> {
            const AppLoader();
           case getProfileSuccess():
           final user = state.data.user!;
-          user.firstName = cubit.firstNameController.text;
-          user.lastName = cubit.lastNameController.text;
-          user.email = cubit.emailController.text;
           return Padding(
             padding: EdgeInsets.all(24.sp),
             child: Column(
