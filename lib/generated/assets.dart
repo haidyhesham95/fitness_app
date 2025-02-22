@@ -33,7 +33,6 @@ class Assets {
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
   static const String imagesProfile = 'assets/images/profile.svg';
   static const String imagesSecurityWarning = 'assets/images/Security_Warning.svg';
-  static const String imagesProfile = 'assets/images/profile.png';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String jsonFitnessLoader = 'assets/json/fitness_loader.json';
   static const String svgBack = 'assets/svg/back.svg';

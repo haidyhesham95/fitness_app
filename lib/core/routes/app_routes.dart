@@ -7,6 +7,7 @@ import 'package:fitness_app/features/auth/presentation/register/view/sign_up_vie
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/presentation/view/edit_profile_view.dart';
+import 'package:fitness_app/features/profile/presentation/view_model/profile_actions.dart';
 import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:flutter/material.dart';
@@ -93,8 +94,9 @@ class AppRoutes {
           viewModel: args as SignUpViewModel,
         ));
         case profileView:
-        return BaseRoute(page: const ProfileView());
-
+          return BaseRoute(
+              page: BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),child:
+              const ProfileView(),));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());    }
   }

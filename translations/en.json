@@ -100,8 +100,7 @@
   "no": "No",
   "yes": "Yes",
   "logOutDescription": "Are you sure to close the application?",
-  "logoutSuccessfully": "Logout successfully"
-
+  "logoutSuccessfully": "Logout successfully",
   "thisHelpsUsPersonalizeYourPlan": "This helps us personalize your plan",
   "edit_profile": "Edit Profile",
   "tap_to_edit": "tap To Edit",

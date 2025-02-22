@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/core/networking/error/error_handler.dart';
 import 'package:fitness_app/core/networking/error/error_model.dart';
+import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/features/auth/domain/entities/request/login_request_entity.dart';
 import 'package:fitness_app/features/auth/domain/entities/response/login_response_entity.dart';
 import 'package:fitness_app/features/auth/domain/use_cases/login_use_case.dart';
@@ -42,12 +43,13 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
     }
   }
 
-  void signInButtonPressed() {
+  void signInButtonPressed(BuildContext context) {
     if (signInFormKey.currentState!.validate()) {
       _login(LoginAction(LoginRequestEntity(
         email: emailController.text,
         password: passwordController.text,
       )));
+      Navigator.of(context).pushReplacementNamed(AppRoutes.profileView);
     }
   }
 }

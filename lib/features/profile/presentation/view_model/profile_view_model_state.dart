@@ -18,12 +18,8 @@ final class getProfileError extends ProfileViewModelState {
 
   getProfileError({required this.errorMessage});
 }
-import 'package:fitness_app/core/networking/error/error_model.dart';
-import 'package:fitness_app/features/profile/domain/entities/response/edit_profile_response_entity.dart';
 
-sealed class ProfileViewModelState {}
-
- class ProfileViewModelInitial extends ProfileViewModelState {}
+ class EditProfileViewModelInitial extends ProfileViewModelState {}
 
  class EditProfileLoading extends ProfileViewModelState {}
 

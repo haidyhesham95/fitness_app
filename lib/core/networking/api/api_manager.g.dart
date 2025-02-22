@@ -186,13 +186,13 @@ class _ApiManager implements ApiManager {
 
   @override
   Future<EditProfileResponseDto> editProfile(
-    EditProfileRequestDto request,
+    Map<String, dynamic> profileData,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(request.toJson());
+    _data.addAll(profileData);
     final _options = _setStreamType<EditProfileResponseDto>(
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(

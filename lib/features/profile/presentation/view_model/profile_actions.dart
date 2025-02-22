@@ -1,10 +1,12 @@
 import 'package:fitness_app/features/profile/data/models/request/edit_profile_request_dto.dart';
 
 sealed class ProfileActions {}
+class GetUserData extends ProfileActions {}
+
 
 class EditProfile extends ProfileActions {
-  EditProfileRequestDto requestDto;
+  final Map<String, dynamic> profileData;
 
-  EditProfile(this.requestDto);
+  EditProfile(this.profileData);
 }
 

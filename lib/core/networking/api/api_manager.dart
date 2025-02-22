@@ -42,5 +42,5 @@ abstract class  ApiManager {
   Future<ProfileResponseDto> getLoggedUserData();
   @PUT(ApiConstants.editProfileApi)
   Future<EditProfileResponseDto> editProfile(
-      @Body() EditProfileRequestDto request);
+      @Body() Map<String, dynamic> profileData);
 }
