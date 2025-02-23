@@ -9,6 +9,7 @@ class Assets {
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String imagesApple = 'assets/images/Apple.png';
   static const String imagesArrowBack = 'assets/images/arrow_back.png';
+  static const String imagesBot = 'assets/images/bot.png';
   static const String imagesChatBg = 'assets/images/chat_bg.png';
   static const String imagesError = 'assets/images/error.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
@@ -27,6 +28,7 @@ class Assets {
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
   static const String imagesRobotWithRope = 'assets/images/robot_with_rope.png';
   static const String imagesSplash = 'assets/images/splash.png';
+  static const String imagesUser = 'assets/images/user.png';
   static const String jsonFitnessLoader = 'assets/json/fitness_loader.json';
   static const String svgArrowBack = 'assets/svg/arrow_back.svg';
   static const String svgEye = 'assets/svg/eye.svg';

@@ -6,7 +6,6 @@ import 'package:lottie/lottie.dart';
 import '../../../../generated/assets.dart';
 import '../../../localization/lang_keys.dart';
 import '../../../styles/fonts/my_fonts.dart';
-import '../spacing.dart';
 
 class AppLoader extends StatefulWidget {
   const AppLoader({super.key});
@@ -36,38 +35,42 @@ class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixi
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Lottie.asset(
-              Assets.jsonFitnessLoader,
-              height: 80.sp,
-              alignment: Alignment.bottomCenter,
-              fit: BoxFit.scaleDown,
-            ),
-            verticalSpacing(15),
-            Align(
+      color: context.colors.transparent,
+      height: 140.h,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Lottie.asset(
+            Assets.jsonFitnessLoader,
+            height: 80.sp,
+            alignment: Alignment.center,
+            fit: BoxFit.scaleDown,
+            options: LottieOptions(
+              enableApplyingOpacityToLayers: true
+            )
+          ),
+          SizedBox(
+            height: 40.h,
+            child: Align(
               alignment: Alignment.bottomCenter,
               child: AnimatedTextKit(
                 repeatForever: true,
                 animatedTexts: [
-                  ScaleAnimatedText(
+                  WavyAnimatedText(
+                    speed: const Duration(milliseconds: 200 ),
                     (context.translate(LangKeys.appName)),
                     textStyle: MyFonts.styleBold700_24.copyWith(
                       fontFamily: 'Baloo Thambi 2',
                       color: context.colors.baseColor,
                     ),
-                    scalingFactor: 1.5,
                     textAlign: TextAlign.center,
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

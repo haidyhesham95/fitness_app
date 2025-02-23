@@ -11,14 +11,16 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i361;
 import 'package:flutter/material.dart' as _i409;
+import 'package:flutter_gemini/flutter_gemini.dart' as _i257;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 
 import '../core/app_cubit/app_cubit.dart' as _i693;
 import '../core/networking/api/api_manager.dart' as _i282;
-import '../core/networking/common/register_context_module.dart' as _i407;
+import '../core/networking/common/register_context_module.dart' as _i885;
 import '../core/networking/network_factory.dart' as _i377;
+import '../core/services/gemini_helper.dart' as _i896;
 import '../features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart'
     as _i551;
 import '../features/auth/data/data_sources/contracts/online_data_sources/auth_online_data_source.dart'
@@ -39,6 +41,18 @@ import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dar
     as _i690;
 import '../features/auth/presentation/register/view_model/signup_view_model_cubit.dart'
     as _i864;
+import '../features/smart_coach_chat/data/data_sources/online_data_source/contract/smart_chat_online_data_source.dart'
+    as _i318;
+import '../features/smart_coach_chat/data/data_sources/online_data_source/impl/smart_chat_data_source_impl.dart'
+    as _i937;
+import '../features/smart_coach_chat/data/repositories/smart_chat_repo_impl.dart'
+    as _i937;
+import '../features/smart_coach_chat/domain/repositories/smart_chat_repo.dart'
+    as _i652;
+import '../features/smart_coach_chat/domain/use_cases/fetch_smart_chat_case.dart'
+    as _i544;
+import '../features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart'
+    as _i923;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -57,14 +71,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i528.PrettyDioLogger>(() => networkFactory.prettyDioLogger());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => appModule.navigatorKey);
+    gh.lazySingleton<_i257.Gemini>(() => appModule.provideGemini());
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.factory<_i551.AuthOfflineDataSource>(
         () => _i1036.AuthOfflineDataSourceImpl());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
+    gh.singleton<_i896.GeminiHelper>(
+        () => _i896.GeminiHelper(gh<_i257.Gemini>()));
     gh.factory<_i97.AuthOnlineDataSource>(
         () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i318.SmartChatOnlineDataSource>(
+        () => _i937.SmartChatDataSourceImpl(gh<_i896.GeminiHelper>()));
     gh.factory<_i665.AuthRepo>(
         () => _i990.AuthRepoImpl(gh<_i97.AuthOnlineDataSource>()));
+    gh.factory<_i652.SmartChatRepo>(
+        () => _i937.SmartChatRepoImpl(gh<_i318.SmartChatOnlineDataSource>()));
     gh.factory<_i230.ForgetPasswordUseCase>(
         () => _i230.ForgetPasswordUseCase(gh<_i665.AuthRepo>()));
     gh.factory<_i496.LoginUseCase>(
@@ -73,14 +94,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i853.SignUpUseCase(gh<_i665.AuthRepo>()));
     gh.factory<_i289.ForgetPasswordViewModelCubit>(() =>
         _i289.ForgetPasswordViewModelCubit(gh<_i230.ForgetPasswordUseCase>()));
+    gh.factory<_i544.FetchSmartChatCase>(
+        () => _i544.FetchSmartChatCase(gh<_i652.SmartChatRepo>()));
     gh.factory<_i864.SignUpViewModel>(
         () => _i864.SignUpViewModel(gh<_i853.SignUpUseCase>()));
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
+    gh.factory<_i923.SmartChatViewModel>(
+        () => _i923.SmartChatViewModel(gh<_i544.FetchSmartChatCase>()));
     return this;
   }
 }
 
 class _$NetworkFactory extends _i377.NetworkFactory {}
 
-class _$AppModule extends _i407.AppModule {}
+class _$AppModule extends _i885.AppModule {}

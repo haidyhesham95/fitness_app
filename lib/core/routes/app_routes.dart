@@ -6,7 +6,9 @@ import 'package:fitness_app/features/auth/presentation/register/view/gender/gend
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
+import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_intro_view.dart';
+import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,6 +39,7 @@ class AppRoutes {
   static const String weightView = "weightView";
   static const String healthDataPage = "healthDataPage";
   static const String smartChatIntroView = "smartChatIntroView";
+  static const String smartChatView = "smartChatView";
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -99,6 +102,12 @@ class AppRoutes {
         ));
       case smartChatIntroView:
         return BaseRoute(page: const SmartChatIntroView());
+      case smartChatView:
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) => getIt.get<SmartChatViewModel>(),
+          child: const SmartChatView(),
+        ));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

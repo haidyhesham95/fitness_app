@@ -79,6 +79,7 @@ class LangKeys {
   static const String whatIsYourWeight = 'whatIsYourWeight';
   static const String thisHelpsUsPersonalizeYourPlan = 'thisHelpsUsPersonalizeYourPlan';
   static const String hi = 'hi';
+  static const String smartCoachBot = 'smart_coach_bot';
   static const String smartCoach = 'smart_coach';
   static const String assistToday = 'assist_today';
   static const String getStarted = 'get_started';

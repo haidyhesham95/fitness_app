@@ -1,6 +1,8 @@
 import 'package:fitness_app/core/localization/lang_keys.dart';
+import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/widgets/base/base_view.dart';
 import 'package:fitness_app/core/utils/widgets/base/custom_glassy_container.dart';
 import 'package:fitness_app/core/utils/widgets/buttons/custom_button.dart';
@@ -25,7 +27,7 @@ class SmartChatIntroView extends StatelessWidget {
           ),
         ],
         title: '${context.translate(LangKeys.hi)} Ahmed ,',
-        subTitle: context.translate(LangKeys.smartCoach),
+        subTitle: context.translate(LangKeys.smartCoachBot),
         child: [
           SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 16.w),
@@ -56,7 +58,9 @@ class SmartChatIntroView extends StatelessWidget {
                           ),
                         ),
                         CustomButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.pushNamed(AppRoutes.smartChatView);
+                          },
                           txt: context.translate(LangKeys.getStarted),
                         ),
                       ]),

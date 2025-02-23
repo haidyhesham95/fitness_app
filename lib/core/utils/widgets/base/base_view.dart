@@ -71,12 +71,12 @@ class BaseView extends StatelessWidget {
                   Expanded(
                     child: RichText(
                       text: TextSpan(
-                          text: title,
+                          text: title??'',
                           style: MyFonts.styleMedium500_16
                               .copyWith(color: context.colors.white),
                           children: [
                             TextSpan(
-                              text: '\n$subTitle',
+                              text: '\n${subTitle??''}',
                               style: MyFonts.styleBold700_18
                                   .copyWith(color: context.colors.white),
                             ),
@@ -102,5 +102,6 @@ class BaseView extends StatelessWidget {
         ],
       ),
     ));
+
   }
 }
