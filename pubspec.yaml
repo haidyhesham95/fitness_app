@@ -55,13 +55,8 @@ dependencies:
   shared_preferences: ^2.5.1
   build_runner:
   flutter_gemini: ^3.0.0
-  intl_utils:
   url_launcher: ^6.3.1
   flutter_dotenv:
-
-
-
-
 
 
   # Ui
@@ -94,6 +89,9 @@ dependencies:
   bloc:
   geolocator: ^13.0.2   # For location services and permissions
   geocoding: ^3.0.0
+  isar: ^3.0.0
+  isar_flutter_libs: ^3.0.0
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:
@@ -108,6 +106,7 @@ dev_dependencies:
   flutter_native_splash: ^2.4.4
   icons_launcher: ^3.0.0
   mockito:
+  isar_generator: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
