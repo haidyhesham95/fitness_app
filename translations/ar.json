@@ -92,5 +92,9 @@
   "howOldAreYou": "كم عمرك؟",
   "whatIsYourHeight": "ما هو طولك؟",
   "whatIsYourWeight": "ما هو وزنك؟",
-  "thisHelpsUsPersonalizeYourPlan": "هذا يساعدنا في تخصيص خطتك"
+  "thisHelpsUsPersonalizeYourPlan": "هذا يساعدنا في تخصيص خطتك",
+  "explore": "تصفح",
+  "profile": "الصفحة الشخصية",
+  "workouts": "تمارين",
+  "chatAi": "دردشة AI"
 }

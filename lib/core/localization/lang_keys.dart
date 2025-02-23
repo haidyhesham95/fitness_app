@@ -78,5 +78,8 @@ class LangKeys {
   static const String whatIsYourHeight = 'whatIsYourHeight';
   static const String whatIsYourWeight = 'whatIsYourWeight';
   static const String thisHelpsUsPersonalizeYourPlan = 'thisHelpsUsPersonalizeYourPlan';
-
+  static const String explore = 'explore';
+  static const String profile = 'profile';
+  static const String workouts = 'workouts';
+  static const String chatAi = 'chatAi';
 }

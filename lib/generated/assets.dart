@@ -9,12 +9,15 @@ class Assets {
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String imagesApple = 'assets/images/Apple.png';
   static const String imagesArrowBack = 'assets/images/arrow_back.png';
+  static const String imagesChatAi = 'assets/images/chat_ai.png';
   static const String imagesError = 'assets/images/error.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesFemale = 'assets/images/female.svg';
   static const String imagesFit = 'assets/images/fit.png';
   static const String imagesForgetPasswordBg = 'assets/images/forget_password_bg.png';
   static const String imagesGoogle = 'assets/images/google.png';
+  static const String imagesGym = 'assets/images/gym.png';
+  static const String imagesHome = 'assets/images/home.png';
   static const String imagesLoading = 'assets/images/loading.json';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesMale = 'assets/images/male.svg';
@@ -24,6 +27,7 @@ class Assets {
   static const String imagesOn3 = 'assets/images/on_3.png';
   static const String imagesOnBoardingBg = 'assets/images/on_boarding_bg.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
+  static const String imagesProfile = 'assets/images/profile.png';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String jsonFitnessLoader = 'assets/json/fitness_loader.json';
   static const String svgEye = 'assets/svg/eye.svg';
