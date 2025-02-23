@@ -11,7 +11,6 @@ import 'package:injectable/injectable.dart';
 @Injectable(as: SmartChatOnlineDataSource)
 class SmartChatDataSourceImpl implements SmartChatOnlineDataSource {
 final GeminiHelper _geminiHelper;
-  @factoryMethod
   SmartChatDataSourceImpl(this._geminiHelper);
 
   @override

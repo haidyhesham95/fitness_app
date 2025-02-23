@@ -61,7 +61,6 @@ class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixi
                     speed: const Duration(milliseconds: 200 ),
                     (context.translate(LangKeys.appName)),
                     textStyle: MyFonts.styleBold700_24.copyWith(
-                      fontFamily: 'Baloo Thambi 2',
                       color: context.colors.baseColor,
                     ),
                     textAlign: TextAlign.center,
