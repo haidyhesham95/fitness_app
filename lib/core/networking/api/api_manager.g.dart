@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-//ignore_for_file: unused_element
+//ignore_for_file: unused_element_parameter
 part of 'api_manager.dart';
 
 // **************************************************************************
