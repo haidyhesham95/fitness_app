@@ -48,6 +48,8 @@ import '../features/profile/domain/repositories/profile_repo.dart' as _i49;
 import '../features/profile/domain/use_cases/edit_profile_use_case.dart'
     as _i828;
 import '../features/profile/domain/use_cases/profile_use_case.dart' as _i804;
+import '../features/profile/domain/use_cases/upload_photo_use_case.dart'
+    as _i801;
 import '../features/profile/presentation/view_model/profile_view_model_cubit.dart'
     as _i761;
 
@@ -90,17 +92,20 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i828.EditProfileUseCase(gh<_i49.ProfileRepo>()));
     gh.factory<_i804.ProfileUseCase>(
         () => _i804.ProfileUseCase(gh<_i49.ProfileRepo>()));
+    gh.factory<_i801.UploadPhotoUseCase>(
+        () => _i801.UploadPhotoUseCase(gh<_i49.ProfileRepo>()));
     gh.factory<_i289.ForgetPasswordViewModelCubit>(() =>
         _i289.ForgetPasswordViewModelCubit(gh<_i230.ForgetPasswordUseCase>()));
-    gh.factory<_i761.ProfileViewModelCubit>(() => _i761.ProfileViewModelCubit(
-          gh<_i804.ProfileUseCase>(),
-          gh<_i551.AuthOfflineDataSource>(),
-          gh<_i828.EditProfileUseCase>(),
-        ));
     gh.factory<_i864.SignUpViewModel>(
         () => _i864.SignUpViewModel(gh<_i853.SignUpUseCase>()));
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
+    gh.factory<_i761.ProfileViewModelCubit>(() => _i761.ProfileViewModelCubit(
+          gh<_i804.ProfileUseCase>(),
+          gh<_i551.AuthOfflineDataSource>(),
+          gh<_i828.EditProfileUseCase>(),
+          gh<_i801.UploadPhotoUseCase>(),
+        ));
     return this;
   }
 }

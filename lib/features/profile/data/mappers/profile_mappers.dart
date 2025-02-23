@@ -1,7 +1,9 @@
 import 'package:fitness_app/features/profile/data/models/response/edit_profile_response_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/profile_response_model.dart';
+import 'package:fitness_app/features/profile/data/models/response/upload_photo_response_dto.dart';
 import 'package:fitness_app/features/profile/domain/entities/response/edit_profile_response_entity.dart';
 import 'package:fitness_app/features/profile/domain/entities/response/profile_response_entity.dart';
+import 'package:fitness_app/features/profile/domain/entities/response/upload_photo_response_entity.dart';
 
 class ProfileMapper {
   static EditProfileResponseEntity editProfileResponseToEntity(
@@ -50,5 +52,10 @@ class ProfileMapper {
       goal: userDto.goal,
       photo: userDto.photo,
     );
+  }
+
+  static UploadPhotoResponseEntity uploadPhotoResponseToEntity(
+      UploadPhotoResponseDto dto) {
+    return UploadPhotoResponseEntity(message: dto.message);
   }
 }

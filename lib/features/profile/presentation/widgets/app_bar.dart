@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 Widget appBar(BuildContext context) {
   return AppBar(
+    automaticallyImplyLeading: false,
     title: Row(
       children: [
         SvgPicture.asset(

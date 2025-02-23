@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:fitness_app/features/profile/domain/entities/response/upload_photo_response_entity.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/networking/common/api_result.dart';
 import '../../domain/entities/response/profile_response_entity.dart';
@@ -19,5 +22,9 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<DataResult<ProfileResponseEntity>> getUserData() async {
     return await _onlineDataSource.getUserData();
+  }
+  @override
+  Future<DataResult<UploadPhotoResponseEntity>> uploadPhoto(File photo) async {
+    return await _onlineDataSource.uploadPhoto(photo);
   }
 }

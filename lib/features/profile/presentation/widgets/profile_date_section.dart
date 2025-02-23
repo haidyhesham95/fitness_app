@@ -65,6 +65,9 @@ class _ProfileDateSectionState extends State<ProfileDateSection> {
           case EditProfileLoading():
           case EditProfileSuccess():
           case EditProfileError():
+          case UploadPhotoLoading():
+          case UploadPhotoError():
+          case UploadPhotoSuccess():
         }
        return Container();
       },

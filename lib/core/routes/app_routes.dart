@@ -6,6 +6,7 @@ import 'package:fitness_app/features/auth/presentation/register/view/gender/gend
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
+import 'package:fitness_app/features/profile/presentation/view/edit_data_view.dart';
 import 'package:fitness_app/features/profile/presentation/view/edit_profile_view.dart';
 import 'package:fitness_app/features/profile/presentation/view_model/profile_actions.dart';
 import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
@@ -40,6 +41,7 @@ class AppRoutes {
   static const String editProfileView = "editProfileView";
   static const String healthDataPage = "healthDataPage";
   static const String profileView = "profileView";
+  static const String editDataView = "editDataView";
   static Route<void> onGenerateRoute(RouteSettings settings) {
 
     final args = settings.arguments;
@@ -97,6 +99,17 @@ class AppRoutes {
           return BaseRoute(
               page: BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),child:
               const ProfileView(),));
+          case editDataView:
+        final args = settings.arguments as Map<String, dynamic>;
+        return BaseRoute(
+          page: BlocProvider(
+            create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),
+            child: EditDataView(
+              viewModel: args['viewModel'],
+              step: args['step'],
+            ),
+          ),
+        );
       default:
         return BaseRoute(page: const PageUnderBuildScreen());    }
   }

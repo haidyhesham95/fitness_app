@@ -1,20 +1,16 @@
 import 'dart:io';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
-import 'package:fitness_app/features/profile/presentation/view_model/profile_actions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/networking/common/register_context_module.dart';
 import '../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../view_model/profile_view_model_cubit.dart';
 
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({super.key});
-
   final File? _image = null;
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileViewModelCubit, ProfileViewModelState>(
@@ -48,6 +44,9 @@ class ProfileInfo extends StatelessWidget {
           case EditProfileLoading():
           case EditProfileSuccess():
           case EditProfileError():
+          case UploadPhotoLoading():
+          case UploadPhotoError():
+          case UploadPhotoSuccess():
         }
         return Container();
       },
