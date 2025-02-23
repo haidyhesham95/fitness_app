@@ -1,8 +1,8 @@
-import 'package:fitness_app/features/smart_coach_chat/domain/entities/message.dart';
-
+import 'message.dart';
 class ChatModel {
   final int chatId;
+  final String chatTitle;
   final List<Message> messages;
 
-  ChatModel({required this.chatId, required this.messages});
+  ChatModel({required this.chatId, required this.messages, required this.chatTitle});
 }
