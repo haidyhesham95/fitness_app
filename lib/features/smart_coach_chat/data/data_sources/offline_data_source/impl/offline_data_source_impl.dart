@@ -11,13 +11,14 @@ class OfflineDataSourceImpl implements OfflineDataSource {
   @factoryMethod
   OfflineDataSourceImpl(this.isar);
   @override
-  Future<List<MessageIsar>> getMessages() async {
-    return await isar.messageIsars.where().findAll();
+  Future<List<ChatIsar>> getMessages() async {
+    return await isar.chatIsars.where().findAll();
   }
 
+
   @override
-  Future<void> saveMessages(List<MessageIsar> messages) async {
-    return await isar.writeTxn(() async => await isar.messageIsars.putAll(messages));
+  Future<void> saveMessages(List<ChatIsar> messages) async {
+    return await isar.writeTxn(() async => await isar.chatIsars.putAll(messages));
   }
 
 }
