@@ -122,11 +122,8 @@
   "titleHelpTwo": "Frequently Asked Questions",
   "descriptionHelpTwo": "Q: How do I start a workout?\nA: Select a workout and tap on it to begin.",
   "titleHelpThree": "Technical Support",
-  "descriptionHelpThree": "For assistance, you can contact us via email at support@fitnessapp.com."
-
-  "thisHelpsUsPersonalizeYourPlan": "This helps us personalize your plan",
+  "descriptionHelpThree": "For assistance, you can contact us via email at support@fitnessapp.com.",
   "explore": "Explore",
-  "profile": "Profile",
   "workouts": "Workouts",
   "chatAi": "Chat AI"
 }

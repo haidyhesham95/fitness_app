@@ -26,7 +26,6 @@ import '../utils/screens/under_build_screen.dart';
 
 class AppRoutes {
   static const String login = 'login';
-  static const String homeScreen = 'homeScreen';
   static const String forgetPasswordView = 'forgetPasswordView';
   static const String verifyOtpView = 'verifyOtpView';
   static const String createPasswordView = 'createPasswordView';
@@ -100,8 +99,6 @@ class AppRoutes {
         return BaseRoute(page: const PrivacyPage());
         case helpPage:
         return BaseRoute(page: const HelpPage());
-
-
         case homeLayout:
         return BaseRoute(page: const HomeLayout());
       default:

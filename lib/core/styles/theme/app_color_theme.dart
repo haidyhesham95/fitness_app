@@ -63,7 +63,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
       containerColor: containerBackground ?? this.containerColor,
       transparent: transparent ?? this.transparent,
       red: red ?? this.red,
-      bgColor: bgColor ?? this.bgColor,
       darkGray: darkGray ?? this.darkGray,
     );
   }
@@ -89,7 +88,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
         containerColor: containerColor,
         transparent: transparent,
         red: red,
-        bgColor: bgColor,
         darkGray: darkGray,
       );
     }
@@ -108,7 +106,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     containerColor: DarkColor.container,
     transparent: DarkColor.transparent,
     red: DarkColor.red,
-    bgColor: DarkColor.bgColor,
     darkGray: DarkColor.darkGray,
 
   );
@@ -126,7 +123,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     containerColor: LightColor.container,
     transparent: LightColor.transparent,
     red: LightColor.red,
-    bgColor: LightColor.bgColor,
     darkGray: LightColor.darkGray,
   );
 }

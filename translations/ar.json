@@ -122,11 +122,8 @@
   "titleHelpTwo": "الأسئلة الشائعة",
   "descriptionHelpTwo": "س: كيف أبدأ التمرين؟\nج: اختر التمرين واضغط عليه للبدء.",
   "titleHelpThree": "الدعم الفني",
-  "descriptionHelpThree": "للمساعدة، يمكنك التواصل معنا عبر البريد الإلكتروني: support@fitnessapp.com."
-
-  "thisHelpsUsPersonalizeYourPlan": "هذا يساعدنا في تخصيص خطتك",
+  "descriptionHelpThree": "للمساعدة، يمكنك التواصل معنا عبر البريد الإلكتروني: support@fitnessapp.com.",
   "explore": "تصفح",
-  "profile": "الصفحة الشخصية",
   "workouts": "تمارين",
   "chatAi": "دردشة AI"
 }

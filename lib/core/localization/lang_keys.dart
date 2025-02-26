@@ -114,9 +114,7 @@ class LangKeys {
   static const String descriptionHelpTwo = 'descriptionHelpTwo';
   static const String titleHelpThree = 'titleHelpThree';
   static const String descriptionHelpThree = 'descriptionHelpThree';
-
   static const String explore = 'explore';
-  static const String profile = 'profile';
   static const String workouts = 'workouts';
   static const String chatAi = 'chatAi';
 }

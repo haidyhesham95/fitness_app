@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/localization/lang_keys.dart';
+import '../../../profile/presentation/view/profile_view.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -19,7 +20,7 @@ class _HomeLayoutState extends State<HomeLayout> {
      Container(),
      Container(),
      Container(),
-     Container(),
+    const ProfileView()
   ];
 
   @override
@@ -70,7 +71,7 @@ class _HomeLayoutState extends State<HomeLayout> {
               ),
               BottomNavigationBarItem(
                 icon: const ImageIcon(
-                  AssetImage(Assets.imagesProfile),),
+                  AssetImage(Assets.imagesHomeProfile),),
                 label: context.translate(LangKeys.profile),
               ),
             ],
