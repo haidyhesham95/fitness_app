@@ -7,6 +7,7 @@ import 'package:fitness_app/features/auth/presentation/register/view/sign_up_vie
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
+import 'package:fitness_app/features/profile/presentation/widgets/security_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/forget_password/views/create_password_view.dart';
@@ -18,6 +19,8 @@ import '../../features/auth/presentation/register/view/gender/old_view.dart';
 import '../../features/auth/presentation/register/view/gender/weight_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/activity_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/goal_view.dart';
+import '../../features/profile/presentation/widgets/help_page.dart';
+import '../../features/profile/presentation/widgets/privcya_page.dart';
 import '../utils/screens/under_build_screen.dart';
 
 class AppRoutes {
@@ -36,6 +39,9 @@ class AppRoutes {
   static const String weightView = "weightView";
   static const String healthDataPage = "healthDataPage";
   static const String profileView = "profileView";
+  static const String securityPage = "securityPage";
+  static const String privacyPage = "privacyPage";
+  static const String helpPage = "helpPage";
   static Route<void> onGenerateRoute(RouteSettings settings) {
 
     final args = settings.arguments;
@@ -86,6 +92,13 @@ class AppRoutes {
         ));
         case profileView:
         return BaseRoute(page: const ProfileView());
+        case securityPage:
+        return BaseRoute(page: const SecurityPage());
+        case privacyPage:
+        return BaseRoute(page: const PrivacyPage());
+        case helpPage:
+        return BaseRoute(page: const HelpPage());
+
 
       default:
         return BaseRoute(page: const PageUnderBuildScreen());    }

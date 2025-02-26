@@ -92,5 +92,27 @@ class LangKeys {
   static const String yes = 'yes';
   static const String logOutDescription = 'logOutDescription';
   static const String logoutSuccessfully = 'logoutSuccessfully';
+  static const String titleSecurity = 'titleSecurity';
+  static const String descriptionSecurityOne = 'descriptionSecurityOne';
+  static const String titleSecurityTwo = 'titleSecurityTwo';
+  static const String descriptionSecurityTwo = 'descriptionSecurityTwo';
+  static const String titleSecurityThree = 'titleSecurityThree';
+  static const String descriptionSecurityThree = 'descriptionSecurityThree';
+  static const String titlePrivacy = 'titlePrivacy';
+  static const String descriptionPrivacy = 'descriptionPrivacy';
+  static const String titlePrivacyTwo = 'titlePrivacyTwo';
+  static const String descriptionPrivacyTwo = 'descriptionPrivacyTwo';
+  static const String titlePrivacyThree = 'titlePrivacyThree';
+  static const String descriptionPrivacyThree = 'descriptionPrivacyThree';
+  static const String titlePrivacyFour = 'titlePrivacyFour';
+  static const String descriptionPrivacyFour = 'descriptionPrivacyFour';
+  static const String titleHelp = 'titleHelp';
+  static const String descriptionHelp = 'descriptionHelp';
+  static const String titleHelpOne = 'titleHelpOne';
+  static const String descriptionHelpOne = 'descriptionHelpOne';
+  static const String titleHelpTwo = 'titleHelpTwo';
+  static const String descriptionHelpTwo = 'descriptionHelpTwo';
+  static const String titleHelpThree = 'titleHelpThree';
+  static const String descriptionHelpThree = 'descriptionHelpThree';
 
 }
