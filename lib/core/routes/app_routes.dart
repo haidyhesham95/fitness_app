@@ -5,6 +5,7 @@ import 'package:fitness_app/features/auth/presentation/login/viewModel/login_vie
 import 'package:fitness_app/features/auth/presentation/register/view/gender/gender_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
+import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/security_page.dart';
@@ -42,6 +43,7 @@ class AppRoutes {
   static const String securityPage = "securityPage";
   static const String privacyPage = "privacyPage";
   static const String helpPage = "helpPage";
+  static const String homeLayout = "homeLayout";
   static Route<void> onGenerateRoute(RouteSettings settings) {
 
     final args = settings.arguments;
@@ -100,6 +102,8 @@ class AppRoutes {
         return BaseRoute(page: const HelpPage());
 
 
+        case homeLayout:
+        return BaseRoute(page: const HomeLayout());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());    }
   }

@@ -51,6 +51,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
 
   }) {
     return AppColorTheme(
+      bgColor: bgColor ?? this.bgColor,
       baseColor: baseColor ?? this.baseColor,
       gray: gray ?? this.gray,
       hintText: hintText ?? this.hintText,
@@ -76,6 +77,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
       return this;
     } else {
       return AppColorTheme(
+        bgColor: bgColor,
         baseColor: baseColor,
         gray: gray,
         hintText: hintText,
@@ -94,6 +96,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
   }
 
   static const AppColorTheme dark = AppColorTheme(
+    bgColor: DarkColor.bgColor,
     baseColor: DarkColor.baseColor,
     gray: DarkColor.gray,
     hintText: DarkColor.hintStyle,
@@ -111,6 +114,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
   );
 
   static const AppColorTheme light = AppColorTheme(
+    bgColor: LightColor.bgColor,
     baseColor: LightColor.baseColor,
     gray: LightColor.gray,
     hintText: LightColor.hintStyle,
