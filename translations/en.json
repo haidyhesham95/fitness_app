@@ -92,6 +92,9 @@
   "howOldAreYou": "How old are you?",
   "whatIsYourHeight": "What is your height?",
   "whatIsYourWeight": "What is your weight?",
-  "thisHelpsUsPersonalizeYourPlan": "This helps us personalize your plan"
-
+  "thisHelpsUsPersonalizeYourPlan": "This helps us personalize your plan",
+  "explore": "Explore",
+  "profile": "Profile",
+  "workouts": "Workouts",
+  "chatAi": "Chat AI"
 }

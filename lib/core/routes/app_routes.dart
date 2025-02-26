@@ -5,6 +5,7 @@ import 'package:fitness_app/features/auth/presentation/login/viewModel/login_vie
 import 'package:fitness_app/features/auth/presentation/register/view/gender/gender_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
+import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +35,7 @@ class AppRoutes {
   static const String heightView = "heightView";
   static const String weightView = "weightView";
   static const String healthDataPage = "healthDataPage";
+  static const String homeLayout = "homeLayout";
   static Route<void> onGenerateRoute(RouteSettings settings) {
 
     final args = settings.arguments;
@@ -83,6 +85,8 @@ class AppRoutes {
         return BaseRoute(page:  HealthDataPage(
           viewModel: args as SignUpViewModel,
         ));
+        case homeLayout:
+        return BaseRoute(page: const HomeLayout());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());    }
   }
