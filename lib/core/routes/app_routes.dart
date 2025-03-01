@@ -5,6 +5,7 @@ import 'package:fitness_app/features/auth/presentation/login/viewModel/login_vie
 import 'package:fitness_app/features/auth/presentation/register/view/gender/gender_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
+import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_intro_view.dart';
@@ -40,6 +41,8 @@ class AppRoutes {
   static const String healthDataPage = "healthDataPage";
   static const String smartChatIntroView = "smartChatIntroView";
   static const String smartChatView = "smartChatView";
+  static const String homeLayout = "homeLayout";
+  static Route<void> onGenerateRoute(RouteSettings settings) {
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -108,6 +111,9 @@ class AppRoutes {
           create: (context) => getIt.get<SmartChatViewModel>(),
           child: const SmartChatView(),
         ));
+
+        case homeLayout:
+        return BaseRoute(page: const HomeLayout());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

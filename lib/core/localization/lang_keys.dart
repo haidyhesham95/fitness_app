@@ -83,5 +83,8 @@ class LangKeys {
   static const String smartCoach = 'smart_coach';
   static const String assistToday = 'assist_today';
   static const String getStarted = 'get_started';
-
+  static const String explore = 'explore';
+  static const String profile = 'profile';
+  static const String workouts = 'workouts';
+  static const String chatAi = 'chatAi';
 }

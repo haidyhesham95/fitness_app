@@ -14,5 +14,6 @@ class DarkColor {
   static const Color bg= Color(0xff242424);
   static const Color transparent = Color(0x00000000);
   static const Color red = Color(0xffCC0E00);
+  static const Color bgColor= Color(0xff242424);
 
 }
