@@ -1,4 +1,3 @@
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -9,78 +8,128 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:dio/dio.dart' as _i361;
-import 'package:flutter/material.dart' as _i409;
-import 'package:get_it/get_it.dart' as _i174;
-import 'package:injectable/injectable.dart' as _i526;
-import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
+import 'package:dio/dio.dart' as _i6;
+import 'package:flutter/material.dart' as _i9;
+import 'package:flutter_gemini/flutter_gemini.dart' as _i7;
+import 'package:get_it/get_it.dart' as _i1;
+import 'package:injectable/injectable.dart' as _i2;
+import 'package:isar/isar.dart' as _i10;
+import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i15;
 
-import '../core/app_cubit/app_cubit.dart' as _i693;
-import '../core/networking/api/api_manager.dart' as _i282;
-import '../core/networking/common/register_context_module.dart' as _i407;
-import '../core/networking/network_factory.dart' as _i377;
+import '../core/app_cubit/app_cubit.dart' as _i3;
+import '../core/networking/api/api_manager.dart' as _i20;
+import '../core/networking/common/register_context_module.dart' as _i35;
+import '../core/networking/network_factory.dart' as _i34;
+import '../core/services/gemini_helper.dart' as _i8;
+import '../core/services/isar_service.dart' as _i36;
 import '../features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart'
-    as _i551;
+    as _i4;
 import '../features/auth/data/data_sources/contracts/online_data_sources/auth_online_data_source.dart'
-    as _i97;
+    as _i21;
 import '../features/auth/data/data_sources/impl/auth_offline_data_source_impl.dart'
-    as _i1036;
+    as _i5;
 import '../features/auth/data/data_sources/impl/auth_online_data_source_impl.dart'
-    as _i326;
-import '../features/auth/data/repositories/auth_repo_impl.dart' as _i990;
-import '../features/auth/domain/contracts/auth_repo.dart' as _i665;
+    as _i22;
+import '../features/auth/data/repositories/auth_repo_impl.dart' as _i24;
+import '../features/auth/domain/contracts/auth_repo.dart' as _i23;
 import '../features/auth/domain/use_cases/forget_password_use_case.dart'
-    as _i230;
-import '../features/auth/domain/use_cases/login_use_case.dart' as _i496;
-import '../features/auth/domain/use_cases/signup_use_case.dart' as _i853;
+    as _i26;
+import '../features/auth/domain/use_cases/login_use_case.dart' as _i29;
+import '../features/auth/domain/use_cases/signup_use_case.dart' as _i31;
 import '../features/auth/presentation/forget_password/viewModel/forget_password_view_model_cubit.dart'
-    as _i289;
+    as _i27;
 import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dart'
-    as _i690;
+    as _i30;
 import '../features/auth/presentation/register/view_model/signup_view_model_cubit.dart'
-    as _i864;
+    as _i32;
+import '../features/smart_coach_chat/data/data_sources/offline_data_source/contracts/offline_data_source.dart'
+    as _i11;
+import '../features/smart_coach_chat/data/data_sources/offline_data_source/impl/offline_data_source_impl.dart'
+    as _i12;
+import '../features/smart_coach_chat/data/data_sources/online_data_source/contract/smart_chat_online_data_source.dart'
+    as _i16;
+import '../features/smart_coach_chat/data/data_sources/online_data_source/impl/smart_chat_data_source_impl.dart'
+    as _i17;
+import '../features/smart_coach_chat/data/repositories/offline/offline_repo_impl.dart'
+    as _i14;
+import '../features/smart_coach_chat/data/repositories/smart_chat_repo_impl.dart'
+    as _i19;
+import '../features/smart_coach_chat/domain/repositories/offline/offline_contracts.dart'
+    as _i13;
+import '../features/smart_coach_chat/domain/repositories/smart_chat_repo.dart'
+    as _i18;
+import '../features/smart_coach_chat/domain/use_cases/fetch_smart_chat_case.dart'
+    as _i25;
+import '../features/smart_coach_chat/domain/use_cases/offline/local_storage_use_case.dart'
+    as _i28;
+import '../features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart'
+    as _i33;
 
-extension GetItInjectableX on _i174.GetIt {
+extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
-  _i174.GetIt init({
+  Future<_i1.GetIt> init({
     String? environment,
-    _i526.EnvironmentFilter? environmentFilter,
-  }) {
-    final gh = _i526.GetItHelper(
+    _i2.EnvironmentFilter? environmentFilter,
+  }) async {
+    final gh = _i2.GetItHelper(
       this,
       environment,
       environmentFilter,
     );
     final networkFactory = _$NetworkFactory();
     final appModule = _$AppModule();
-    gh.factory<_i693.AppCubit>(() => _i693.AppCubit());
-    gh.factory<_i528.PrettyDioLogger>(() => networkFactory.prettyDioLogger());
-    gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
+    final isarModule = _$IsarModule();
+    gh.factory<_i3.AppCubit>(() => _i3.AppCubit());
+    gh.factory<_i4.AuthOfflineDataSource>(
+        () => _i5.AuthOfflineDataSourceImpl());
+    gh.lazySingleton<_i6.Dio>(() => networkFactory.provideDio());
+    gh.lazySingleton<_i7.Gemini>(() => appModule.provideGemini());
+    gh.singleton<_i8.GeminiHelper>(() => _i8.GeminiHelper(gh<_i7.Gemini>()));
+    gh.singleton<_i9.GlobalKey<_i9.NavigatorState>>(
         () => appModule.navigatorKey);
-    gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
-    gh.factory<_i551.AuthOfflineDataSource>(
-        () => _i1036.AuthOfflineDataSourceImpl());
-    gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
-    gh.factory<_i97.AuthOnlineDataSource>(
-        () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
-    gh.factory<_i665.AuthRepo>(
-        () => _i990.AuthRepoImpl(gh<_i97.AuthOnlineDataSource>()));
-    gh.factory<_i230.ForgetPasswordUseCase>(
-        () => _i230.ForgetPasswordUseCase(gh<_i665.AuthRepo>()));
-    gh.factory<_i496.LoginUseCase>(
-        () => _i496.LoginUseCase(gh<_i665.AuthRepo>()));
-    gh.factory<_i853.SignUpUseCase>(
-        () => _i853.SignUpUseCase(gh<_i665.AuthRepo>()));
-    gh.factory<_i289.ForgetPasswordViewModelCubit>(() =>
-        _i289.ForgetPasswordViewModelCubit(gh<_i230.ForgetPasswordUseCase>()));
-    gh.factory<_i864.SignUpViewModel>(
-        () => _i864.SignUpViewModel(gh<_i853.SignUpUseCase>()));
-    gh.factory<_i690.LoginViewModel>(
-        () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
+    await gh.factoryAsync<_i10.Isar>(
+      () => isarModule.isarProvider,
+      preResolve: true,
+    );
+    gh.factory<_i11.OfflineDataSource>(
+        () => _i12.OfflineDataSourceImpl(gh<_i10.Isar>()));
+    gh.factory<_i13.OfflineRepo>(
+        () => _i14.OfflineRepoImpl(gh<_i11.OfflineDataSource>()));
+    gh.factory<_i15.PrettyDioLogger>(() => networkFactory.prettyDioLogger());
+    gh.factory<_i16.SmartChatOnlineDataSource>(
+        () => _i17.SmartChatDataSourceImpl(gh<_i8.GeminiHelper>()));
+    gh.factory<_i18.SmartChatRepo>(
+        () => _i19.SmartChatRepoImpl(gh<_i16.SmartChatOnlineDataSource>()));
+    gh.singleton<_i20.ApiManager>(() => _i20.ApiManager(gh<_i6.Dio>()));
+    gh.factory<_i21.AuthOnlineDataSource>(
+        () => _i22.AuthOnlineDataSourceImpl(gh<_i20.ApiManager>()));
+    gh.factory<_i23.AuthRepo>(
+        () => _i24.AuthRepoImpl(gh<_i21.AuthOnlineDataSource>()));
+    gh.factory<_i25.FetchSmartChatCase>(
+        () => _i25.FetchSmartChatCase(gh<_i18.SmartChatRepo>()));
+    gh.factory<_i26.ForgetPasswordUseCase>(
+        () => _i26.ForgetPasswordUseCase(gh<_i23.AuthRepo>()));
+    gh.factory<_i27.ForgetPasswordViewModelCubit>(() =>
+        _i27.ForgetPasswordViewModelCubit(gh<_i26.ForgetPasswordUseCase>()));
+    gh.factory<_i28.IsarUseCase>(
+        () => _i28.IsarUseCase(gh<_i13.OfflineRepo>()));
+    gh.factory<_i29.LoginUseCase>(() => _i29.LoginUseCase(gh<_i23.AuthRepo>()));
+    gh.factory<_i30.LoginViewModel>(
+        () => _i30.LoginViewModel(gh<_i29.LoginUseCase>()));
+    gh.factory<_i31.SignUpUseCase>(
+        () => _i31.SignUpUseCase(gh<_i23.AuthRepo>()));
+    gh.factory<_i32.SignUpViewModel>(
+        () => _i32.SignUpViewModel(gh<_i31.SignUpUseCase>()));
+    gh.factory<_i33.SmartChatViewModel>(() => _i33.SmartChatViewModel(
+          gh<_i25.FetchSmartChatCase>(),
+          gh<_i28.IsarUseCase>(),
+        ));
     return this;
   }
 }
 
-class _$NetworkFactory extends _i377.NetworkFactory {}
+class _$NetworkFactory extends _i34.NetworkFactory {}
 
-class _$AppModule extends _i407.AppModule {}
+class _$AppModule extends _i35.AppModule {}
+
+class _$IsarModule extends _i36.IsarModule {}
