@@ -577,18 +577,23 @@ const MessageIsarSchema = Schema(
   name: r'MessageIsar',
   id: 3260995708908258659,
   properties: {
-    r'imageUrl': PropertySchema(
+    r'imageFile': PropertySchema(
       id: 0,
+      name: r'imageFile',
+      type: IsarType.string,
+    ),
+    r'imageUrl': PropertySchema(
+      id: 1,
       name: r'imageUrl',
       type: IsarType.string,
     ),
     r'isUser': PropertySchema(
-      id: 1,
+      id: 2,
       name: r'isUser',
       type: IsarType.bool,
     ),
     r'text': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'text',
       type: IsarType.string,
     )
@@ -605,6 +610,7 @@ int _messageIsarEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
+  bytesCount += 3 + object.imageFile.length * 3;
   {
     final value = object.imageUrl;
     if (value != null) {
@@ -626,9 +632,10 @@ void _messageIsarSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeString(offsets[0], object.imageUrl);
-  writer.writeBool(offsets[1], object.isUser);
-  writer.writeString(offsets[2], object.text);
+  writer.writeString(offsets[0], object.imageFile);
+  writer.writeString(offsets[1], object.imageUrl);
+  writer.writeBool(offsets[2], object.isUser);
+  writer.writeString(offsets[3], object.text);
 }
 
 MessageIsar _messageIsarDeserialize(
@@ -638,9 +645,10 @@ MessageIsar _messageIsarDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = MessageIsar(
-    imageUrl: reader.readStringOrNull(offsets[0]),
-    isUser: reader.readBoolOrNull(offsets[1]),
-    text: reader.readStringOrNull(offsets[2]),
+    imageFile: reader.readStringOrNull(offsets[0]) ?? '',
+    imageUrl: reader.readStringOrNull(offsets[1]),
+    isUser: reader.readBoolOrNull(offsets[2]),
+    text: reader.readStringOrNull(offsets[3]),
   );
   return object;
 }
@@ -653,10 +661,12 @@ P _messageIsarDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 1:
-      return (reader.readBoolOrNull(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 2:
+      return (reader.readBoolOrNull(offset)) as P;
+    case 3:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -665,6 +675,142 @@ P _messageIsarDeserializeProp<P>(
 
 extension MessageIsarQueryFilter
     on QueryBuilder<MessageIsar, MessageIsar, QFilterCondition> {
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'imageFile',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'imageFile',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'imageFile',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'imageFile',
+        value: '',
+      ));
+    });
+  }
+
   QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
       imageUrlIsNull() {
     return QueryBuilder.apply(this, (query) {

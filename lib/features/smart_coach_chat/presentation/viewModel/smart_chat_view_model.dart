@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/features/smart_coach_chat/data/mappers/offline/message_mapper.dart';
@@ -13,36 +15,33 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
   final FetchSmartChatCase fetchSmartChatUseCase;
   final IsarUseCase _isarUseCase;
 
-  SmartChatViewModel(this.fetchSmartChatUseCase, this._isarUseCase) : super(SmartChatInitial());
+  SmartChatViewModel(this.fetchSmartChatUseCase, this._isarUseCase)
+      : super(SmartChatInitial());
   List<SmartChatResponseEntity> chatMessages = [];
-
 
   Future<void> doAction(SmartChatAction action) async {
     switch (action) {
       case SendMessageAction():
-        await _sendMessage(action.prompt, action.userImageUrl);
+        await _sendMessage(action.prompt, action.userImageUrl, action.image);
     }
   }
 
-  Future<void> _sendMessage(String prompt, String userImageUrl) async {
+  Future<void> _sendMessage(
+      String prompt, String userImageUrl, File? imageFile) async {
+    final responseStream =
+        fetchSmartChatUseCase.call(prompt, userImageUrl, imageFile);
 
-
-    final responseStream = fetchSmartChatUseCase.call(prompt, userImageUrl);
-
-    responseStream.listen((result) {
+    responseStream.listen((result) async {
       switch (result) {
         case Success<List<SmartChatResponseEntity>>():
-
-        // Ensure AI response isn't added twice
           for (var msg in result.data) {
-
             if (!chatMessages.contains(msg)) {
               chatMessages.add(msg);
-              _isarUseCase.saveMessages(MessageMapper.toChatIsarList(chatMessages));
+              await _isarUseCase.saveMessages(
+                  await MessageMapper.toChatIsarList(chatMessages));
             }
           }
-
-          emit(SmartChatSuccess(List.from(chatMessages))); // UI update
+          emit(SmartChatSuccess(List.from(chatMessages)));
         case Fail<List<SmartChatResponseEntity>>():
           emit(SmartChatError(result.exception.toString()));
       }

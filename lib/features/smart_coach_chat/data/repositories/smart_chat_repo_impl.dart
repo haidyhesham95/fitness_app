@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/features/smart_coach_chat/data/data_sources/online_data_source/contract/smart_chat_online_data_source.dart';
 import 'package:fitness_app/features/smart_coach_chat/domain/entities/smart_chat_response_entity.dart';
@@ -12,7 +14,7 @@ class SmartChatRepoImpl implements SmartChatRepo {
 
   @override
   Stream<DataResult<List<SmartChatResponseEntity>>> fetchSmartChatResponse(
-      String prompt, String userImageUrl) {
-    return _dataSource.fetchSmartChatResponse(prompt, userImageUrl);
+      String prompt, String userImageUrl, File? imageFile) {
+    return _dataSource.fetchSmartChatResponse(prompt, userImageUrl, imageFile);
   }
 }

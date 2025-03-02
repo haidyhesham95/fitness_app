@@ -21,34 +21,56 @@ class ChatBubble extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           mainAxisAlignment:
-              isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+          isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [
             if (!isUser) AvatarWithShadow(imageUrl: message.senderImageUrl),
             horizontalSpacing(10.w),
             Flexible(
-              child: CustomGlassyContainer(
-
-                  color: isUser ? context.colors.baseColor : Colors.black38,
-                  borderRadius: BorderRadius.only(
+              child: Column(
+                crossAxisAlignment:
+                isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                children: [
+                  // Display the image if it exists
+                  if (message.imageFile != null)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.file(
+                          message.imageFile!,
+                          width: 200.w, // Adjust the width as needed
+                          height: 200.h, // Adjust the height as needed
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  // Display the text message
+                  CustomGlassyContainer(
+                    color: isUser ? context.colors.baseColor : Colors.black38,
+                    borderRadius: BorderRadius.only(
                       topLeft: const Radius.circular(15),
                       topRight: const Radius.circular(15),
                       bottomLeft: Radius.circular(isUser ? 15 : 0),
-                      bottomRight: Radius.circular(isUser ? 0 : 15)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(message.text,
-                      style:  MyFonts.styleRegular400_18.copyWith(color: context.colors.white)),
-                ),
+                      bottomRight: Radius.circular(isUser ? 0 : 15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        message.text,
+                        style: MyFonts.styleRegular400_18.copyWith(
+                          color: context.colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             horizontalSpacing(10.w),
-
             if (isUser) AvatarWithShadow(imageUrl: message.senderImageUrl),
           ],
         ),
       ),
     );
   }
-
-
 }
