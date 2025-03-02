@@ -9,8 +9,12 @@ import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/security_page.dart';
+import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
+import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_intro_view.dart';
+import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../features/auth/presentation/forget_password/views/create_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/forget_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/verify_otp_view.dart';
@@ -42,21 +46,30 @@ class AppRoutes {
   static const String securityPage = "securityPage";
   static const String privacyPage = "privacyPage";
   static const String helpPage = "helpPage";
+  static const String smartChatIntroView = "smartChatIntroView";
+  static const String smartChatView = "smartChatView";
   static const String homeLayout = "homeLayout";
   static Route<void> onGenerateRoute(RouteSettings settings) {
 
+  static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
          case login:
+      case homeScreen:
+      case login:
         return BaseRoute(
-            page: BlocProvider(create: (context) => getIt.get<LoginViewModel>(),child:
-              const LoginView(),));
-       case signUp:
-         return BaseRoute(
-             page: BlocProvider(create: (context) => getIt.get<SignUpViewModel>(),child:
-             const SignUpView(),));
+            page: BlocProvider(
+          create: (context) => getIt.get<LoginViewModel>(),
+          child: const LoginView(),
+        ));
+      case signUp:
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) => getIt.get<SignUpViewModel>(),
+          child: const SignUpView(),
+        ));
       case onBoarding:
-        return BaseRoute(page:  OnboardingScreen());
+        return BaseRoute(page: OnboardingScreen());
       case forgetPasswordView:
         return BaseRoute(page: const ForgetPasswordView());
       case verifyOtpView:
@@ -64,31 +77,38 @@ class AppRoutes {
       case createPasswordView:
         return BaseRoute(page: const CreatePasswordView());
       case goalView:
-        return BaseRoute(page:  GoalView(
+        return BaseRoute(
+            page: GoalView(
           viewModel: args as SignUpViewModel,
         ));
       case activityView:
-        return BaseRoute(page:  ActivityView(
+        return BaseRoute(
+            page: ActivityView(
           viewModel: args as SignUpViewModel,
         ));
-        case genderView:
-        return BaseRoute(page:  GenderView(
+      case genderView:
+        return BaseRoute(
+            page: GenderView(
           viewModel: args as SignUpViewModel,
         ));
-        case oldView:
-        return BaseRoute(page:  OldView(
+      case oldView:
+        return BaseRoute(
+            page: OldView(
           viewModel: args as SignUpViewModel,
         ));
-        case heightView:
-        return BaseRoute(page:  HeightView(
+      case heightView:
+        return BaseRoute(
+            page: HeightView(
           viewModel: args as SignUpViewModel,
         ));
-        case weightView:
-        return BaseRoute(page: WeightView(
+      case weightView:
+        return BaseRoute(
+            page: WeightView(
           viewModel: args as SignUpViewModel,
         ));
-        case healthDataPage:
-        return BaseRoute(page:  HealthDataView(
+      case healthDataPage:
+        return BaseRoute(
+            page: HealthDataView(
           viewModel: args as SignUpViewModel,
         ));
         case profileView:
@@ -99,9 +119,19 @@ class AppRoutes {
         return BaseRoute(page: const PrivacyPage());
         case helpPage:
         return BaseRoute(page: const HelpPage());
+      case smartChatIntroView:
+        return BaseRoute(page: const SmartChatIntroView());
+      case smartChatView:
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) => getIt.get<SmartChatViewModel>(),
+          child: const SmartChatView(),
+        ));
+
         case homeLayout:
         return BaseRoute(page: const HomeLayout());
       default:
-        return BaseRoute(page: const PageUnderBuildScreen());    }
+        return BaseRoute(page: const PageUnderBuildScreen());
+    }
   }
 }

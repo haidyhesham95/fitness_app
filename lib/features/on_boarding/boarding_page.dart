@@ -35,20 +35,20 @@ class BoardingPage extends StatelessWidget {
             ),
           ),
           Positioned(
-            height: context.height * .28,
+            height: context.height * .30,
             bottom: 0,
             right: 0,
             left: 0,
             child: CustomGlassyContainer(
-              height: context.height * .28,
+              height: context.height * .3,
               blur: 12.5,
               borderRadius: const BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50)),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 15),
+                padding:  EdgeInsets.symmetric(vertical: 10.0.h,horizontal: 15.h),
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      padding:  EdgeInsets.symmetric(horizontal: 10.w),
                       child: FadeInUp(
                         duration: const Duration(milliseconds: 700),
                         child: Text(
