@@ -76,17 +76,23 @@ class SettingList extends StatelessWidget {
       SettingItem(
         text: context.translate(LangKeys.security),
         icon: Assets.imagesLockSetting,
-        onTap: () {},
+        onTap: () {
+          context.pushNamed(AppRoutes.securityPage);
+        },
       ),
       SettingItem(
         text: context.translate(LangKeys.privacyPolicy),
         icon: Assets.imagesSecurityWarning,
-        onTap: () {},
+        onTap: () {
+          context.pushNamed(AppRoutes.privacyPage);
+        },
       ),
       SettingItem(
         text: context.translate(LangKeys.help),
         icon: Assets.imagesHelp,
-        onTap: () {},
+        onTap: () {
+          context.pushNamed(AppRoutes.helpPage);
+        },
       ),
       SettingItem(
         text: context.translate(LangKeys.logout),

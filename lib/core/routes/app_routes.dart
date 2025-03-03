@@ -5,7 +5,13 @@ import 'package:fitness_app/features/auth/presentation/login/viewModel/login_vie
 import 'package:fitness_app/features/auth/presentation/register/view/gender/gender_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
+import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
+import 'package:fitness_app/features/profile/presentation/widgets/help_page.dart';
+import 'package:fitness_app/features/profile/presentation/widgets/privcya_page.dart';
+import 'package:fitness_app/features/profile/presentation/widgets/security_page.dart';
+import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
+import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_view.dart';
 import 'package:fitness_app/features/profile/presentation/view/edit_data_view.dart';
 import 'package:fitness_app/features/profile/presentation/view/edit_profile_view.dart';
 import 'package:fitness_app/features/profile/presentation/view_model/profile_actions.dart';
@@ -26,7 +32,6 @@ import '../utils/screens/under_build_screen.dart';
 
 class AppRoutes {
   static const String login = 'login';
-  static const String homeScreen = 'homeScreen';
   static const String forgetPasswordView = 'forgetPasswordView';
   static const String verifyOtpView = 'verifyOtpView';
   static const String createPasswordView = 'createPasswordView';
@@ -41,22 +46,29 @@ class AppRoutes {
   static const String editProfileView = "editProfileView";
   static const String healthDataPage = "healthDataPage";
   static const String profileView = "profileView";
+  static const String securityPage = "securityPage";
+  static const String privacyPage = "privacyPage";
+  static const String helpPage = "helpPage";
+  static const String smartChatIntroView = "smartChatIntroView";
+  static const String smartChatView = "smartChatView";
+  static const String homeLayout = "homeLayout";
   static const String editDataView = "editDataView";
   static Route<void> onGenerateRoute(RouteSettings settings) {
-
     final args = settings.arguments;
     switch (settings.name) {
 
       case login:
         return BaseRoute(
-            page: BlocProvider(create: (context) => getIt.get<LoginViewModel>(),child:
-            const LoginView(),));
+            page: BlocProvider(
+          create: (context) => getIt.get<LoginViewModel>(),
+           child: const LoginView(),));
       case signUp:
         return BaseRoute(
-            page: BlocProvider(create: (context) => getIt.get<SignUpViewModel>(),child:
-            const SignUpView(),));
+            page: BlocProvider(create: (context) => getIt.get<SignUpViewModel>(),
+           child: const SignUpView(),
+        ));
       case onBoarding:
-        return BaseRoute(page:  OnboardingScreen());
+        return BaseRoute(page: OnboardingScreen());
       case forgetPasswordView:
         return BaseRoute(page: const ForgetPasswordView());
       case verifyOtpView:
@@ -64,27 +76,33 @@ class AppRoutes {
       case createPasswordView:
         return BaseRoute(page: const CreatePasswordView());
       case goalView:
-        return BaseRoute(page:  GoalView(
+        return BaseRoute(
+            page: GoalView(
           viewModel: args as SignUpViewModel,
         ));
       case activityView:
-        return BaseRoute(page:  ActivityView(
+        return BaseRoute(
+            page: ActivityView(
           viewModel: args as SignUpViewModel,
         ));
       case genderView:
-        return BaseRoute(page:  GenderView(
+        return BaseRoute(
+            page: GenderView(
           viewModel: args as SignUpViewModel,
         ));
       case oldView:
-        return BaseRoute(page:  OldView(
+        return BaseRoute(
+            page: OldView(
           viewModel: args as SignUpViewModel,
         ));
       case heightView:
-        return BaseRoute(page:  HeightView(
+        return BaseRoute(
+            page: HeightView(
           viewModel: args as SignUpViewModel,
         ));
       case weightView:
-        return BaseRoute(page: WeightView(
+        return BaseRoute(
+            page: WeightView(
           viewModel: args as SignUpViewModel,
         ));
       case editProfileView:
@@ -110,7 +128,22 @@ class AppRoutes {
             ),
           ),
         );
+      case securityPage:
+        return BaseRoute(page: const SecurityPage());
+      case privacyPage:
+        return BaseRoute(page: const PrivacyPage());
+      case helpPage:
+        return BaseRoute(page: const HelpPage());
+      case smartChatView:
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) => getIt.get<SmartChatViewModel>(),
+          child: const SmartChatView(),
+        ));
+      case homeLayout:
+        return BaseRoute(page: const HomeLayout());
       default:
-        return BaseRoute(page: const PageUnderBuildScreen());    }
+        return BaseRoute(page: const PageUnderBuildScreen());
+    }
   }
 }

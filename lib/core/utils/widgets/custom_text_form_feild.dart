@@ -10,7 +10,8 @@ class CustomTextFormField extends StatelessWidget {
       this.controller,
       this.validator,
       this.suffixIcon,
-      this.isPassword});
+      this.isPassword,
+      this.onFieldSubmitted});
 
   final String hintTxt;
   final IconData? icon;
@@ -18,6 +19,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Widget? suffixIcon;
   final bool? isPassword;
+  final void Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,7 @@ class CustomTextFormField extends StatelessWidget {
             borderSide: const BorderSide(color: Colors.white),
           ),
         ),
+        onFieldSubmitted: onFieldSubmitted,
       ),
     );
   }

@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Use a compatible AGP version
+        classpath 'com.android.tools.build:gradle:8.1.1'
+    }
+}
+
 allprojects {
     repositories {
         google()
@@ -5,14 +16,20 @@ allprojects {
     }
 }
 
+
 rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
     project.evaluationDependsOn(":app")
-}
 
+
+    project.plugins.withId('com.android.library') {
+        android {
+            namespace = "com.example.fitness_app.${project.name}"
+            compileSdk 34
+        }
+    }
+}
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
