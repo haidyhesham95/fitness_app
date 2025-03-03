@@ -33,13 +33,6 @@ class SmartChatDataSourceImpl implements SmartChatOnlineDataSource {
           return Fail(Exception("Empty response from Gemini"));
         }
 
-        final botResponseModel = SmartChatModelResponse(
-          text: event.output!,
-          isUser: false,
-          senderImageUrl: Assets.imagesBot,
-          imageFile: imageFile,
-        );
-
         final userRequestModel = SmartChatModelResponse(
           text: prompt,
           isUser: true,
@@ -47,10 +40,17 @@ class SmartChatDataSourceImpl implements SmartChatOnlineDataSource {
           imageFile: imageFile,
         );
 
+        final botResponseModel = SmartChatModelResponse(
+          text: event.output!,
+          isUser: false,
+          senderImageUrl: Assets.imagesBot,
+          imageFile: null,
+        );
+
         final userRequestEntity =
-            SmartChatMappers.mapToEntity(userRequestModel);
+        SmartChatMappers.mapToEntity(userRequestModel);
         final botResponseEntity =
-            SmartChatMappers.mapToEntity(botResponseModel);
+        SmartChatMappers.mapToEntity(botResponseModel);
 
         return Success([userRequestEntity, botResponseEntity]);
       });
@@ -58,4 +58,5 @@ class SmartChatDataSourceImpl implements SmartChatOnlineDataSource {
       return Stream.value(Fail(e as Exception?));
     }
   }
+
 }
