@@ -7,6 +7,8 @@ import 'package:fitness_app/features/auth/domain/entities/response/login_respons
 import 'package:fitness_app/features/auth/domain/use_cases/login_use_case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../../core/networking/common/register_context_module.dart';
+import '../../../data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart';
 import 'login_action.dart';
 part 'login_view_model_state.dart';
 
@@ -16,6 +18,8 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   GlobalKey<FormState> signInFormKey = GlobalKey<FormState>();
+  final AuthOfflineDataSource _offlineDataSource = getIt<AuthOfflineDataSource>();
+
 
   LoginViewModel(this._loginUseCase) : super(LoginViewModelInitial());
 
@@ -31,6 +35,7 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
     var result = await _loginUseCase.login(action.request);
     switch (result) {
       case Success<LoginResponseEntity>():
+        await _offlineDataSource.cacheToken(result.data.token ?? "");
         emit(LoginViewModelSuccess(result.data));
       case Fail<LoginResponseEntity>():
         emit(LoginViewModelError(ErrorHandler.handle(result.exception!)));

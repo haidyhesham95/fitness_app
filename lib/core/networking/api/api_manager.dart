@@ -12,6 +12,7 @@ import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
 import '../../../features/auth/data/models/request/forget_password_request_dto.dart';
+import '../../../features/profile/data/models/response/profile_response_model.dart';
 import 'api_constants.dart';
 part 'api_manager.g.dart';
 
@@ -36,4 +37,6 @@ abstract class  ApiManager {
   @PUT(ApiConstants.resetPassword)
   Future<ResetPasswordResponseDto> resetPassword(
       @Body() ResetPasswordRequestDto request);
+  @GET(ApiConstants.profileData)
+  Future<ProfileResponseDto> getLoggedUserData();
 }
