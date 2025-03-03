@@ -10,7 +10,6 @@ import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/sma
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../features/auth/presentation/forget_password/views/create_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/forget_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/verify_otp_view.dart';
