@@ -40,7 +40,7 @@ Widget loginWidget(BuildContext context) {
         txt: context.translate(LangKeys.login),
         width: double.infinity,
         onPressed: () {
-          cubit.signInButtonPressed();
+          cubit.signInButtonPressed(context);
           Navigator.pushReplacementNamed(context, AppRoutes.profileView);
         },
       ),

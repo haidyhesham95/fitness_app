@@ -18,10 +18,10 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i15;
 
 import '../core/app_cubit/app_cubit.dart' as _i3;
 import '../core/networking/api/api_manager.dart' as _i20;
-import '../core/networking/common/register_context_module.dart' as _i41;
-import '../core/networking/network_factory.dart' as _i40;
+import '../core/networking/common/register_context_module.dart' as _i43;
+import '../core/networking/network_factory.dart' as _i42;
 import '../core/services/gemini_helper.dart' as _i8;
-import '../core/services/isar_service.dart' as _i42;
+import '../core/services/isar_service.dart' as _i44;
 import '../features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart'
     as _i4;
 import '../features/auth/data/data_sources/contracts/online_data_sources/auth_online_data_source.dart'
@@ -35,22 +35,26 @@ import '../features/auth/domain/contracts/auth_repo.dart' as _i23;
 import '../features/auth/domain/use_cases/forget_password_use_case.dart'
     as _i26;
 import '../features/auth/domain/use_cases/login_use_case.dart' as _i29;
-import '../features/auth/domain/use_cases/signup_use_case.dart' as _i37;
+import '../features/auth/domain/use_cases/signup_use_case.dart' as _i36;
 import '../features/auth/presentation/forget_password/viewModel/forget_password_view_model_cubit.dart'
     as _i27;
 import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dart'
     as _i30;
 import '../features/auth/presentation/register/view_model/signup_view_model_cubit.dart'
-    as _i38;
+    as _i37;
 import '../features/profile/data/data_sources/contracts/online_data_sources/profile_online_data_source.dart'
     as _i31;
 import '../features/profile/data/data_sources/impl/profile_online_data_source_impl.dart'
     as _i32;
 import '../features/profile/data/repositories/profile_repo_impl.dart' as _i34;
-import '../features/profile/domain/contracts/profile_repo.dart' as _i33;
-import '../features/profile/domain/use_cases/profile_use_cases.dart' as _i35;
+import '../features/profile/domain/repositories/profile_repo.dart' as _i33;
+import '../features/profile/domain/use_cases/edit_profile_use_case.dart'
+    as _i40;
+import '../features/profile/domain/use_cases/profile_use_case.dart' as _i35;
+import '../features/profile/domain/use_cases/upload_photo_use_case.dart'
+    as _i39;
 import '../features/profile/presentation/view_model/profile_view_model_cubit.dart'
-    as _i36;
+    as _i41;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/contracts/offline_data_source.dart'
     as _i11;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/impl/offline_data_source_impl.dart'
@@ -72,7 +76,7 @@ import '../features/smart_coach_chat/domain/use_cases/fetch_smart_chat_case.dart
 import '../features/smart_coach_chat/domain/use_cases/offline/local_storage_use_case.dart'
     as _i28;
 import '../features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart'
-    as _i39;
+    as _i38;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -129,24 +133,32 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i32.ProfileOnlineDataSourceImpl(gh<_i20.ApiManager>()));
     gh.factory<_i33.ProfileRepo>(
         () => _i34.ProfileRepoImpl(gh<_i31.ProfileOnlineDataSource>()));
-    gh.factory<_i35.ProfileUseCases>(
-        () => _i35.ProfileUseCases(gh<_i33.ProfileRepo>()));
-    gh.factory<_i36.ProfileViewModelCubit>(
-        () => _i36.ProfileViewModelCubit(gh<_i35.ProfileUseCases>()));
-    gh.factory<_i37.SignUpUseCase>(
-        () => _i37.SignUpUseCase(gh<_i23.AuthRepo>()));
-    gh.factory<_i38.SignUpViewModel>(
-        () => _i38.SignUpViewModel(gh<_i37.SignUpUseCase>()));
-    gh.factory<_i39.SmartChatViewModel>(() => _i39.SmartChatViewModel(
+    gh.factory<_i35.ProfileUseCase>(
+        () => _i35.ProfileUseCase(gh<_i33.ProfileRepo>()));
+    gh.factory<_i36.SignUpUseCase>(
+        () => _i36.SignUpUseCase(gh<_i23.AuthRepo>()));
+    gh.factory<_i37.SignUpViewModel>(
+        () => _i37.SignUpViewModel(gh<_i36.SignUpUseCase>()));
+    gh.factory<_i38.SmartChatViewModel>(() => _i38.SmartChatViewModel(
           gh<_i25.FetchSmartChatCase>(),
           gh<_i28.IsarUseCase>(),
+        ));
+    gh.factory<_i39.UploadPhotoUseCase>(
+        () => _i39.UploadPhotoUseCase(gh<_i33.ProfileRepo>()));
+    gh.factory<_i40.EditProfileUseCase>(
+        () => _i40.EditProfileUseCase(gh<_i33.ProfileRepo>()));
+    gh.factory<_i41.ProfileViewModelCubit>(() => _i41.ProfileViewModelCubit(
+          gh<_i35.ProfileUseCase>(),
+          gh<_i4.AuthOfflineDataSource>(),
+          gh<_i40.EditProfileUseCase>(),
+          gh<_i39.UploadPhotoUseCase>(),
         ));
     return this;
   }
 }
 
-class _$NetworkFactory extends _i40.NetworkFactory {}
+class _$NetworkFactory extends _i42.NetworkFactory {}
 
-class _$AppModule extends _i41.AppModule {}
+class _$AppModule extends _i43.AppModule {}
 
-class _$IsarModule extends _i42.IsarModule {}
+class _$IsarModule extends _i44.IsarModule {}

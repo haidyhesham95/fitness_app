@@ -2,9 +2,7 @@ import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../../core/styles/fonts/my_fonts.dart';
-
 
 class SettingItem extends StatelessWidget {
   const SettingItem({
