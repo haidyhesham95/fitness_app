@@ -5,12 +5,8 @@ import 'package:fitness_app/features/auth/presentation/login/viewModel/login_vie
 import 'package:fitness_app/features/auth/presentation/register/view/gender/gender_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
-import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
-import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
-import 'package:fitness_app/features/profile/presentation/widgets/security_page.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
-import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_intro_view.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,8 +20,11 @@ import '../../features/auth/presentation/register/view/gender/old_view.dart';
 import '../../features/auth/presentation/register/view/gender/weight_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/activity_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/goal_view.dart';
+import '../../features/home/presentation/views/home_layout.dart';
+import '../../features/profile/presentation/view/profile_view.dart';
 import '../../features/profile/presentation/widgets/help_page.dart';
 import '../../features/profile/presentation/widgets/privcya_page.dart';
+import '../../features/profile/presentation/widgets/security_page.dart';
 import '../utils/screens/under_build_screen.dart';
 
 class AppRoutes {
@@ -49,13 +48,10 @@ class AppRoutes {
   static const String smartChatIntroView = "smartChatIntroView";
   static const String smartChatView = "smartChatView";
   static const String homeLayout = "homeLayout";
-  static Route<void> onGenerateRoute(RouteSettings settings) {
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
-         case login:
-      case homeScreen:
       case login:
         return BaseRoute(
             page: BlocProvider(
@@ -111,24 +107,21 @@ class AppRoutes {
             page: HealthDataView(
           viewModel: args as SignUpViewModel,
         ));
-        case profileView:
+      case profileView:
         return BaseRoute(page: const ProfileView());
-        case securityPage:
+      case securityPage:
         return BaseRoute(page: const SecurityPage());
-        case privacyPage:
+      case privacyPage:
         return BaseRoute(page: const PrivacyPage());
-        case helpPage:
+      case helpPage:
         return BaseRoute(page: const HelpPage());
-      case smartChatIntroView:
-        return BaseRoute(page: const SmartChatIntroView());
       case smartChatView:
         return BaseRoute(
             page: BlocProvider(
           create: (context) => getIt.get<SmartChatViewModel>(),
           child: const SmartChatView(),
         ));
-
-        case homeLayout:
+      case homeLayout:
         return BaseRoute(page: const HomeLayout());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());

@@ -99,7 +99,7 @@
   "smart_coach_bot": "I Am Your Smart Coach",
   "smart_coach": "Smart Coach",
   "assist_today": "How Can I Assist You Today?",
-  "get_started": "Get Started"
+  "get_started": "Get Started",
   "explore": "Explore",
   "profile": "Profile",
   "no": "No",
@@ -128,7 +128,6 @@
   "descriptionHelpTwo": "Q: How do I start a workout?\nA: Select a workout and tap on it to begin.",
   "titleHelpThree": "Technical Support",
   "descriptionHelpThree": "For assistance, you can contact us via email at support@fitnessapp.com.",
-  "explore": "Explore",
   "workouts": "Workouts",
   "chatAi": "Chat AI"
 }

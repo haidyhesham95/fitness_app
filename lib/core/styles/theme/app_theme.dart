@@ -8,10 +8,7 @@ ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: LightColor.bgColor,
   fontFamily: 'BalooThambi2',
   appBarTheme: const AppBarTheme(color: LightColor.transparent),
-  appBarTheme: const AppBarTheme(
-    color: LightColor.transparent,
 
-  ),
 
 
   // Text and icons colors
@@ -25,10 +22,6 @@ ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: DarkColor.bgColor,
   fontFamily: 'BalooThambi2',
   appBarTheme: const AppBarTheme(color: DarkColor.transparent),
-  scaffoldBackgroundColor: DarkColor.bg,
-  appBarTheme: const AppBarTheme(color: DarkColor.transparent,
-
-  ),
   extensions:  <ThemeExtension<dynamic>>[
     AppColorTheme.dark,
 
