@@ -6,12 +6,15 @@ import 'package:fitness_app/features/smart_coach_chat/domain/use_cases/fetch_sma
 import 'package:fitness_app/features/smart_coach_chat/domain/use_cases/offline/local_storage_use_case.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_action.dart';
 import 'package:injectable/injectable.dart';
+import 'package:isar/isar.dart';
 import 'smart_chat_state.dart';
 
 @injectable
 class SmartChatViewModel extends Cubit<SmartChatState> {
   final FetchSmartChatCase fetchSmartChatUseCase;
   final IsarUseCase _isarUseCase;
+  List<String> titles = [];
+  final List<Id> chatIds = [];
 
   SmartChatViewModel(this.fetchSmartChatUseCase, this._isarUseCase) : super(SmartChatInitial());
   List<SmartChatResponseEntity> chatMessages = [];
@@ -21,10 +24,16 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
     switch (action) {
       case SendMessageAction():
         await _sendMessage(action.prompt, action.userImageUrl);
+        break;
+      case SaveMessagesAction():
+        _saveMessages();
+        break;
+      case GetTitlesAction():
+        _getTitles();
+        break;
     }
   }
   Future<void> _sendMessage(String prompt, String userImageUrl) async {
-
     final responseStream = fetchSmartChatUseCase.call(prompt, userImageUrl);
     responseStream.listen((result) {
       switch (result) {
@@ -41,30 +50,15 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
     });
   }
 
-  void saveMessages() {
+  void _saveMessages() {
     if (chatMessages.isNotEmpty) {
       _isarUseCase.saveMessages([MessageMapper.toChatIsarList(chatMessages)]);
     }
   }
 
-  Future<void> fetchSavedChats() async {
-    emit(SmartChatLoading());
+  Future<void> _getTitles() async {
     final savedChats = await _isarUseCase.getMessages();
-    if (savedChats.isNotEmpty) {
-      final titles = savedChats.map((chat) => chat.chatTitle).toList();
-      final chatIds = savedChats
-          .map((chat) => chat.id.toString())
-          .toList(); // تحويل ID إلى String
-
-      emit(SmartChatSuccess(
-        List.from(chatMessages),
-        chatIds: chatIds,
-        titles: titles,
-      ));
-    } else {
-      emit(SmartChatSuccess(
-        List.from(chatMessages),
-      ));
-    }
+    titles = savedChats.map((chat) => chat.chatTitle).toList();
+    emit(SmartChatTitlesLoaded(List.from(titles)));
   }
 }

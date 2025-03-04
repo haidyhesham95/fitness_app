@@ -3,6 +3,7 @@ import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
 import 'package:fitness_app/core/utils/widgets/base/base_view.dart';
 import 'package:fitness_app/core/utils/widgets/spacing.dart';
+import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_action.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_state.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/widgets/build_message_input.dart';
@@ -32,13 +33,13 @@ class _SmartChatViewState extends State<SmartChatView> {
   void initState() {
     super.initState();
     smartChatViewModel = context.read<SmartChatViewModel>();
-    smartChatViewModel.fetchSavedChats();
+    smartChatViewModel.doAction(GetTitlesAction());
   }
 
   @override
   void dispose() {
     if (smartChatViewModel.chatMessages.isNotEmpty) {
-      smartChatViewModel.saveMessages();
+      smartChatViewModel.doAction(SaveMessagesAction());
     }
     super.dispose();
   }
@@ -81,26 +82,22 @@ class _SmartChatViewState extends State<SmartChatView> {
                 ),
               ),
               BlocBuilder<SmartChatViewModel, SmartChatState>(
-                builder: (context, state) {
-                  if (state is SmartChatSuccess) {
-                    if (state.titles.isNotEmpty) {
-                      return SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) => GestureDetector(
-                            onTap: () {},
-                            child:
-                                CustomSavedMessage(text: state.titles[index]),
-                          ),
-                          childCount: state.titles.length,
+                  builder: (context, state) {
+                if (state is SmartChatTitlesLoaded) {
+                  return SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) => GestureDetector(
+                        onTap: () {},
+                        child: CustomSavedMessage(
+                          text: state.titles[index],
                         ),
-                      );
-                    } else {
-                      return const SliverToBoxAdapter(child: SizedBox());
-                    }
-                  }
-                  return const SliverToBoxAdapter(child: SizedBox());
-                },
-              ),
+                      ),
+                      childCount: smartChatViewModel.titles.length,
+                    ),
+                  );
+                }
+                return const SliverToBoxAdapter();
+              })
             ],
           ),
         ),
@@ -108,6 +105,10 @@ class _SmartChatViewState extends State<SmartChatView> {
       actions: [
         IconButton(
           onPressed: () {
+            if (smartChatViewModel.chatMessages.isNotEmpty) {
+              smartChatViewModel.doAction(SaveMessagesAction());
+              smartChatViewModel.doAction(GetTitlesAction());
+            }
             _scaffoldKey.currentState?.openEndDrawer();
           },
           icon: SvgPicture.asset(Assets.svgMenu),
@@ -145,4 +146,3 @@ class _SmartChatViewState extends State<SmartChatView> {
     );
   }
 }
-

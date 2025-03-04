@@ -29,3 +29,9 @@ class SmartChatError extends SmartChatState {
   @override
   List<Object?> get props => [error];
 }
+
+class SmartChatTitlesLoaded extends SmartChatState {
+  final List<String> titles;
+
+  SmartChatTitlesLoaded(this.titles);
+}
