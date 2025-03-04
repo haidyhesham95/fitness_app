@@ -22,7 +22,9 @@ class SettingList extends StatelessWidget {
       SettingItem(
         text: context.translate(LangKeys.editProfile),
         icon: Assets.imagesProfile,
-        onTap: () {},
+        onTap: () {
+          Navigator.pushReplacementNamed(context,AppRoutes.editProfileView);
+        },
       ),
       SettingItem(
         text: context.translate(LangKeys.changePassword),

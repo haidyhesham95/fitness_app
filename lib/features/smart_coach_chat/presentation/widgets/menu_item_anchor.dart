@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class MenuItemAnchor extends StatelessWidget {
     return MenuAnchor(
       builder: (context, controller, child) {
         return IconButton(
-          icon: Icon(Icons.attach_file, color: context.colors.white),
+          icon: Icon(Icons.attach_file, color: context.colors.baseColor),
           onPressed: () {
             if (controller.isOpen) {
               controller.close();
@@ -27,13 +28,16 @@ class MenuItemAnchor extends StatelessWidget {
       menuChildren: [
         MenuItemButton(
           onPressed: onTapGallery,
-          child:  Text(context.translate(LangKeys.gallery),),
+          child: Text(context.translate(LangKeys.gallery,),style: MyFonts.styleExtraBold800_14.copyWith(color: context.colors.baseColor),),
         ),
         MenuItemButton(
           onPressed: onTapCamera,
-          child:  Text(context.translate(LangKeys.camera),),
+          child: Text(context.translate(LangKeys.camera),style: MyFonts.styleExtraBold800_14.copyWith(color: context.colors.baseColor),),
         ),
       ],
+      style: MenuStyle(
+        backgroundColor: WidgetStateProperty.all(context.colors.transparent),
+      ),
     );
   }
 }
