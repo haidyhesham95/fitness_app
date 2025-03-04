@@ -13,9 +13,14 @@ class SmartChatLoading extends SmartChatState {}
 
 class SmartChatSuccess extends SmartChatState {
   final List<SmartChatResponseEntity> messages;
-  const SmartChatSuccess(this.messages);
+  final List<String> chatIds;
+  final List<String> titles;
+
+  const SmartChatSuccess(this.messages,
+      {this.chatIds = const [], this.titles = const []});
+
   @override
-  List<Object?> get props => [messages];
+  List<Object?> get props => [messages, chatIds, titles];
 }
 
 class SmartChatError extends SmartChatState {

@@ -23,29 +23,48 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
         await _sendMessage(action.prompt, action.userImageUrl);
     }
   }
-
   Future<void> _sendMessage(String prompt, String userImageUrl) async {
 
-
     final responseStream = fetchSmartChatUseCase.call(prompt, userImageUrl);
-
     responseStream.listen((result) {
       switch (result) {
         case Success<List<SmartChatResponseEntity>>():
-
-        // Ensure AI response isn't added twice
           for (var msg in result.data) {
-
             if (!chatMessages.contains(msg)) {
               chatMessages.add(msg);
-              _isarUseCase.saveMessages(MessageMapper.toChatIsarList(chatMessages));
             }
           }
-
           emit(SmartChatSuccess(List.from(chatMessages))); // UI update
         case Fail<List<SmartChatResponseEntity>>():
           emit(SmartChatError(result.exception.toString()));
       }
     });
+  }
+
+  void saveMessages() {
+    if (chatMessages.isNotEmpty) {
+      _isarUseCase.saveMessages([MessageMapper.toChatIsarList(chatMessages)]);
+    }
+  }
+
+  Future<void> fetchSavedChats() async {
+    emit(SmartChatLoading());
+    final savedChats = await _isarUseCase.getMessages();
+    if (savedChats.isNotEmpty) {
+      final titles = savedChats.map((chat) => chat.chatTitle).toList();
+      final chatIds = savedChats
+          .map((chat) => chat.id.toString())
+          .toList(); // تحويل ID إلى String
+
+      emit(SmartChatSuccess(
+        List.from(chatMessages),
+        chatIds: chatIds,
+        titles: titles,
+      ));
+    } else {
+      emit(SmartChatSuccess(
+        List.from(chatMessages),
+      ));
+    }
   }
 }

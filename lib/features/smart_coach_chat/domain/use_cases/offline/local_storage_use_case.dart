@@ -2,7 +2,7 @@ import 'package:fitness_app/features/smart_coach_chat/data/models/offline/messag
 import 'package:fitness_app/features/smart_coach_chat/domain/entities/smart_chat_response_entity.dart';
 import 'package:fitness_app/features/smart_coach_chat/domain/repositories/offline/offline_contracts.dart';
 import 'package:injectable/injectable.dart';
-
+import 'package:isar/isar.dart';
 
 @injectable
 class IsarUseCase {
@@ -19,4 +19,8 @@ class IsarUseCase {
   }
 
   Future<List<ChatIsar>> getMessages() async => await _offlineRepo.getMessages();
+
+  Future<List<ChatIsar>> getMessagesById(Id chatId) async {
+    return await _offlineRepo.getMessagesById(chatId);
+  }
 }

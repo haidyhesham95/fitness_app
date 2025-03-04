@@ -14,8 +14,10 @@ class BaseView extends StatelessWidget {
     required this.isArrowBackShow,
     this.actions,
     this.title,
-     this.subTitle,
+    this.subTitle,
     this.blur,
+    this.drawer,
+    this.scaffoldKey, // إضافة المفتاح
   });
 
   final List<Widget> child;
@@ -24,32 +26,33 @@ class BaseView extends StatelessWidget {
   final List<Widget>? actions;
   final String? title;
   final String? subTitle;
-
   final double? blur;
+  final Widget? drawer;
+  final GlobalKey<ScaffoldState>? scaffoldKey; // تعريف المفتاح
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      decoration: BoxDecoration(
-        color: context.colors.transparent,
-      ),
-      child: Stack(
-        children: [
-          /// Background image
-          Positioned.fill(
-            child: GlassImage(
-              height: context.height,
-              borderRadius: BorderRadius.zero,
-              blur: blur ?? 6,
-              image: Image.asset(
-                image,
-                fit: BoxFit.fill,
+      key: scaffoldKey, // تمرير المفتاح إلى Scaffold
+      endDrawer: drawer,
+      body: Container(
+        decoration: BoxDecoration(
+          color: context.colors.transparent,
+        ),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: GlassImage(
+                height: context.height,
+                borderRadius: BorderRadius.zero,
+                blur: blur ?? 6,
+                image: Image.asset(
+                  image,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
-          ),
-          /// App bar widget
-          PositionedDirectional(
+            PositionedDirectional(
               top: 40.h,
               start: 16.w,
               end: 16.w,
@@ -71,16 +74,17 @@ class BaseView extends StatelessWidget {
                   Expanded(
                     child: RichText(
                       text: TextSpan(
-                          text: title??'',
-                          style: MyFonts.styleMedium500_16
-                              .copyWith(color: context.colors.white),
-                          children: [
-                            TextSpan(
-                              text: '\n${subTitle??''}',
-                              style: MyFonts.styleBold700_18
-                                  .copyWith(color: context.colors.white),
-                            ),
-                          ]),
+                        text: title ?? '',
+                        style: MyFonts.styleMedium500_16
+                            .copyWith(color: context.colors.white),
+                        children: [
+                          TextSpan(
+                            text: '\n${subTitle ?? ''}',
+                            style: MyFonts.styleBold700_18
+                                .copyWith(color: context.colors.white),
+                          ),
+                        ],
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -88,20 +92,20 @@ class BaseView extends StatelessWidget {
                     children: actions ?? [],
                   )
                 ],
-              )),
-          /// Child
-          Positioned(
-            top: context.height * .1,
-            bottom: 0,
-            right: 0,
-            left: 0,
-            child:  CustomScrollView(
-              slivers:child,
+              ),
             ),
-          ),
-        ],
+            Positioned(
+              top: context.height * .1,
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: CustomScrollView(
+                slivers: child,
+              ),
+            ),
+          ],
+        ),
       ),
-    ));
-
+    );
   }
 }

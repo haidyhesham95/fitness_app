@@ -12,6 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../core/styles/fonts/my_fonts.dart';
+import '../widgets/custom_saved_message.dart';
+
 class SmartChatView extends StatefulWidget {
   const SmartChatView({Key? key}) : super(key: key);
 
@@ -23,11 +26,21 @@ class _SmartChatViewState extends State<SmartChatView> {
   final ScrollController _scrollController = ScrollController();
   late SmartChatViewModel smartChatViewModel;
   final TextEditingController promptController = TextEditingController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
     smartChatViewModel = context.read<SmartChatViewModel>();
+    smartChatViewModel.fetchSavedChats();
+  }
+
+  @override
+  void dispose() {
+    if (smartChatViewModel.chatMessages.isNotEmpty) {
+      smartChatViewModel.saveMessages();
+    }
+    super.dispose();
   }
 
   void _scrollToBottom() {
@@ -45,15 +58,61 @@ class _SmartChatViewState extends State<SmartChatView> {
   @override
   Widget build(BuildContext context) {
     return BaseView(
+      scaffoldKey: _scaffoldKey,
       image: Assets.imagesChatBg,
       subTitle: context.translate(LangKeys.smartCoach),
+      isArrowBackShow: true,
+      drawer: Drawer(
+        backgroundColor: Colors.black.withValues(alpha: 0.8),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 48, left: 20, right: 20),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                  child: Center(
+                      child: Text(
+                "Previous conversations",
+                style: MyFonts.styleExtraBold800_20
+                    .copyWith(color: context.colors.white),
+              ))),
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 20,
+                ),
+              ),
+              BlocBuilder<SmartChatViewModel, SmartChatState>(
+                builder: (context, state) {
+                  if (state is SmartChatSuccess) {
+                    if (state.titles.isNotEmpty) {
+                      return SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) => GestureDetector(
+                            onTap: () {},
+                            child:
+                                CustomSavedMessage(text: state.titles[index]),
+                          ),
+                          childCount: state.titles.length,
+                        ),
+                      );
+                    } else {
+                      return const SliverToBoxAdapter(child: SizedBox());
+                    }
+                  }
+                  return const SliverToBoxAdapter(child: SizedBox());
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            _scaffoldKey.currentState?.openEndDrawer();
+          },
           icon: SvgPicture.asset(Assets.svgMenu),
         ),
       ],
-      isArrowBackShow: true,
       child: [
         SliverToBoxAdapter(child: verticalSpacing(20)),
         BlocConsumer<SmartChatViewModel, SmartChatState>(
@@ -86,3 +145,4 @@ class _SmartChatViewState extends State<SmartChatView> {
     );
   }
 }
+
