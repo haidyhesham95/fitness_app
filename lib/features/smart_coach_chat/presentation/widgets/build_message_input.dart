@@ -72,10 +72,11 @@ class _BuildMessageInputState extends State<BuildMessageInput> {
                 children: [
                   Expanded(
                     child: CustomTextFormField(
-                      suffixIcon: MenuItemAnchor(
+                      prefixIcon: MenuItemAnchor(
                         onTapCamera: () => _pickImage(ImageSource.camera),
                         onTapGallery: () => _pickImage(ImageSource.gallery),
                       ),
+                      prefixIconColor: context.colors.white,
                       controller: promptController,
                       hintTxt: 'Type a message...',
                       onFieldSubmitted: (_) => _sendMessage(),

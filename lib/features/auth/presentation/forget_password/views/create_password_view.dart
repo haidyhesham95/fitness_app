@@ -82,15 +82,15 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
                       validator: (value) {
                         return Validators.validateEmail(value, context);
                       },
-                      icon: Icons.email_outlined,
-                    ),
+                      prefixIcon: const Icon( Icons.email_outlined,
+                      )),
                     CustomTextFormField(
                       controller: _passwordController,
                       hintTxt: context.translate(LangKeys.password),
                       validator: (value) {
                         return Validators.validatePassword(value, context);
                       },
-                      icon: Icons.lock_outline,
+                      prefixIcon: const Icon(  Icons.lock_outline),
                       isPassword: !_isPasswordVisible,
                       suffixIcon: GestureDetector(
                         onTap: _togglePasswordVisibility,
