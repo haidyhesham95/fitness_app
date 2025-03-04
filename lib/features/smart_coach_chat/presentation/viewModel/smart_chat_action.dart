@@ -6,3 +6,7 @@ class SendMessageAction extends SmartChatAction {
 
   SendMessageAction(this.prompt, this.userImageUrl);
 }
+
+class SaveMessagesAction extends SmartChatAction {}
+
+class GetTitlesAction extends SmartChatAction {}

@@ -3,6 +3,7 @@ import 'package:fitness_app/features/smart_coach_chat/data/models/offline/messag
 import 'package:fitness_app/features/smart_coach_chat/domain/entities/smart_chat_response_entity.dart';
 import 'package:fitness_app/features/smart_coach_chat/domain/repositories/offline/offline_contracts.dart';
 import 'package:injectable/injectable.dart';
+import 'package:isar/isar.dart';
 
 import '../../mappers/offline/message_mapper.dart';
 
@@ -21,5 +22,10 @@ class OfflineRepoImpl implements OfflineRepo {
   @override
   Future<void> saveMessages(List<ChatIsar> messages) async {
     await _offlineDataSource.saveMessages(messages);
+  }
+
+  @override
+  Future<List<ChatIsar>> getMessagesById(Id chatId) async {
+    return await _offlineDataSource.getMessagesById(chatId);
   }
 }
