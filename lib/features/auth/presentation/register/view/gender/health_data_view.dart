@@ -10,10 +10,10 @@ import '../../view_model/signup_view_model_cubit.dart';
 import '../../widgets/gender/sign_up_step.dart';
 import '../../widgets/goal_activity/custom_goal_view.dart';
 
-class HealthDataPage extends StatelessWidget {
+class HealthDataView extends StatelessWidget {
   final SignUpViewModel viewModel;
 
-  const HealthDataPage({super.key, required this.viewModel});
+  const HealthDataView({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +113,7 @@ class HealthDataPage extends StatelessWidget {
                 } else if (currentStep == SignUpStep.activity &&
                     viewModel.activity.isNotEmpty) {
                   viewModel.doAction(SignupActionSelected());
-                  Navigator.pushNamed(context, AppRoutes.login);
+                  Navigator.pushReplacementNamed(context, AppRoutes.login);
                 }
               },
             ),
@@ -131,6 +131,9 @@ class HealthDataPage extends StatelessWidget {
             onSelected: onSelected,
             onPressed: () {
               viewModel.doAction(NextStepAction());
+            },
+            onTap: () {
+              viewModel.doAction(BackStepAction());
             },
           );
         }

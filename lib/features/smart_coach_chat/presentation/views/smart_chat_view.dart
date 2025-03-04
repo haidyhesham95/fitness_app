@@ -69,11 +69,11 @@ class _SmartChatViewState extends State<SmartChatView> {
                 children: [
                   Expanded(
                     child: state is SmartChatSuccess &&
-                            state.messages.isNotEmpty
+                        state.messages.isNotEmpty
                         ? CustomScrollView(
-                            controller: _scrollController,
-                            slivers: [SmartChatList(messages: state.messages)],
-                          )
+                      controller: _scrollController,
+                      slivers: [SmartChatList(messages: state.messages)],
+                    )
                         : const Center(child: AppLoader()),
                   ),
                   const BuildMessageInput(),

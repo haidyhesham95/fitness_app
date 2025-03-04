@@ -7,25 +7,27 @@ import 'package:fitness_app/features/auth/presentation/register/view/sign_up_vie
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
-import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_intro_view.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../features/auth/presentation/forget_password/views/create_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/forget_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/verify_otp_view.dart';
-import '../../features/auth/presentation/register/view/gender/health_data_widget.dart';
+import '../../features/auth/presentation/register/view/gender/health_data_view.dart';
 import '../../features/auth/presentation/register/view/gender/height_view.dart';
 import '../../features/auth/presentation/register/view/gender/old_view.dart';
 import '../../features/auth/presentation/register/view/gender/weight_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/activity_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/goal_view.dart';
+import '../../features/home/presentation/views/home_layout.dart';
+import '../../features/profile/presentation/view/profile_view.dart';
+import '../../features/profile/presentation/widgets/help_page.dart';
+import '../../features/profile/presentation/widgets/privcya_page.dart';
+import '../../features/profile/presentation/widgets/security_page.dart';
 import '../utils/screens/under_build_screen.dart';
 
 class AppRoutes {
   static const String login = 'login';
-  static const String homeScreen = 'homeScreen';
   static const String forgetPasswordView = 'forgetPasswordView';
   static const String verifyOtpView = 'verifyOtpView';
   static const String createPasswordView = 'createPasswordView';
@@ -38,13 +40,17 @@ class AppRoutes {
   static const String heightView = "heightView";
   static const String weightView = "weightView";
   static const String healthDataPage = "healthDataPage";
+  static const String profileView = "profileView";
+  static const String securityPage = "securityPage";
+  static const String privacyPage = "privacyPage";
+  static const String helpPage = "helpPage";
   static const String smartChatIntroView = "smartChatIntroView";
   static const String smartChatView = "smartChatView";
+  static const String homeLayout = "homeLayout";
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
-      case homeScreen:
       case login:
         return BaseRoute(
             page: BlocProvider(
@@ -97,17 +103,25 @@ class AppRoutes {
         ));
       case healthDataPage:
         return BaseRoute(
-            page: HealthDataPage(
+            page: HealthDataView(
           viewModel: args as SignUpViewModel,
         ));
-      case smartChatIntroView:
-        return BaseRoute(page: const SmartChatIntroView());
+      case profileView:
+        return BaseRoute(page: const ProfileView());
+      case securityPage:
+        return BaseRoute(page: const SecurityPage());
+      case privacyPage:
+        return BaseRoute(page: const PrivacyPage());
+      case helpPage:
+        return BaseRoute(page: const HelpPage());
       case smartChatView:
         return BaseRoute(
             page: BlocProvider(
           create: (context) => getIt.get<SmartChatViewModel>(),
           child: const SmartChatView(),
         ));
+      case homeLayout:
+        return BaseRoute(page: const HomeLayout());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

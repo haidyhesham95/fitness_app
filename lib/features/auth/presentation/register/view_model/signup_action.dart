@@ -1,3 +1,5 @@
+
+
 sealed class SignupAction {}
 class SignupActionSelected extends SignupAction {}
 
@@ -38,4 +40,8 @@ class SelectAgeAction extends SignupAction {
   SelectAgeAction({required this.age});
 }
 
-class NextStepAction extends SignupAction {}
+class NextStepAction extends SignupAction {
+}
+
+class BackStepAction extends SignupAction {
+}

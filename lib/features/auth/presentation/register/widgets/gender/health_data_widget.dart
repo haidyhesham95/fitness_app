@@ -13,16 +13,18 @@ class HealthDataWidget extends StatelessWidget {
   final double? progress;
   final int  initialValue , minValue , maxValue;
    final ValueChanged<int> onSelected;
-   final void Function() onPressed;
+   final void Function() ? onPressed , onTap;
 
   const HealthDataWidget({
     super.key, required this.value, required this.initialValue, required this.minValue, required this.maxValue, required this.onSelected, required this.onPressed, this.progress, required this.title, required this.text,
+     this.onTap,
   });
   @override
   Widget build(BuildContext context) {
     return CustomBlurBg(
       value: value,
       progress: progress,
+      onTap: onTap,
       widget: Padding(
         padding: EdgeInsets.only(top: 8.0.h),
         child: CustomGlassyContainer(

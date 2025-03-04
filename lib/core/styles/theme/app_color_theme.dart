@@ -15,6 +15,8 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     required this.containerColor,
     required this.transparent,
     required this.red,
+    required this.bgColor,
+    required this.darkGray,
   });
 
   final Color baseColor;
@@ -28,6 +30,8 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
   final Color containerColor;
   final Color transparent;
   final Color red;
+  final Color bgColor;
+  final Color darkGray;
 
   @override
   ThemeExtension<AppColorTheme> copyWith({
@@ -42,8 +46,12 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     Color? containerBackground,
     Color? transparent,
     Color? red,
+    Color? bgColor,
+    Color? darkGray,
+
   }) {
     return AppColorTheme(
+      bgColor: bgColor ?? this.bgColor,
       baseColor: baseColor ?? this.baseColor,
       gray: gray ?? this.gray,
       hintText: hintText ?? this.hintText,
@@ -55,6 +63,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
       containerColor: containerBackground ?? this.containerColor,
       transparent: transparent ?? this.transparent,
       red: red ?? this.red,
+      darkGray: darkGray ?? this.darkGray,
     );
   }
 
@@ -67,6 +76,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
       return this;
     } else {
       return AppColorTheme(
+        bgColor: bgColor,
         baseColor: baseColor,
         gray: gray,
         hintText: hintText,
@@ -78,11 +88,13 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
         containerColor: containerColor,
         transparent: transparent,
         red: red,
+        darkGray: darkGray,
       );
     }
   }
 
   static const AppColorTheme dark = AppColorTheme(
+    bgColor: DarkColor.bgColor,
     baseColor: DarkColor.baseColor,
     gray: DarkColor.gray,
     hintText: DarkColor.hintStyle,
@@ -94,9 +106,12 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     containerColor: DarkColor.container,
     transparent: DarkColor.transparent,
     red: DarkColor.red,
+    darkGray: DarkColor.darkGray,
+
   );
 
   static const AppColorTheme light = AppColorTheme(
+    bgColor: LightColor.bgColor,
     baseColor: LightColor.baseColor,
     gray: LightColor.gray,
     hintText: LightColor.hintStyle,
@@ -108,5 +123,6 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     containerColor: LightColor.container,
     transparent: LightColor.transparent,
     red: LightColor.red,
+    darkGray: LightColor.darkGray,
   );
 }
