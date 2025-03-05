@@ -19,7 +19,7 @@ class ProfileView extends StatelessWidget {
       isShowTextBar: true,
       height: 0,
       text: context.translate(LangKeys.profile),
-      image: Assets.imagesEditBg,
+      image: Assets.imagesBackGround,
       widget: Column(
         children: [
           const ProfileInfo(),

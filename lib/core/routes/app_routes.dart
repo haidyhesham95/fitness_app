@@ -141,7 +141,10 @@ class AppRoutes {
           child: const SmartChatView(),
         ));
       case homeLayout:
-        return BaseRoute(page: const HomeLayout());
+        return BaseRoute(page: MultiBlocProvider(providers: [
+        BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData())),
+        ],
+        child: const HomeLayout()));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

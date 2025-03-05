@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/features/smart_coach_chat/data/mappers/offline/message_mapper.dart';
@@ -23,7 +25,7 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
   Future<void> doAction(SmartChatAction action) async {
     switch (action) {
       case SendMessageAction():
-        await _sendMessage(action.prompt, action.userImageUrl);
+        await _sendMessage(action.prompt, action.userImageUrl, action.image!);
         break;
       case SaveMessagesAction():
         _saveMessages();
@@ -33,8 +35,8 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
         break;
     }
   }
-  Future<void> _sendMessage(String prompt, String userImageUrl) async {
-    final responseStream = fetchSmartChatUseCase.call(prompt, userImageUrl);
+  Future<void> _sendMessage(String prompt, String userImageUrl,File  imageFile) async {
+    final responseStream = fetchSmartChatUseCase.call(prompt, userImageUrl, imageFile);
     responseStream.listen((result) {
       switch (result) {
         case Success<List<SmartChatResponseEntity>>():
@@ -50,9 +52,9 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
     });
   }
 
-  void _saveMessages() {
+  void _saveMessages()async {
     if (chatMessages.isNotEmpty) {
-      _isarUseCase.saveMessages([MessageMapper.toChatIsarList(chatMessages)]);
+      _isarUseCase.saveMessages([await MessageMapper.toChatIsarList(chatMessages)]);
     }
   }
 

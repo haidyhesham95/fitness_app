@@ -122,4 +122,7 @@ class LangKeys {
   static const String explore = 'explore';
   static const String workouts = 'workouts';
   static const String chatAi = 'chatAi';
+  static const String gallery = 'gallery';
+  static const String camera = 'camera';
+
 }

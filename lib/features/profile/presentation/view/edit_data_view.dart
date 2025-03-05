@@ -48,7 +48,6 @@ class EditDataView extends StatelessWidget {
             maxValue = 300;
             onSelected = (value) {
               cubit.selectedWeight = value;
-              print('vvvvvvvvvvvvvv$value');
             };
             break;
           case EditProfileStep.goal:

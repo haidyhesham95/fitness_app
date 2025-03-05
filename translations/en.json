@@ -99,7 +99,6 @@
   "smart_coach_bot": "I Am Your Smart Coach",
   "smart_coach": "Smart Coach",
   "assist_today": "How Can I Assist You Today?",
-  "get_started": "Get Started",
   "explore": "Explore",
   "profile": "Profile",
   "no": "No",
@@ -134,5 +133,8 @@
   "titleHelpThree": "Technical Support",
   "descriptionHelpThree": "For assistance, you can contact us via email at support@fitnessapp.com.",
   "workouts": "Workouts",
-  "chatAi": "Chat AI"
+  "chatAi": "Chat AI",
+  "get_started": "Get Started",
+  "gallery": "Choose from Gallery",
+  "camera": "Take a Picture with Camera"
 }

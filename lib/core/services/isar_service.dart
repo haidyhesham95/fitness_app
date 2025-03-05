@@ -9,6 +9,6 @@ abstract class IsarModule {
   @preResolve
   Future<Isar> get isarProvider async {
     final Directory directory = await getApplicationSupportDirectory();
-    return Isar.open([ ChatIsarSchema], directory: directory.path);
+    return Isar.open([ChatIsarSchema], directory: directory.path);
   }
 }

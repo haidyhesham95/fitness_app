@@ -1,14 +1,18 @@
 import 'dart:convert';
+import 'dart:io';
 
 class SmartChatModelResponse {
   final String text;
   final bool isUser;
   final String senderImageUrl;
+  final File? imageFile;
+
 
   SmartChatModelResponse({
     required this.text,
     required this.isUser,
     required this.senderImageUrl,
+    required this.imageFile,
   });
 
   factory SmartChatModelResponse.fromJson(Map<String, dynamic> json) {
@@ -16,6 +20,7 @@ class SmartChatModelResponse {
       text: json['text'] ?? '',
       isUser: json['isUser'] ?? false,
       senderImageUrl: json['senderImageUrl'] ?? '',
+      imageFile: json['imageFile'] ?? null,
     );
   }
 
