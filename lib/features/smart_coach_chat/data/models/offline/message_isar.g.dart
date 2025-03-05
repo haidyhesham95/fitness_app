@@ -33,7 +33,7 @@ const ChatIsarSchema = CollectionSchema(
   serialize: _chatIsarSerialize,
   deserialize: _chatIsarDeserialize,
   deserializeProp: _chatIsarDeserializeProp,
-  idName: r'chatId',
+  idName: r'id',
   indexes: {},
   links: {},
   embeddedSchemas: {r'MessageIsar': MessageIsarSchema},
@@ -50,12 +50,18 @@ int _chatIsarEstimateSize(
 ) {
   var bytesCount = offsets.last;
   bytesCount += 3 + object.chatTitle.length * 3;
-  bytesCount += 3 + object.messages.length * 3;
   {
-    final offsets = allOffsets[MessageIsar]!;
-    for (var i = 0; i < object.messages.length; i++) {
-      final value = object.messages[i];
-      bytesCount += MessageIsarSchema.estimateSize(value, offsets, allOffsets);
+    final list = object.messages;
+    if (list != null) {
+      bytesCount += 3 + list.length * 3;
+      {
+        final offsets = allOffsets[MessageIsar]!;
+        for (var i = 0; i < list.length; i++) {
+          final value = list[i];
+          bytesCount +=
+              MessageIsarSchema.estimateSize(value, offsets, allOffsets);
+        }
+      }
     }
   }
   return bytesCount;
@@ -85,14 +91,13 @@ ChatIsar _chatIsarDeserialize(
   final object = ChatIsar(
     chatTitle: reader.readString(offsets[0]),
     messages: reader.readObjectList<MessageIsar>(
-          offsets[1],
-          MessageIsarSchema.deserialize,
-          allOffsets,
-          MessageIsar(),
-        ) ??
-        [],
+      offsets[1],
+      MessageIsarSchema.deserialize,
+      allOffsets,
+      MessageIsar(),
+    ),
   );
-  object.chatId = id;
+  object.id = id;
   return object;
 }
 
@@ -107,19 +112,18 @@ P _chatIsarDeserializeProp<P>(
       return (reader.readString(offset)) as P;
     case 1:
       return (reader.readObjectList<MessageIsar>(
-            offset,
-            MessageIsarSchema.deserialize,
-            allOffsets,
-            MessageIsar(),
-          ) ??
-          []) as P;
+        offset,
+        MessageIsarSchema.deserialize,
+        allOffsets,
+        MessageIsar(),
+      )) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
 }
 
 Id _chatIsarGetId(ChatIsar object) {
-  return object.chatId;
+  return object.id;
 }
 
 List<IsarLinkBase<dynamic>> _chatIsarGetLinks(ChatIsar object) {
@@ -127,11 +131,11 @@ List<IsarLinkBase<dynamic>> _chatIsarGetLinks(ChatIsar object) {
 }
 
 void _chatIsarAttach(IsarCollection<dynamic> col, Id id, ChatIsar object) {
-  object.chatId = id;
+  object.id = id;
 }
 
 extension ChatIsarQueryWhereSort on QueryBuilder<ChatIsar, ChatIsar, QWhere> {
-  QueryBuilder<ChatIsar, ChatIsar, QAfterWhere> anyChatId() {
+  QueryBuilder<ChatIsar, ChatIsar, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
@@ -139,68 +143,66 @@ extension ChatIsarQueryWhereSort on QueryBuilder<ChatIsar, ChatIsar, QWhere> {
 }
 
 extension ChatIsarQueryWhere on QueryBuilder<ChatIsar, ChatIsar, QWhereClause> {
-  QueryBuilder<ChatIsar, ChatIsar, QAfterWhereClause> chatIdEqualTo(Id chatId) {
+  QueryBuilder<ChatIsar, ChatIsar, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: chatId,
-        upper: chatId,
+        lower: id,
+        upper: id,
       ));
     });
   }
 
-  QueryBuilder<ChatIsar, ChatIsar, QAfterWhereClause> chatIdNotEqualTo(
-      Id chatId) {
+  QueryBuilder<ChatIsar, ChatIsar, QAfterWhereClause> idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
             .addWhereClause(
-              IdWhereClause.lessThan(upper: chatId, includeUpper: false),
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
             )
             .addWhereClause(
-              IdWhereClause.greaterThan(lower: chatId, includeLower: false),
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
             );
       } else {
         return query
             .addWhereClause(
-              IdWhereClause.greaterThan(lower: chatId, includeLower: false),
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
             )
             .addWhereClause(
-              IdWhereClause.lessThan(upper: chatId, includeUpper: false),
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
             );
       }
     });
   }
 
-  QueryBuilder<ChatIsar, ChatIsar, QAfterWhereClause> chatIdGreaterThan(
-      Id chatId,
+  QueryBuilder<ChatIsar, ChatIsar, QAfterWhereClause> idGreaterThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        IdWhereClause.greaterThan(lower: chatId, includeLower: include),
+        IdWhereClause.greaterThan(lower: id, includeLower: include),
       );
     });
   }
 
-  QueryBuilder<ChatIsar, ChatIsar, QAfterWhereClause> chatIdLessThan(Id chatId,
+  QueryBuilder<ChatIsar, ChatIsar, QAfterWhereClause> idLessThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        IdWhereClause.lessThan(upper: chatId, includeUpper: include),
+        IdWhereClause.lessThan(upper: id, includeUpper: include),
       );
     });
   }
 
-  QueryBuilder<ChatIsar, ChatIsar, QAfterWhereClause> chatIdBetween(
-    Id lowerChatId,
-    Id upperChatId, {
+  QueryBuilder<ChatIsar, ChatIsar, QAfterWhereClause> idBetween(
+    Id lowerId,
+    Id upperId, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: lowerChatId,
+        lower: lowerId,
         includeLower: includeLower,
-        upper: upperChatId,
+        upper: upperId,
         includeUpper: includeUpper,
       ));
     });
@@ -209,59 +211,6 @@ extension ChatIsarQueryWhere on QueryBuilder<ChatIsar, ChatIsar, QWhereClause> {
 
 extension ChatIsarQueryFilter
     on QueryBuilder<ChatIsar, ChatIsar, QFilterCondition> {
-  QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> chatIdEqualTo(
-      Id value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'chatId',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> chatIdGreaterThan(
-    Id value, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'chatId',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> chatIdLessThan(
-    Id value, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'chatId',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> chatIdBetween(
-    Id lower,
-    Id upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'chatId',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
-    });
-  }
-
   QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> chatTitleEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -393,6 +342,74 @@ extension ChatIsarQueryFilter
     });
   }
 
+  QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> idEqualTo(Id value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> idGreaterThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> idLessThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> idBetween(
+    Id lower,
+    Id upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'id',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> messagesIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'messages',
+      ));
+    });
+  }
+
+  QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> messagesIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'messages',
+      ));
+    });
+  }
+
   QueryBuilder<ChatIsar, ChatIsar, QAfterFilterCondition> messagesLengthEqualTo(
       int length) {
     return QueryBuilder.apply(this, (query) {
@@ -509,18 +526,6 @@ extension ChatIsarQuerySortBy on QueryBuilder<ChatIsar, ChatIsar, QSortBy> {
 
 extension ChatIsarQuerySortThenBy
     on QueryBuilder<ChatIsar, ChatIsar, QSortThenBy> {
-  QueryBuilder<ChatIsar, ChatIsar, QAfterSortBy> thenByChatId() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'chatId', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ChatIsar, ChatIsar, QAfterSortBy> thenByChatIdDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'chatId', Sort.desc);
-    });
-  }
-
   QueryBuilder<ChatIsar, ChatIsar, QAfterSortBy> thenByChatTitle() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'chatTitle', Sort.asc);
@@ -530,6 +535,18 @@ extension ChatIsarQuerySortThenBy
   QueryBuilder<ChatIsar, ChatIsar, QAfterSortBy> thenByChatTitleDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'chatTitle', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ChatIsar, ChatIsar, QAfterSortBy> thenById() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ChatIsar, ChatIsar, QAfterSortBy> thenByIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.desc);
     });
   }
 }
@@ -546,9 +563,9 @@ extension ChatIsarQueryWhereDistinct
 
 extension ChatIsarQueryProperty
     on QueryBuilder<ChatIsar, ChatIsar, QQueryProperty> {
-  QueryBuilder<ChatIsar, int, QQueryOperations> chatIdProperty() {
+  QueryBuilder<ChatIsar, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'chatId');
+      return query.addPropertyName(r'id');
     });
   }
 
@@ -558,7 +575,7 @@ extension ChatIsarQueryProperty
     });
   }
 
-  QueryBuilder<ChatIsar, List<MessageIsar>, QQueryOperations>
+  QueryBuilder<ChatIsar, List<MessageIsar>?, QQueryOperations>
       messagesProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'messages');
@@ -577,18 +594,23 @@ const MessageIsarSchema = Schema(
   name: r'MessageIsar',
   id: 3260995708908258659,
   properties: {
-    r'imageUrl': PropertySchema(
+    r'imageFile': PropertySchema(
       id: 0,
+      name: r'imageFile',
+      type: IsarType.string,
+    ),
+    r'imageUrl': PropertySchema(
+      id: 1,
       name: r'imageUrl',
       type: IsarType.string,
     ),
     r'isUser': PropertySchema(
-      id: 1,
+      id: 2,
       name: r'isUser',
       type: IsarType.bool,
     ),
     r'text': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'text',
       type: IsarType.string,
     )
@@ -605,6 +627,12 @@ int _messageIsarEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
+  {
+    final value = object.imageFile;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   {
     final value = object.imageUrl;
     if (value != null) {
@@ -626,9 +654,10 @@ void _messageIsarSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeString(offsets[0], object.imageUrl);
-  writer.writeBool(offsets[1], object.isUser);
-  writer.writeString(offsets[2], object.text);
+  writer.writeString(offsets[0], object.imageFile);
+  writer.writeString(offsets[1], object.imageUrl);
+  writer.writeBool(offsets[2], object.isUser);
+  writer.writeString(offsets[3], object.text);
 }
 
 MessageIsar _messageIsarDeserialize(
@@ -638,9 +667,10 @@ MessageIsar _messageIsarDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = MessageIsar(
-    imageUrl: reader.readStringOrNull(offsets[0]),
-    isUser: reader.readBoolOrNull(offsets[1]),
-    text: reader.readStringOrNull(offsets[2]),
+    imageFile: reader.readStringOrNull(offsets[0]),
+    imageUrl: reader.readStringOrNull(offsets[1]),
+    isUser: reader.readBoolOrNull(offsets[2]),
+    text: reader.readStringOrNull(offsets[3]),
   );
   return object;
 }
@@ -655,8 +685,10 @@ P _messageIsarDeserializeProp<P>(
     case 0:
       return (reader.readStringOrNull(offset)) as P;
     case 1:
-      return (reader.readBoolOrNull(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 2:
+      return (reader.readBoolOrNull(offset)) as P;
+    case 3:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -665,6 +697,160 @@ P _messageIsarDeserializeProp<P>(
 
 extension MessageIsarQueryFilter
     on QueryBuilder<MessageIsar, MessageIsar, QFilterCondition> {
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'imageFile',
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'imageFile',
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'imageFile',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'imageFile',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'imageFile',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'imageFile',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
+      imageFileIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'imageFile',
+        value: '',
+      ));
+    });
+  }
+
   QueryBuilder<MessageIsar, MessageIsar, QAfterFilterCondition>
       imageUrlIsNull() {
     return QueryBuilder.apply(this, (query) {

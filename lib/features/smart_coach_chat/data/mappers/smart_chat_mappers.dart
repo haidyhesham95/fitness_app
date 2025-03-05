@@ -8,6 +8,7 @@ class SmartChatMappers {
       text: model.text,
       isUser: model.isUser,
       senderImageUrl: model.senderImageUrl,
+      imageFile: model.imageFile,
     );
   }
 
@@ -22,6 +23,7 @@ class SmartChatMappers {
       text: entity.text,
       isUser: entity.isUser,
       senderImageUrl: entity.senderImageUrl,
+      imageFile: entity.imageFile,
     );
   }
 

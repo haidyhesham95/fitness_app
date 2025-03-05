@@ -6,20 +6,20 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField(
       {super.key,
       required this.hintTxt,
-      this.icon,
       this.controller,
       this.validator,
       this.suffixIcon,
       this.isPassword,
-      this.onFieldSubmitted});
+      this.onFieldSubmitted
+      , this.prefixIcon , this.prefixIconColor});
 
   final String hintTxt;
-  final IconData? icon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final Widget? suffixIcon;
+  final Widget? suffixIcon , prefixIcon;
   final bool? isPassword;
   final void Function(String)? onFieldSubmitted;
+  final Color? prefixIconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +34,8 @@ class CustomTextFormField extends StatelessWidget {
         decoration: InputDecoration(
           suffixIcon: suffixIcon ?? null,
           contentPadding: EdgeInsets.zero,
-          prefixIcon: icon == null
-              ? const SizedBox()
-              : Icon(
-                  icon,
-                  color: context.colors.gray,
-                  size: 20,
-          ),
+          prefixIcon: prefixIcon ?? null,
+          prefixIconColor: prefixIconColor ?? context.colors.gray,
           hintStyle:
               MyFonts.styleRegular400_12.copyWith(color: context.colors.gray),
           hintText: hintTxt,

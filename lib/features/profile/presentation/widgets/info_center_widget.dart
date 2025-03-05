@@ -18,7 +18,7 @@ class InfoCenterWidget extends StatelessWidget {
       isShowTextBar: true,
       height: 0,
       text: title,
-      image: Assets.imagesBackGround,
+      image: Assets.imagesEditBg,
       widget: Container(
         padding: EdgeInsets.symmetric(vertical: 12.h),
         margin: EdgeInsets.symmetric(horizontal: 15.w),

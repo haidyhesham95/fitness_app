@@ -89,7 +89,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                         validator: (value) {
                           return Validators.validateEmail(value, context);
                         },
-                        icon: Icons.email_outlined,
+                        prefixIcon: const Icon( Icons.email_outlined),
                         hintTxt: context.translate(LangKeys.email),
                       ),
                       BlocBuilder<ForgetPasswordViewModelCubit,
