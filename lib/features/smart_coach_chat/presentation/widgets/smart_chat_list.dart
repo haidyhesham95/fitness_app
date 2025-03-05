@@ -20,7 +20,7 @@ class SmartChatList extends StatelessWidget {
                 duration: Duration(milliseconds: 100 * index),
                 child: ChatBubble(message: message))
             : FadeInLeft(
-                duration: Duration(milliseconds: 200 * index),
+                duration: Duration(milliseconds: 100 * index),
                 child: ChatBubble(message: message));
       },
     );

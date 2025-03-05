@@ -6,6 +6,7 @@ import 'package:fitness_app/features/smart_coach_chat/domain/entities/smart_chat
 import 'package:fitness_app/features/smart_coach_chat/presentation/widgets/avatar_with_shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class ChatBubble extends StatelessWidget {
   final SmartChatResponseEntity message;
 
@@ -18,7 +19,8 @@ class ChatBubble extends StatelessWidget {
 
     if (message is TextMessage) {
       text = (message as TextMessage).text;
-    } else if (message is ImageMessage && (message as ImageMessage).text != null) {
+    } else if (message is ImageMessage &&
+        (message as ImageMessage).text != null) {
       text = (message as ImageMessage).text!;
     }
 
@@ -27,13 +29,15 @@ class ChatBubble extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
-          mainAxisAlignment: isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+          mainAxisAlignment:
+              isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [
             if (!isUser) AvatarWithShadow(imageUrl: message.senderImageUrl),
             horizontalSpacing(10.w),
             Flexible(
               child: Column(
-                crossAxisAlignment: isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                crossAxisAlignment:
+                    isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
                 children: [
                   if (message is ImageMessage)
                     Padding(
@@ -48,7 +52,6 @@ class ChatBubble extends StatelessWidget {
                         ),
                       ),
                     ),
-
                   if (text != null && text.isNotEmpty)
                     CustomGlassyContainer(
                       color: isUser ? context.colors.baseColor : Colors.black38,

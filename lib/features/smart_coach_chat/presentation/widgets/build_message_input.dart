@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../generated/assets.dart';
+import '../../../profile/presentation/view_model/profile_view_model_cubit.dart';
 import 'chat_image_widget.dart';
 
 class BuildMessageInput extends StatefulWidget {
@@ -46,9 +47,19 @@ class _BuildMessageInputState extends State<BuildMessageInput> {
 
     if (promptText.isEmpty && _imageFile == null) return;
 
+    final profileState = context.read<ProfileViewModelCubit>().state;
+
+    String userProfileImage;
+
+    if (profileState is getProfileSuccess) {
+      userProfileImage = profileState.data.user!.photo.toString();
+    } else {
+      userProfileImage = Assets.imagesUser;
+    }
+
     context.read<SmartChatViewModel>().doAction(
-      SendMessageAction(promptText, Assets.imagesUser, _imageFile),
-    );
+          SendMessageAction(promptText, userProfileImage, _imageFile),
+        );
 
     promptController.clear();
     setState(() {

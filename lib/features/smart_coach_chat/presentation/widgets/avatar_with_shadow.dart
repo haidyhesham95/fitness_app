@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AvatarWithShadow extends StatelessWidget {
   const AvatarWithShadow({super.key, required this.imageUrl});
+
   final String imageUrl;
 
   @override
@@ -24,14 +25,16 @@ class AvatarWithShadow extends StatelessWidget {
           ),
         ),
         // CircleAvatar on top
-         Positioned(
-          left: 2, // Adjusting for shadow positioning
-          top: 2,
-          child: CircleAvatar(
-            radius: 18,
-            backgroundImage: AssetImage(imageUrl),
-          ),
-        ),
+        Positioned(
+            left: 2, // Adjusting for shadow positioning
+            top: 2,
+            child: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              radius: 18,
+              backgroundImage: imageUrl.startsWith('http')
+                  ? NetworkImage(imageUrl) as ImageProvider
+                  : AssetImage(imageUrl) as ImageProvider,
+            )),
       ],
     );
   }
