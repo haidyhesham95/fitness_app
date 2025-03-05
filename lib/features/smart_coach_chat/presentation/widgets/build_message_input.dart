@@ -42,12 +42,14 @@ class _BuildMessageInputState extends State<BuildMessageInput> {
   }
 
   void _sendMessage() {
-    if (promptController.text.isEmpty && _imageFile == null) return;
+    String promptText = promptController.text.trim();
+
+    if (promptText.isEmpty && _imageFile == null) return;
 
     context.read<SmartChatViewModel>().doAction(
-          SendMessageAction(
-              promptController.text, Assets.imagesUser, _imageFile),
-        );
+      SendMessageAction(promptText, Assets.imagesUser, _imageFile),
+    );
+
     promptController.clear();
     setState(() {
       _imageFile = null;
@@ -84,7 +86,7 @@ class _BuildMessageInputState extends State<BuildMessageInput> {
                   ),
                   const SizedBox(width: 10),
                   GestureDetector(
-                    onTap: () => _sendMessage(),
+                    onTap: _sendMessage,
                     child: CircleAvatar(
                       radius: 22,
                       backgroundColor: context.colors.baseColor,

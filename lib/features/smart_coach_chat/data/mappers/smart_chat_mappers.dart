@@ -1,34 +1,59 @@
-import 'package:fitness_app/features/smart_coach_chat/data/models/smart_chat_model_response.dart';
 import 'package:fitness_app/features/smart_coach_chat/domain/entities/smart_chat_response_entity.dart';
 
+import '../models/image_message_model.dart';
+import '../models/smart_chat_message_model.dart';
+import '../models/text_message_model.dart';
+
 class SmartChatMappers {
-  /// Maps a `SmartChatModelResponse` (API Model) to `SmartChatResponseEntity` (Domain Model)
+  /// Factory method to map API models to Entities
   static SmartChatResponseEntity mapToEntity(SmartChatModelResponse model) {
-    return SmartChatResponseEntity(
-      text: model.text,
-      isUser: model.isUser,
-      senderImageUrl: model.senderImageUrl,
-      imageFile: model.imageFile,
-    );
+    if (model is ImageMessageModel) {
+      return ImageMessage(
+        isUser: model.isUser,
+        senderImageUrl: model.senderImageUrl,
+        imageFile: model.imageFile!,
+        text: model.text,
+      );
+    } else if (model is TextMessageModel) {
+      return TextMessage(
+        isUser: model.isUser,
+        senderImageUrl: model.senderImageUrl,
+        text: model.text,
+      );
+    } else {
+      throw Exception("Unsupported model type");
+    }
   }
 
-  /// Maps a list of `SmartChatModelResponse` to a list of `SmartChatResponseEntity`
-  static List<SmartChatResponseEntity> mapListToEntity(List<SmartChatModelResponse> models) {
-    return models.map((model) => mapToEntity(model)).toList();
-  }
-
-  /// Maps a `SmartChatResponseEntity` (Domain Model) back to `SmartChatModelResponse` (API Model)
+  /// Factory method to map Entities back to API Models
   static SmartChatModelResponse mapToModel(SmartChatResponseEntity entity) {
-    return SmartChatModelResponse(
-      text: entity.text,
-      isUser: entity.isUser,
-      senderImageUrl: entity.senderImageUrl,
-      imageFile: entity.imageFile,
-    );
+    if (entity is ImageMessage) {
+      return ImageMessageModel(
+        isUser: entity.isUser,
+        senderImageUrl: entity.senderImageUrl,
+        imageFile: entity.imageFile,
+        text: entity.text,
+      );
+    } else if (entity is TextMessage) {
+      return TextMessageModel(
+        isUser: entity.isUser,
+        senderImageUrl: entity.senderImageUrl,
+        text: entity.text,
+      );
+    } else {
+      throw Exception("Unsupported entity type");
+    }
   }
 
-  /// Maps a list of `SmartChatResponseEntity` back to a list of `SmartChatModelResponse`
-  static List<SmartChatModelResponse> mapListToModel(List<SmartChatResponseEntity> entities) {
-    return entities.map((entity) => mapToModel(entity)).toList();
+  /// Maps a list of API models to Entities
+  static List<SmartChatResponseEntity> mapListToEntity(
+      List<SmartChatModelResponse> models) {
+    return models.map(mapToEntity).toList();
+  }
+
+  /// Maps a list of Entities back to API Models
+  static List<SmartChatModelResponse> mapListToModel(
+      List<SmartChatResponseEntity> entities) {
+    return entities.map(mapToModel).toList();
   }
 }
