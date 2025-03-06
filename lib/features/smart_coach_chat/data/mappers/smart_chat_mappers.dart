@@ -1,7 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:fitness_app/features/smart_coach_chat/data/models/smart_chat_model_response.dart';
 import 'package:fitness_app/features/smart_coach_chat/domain/entities/smart_chat_response_entity.dart';
 import 'package:path_provider/path_provider.dart';
 
