@@ -25,4 +25,10 @@ class OfflineDataSourceImpl implements OfflineDataSource {
   Future<List<ChatIsar>> getMessagesById(Id chatId) async {
     return await isar.chatIsars.filter().idEqualTo(chatId).findAll();
   }
+
+  @override
+  Future<void> deleteMessagesById(Id chatId) async {
+    return await isar.writeTxn(() async =>
+        await isar.chatIsars.filter().idEqualTo(chatId).deleteAll());
+  }
 }

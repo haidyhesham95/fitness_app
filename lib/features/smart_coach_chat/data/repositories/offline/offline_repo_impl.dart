@@ -25,4 +25,9 @@ class OfflineRepoImpl implements OfflineRepo {
   Future<List<ChatIsar>> getMessagesById(Id chatId) async {
     return await _offlineDataSource.getMessagesById(chatId);
   }
+
+  @override
+  Future<void> deleteMessagesById(Id chatId) async {
+    await _offlineDataSource.deleteMessagesById(chatId);
+  }
 }

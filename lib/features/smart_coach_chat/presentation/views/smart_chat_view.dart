@@ -38,7 +38,8 @@ class _SmartChatViewState extends State<SmartChatView> {
 
   @override
   void dispose() {
-    if (smartChatViewModel.chatMessages.isNotEmpty) {
+    if (smartChatViewModel.chatMessages.isNotEmpty &&
+        smartChatViewModel.hasNewMessages) {
       smartChatViewModel.doAction(SaveMessagesAction());
     }
     super.dispose();
@@ -58,6 +59,7 @@ class _SmartChatViewState extends State<SmartChatView> {
 
   @override
   Widget build(BuildContext context) {
+    var chatId;
     return BaseView(
       scaffoldKey: _scaffoldKey,
       image: Assets.imagesChatBg,
@@ -93,7 +95,7 @@ class _SmartChatViewState extends State<SmartChatView> {
                           chatId: state.chatId[index],
                         ),
                       ),
-                      childCount: smartChatViewModel.titles.length,
+                      childCount: state.titles.length,
                     ),
                   );
                 }
@@ -106,10 +108,11 @@ class _SmartChatViewState extends State<SmartChatView> {
       actions: [
         IconButton(
           onPressed: () {
-            if (smartChatViewModel.chatMessages.isNotEmpty) {
+            if (smartChatViewModel.chatMessages.isNotEmpty &&
+                smartChatViewModel.hasNewMessages) {
               smartChatViewModel.doAction(SaveMessagesAction());
-              smartChatViewModel.doAction(GetTitlesAction());
             }
+            smartChatViewModel.doAction(GetTitlesAction());
             _scaffoldKey.currentState?.openEndDrawer();
           },
           icon: SvgPicture.asset(Assets.svgMenu),

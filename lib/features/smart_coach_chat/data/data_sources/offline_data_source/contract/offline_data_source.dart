@@ -7,4 +7,6 @@ abstract interface class OfflineDataSource {
   Future<List<ChatIsar>> getMessages();
 
   Future<List<ChatIsar>> getMessagesById(Id chatId);
+
+  Future<void> deleteMessagesById(Id chatId);
 }

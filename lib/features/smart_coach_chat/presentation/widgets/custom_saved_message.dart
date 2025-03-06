@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_action.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ class CustomSavedMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<SmartChatViewModel>();
+    final bool isSelected = viewModel.currentChatId == chatId;
     return Column(
       children: [
         Row(
@@ -27,9 +30,9 @@ class CustomSavedMessage extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  context
-                      .read<SmartChatViewModel>()
-                      .doAction(GetChatAction(chatId));
+                  viewModel.currentChatId = chatId;
+                  viewModel.doAction(GetChatAction(chatId));
+                  Navigator.pop(context);
                 },
                 child: Text(
                   text,
