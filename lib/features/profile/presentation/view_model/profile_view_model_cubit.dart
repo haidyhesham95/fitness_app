@@ -42,7 +42,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
   String email = '';
   String activity = "";
   String goal = '';
-  int? selectedWeight;
+  int selectedWeight=0;
   EditProfileStep currentStep = EditProfileStep.weight;
 
   void doAction(ProfileActions action) {

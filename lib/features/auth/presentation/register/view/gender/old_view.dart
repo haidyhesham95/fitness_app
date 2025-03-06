@@ -34,7 +34,7 @@ class OldView extends StatelessWidget {
           onPressed: () {
             context.pushNamed(
               AppRoutes.weightView,
-              arguments: false,
+              arguments: 35,
             );
           },
         );

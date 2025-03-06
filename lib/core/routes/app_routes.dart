@@ -108,7 +108,7 @@ class AppRoutes {
                 BlocProvider(create: (context) => getIt.get<SignUpViewModel>()),
               ],
               child: WeightView(
-                        isEdit: args as bool,
+                        weight: args as int,
                       ),
             ));
       case editProfileView:
