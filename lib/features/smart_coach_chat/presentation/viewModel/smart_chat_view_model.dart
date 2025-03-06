@@ -25,7 +25,7 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
   Future<void> doAction(SmartChatAction action) async {
     switch (action) {
       case SendMessageAction():
-        await _sendMessage(action.prompt, action.userImageUrl, action.image!);
+        await _sendMessage(action.prompt, action.userImageUrl, action.image );
         break;
       case SaveMessagesAction():
         _saveMessages();
@@ -35,7 +35,7 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
         break;
     }
   }
-  Future<void> _sendMessage(String prompt, String userImageUrl,File  imageFile) async {
+  Future<void> _sendMessage(String prompt, String userImageUrl,File? imageFile) async {
     final responseStream = fetchSmartChatUseCase.call(prompt, userImageUrl, imageFile);
     responseStream.listen((result) {
       switch (result) {
@@ -45,7 +45,7 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
               chatMessages.add(msg);
             }
           }
-          emit(SmartChatSuccess(List.from(chatMessages))); // UI update
+          emit(SmartChatSuccess(List.from(chatMessages)));
         case Fail<List<SmartChatResponseEntity>>():
           emit(SmartChatError(result.exception.toString()));
       }

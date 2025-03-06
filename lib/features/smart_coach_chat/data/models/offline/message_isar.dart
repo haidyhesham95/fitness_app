@@ -8,7 +8,6 @@ class ChatIsar {
   Id id = Isar.autoIncrement;
   late String chatTitle;
 
-
   List<MessageIsar>? messages;
 
   ChatIsar({required this.chatTitle, this.messages});

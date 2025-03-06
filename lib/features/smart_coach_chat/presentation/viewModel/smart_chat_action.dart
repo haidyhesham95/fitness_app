@@ -7,8 +7,7 @@ class SendMessageAction extends SmartChatAction {
   final String userImageUrl;
   final File? image;
 
-
-  SendMessageAction(this.prompt, this.userImageUrl , this.image);
+  SendMessageAction(this.prompt, this.userImageUrl, [this.image]);
 }
 
 class SaveMessagesAction extends SmartChatAction {}

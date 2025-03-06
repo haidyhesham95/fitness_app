@@ -11,6 +11,7 @@ import '../view_model/profile_view_model_cubit.dart';
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({super.key});
   final File? _image = null;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileViewModelCubit, ProfileViewModelState>(
