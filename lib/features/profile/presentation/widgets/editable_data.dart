@@ -33,6 +33,7 @@ class EditableData extends StatelessWidget {
                   AppRoutes.weightView,
                   arguments:state.data.user?.weight,
                 );
+                debugPrint(' weightView ${state.data.user?.weight}');
               },
               child: EditTextWidget(
                 editableText: context.translate(LangKeys.tapToEdit),

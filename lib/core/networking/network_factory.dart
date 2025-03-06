@@ -1,7 +1,8 @@
-import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
 import '../services/shared_preference/shared_pref_keys.dart';
 import '../services/shared_preference/shared_preference_helper.dart';
 import 'api/api_constants.dart';
@@ -24,6 +25,7 @@ abstract class NetworkFactory {
         onRequest: (options, handler) async {
           final token = await SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);
           options.headers['Authorization'] = 'Bearer $token';
+          options.headers['accept-language'] = await SharedPrefHelper().getString(key: SharedPrefKeys.language);
           return handler.next(options);
         },
         onError: (error, handler) {

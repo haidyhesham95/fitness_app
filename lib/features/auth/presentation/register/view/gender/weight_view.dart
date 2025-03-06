@@ -11,11 +11,11 @@ import '../../../../../../core/routes/app_routes.dart';
 import '../../view_model/signup_view_model_cubit.dart';
 
 class WeightView extends StatefulWidget {
-  final bool isEdit;
+  final int weight;
 
   const WeightView({
     super.key,
-    required this.isEdit,
+    required this.weight,
   });
 
   @override
@@ -27,7 +27,7 @@ class _WeightViewState extends State<WeightView> {
 
   @override
   void initState() {
-    if (widget.isEdit) {
+    if (widget.weight > 35) {
       viewModel = context.read<ProfileViewModelCubit>();
     } else {
       viewModel = context.read<SignUpViewModel>();
@@ -43,9 +43,9 @@ class _WeightViewState extends State<WeightView> {
         return HealthDataWidget(
           text: context.translate(LangKeys.kg),
           title: context.translate(LangKeys.whatIsYourWeight),
-          value: widget.isEdit ? '' : "3/6",
-          progress: widget.isEdit  ? 0 : 0.3,
-          initialValue: viewModel.selectedWeight,
+          value: widget.weight!=35 ? '' : "3/6",
+          progress: widget.weight!=35  ? 0 : 0.3,
+          initialValue: widget.weight == 35 ? viewModel.selectedWeight : widget.weight,
           minValue: 35,
           maxValue: 300,
           onSelected: (int value) {
@@ -54,7 +54,7 @@ class _WeightViewState extends State<WeightView> {
             // viewModel.doAction(SelectWeightAction(weight: value));
           },
           onPressed: () {
-            if (widget.isEdit == false) {
+            if (widget.weight == 35) {
               context.pushNamed(
                 AppRoutes.heightView,
                 arguments: viewModel,
@@ -65,8 +65,9 @@ class _WeightViewState extends State<WeightView> {
               viewModel.doAction(EditProfile({
                 'weight': viewModel.selectedWeight, // Ensure weight is saved
               }));
-              context.pop();
-              viewModel.doAction(GetUserData());
+
+        Navigator.of(context).restorablePopAndPushNamed(AppRoutes.editProfileView);
+
             }
           },
         );
