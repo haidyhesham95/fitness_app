@@ -47,5 +47,4 @@ sealed class ProfileViewModelState {}
  class UploadPhotoSuccess extends ProfileViewModelState {
   final UploadPhotoResponseEntity data;
   UploadPhotoSuccess({required this.data});
-
 }

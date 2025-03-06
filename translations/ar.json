@@ -101,7 +101,7 @@
   "tap_to_edit": "اضغط للتعديل",
   "your_weight": "وزنك",
   "your_goal": "هدفك",
-  "your_activity_level": "مستوى نشاطك"
+  "your_activity_level": "مستوى نشاطك",
   "titleSecurity": "أمان البيانات",
   "descriptionSecurityOne": "نحن نستخدم تقنيات التحقق من الهوية لضمان أن الأشخاص المناسبين فقط يمكنهم الوصول إلى بياناتك.",
   "titleSecurityTwo": "المشاركة مع أطراف ثالثة",
@@ -131,7 +131,7 @@
   "get_started": "ابدأ الآن",
   "explore": "تصفح",
   "workouts": "تمارين",
-  "chatAi": "دردشة AI"
+  "chatAi": "دردشة AI",
   "gallery": "اختيار من المعرض",
   "camera": "التقاط صورة بالكاميرا"
 }

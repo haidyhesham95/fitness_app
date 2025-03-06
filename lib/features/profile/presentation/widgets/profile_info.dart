@@ -48,6 +48,7 @@ class ProfileInfo extends StatelessWidget {
           case UploadPhotoLoading():
           case UploadPhotoError():
           case UploadPhotoSuccess():
+
         }
         return Container();
       },

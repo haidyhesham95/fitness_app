@@ -69,7 +69,7 @@ class GenderView extends StatelessWidget {
                         txt: context.translate(LangKeys.next),
                         onPressed: () {
                           context.pushNamed(
-                            AppRoutes.healthDataPage,
+                            AppRoutes.oldView,
                             arguments: viewModel,
                           );
                         },

@@ -83,9 +83,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               width: 60.w,
               child: InkWell(
                 onTap: () {
-                  // context.pushReplacementNamed(AppRoutes.login);
-                  context.pushNamed(AppRoutes.smartChatView);
-
+                  context.pushReplacementNamed(AppRoutes.login);
                 },
                 child: Text(
                   context.translate(LangKeys.skip),

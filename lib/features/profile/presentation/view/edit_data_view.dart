@@ -35,6 +35,7 @@ class EditDataView extends StatelessWidget {
         int minValue = 0;
         int maxValue = 0;
         ValueChanged<int> onSelected = (value) {};
+        // ignore: unused_local_variable
         List<String>? goalItems;
         Map<String, String>? activityItems;
         bool isGoalPage = false;
@@ -78,7 +79,7 @@ class EditDataView extends StatelessWidget {
           return CustomGoalView(
             value: value,
             progress: progress,
-            items: goalItems ?? activityItems!,
+            items:  activityItems!,
             title: title,
             subTitle: currentStep == EditProfileStep.goal
                 ? context.translate(LangKeys.thisHelpsUsCreateYourPersonalizedPlan)

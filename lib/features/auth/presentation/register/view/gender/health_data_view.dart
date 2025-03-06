@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/features/auth/presentation/register/widgets/gender/health_data_widget.dart';
 import 'package:flutter/material.dart';
@@ -97,7 +99,7 @@ class HealthDataView extends StatelessWidget {
           return CustomGoalView(
             value: value,
             progress: progress,
-            items: goalItems ?? activityItems!,
+            items: activityItems!,
             title: title,
             subTitle: currentStep == SignUpStep.goal
                 ? context

@@ -21,11 +21,11 @@ class ProfileView extends StatelessWidget {
       text: context.translate(LangKeys.profile),
       image: Assets.imagesEditBg,
       widget: Column(
+        spacing: 20.h,
         children: [
           const ProfileInfo(),
-          verticalSpacing(40.h),
           const SettingList(),
-          verticalSpacing(20.h),
+          verticalSpacing(50.h)
         ],
       ),
     );

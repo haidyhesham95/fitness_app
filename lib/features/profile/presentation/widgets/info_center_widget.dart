@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/info_center_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,6 +16,9 @@ class InfoCenterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomBlurBg(
       isShow: true,
+      onTap: () {
+        context.pop();
+      },
       isShowTextBar: true,
       height: 0,
       text: title,

@@ -30,12 +30,10 @@ class EditableData extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).pushNamed(
-                  AppRoutes.editDataView,
-                  arguments: {
-                    'viewModel': getIt.get<SignUpViewModel>(),
-                    'step': EditProfileStep.weight,
-                  },
+                  AppRoutes.weightView,
+                  arguments:state.data.user?.weight,
                 );
+                debugPrint(' weightView ${state.data.user?.weight}');
               },
               child: EditTextWidget(
                 editableText: context.translate(LangKeys.tapToEdit),
