@@ -14,4 +14,9 @@ class UploadPhoto extends ProfileActions {
   final File photo;
   UploadPhoto(this.photo);
 }
+class updateWeight extends ProfileActions {
+  final int weight;
+  updateWeight(this.weight);
+}
+
 

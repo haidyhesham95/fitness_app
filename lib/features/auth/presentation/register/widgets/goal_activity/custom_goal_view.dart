@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../../../core/utils/widgets/base/custom_glassy_container.dart';
 import '../../../forget_password/widgets/custom_blur_bg.dart';
 import '../../view_model/signup_view_model_cubit.dart';
@@ -19,7 +20,7 @@ class CustomGoalView extends StatelessWidget {
   });
 
   final String? title, subTitle, value;
-  final dynamic items;
+  final Map items;
   final Widget button;
   final double? progress;
   final bool? isGoalPage;
@@ -36,26 +37,15 @@ class CustomGoalView extends StatelessWidget {
           child: Column(
             spacing: 16.h,
             children: [
-              if (items is List) ...[
-                ...items
-                    .map((item) => CustomContainerGoal(
-                          txt: item,
-                          isGoalPage: isGoalPage,
-                          keyValue: item,
-                  viewModel: viewModel,
-                        ))
-                    .toList(),
-              ] else if (items is Map) ...[
                 ...items.keys
                     .map((key) => CustomContainerGoal(
                           txt: items[key],
                           isGoalPage: isGoalPage,
                           keyValue: key,
-                  viewModel: viewModel,
+                          viewModel: viewModel,
                         ))
                     .toList(),
-              ] else
-                Container(),
+
               button,
             ],
           ),
@@ -67,4 +57,3 @@ class CustomGoalView extends StatelessWidget {
     );
   }
 }
-

@@ -10,7 +10,7 @@ class SelectActivityAction extends SignupAction {
 }
 
 class SelectGoalAction extends SignupAction {
-  final String goal;
+   String goal;
 
   SelectGoalAction({required this.goal});
 }

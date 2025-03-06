@@ -58,21 +58,21 @@ class CustomBlurBg extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 isShow == true
-                    ? GestureDetector(
-                        onTap: onTap ?? () => Navigator.pop(context),
-                        child: Container(
-                          height: 24.h,
-                          width: 24.w,
-                          decoration: BoxDecoration(
-                            color: context.colors.baseColor,
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: Center(
+                    ? Container(
+                      height: 24.h,
+                      width: 24.w,
+                      decoration: BoxDecoration(
+                          color: context.colors.baseColor,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                      child: InkWell(
+                        onTap: ()=>onTap ?? () => Navigator.pop(context),
+                        child: Center(
                             child: Image.asset(Assets.imagesArrowBack,
                                 width: 10.w, height: 10.h),
                           ),
-                        ),
-                      )
+                      ),
+                    )
                     : const SizedBox(),
                 isShowTextBar == true ?
                 Text(

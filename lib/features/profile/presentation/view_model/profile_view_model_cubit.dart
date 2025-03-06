@@ -31,6 +31,12 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
   var weightController = TextEditingController();
   var goalController = TextEditingController();
   var activityController = TextEditingController();
+  /// The user's goal
+  // ValueNotifier<String> goal = ValueNotifier("");
+  /// The user's weight
+
+  /// The user's activity level
+  // ValueNotifier<String> activity = ValueNotifier("");
   String firstName = '';
   String lastName = '';
   String email = '';
@@ -49,6 +55,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
         break;
       case UploadPhoto():
        _uploadPhoto(action.photo);
+      case updateWeight():
     }
   }
   Future<void> _getUserData() async {
@@ -56,6 +63,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
     final result = await _profileUseCase.getUserData();
     switch (result) {
       case Success<ProfileResponseEntity>():
+        selectedWeight = result.data.user!.weight ?? 0;
         emit(getProfileSuccess(data: result.data));
       case Fail<ProfileResponseEntity>():
         emit(getProfileError(
@@ -87,5 +95,4 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
         emit(UploadPhotoError(error: ErrorHandler.handle(result.exception!)));
     }
   }
-
 }

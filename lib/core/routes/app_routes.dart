@@ -102,9 +102,15 @@ class AppRoutes {
         ));
       case weightView:
         return BaseRoute(
-            page: WeightView(
-          viewModel: args as SignUpViewModel,
-        ));
+            page: MultiBlocProvider(
+              providers: [
+                BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData())),
+                BlocProvider(create: (context) => getIt.get<SignUpViewModel>()),
+              ],
+              child: WeightView(
+                        isEdit: args as bool,
+                      ),
+            ));
       case editProfileView:
         return BaseRoute(
             page: BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>(),child:

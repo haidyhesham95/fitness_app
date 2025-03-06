@@ -24,6 +24,13 @@ class SignUpViewModel extends Cubit<SignUpViewModelState> {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
+
+  /// The user's goal
+  // ValueNotifier<String> goal = ValueNotifier("");
+  /// The user's weight
+  // ValueNotifier<int> selectedWeight = ValueNotifier(65);
+  /// The user's activity level
+  // ValueNotifier<String> activity = ValueNotifier("");
   String goal = "";
   String activity = "";
   int selectedHeight = 170;
