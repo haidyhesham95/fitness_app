@@ -90,6 +90,7 @@ class _SmartChatViewState extends State<SmartChatView> {
                         onTap: () {},
                         child: CustomSavedMessage(
                           text: state.titles[index],
+                          chatId: state.chatId[index],
                         ),
                       ),
                       childCount: smartChatViewModel.titles.length,

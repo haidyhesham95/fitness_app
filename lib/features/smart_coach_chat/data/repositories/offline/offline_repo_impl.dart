@@ -1,4 +1,4 @@
-import 'package:fitness_app/features/smart_coach_chat/data/data_sources/offline_data_source/contracts/offline_data_source.dart';
+import 'package:fitness_app/features/smart_coach_chat/data/data_sources/offline_data_source/contract/offline_data_source.dart';
 import 'package:fitness_app/features/smart_coach_chat/data/models/offline/message_isar.dart';
 import 'package:fitness_app/features/smart_coach_chat/domain/repositories/offline/offline_contracts.dart';
 import 'package:injectable/injectable.dart';

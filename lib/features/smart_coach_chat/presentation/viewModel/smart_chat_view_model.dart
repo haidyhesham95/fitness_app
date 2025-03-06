@@ -16,7 +16,7 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
   final FetchSmartChatCase fetchSmartChatUseCase;
   final IsarUseCase _isarUseCase;
   List<String> titles = [];
-  final List<Id> chatIds = [];
+  List<Id> chatIds = [];
 
   SmartChatViewModel(this.fetchSmartChatUseCase, this._isarUseCase) : super(SmartChatInitial());
   List<SmartChatResponseEntity> chatMessages = [];
@@ -31,7 +31,10 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
         _saveMessages();
         break;
       case GetTitlesAction():
-        _getTitles();
+        _getTitlesWithId();
+        break;
+      case GetChatAction():
+        _getMessagesById(action.chatId);
         break;
     }
   }
@@ -58,9 +61,16 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
     }
   }
 
-  Future<void> _getTitles() async {
+  Future<void> _getTitlesWithId() async {
     final savedChats = await _isarUseCase.getMessages();
     titles = savedChats.map((chat) => chat.chatTitle).toList();
-    emit(SmartChatTitlesLoaded(List.from(titles)));
+    chatIds = savedChats.map((chat) => chat.id).toList();
+    emit(SmartChatTitlesLoaded(List.from(titles), chatIds));
+  }
+
+  Future<void> _getMessagesById(Id chatId) async {
+    final messages = await _isarUseCase.getMessagesById(chatId);
+    chatMessages = await MessageMapper.fromChatIsarList(messages);
+    emit(SmartChatSuccess(List.from(chatMessages)));
   }
 }
