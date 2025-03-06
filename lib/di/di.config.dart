@@ -110,7 +110,7 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i14.OfflineRepoImpl(gh<_i11.OfflineDataSource>()));
     gh.factory<_i15.PrettyDioLogger>(() => networkFactory.prettyDioLogger());
     gh.factory<_i16.SmartChatOnlineDataSource>(
-        () => _i17.SmartChatDataSourceImpl(gh<_i8.GeminiHelper>()));
+        () => _i17.GeminiSmartChatDataSource(gh<_i8.GeminiHelper>()));
     gh.factory<_i18.SmartChatRepo>(
         () => _i19.SmartChatRepoImpl(gh<_i16.SmartChatOnlineDataSource>()));
     gh.singleton<_i20.ApiManager>(() => _i20.ApiManager(gh<_i6.Dio>()));

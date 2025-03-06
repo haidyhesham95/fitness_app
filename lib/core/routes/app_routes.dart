@@ -136,10 +136,13 @@ class AppRoutes {
         return BaseRoute(page: const HelpPage());
       case smartChatView:
         return BaseRoute(
-            page: BlocProvider(
-          create: (context) => getIt.get<SmartChatViewModel>(),
-          child: const SmartChatView(),
-        ));
+            page:MultiBlocProvider (
+              providers: [
+                BlocProvider(create: (context) => getIt.get<SmartChatViewModel>()),
+                BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData())),
+              ],
+              child: const SmartChatView(),
+            ));
       case homeLayout:
         return BaseRoute(page: MultiBlocProvider(providers: [
         BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData())),
