@@ -55,7 +55,7 @@ import '../features/profile/domain/use_cases/upload_photo_use_case.dart'
     as _i39;
 import '../features/profile/presentation/view_model/profile_view_model_cubit.dart'
     as _i41;
-import '../features/smart_coach_chat/data/data_sources/offline_data_source/contracts/offline_data_source.dart'
+import '../features/smart_coach_chat/data/data_sources/offline_data_source/contract/offline_data_source.dart'
     as _i11;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/impl/offline_data_source_impl.dart'
     as _i12;

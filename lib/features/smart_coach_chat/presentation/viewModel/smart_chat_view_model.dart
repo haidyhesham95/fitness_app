@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/features/smart_coach_chat/data/mappers/offline/message_mapper.dart';
+import 'package:fitness_app/features/smart_coach_chat/data/models/offline/message_isar.dart';
 import 'package:fitness_app/features/smart_coach_chat/domain/entities/smart_chat_response_entity.dart';
 import 'package:fitness_app/features/smart_coach_chat/domain/use_cases/fetch_smart_chat_case.dart';
 import 'package:fitness_app/features/smart_coach_chat/domain/use_cases/offline/local_storage_use_case.dart';
@@ -16,7 +17,9 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
   final FetchSmartChatCase fetchSmartChatUseCase;
   final IsarUseCase _isarUseCase;
   List<String> titles = [];
-  final List<Id> chatIds = [];
+  List<Id> chatIds = [];
+  bool hasNewMessages = false;
+  Id? currentChatId;
 
   SmartChatViewModel(this.fetchSmartChatUseCase, this._isarUseCase) : super(SmartChatInitial());
   List<SmartChatResponseEntity> chatMessages = [];
@@ -25,13 +28,21 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
   Future<void> doAction(SmartChatAction action) async {
     switch (action) {
       case SendMessageAction():
-        await _sendMessage(action.prompt, action.userImageUrl, action.image );
+        hasNewMessages = true;
+        await _sendMessage(action.prompt, action.userImageUrl, action.image);
         break;
       case SaveMessagesAction():
-        _saveMessages();
+        if (hasNewMessages) {
+          _saveMessages();
+          hasNewMessages = false;
+        }
+        break;
+      case GetChatAction():
+        hasNewMessages = false;
+        _getMessagesById(action.chatId);
         break;
       case GetTitlesAction():
-        _getTitles();
+        _getTitlesWithId();
         break;
     }
   }
@@ -52,15 +63,30 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
     });
   }
 
-  void _saveMessages()async {
+  void _saveMessages() async {
     if (chatMessages.isNotEmpty) {
-      _isarUseCase.saveMessages([await MessageMapper.toChatIsarList(chatMessages)]);
+      if (currentChatId != null) {
+        await _isarUseCase.deleteMessagesById(currentChatId!);
+      }
+      await _isarUseCase
+          .saveMessages([await MessageMapper.toChatIsarList(chatMessages)]);
     }
   }
 
-  Future<void> _getTitles() async {
-    final savedChats = await _isarUseCase.getMessages();
+  Future<void> _getTitlesWithId() async {
+    List<ChatIsar> savedChats = await _isarUseCase.getMessages();
     titles = savedChats.map((chat) => chat.chatTitle).toList();
-    emit(SmartChatTitlesLoaded(List.from(titles)));
+    chatIds = savedChats.map((chat) => chat.id).toList();
+    emit(SmartChatTitlesLoaded(List.from(titles), chatIds));
   }
+
+  Future<void> _getMessagesById(Id chatId) async {
+    final messages = await _isarUseCase.getMessagesById(chatId);
+    chatMessages = await MessageMapper.fromChatIsarList(messages);
+    emit(SmartChatSuccess(List.from(chatMessages)));
+  }
+
+// compare currentChatId with chatId from list of saved chats
+// if exist --> create new list and add old list in new list then clear
+// save new and old messages
 }

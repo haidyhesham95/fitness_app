@@ -2,7 +2,7 @@ import 'package:fitness_app/features/smart_coach_chat/data/models/offline/messag
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 
-import '../contracts/offline_data_source.dart';
+import '../contract/offline_data_source.dart';
 
 @Injectable(as: OfflineDataSource)
 class OfflineDataSourceImpl implements OfflineDataSource {
@@ -24,5 +24,11 @@ class OfflineDataSourceImpl implements OfflineDataSource {
   @override
   Future<List<ChatIsar>> getMessagesById(Id chatId) async {
     return await isar.chatIsars.filter().idEqualTo(chatId).findAll();
+  }
+
+  @override
+  Future<void> deleteMessagesById(Id chatId) async {
+    return await isar.writeTxn(() async =>
+        await isar.chatIsars.filter().idEqualTo(chatId).deleteAll());
   }
 }

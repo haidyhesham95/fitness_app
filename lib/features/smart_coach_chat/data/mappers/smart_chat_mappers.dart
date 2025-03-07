@@ -1,4 +1,7 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:fitness_app/features/smart_coach_chat/domain/entities/smart_chat_response_entity.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../models/image_message_model.dart';
 import '../models/smart_chat_message_model.dart';
@@ -55,5 +58,21 @@ class SmartChatMappers {
   static List<SmartChatModelResponse> mapListToModel(
       List<SmartChatResponseEntity> entities) {
     return entities.map(mapToModel).toList();
+  }
+
+  static Future<File> base64ToFile(String base64String, String fileName) async {
+    try {
+      if (!base64String.contains(RegExp(r'^[A-Za-z0-9+/]+={0,2}$'))) {
+        throw FormatException("Invalid Base64 data: $base64String");
+      }
+
+      final bytes = base64Decode(base64String);
+      final directory = await getTemporaryDirectory();
+      final file = File('${directory.path}/$fileName');
+      await file.writeAsBytes(bytes);
+      return file;
+    } catch (e) {
+      throw Exception("Error decoding Base64: $e");
+    }
   }
 }

@@ -6,4 +6,6 @@ abstract interface class OfflineRepo {
   Future<List<ChatIsar>> getMessages();
 
   Future<List<ChatIsar>> getMessagesById(Id chatId);
+
+  Future<void> deleteMessagesById(Id chatId);
 }

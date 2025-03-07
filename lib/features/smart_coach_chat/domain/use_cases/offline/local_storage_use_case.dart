@@ -22,4 +22,7 @@ class IsarUseCase {
   Future<List<ChatIsar>> getMessagesById(Id chatId) async {
     return await _offlineRepo.getMessagesById(chatId);
   }
+
+  Future<void> deleteMessagesById(Id chatId) async =>
+      await _offlineRepo.deleteMessagesById(chatId);
 }
