@@ -33,6 +33,7 @@ class Assets {
   static const String imagesOn1 = 'assets/images/on_1.png';
   static const String imagesOn2 = 'assets/images/on_2.png';
   static const String imagesOn3 = 'assets/images/on_3.png';
+  static const String imagesMuscles = 'https://images.pexels.com/photos/5327534/pexels-photo-5327534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
   static const String imagesOnBoardingBg = 'assets/images/on_boarding_bg.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
   static const String imagesRobotWithRope = 'assets/images/robot_with_rope.png';

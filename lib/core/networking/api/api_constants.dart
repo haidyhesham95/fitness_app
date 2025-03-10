@@ -8,5 +8,7 @@ class ApiConstants {
   static const String editProfileApi = 'api/v1/auth/editProfile';
   static const String profileData = 'api/v1/auth/profile-data';
   static const String uploadPhoto = "api/v1/auth/upload-photo";
+  static const String getAllWorkouts = "api/v1/muscles";
+  static const String getWorkoutsById = "api/v1/musclesGroup/67c79f3526895f87ce0aa96d";
 
 }

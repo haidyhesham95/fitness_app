@@ -18,10 +18,10 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i15;
 
 import '../core/app_cubit/app_cubit.dart' as _i3;
 import '../core/networking/api/api_manager.dart' as _i20;
-import '../core/networking/common/register_context_module.dart' as _i43;
-import '../core/networking/network_factory.dart' as _i42;
+import '../core/networking/common/register_context_module.dart' as _i50;
+import '../core/networking/network_factory.dart' as _i49;
 import '../core/services/gemini_helper.dart' as _i8;
-import '../core/services/isar_service.dart' as _i44;
+import '../core/services/isar_service.dart' as _i51;
 import '../features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart'
     as _i4;
 import '../features/auth/data/data_sources/contracts/online_data_sources/auth_online_data_source.dart'
@@ -49,12 +49,12 @@ import '../features/profile/data/data_sources/impl/profile_online_data_source_im
 import '../features/profile/data/repositories/profile_repo_impl.dart' as _i34;
 import '../features/profile/domain/repositories/profile_repo.dart' as _i33;
 import '../features/profile/domain/use_cases/edit_profile_use_case.dart'
-    as _i40;
+    as _i45;
 import '../features/profile/domain/use_cases/profile_use_case.dart' as _i35;
 import '../features/profile/domain/use_cases/upload_photo_use_case.dart'
     as _i39;
 import '../features/profile/presentation/view_model/profile_view_model_cubit.dart'
-    as _i41;
+    as _i47;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/contract/offline_data_source.dart'
     as _i11;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/impl/offline_data_source_impl.dart'
@@ -77,6 +77,16 @@ import '../features/smart_coach_chat/domain/use_cases/offline/local_storage_use_
     as _i28;
 import '../features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart'
     as _i38;
+import '../features/workouts/data/data_sources/online_data_sources/contracts/get_all_workouts_online_data_source.dart'
+    as _i40;
+import '../features/workouts/data/data_sources/online_data_sources/impl/get_all_workouts_online_data_source_impl.dart'
+    as _i41;
+import '../features/workouts/data/repositories/workouts_repo_impl.dart' as _i43;
+import '../features/workouts/domain/repositories/workouts_repo.dart' as _i42;
+import '../features/workouts/domain/use_cases/get_workout_by_id.dart' as _i46;
+import '../features/workouts/domain/use_cases/workouts_use_case.dart' as _i44;
+import '../features/workouts/presentation/view_model/workouts_view_model.dart'
+    as _i48;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -145,20 +155,32 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i39.UploadPhotoUseCase>(
         () => _i39.UploadPhotoUseCase(gh<_i33.ProfileRepo>()));
-    gh.factory<_i40.EditProfileUseCase>(
-        () => _i40.EditProfileUseCase(gh<_i33.ProfileRepo>()));
-    gh.factory<_i41.ProfileViewModelCubit>(() => _i41.ProfileViewModelCubit(
+    gh.factory<_i40.WorkoutsOnlineDataSource>(
+        () => _i41.WorkoutsOnlineDataSourceImpl(gh<_i20.ApiManager>()));
+    gh.factory<_i42.WorkoutsRepo>(
+        () => _i43.WorkoutsRepoImpl(gh<_i40.WorkoutsOnlineDataSource>()));
+    gh.factory<_i44.WorkoutsUseCase>(
+        () => _i44.WorkoutsUseCase(gh<_i42.WorkoutsRepo>()));
+    gh.factory<_i45.EditProfileUseCase>(
+        () => _i45.EditProfileUseCase(gh<_i33.ProfileRepo>()));
+    gh.factory<_i46.GetWorkoutsByIdUseCase>(
+        () => _i46.GetWorkoutsByIdUseCase(gh<_i42.WorkoutsRepo>()));
+    gh.factory<_i47.ProfileViewModelCubit>(() => _i47.ProfileViewModelCubit(
           gh<_i35.ProfileUseCase>(),
           gh<_i4.AuthOfflineDataSource>(),
-          gh<_i40.EditProfileUseCase>(),
+          gh<_i45.EditProfileUseCase>(),
           gh<_i39.UploadPhotoUseCase>(),
+        ));
+    gh.factory<_i48.WorkoutsViewModelCubit>(() => _i48.WorkoutsViewModelCubit(
+          gh<_i44.WorkoutsUseCase>(),
+          gh<_i46.GetWorkoutsByIdUseCase>(),
         ));
     return this;
   }
 }
 
-class _$NetworkFactory extends _i42.NetworkFactory {}
+class _$NetworkFactory extends _i49.NetworkFactory {}
 
-class _$AppModule extends _i43.AppModule {}
+class _$AppModule extends _i50.AppModule {}
 
-class _$IsarModule extends _i44.IsarModule {}
+class _$IsarModule extends _i51.IsarModule {}
