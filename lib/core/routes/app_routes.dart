@@ -6,19 +6,23 @@ import 'package:fitness_app/features/auth/presentation/register/view/gender/gend
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
+import 'package:fitness_app/features/meals/presentation/view/meal_view.dart';
+import 'package:fitness_app/features/meals/presentation/viewModel/meals_actions.dart';
+import 'package:fitness_app/features/meals/presentation/viewModel/meals_view_model_cubit.dart';
 import 'package:fitness_app/features/on_boarding/on_boarding_screen.dart';
+import 'package:fitness_app/features/profile/presentation/view/edit_data_view.dart';
+import 'package:fitness_app/features/profile/presentation/view/edit_profile_view.dart';
+import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
+import 'package:fitness_app/features/profile/presentation/view_model/profile_actions.dart';
+import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/help_page.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/privcya_page.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/security_page.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_view.dart';
-import 'package:fitness_app/features/profile/presentation/view/edit_data_view.dart';
-import 'package:fitness_app/features/profile/presentation/view/edit_profile_view.dart';
-import 'package:fitness_app/features/profile/presentation/view_model/profile_actions.dart';
-import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
-import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../features/auth/presentation/forget_password/views/create_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/forget_password_view.dart';
 import '../../features/auth/presentation/forget_password/views/verify_otp_view.dart';
@@ -53,19 +57,22 @@ class AppRoutes {
   static const String smartChatView = "smartChatView";
   static const String homeLayout = "homeLayout";
   static const String editDataView = "editDataView";
+  static const String mealsView = "mealsView";
+
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
-
       case login:
         return BaseRoute(
             page: BlocProvider(
           create: (context) => getIt.get<LoginViewModel>(),
-           child: const LoginView(),));
+          child: const LoginView(),
+        ));
       case signUp:
         return BaseRoute(
-            page: BlocProvider(create: (context) => getIt.get<SignUpViewModel>(),
-           child: const SignUpView(),
+            page: BlocProvider(
+          create: (context) => getIt.get<SignUpViewModel>(),
+          child: const SignUpView(),
         ));
       case onBoarding:
         return BaseRoute(page: OnboardingScreen());
@@ -103,31 +110,40 @@ class AppRoutes {
       case weightView:
         return BaseRoute(
             page: MultiBlocProvider(
-              providers: [
-                BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData())),
-                BlocProvider(create: (context) => getIt.get<SignUpViewModel>()),
-              ],
-              child: WeightView(
-                        weight: args as int,
-                      ),
-            ));
+          providers: [
+            BlocProvider(
+                create: (context) => getIt.get<ProfileViewModelCubit>()
+                  ..doAction(GetUserData())),
+            BlocProvider(create: (context) => getIt.get<SignUpViewModel>()),
+          ],
+          child: WeightView(
+            weight: args as int,
+          ),
+        ));
       case editProfileView:
         return BaseRoute(
-            page: BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>(),child:
-            const EditProfileView(),));
+            page: BlocProvider(
+          create: (context) => getIt.get<ProfileViewModelCubit>(),
+          child: const EditProfileView(),
+        ));
       case healthDataPage:
-        return BaseRoute(page:  HealthDataView(
+        return BaseRoute(
+            page: HealthDataView(
           viewModel: args as SignUpViewModel,
         ));
-        case profileView:
-          return BaseRoute(
-              page: BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),child:
-              const ProfileView(),));
-          case editDataView:
+      case profileView:
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) =>
+              getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),
+          child: const ProfileView(),
+        ));
+      case editDataView:
         final args = settings.arguments as Map<String, dynamic>;
         return BaseRoute(
           page: BlocProvider(
-            create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),
+            create: (context) =>
+                getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),
             child: EditDataView(
               viewModel: args['viewModel'],
               step: args['step'],
@@ -142,18 +158,30 @@ class AppRoutes {
         return BaseRoute(page: const HelpPage());
       case smartChatView:
         return BaseRoute(
-            page:MultiBlocProvider (
-              providers: [
-                BlocProvider(create: (context) => getIt.get<SmartChatViewModel>()),
-                BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData())),
-              ],
-              child: const SmartChatView(),
-            ));
+            page: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => getIt.get<SmartChatViewModel>()),
+            BlocProvider(
+                create: (context) => getIt.get<ProfileViewModelCubit>()
+                  ..doAction(GetUserData())),
+          ],
+          child: const SmartChatView(),
+        ));
       case homeLayout:
-        return BaseRoute(page: MultiBlocProvider(providers: [
-        BlocProvider(create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetUserData())),
-        ],
-        child: const HomeLayout()));
+        return BaseRoute(
+            page: MultiBlocProvider(providers: [
+          BlocProvider(
+              create: (context) =>
+                  getIt.get<ProfileViewModelCubit>()..doAction(GetUserData())),
+        ], child: const HomeLayout()));
+
+      case mealsView:
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) =>
+              getIt.get<MealsViewModelCubit>()..doAction(LoadMealsCategories()),
+          child: const MealsView(),
+        ));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

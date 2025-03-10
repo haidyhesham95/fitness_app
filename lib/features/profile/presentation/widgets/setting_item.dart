@@ -27,6 +27,7 @@ minTileHeight: 5.h,
       onTap: onTap,
       leading: SvgPicture.asset(
         icon!,
+
       ),
       title: title ?? Text(
         text ?? '',

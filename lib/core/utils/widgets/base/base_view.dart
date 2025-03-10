@@ -79,7 +79,7 @@ class BaseView extends StatelessWidget {
                             .copyWith(color: context.colors.white),
                         children: [
                           TextSpan(
-                            text: '\n${subTitle ?? ''}',
+                            text: '${title!= null?'\n':''}${subTitle ?? ''}',
                             style: MyFonts.styleBold700_18
                                 .copyWith(color: context.colors.white),
                           ),
