@@ -75,7 +75,7 @@ class _HomeLayoutState extends State<HomeLayout> {
               ),
               BottomNavigationBarItem(
                 icon: const ImageIcon(
-                  AssetImage(Assets.imagesHomeProfile),
+                  AssetImage(Assets.imagesProfile),
                 ),
                 label: context.translate(LangKeys.profile),
               ),

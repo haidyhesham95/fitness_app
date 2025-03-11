@@ -1,4 +1,6 @@
+import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/profile_info.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/setting_list.dart';
 import 'package:fitness_app/generated/assets.dart';
@@ -15,7 +17,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomBlurBg(
-      isShow: true,
+      isShow: false,
       isShowTextBar: true,
       height: 0,
       text: context.translate(LangKeys.profile),
@@ -23,7 +25,11 @@ class ProfileView extends StatelessWidget {
       widget: Column(
         spacing: 20.h,
         children: [
-          const ProfileInfo(),
+          InkWell(
+              onTap: () {
+                context.pushNamed(AppRoutes.mealsView);
+              },
+              child: const ProfileInfo()),
           const SettingList(),
           verticalSpacing(50.h)
         ],
