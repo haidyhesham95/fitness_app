@@ -14,7 +14,7 @@ class _MealsApiManager implements MealsApiManager {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://www.themealdb.com/api/json/v1/1/categories.php/';
+    baseUrl ??= 'https://www.themealdb.com/api/json/v1/1/';
   }
 
   final Dio _dio;
@@ -59,7 +59,7 @@ class _MealsApiManager implements MealsApiManager {
   @override
   Future<MealsByCategoryResponseDto> getMealsByCategory(String category) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'c': category};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<MealsByCategoryResponseDto>(Options(
@@ -92,7 +92,7 @@ class _MealsApiManager implements MealsApiManager {
   @override
   Future<MealsDetailsResponseDto> getMealById(String id) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'i': id};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<MealsDetailsResponseDto>(Options(

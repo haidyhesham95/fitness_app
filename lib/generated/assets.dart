@@ -48,6 +48,7 @@ class Assets {
   static const String svgLogout = 'assets/svg/logout.svg';
   static const String svgMail = 'assets/svg/mail.svg';
   static const String svgMenu = 'assets/svg/menu.svg';
+  static const String svgPlay = 'assets/svg/play.svg';
   static const String svgProfile = 'assets/svg/profile.svg';
   static const String svgSecurityWarning = 'assets/svg/Security_Warning.svg';
   static const String svgUser = 'assets/svg/user.svg';

@@ -125,5 +125,6 @@ class LangKeys {
   static const String gallery = 'gallery';
   static const String camera = 'camera';
   static const String foodRecommendation = 'food_recommendation';
-
+  static const String ingredients = 'ingredients';
+  static const String recommendation = 'recommendation';
 }
