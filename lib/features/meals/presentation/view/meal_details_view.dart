@@ -26,18 +26,17 @@ class MealDetailsView extends StatefulWidget {
 class _MealDetailsViewState extends State<MealDetailsView> {
   final MealsViewModelCubit viewModel = getIt.get<MealsViewModelCubit>();
 
-void initState() {
-  viewModel.doAction(FilterMealsByCategory(viewModel.currentCategory));
+  void initState() {
+    debugPrint(' current category ${viewModel.currentCategory}');
+    super.initState();
+  }
 
-  super.initState();
-}
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<MealsViewModelCubit, MealsViewModelState>(
       buildWhen: (previous, current) =>
           previous != current && current is MealInfoSuccess,
       builder: (context, state) {
-
         return state is MealInfoSuccess
             ? BaseView(
                 extendBodyBehindAppBar: true,
@@ -118,25 +117,37 @@ void initState() {
                     ),
                   ),
                   SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Container(
-                        height: 160.h,
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListView.separated(
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) => SizedBox(
-                            height: 160.h,
-                            width: 160.w,
-                            child: FoodItem(
-                              meal: viewModel.randomMeals[index],
+                    child:
+                        BlocBuilder<MealsViewModelCubit, MealsViewModelState>(
+                      builder: (context, state) {
+                        if (state is RandomMealsSuccess) {
+                          return Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Container(
+                              height: 160.h,
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListView.separated(
+                                padding: EdgeInsets.zero,
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) => SizedBox(
+                                  height: 160.h,
+                                  width: 160.w,
+                                  child: FoodItem(
+                                    meal: state.randomMeals[index],
+                                  ),
+                                ),
+                                itemCount: state.randomMeals.length,
+                                separatorBuilder:
+                                    (BuildContext context, int index) => SizedBox(
+                                  width: 10.w,
+                                ),
+                              ),
                             ),
-                          ),
-                          itemCount: viewModel.randomMeals.length, separatorBuilder: (BuildContext context, int index) =>SizedBox(width: 10.w,),
-                        ),
-                      ),
+                          );
+                        }
+                        return const Center(child: AppLoader());
+                      },
                     ),
                   ),
                 ],
@@ -149,8 +160,8 @@ void initState() {
       },
       listener: (context, state) {
         if (state is MealInfoSuccess) {
-
-          viewModel.doAction(FilterMealsByCategory(state.mealDetailsEntity.category));
+          viewModel.doAction(
+              FilterMealsByCategory(state.mealDetailsEntity.category));
         }
       },
     );

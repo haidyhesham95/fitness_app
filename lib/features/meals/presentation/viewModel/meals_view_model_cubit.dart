@@ -11,6 +11,7 @@ import 'package:fitness_app/features/meals/domain/entities/meals_category_entity
 import 'package:fitness_app/features/meals/domain/use_cases/get_meal_by_id_case.dart';
 import 'package:fitness_app/features/meals/domain/use_cases/get_meals_by_category_case.dart';
 import 'package:fitness_app/features/meals/domain/use_cases/get_meals_categories_case.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 
 import 'meals_actions.dart';
@@ -33,6 +34,7 @@ class MealsViewModelCubit extends Cubit<MealsViewModelState> {
   List<MealEntity> randomMeals = [];
 
   String currentCategory = '';
+
   Future<void> doAction(MealsActions action) async {
     switch (action) {
       case LoadMealsCategories():
@@ -64,7 +66,7 @@ class MealsViewModelCubit extends Cubit<MealsViewModelState> {
     switch (result) {
       case Success<List<MealEntity>>():
         meals = result.data;
-        randomMeals  = List.from(result.data)..shuffle(Random());
+
         emit(MealsByCategorySuccess(result.data));
       case Fail<List<MealEntity>>():
         final message = ErrorHandler.handle(result.exception!);
@@ -77,11 +79,25 @@ class MealsViewModelCubit extends Cubit<MealsViewModelState> {
     final result = await _getMealById(id);
     switch (result) {
       case Success<MealDetailsEntity>():
-        currentCategory = result.data.category;
+        _getRandomMeals(result.data.category);
+        debugPrint('current category result $currentCategory');
         emit(MealInfoSuccess(result.data));
       case Fail<MealDetailsEntity>():
         final message = ErrorHandler.handle(result.exception!);
         emit(MealInfoError(message));
+    }
+  }
+
+  Future<void> _getRandomMeals(currentCategory) async {
+    emit(RandomMealsLoading());
+    final result = await _getMealsByCategory(currentCategory);
+    switch (result) {
+      case Success<List<MealEntity>>():
+        randomMeals = List.from(result.data)..shuffle(Random());
+        emit(RandomMealsSuccess(randomMeals));
+      case Fail<List<MealEntity>>():
+        final message = ErrorHandler.handle(result.exception!);
+        emit(RandomMealsError(message));
     }
   }
 }
