@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../profile/presentation/view/profile_view.dart';
+import 'home_view.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -18,7 +19,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    Container(),
+    const HomeView(),
     const SmartChatIntroView(),
     Container(),
     const ProfileView()

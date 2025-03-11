@@ -33,7 +33,7 @@ class BaseView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey, // تمرير المفتاح إلى Scaffold
+      key: scaffoldKey,
       endDrawer: drawer,
       body: Container(
         decoration: BoxDecoration(

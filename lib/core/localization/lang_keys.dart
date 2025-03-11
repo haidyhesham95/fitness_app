@@ -125,5 +125,11 @@ class LangKeys {
   static const String gallery = 'gallery';
   static const String camera = 'camera';
   static const String foodRecommendation = 'food_recommendation';
+  static const String letsStartYourDay = 'letsStartYourDay';
+  static const String gym = 'gym';
+  static const String fitness = 'fitness';
+  static const String yoga = 'yoga';
+  static const String aerobics = 'aerobics';
+  static const String trainer = 'trainer';
 
 }
