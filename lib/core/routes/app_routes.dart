@@ -6,6 +6,7 @@ import 'package:fitness_app/features/auth/presentation/register/view/gender/gend
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
+import 'package:fitness_app/features/meals/presentation/view/meal_details_view.dart';
 import 'package:fitness_app/features/meals/presentation/view/meal_view.dart';
 import 'package:fitness_app/features/meals/presentation/viewModel/meals_actions.dart';
 import 'package:fitness_app/features/meals/presentation/viewModel/meals_view_model_cubit.dart';
@@ -58,6 +59,7 @@ class AppRoutes {
   static const String homeLayout = "homeLayout";
   static const String editDataView = "editDataView";
   static const String mealsView = "mealsView";
+  static const String mealDetails = "mealDetails";
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -178,9 +180,17 @@ class AppRoutes {
       case mealsView:
         return BaseRoute(
             page: BlocProvider(
-          create: (context) =>
-              getIt.get<MealsViewModelCubit>()..doAction(LoadMealsCategories()),
+          create: (context) => getIt.get<MealsViewModelCubit>(),
           child: const MealsView(),
+        ));
+      case mealDetails:
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) => getIt.get<MealsViewModelCubit>()
+            ..doAction(GetMealInfo(args)),
+          child: MealDetailsView(
+            mealId: args as String,
+          ),
         ));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());

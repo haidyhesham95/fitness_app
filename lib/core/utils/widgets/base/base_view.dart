@@ -18,11 +18,13 @@ class BaseView extends StatelessWidget {
     this.blur,
     this.drawer,
     this.scaffoldKey, // إضافة المفتاح
+    this.extendBodyBehindAppBar = false,
   });
 
   final List<Widget> child;
   final String image;
   final bool isArrowBackShow;
+  final bool? extendBodyBehindAppBar;
   final List<Widget>? actions;
   final String? title;
   final String? subTitle;
@@ -33,8 +35,47 @@ class BaseView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey, // تمرير المفتاح إلى Scaffold
+      extendBodyBehindAppBar: true,
+      key: scaffoldKey,
+      // تمرير المفتاح إلى Scaffold
       endDrawer: drawer,
+      appBar: AppBar(
+        leading: isArrowBackShow
+            ? InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: SvgPicture.asset(
+                  Assets.svgArrowBack,
+                  width: 24.w,
+                  height: 24.h,
+                  fit: BoxFit.scaleDown,
+                ),
+              )
+            : const SizedBox(),
+        title: Row(
+          children: [
+            Expanded(
+              child: RichText(
+                text: TextSpan(
+                  text: title ?? '',
+                  style: MyFonts.styleMedium500_16
+                      .copyWith(color: context.colors.white),
+                  children: [
+                    TextSpan(
+                      text: '${title != null ? '\n' : ''}${subTitle ?? ''}',
+                      style: MyFonts.styleBold700_18
+                          .copyWith(color: context.colors.white),
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+        actions: actions,
+      ),
       body: Container(
         decoration: BoxDecoration(
           color: context.colors.transparent,
@@ -52,50 +93,10 @@ class BaseView extends StatelessWidget {
                 ),
               ),
             ),
-            PositionedDirectional(
-              top: 40.h,
-              start: 16.w,
-              end: 16.w,
-              child: Row(
-                children: [
-                  isArrowBackShow
-                      ? InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: SvgPicture.asset(
-                            Assets.svgArrowBack,
-                            width: 24.w,
-                            height: 24.h,
-                            fit: BoxFit.scaleDown,
-                          ),
-                        )
-                      : const SizedBox(),
-                  Expanded(
-                    child: RichText(
-                      text: TextSpan(
-                        text: title ?? '',
-                        style: MyFonts.styleMedium500_16
-                            .copyWith(color: context.colors.white),
-                        children: [
-                          TextSpan(
-                            text: '${title!= null?'\n':''}${subTitle ?? ''}',
-                            style: MyFonts.styleBold700_18
-                                .copyWith(color: context.colors.white),
-                          ),
-                        ],
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Row(
-                    children: actions ?? [],
-                  )
-                ],
-              ),
-            ),
             Positioned(
-              top: context.height * .1,
+              top: extendBodyBehindAppBar == true
+                  ? 0
+                  : context.height * .1,
               bottom: 0,
               right: 0,
               left: 0,

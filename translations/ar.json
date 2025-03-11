@@ -134,6 +134,7 @@
   "chatAi": "دردشة AI",
   "gallery": "اختيار من المعرض",
   "camera": "التقاط صورة بالكاميرا",
-  "food_recommendation": "توصية الطعام"
-
+  "food_recommendation": "توصية الطعام",
+  "ingredients": "المكونات",
+  "recommendation": "التوصية"
 }

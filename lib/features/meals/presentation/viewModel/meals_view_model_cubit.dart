@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fitness_app/core/networking/common/api_result.dart';
@@ -26,7 +28,11 @@ class MealsViewModelCubit extends Cubit<MealsViewModelState> {
   final GetMealsCategories _mealsCategories;
   final GetMealsByCategoryCase _getMealsByCategory;
   final GetMealByIdCase _getMealById;
+  List<MealsCategoryEntity> categories = [];
+  List<MealEntity> meals = [];
+  List<MealEntity> randomMeals = [];
 
+  String currentCategory = '';
   Future<void> doAction(MealsActions action) async {
     switch (action) {
       case LoadMealsCategories():
@@ -43,6 +49,7 @@ class MealsViewModelCubit extends Cubit<MealsViewModelState> {
     final result = await _mealsCategories();
     switch (result) {
       case Success<List<MealsCategoryEntity>>():
+        categories = result.data;
         emit(MealsCategoriesSuccess(result.data));
       case Fail<List<MealsCategoryEntity>>():
         final message = ErrorHandler.handle(result.exception!);
@@ -56,6 +63,8 @@ class MealsViewModelCubit extends Cubit<MealsViewModelState> {
     final result = await _getMealsByCategory(category);
     switch (result) {
       case Success<List<MealEntity>>():
+        meals = result.data;
+        randomMeals  = List.from(result.data)..shuffle(Random());
         emit(MealsByCategorySuccess(result.data));
       case Fail<List<MealEntity>>():
         final message = ErrorHandler.handle(result.exception!);
@@ -68,6 +77,7 @@ class MealsViewModelCubit extends Cubit<MealsViewModelState> {
     final result = await _getMealById(id);
     switch (result) {
       case Success<MealDetailsEntity>():
+        currentCategory = result.data.category;
         emit(MealInfoSuccess(result.data));
       case Fail<MealDetailsEntity>():
         final message = ErrorHandler.handle(result.exception!);
