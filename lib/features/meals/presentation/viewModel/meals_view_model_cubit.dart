@@ -26,7 +26,7 @@ class MealsViewModelCubit extends Cubit<MealsViewModelState> {
     this._getMealById,
   ) : super(MealsViewModelInitial());
 
-  final GetMealsCategories _mealsCategories;
+  final GetMealsCategoriesCase _mealsCategories;
   final GetMealsByCategoryCase _getMealsByCategory;
   final GetMealByIdCase _getMealById;
   List<MealsCategoryEntity> categories = [];

@@ -62,9 +62,9 @@ class MealsDetailsDto {
     List<String> measures = [];
 
     for (int i = 1; i <= 20; i++) {
-      final String ingredient = json['strIngredient$i'];
-      final  String measure = json['strMeasure$i'];
-      if (ingredient.isNotEmpty) {
+      final String ingredient = json['strIngredient$i'].toString();
+      final  String measure = json['strMeasure$i'].toString();
+      if (ingredient.isNotEmpty&& measure.isNotEmpty && ingredient != 'null' && measure != 'null') {
         ingredients.add(ingredient);
         measures.add(measure );
       }
