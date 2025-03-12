@@ -124,6 +124,7 @@ class LangKeys {
   static const String chatAi = 'chatAi';
   static const String gallery = 'gallery';
   static const String camera = 'camera';
+  static const String highChest = 'HighChestExercise';
   static const String foodRecommendation = 'food_recommendation';
   static const String letsStartYourDay = 'letsStartYourDay';
   static const String gym = 'gym';

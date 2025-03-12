@@ -21,6 +21,12 @@ import 'package:fitness_app/features/profile/presentation/widgets/privcya_page.d
 import 'package:fitness_app/features/profile/presentation/widgets/security_page.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_view.dart';
+import 'package:fitness_app/features/profile/presentation/view/edit_data_view.dart';
+import 'package:fitness_app/features/profile/presentation/view/edit_profile_view.dart';
+import 'package:fitness_app/features/profile/presentation/view_model/profile_actions.dart';
+import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
+import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
+import 'package:fitness_app/features/workouts/presentation/view/workouts_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -59,9 +65,12 @@ class AppRoutes {
   static const String smartChatView = "smartChatView";
   static const String homeLayout = "homeLayout";
   static const String editDataView = "editDataView";
+  static const String workoutsCard = "workoutsCard";
+  static const String workoutsView = "workoutsView";
   static const String mealsView = "mealsView";
   static const String homeView = "homeView";
   static const String mealDetails = "mealDetails";
+  
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
@@ -159,6 +168,9 @@ class AppRoutes {
         return BaseRoute(page: const PrivacyPage());
       case helpPage:
         return BaseRoute(page: const HelpPage());
+        case workoutsCard:
+        return BaseRoute(page:  WorkoutsView());
+
       case smartChatView:
         return BaseRoute(
             page: MultiBlocProvider(
