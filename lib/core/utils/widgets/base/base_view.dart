@@ -37,7 +37,6 @@ class BaseView extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       key: scaffoldKey,
-      // تمرير المفتاح إلى Scaffold
       endDrawer: drawer,
       appBar: AppBar(
         leading: isArrowBackShow

@@ -137,7 +137,14 @@
   "get_started": "Get Started",
   "gallery": "Choose from Gallery",
   "camera": "Take a Picture with Camera",
+  "high_chest": "High Chest Exercise",
   "food_recommendation": "Food Recommendation",
+  "letsStartYourDay": "Let's Start Your Day",
+  "gym": "Gym",
+  "fitness": "Fitness",
+  "yoga": "Yoga",
+  "aerobics": "Aerobics",
+  "trainer": "Trainer"
   "ingredients": "Ingredients",
   "recommendation": "Recommendation"
 }
