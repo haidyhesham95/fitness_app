@@ -21,14 +21,14 @@ class SettingList extends StatelessWidget {
     List<SettingItem> items = [
       SettingItem(
         text: context.translate(LangKeys.editProfile),
-        icon: Assets.imagesProfile,
+        icon: Assets.svgEdit,
         onTap: () {
           Navigator.pushReplacementNamed(context,AppRoutes.editProfileView);
         },
       ),
       SettingItem(
         text: context.translate(LangKeys.changePassword),
-        icon: Assets.imagesChange,
+        icon: Assets.svgChange,
         onTap: () {
           context.pushNamed(AppRoutes.forgetPasswordView);
         },
@@ -53,7 +53,7 @@ class SettingList extends StatelessWidget {
             ],
           ),
         ),
-        icon: Assets.imagesLanguage,
+        icon: Assets.svgLanguage,
         onTap: () {},
         trailing: BlocBuilder<AppCubit, AppStates>(
           builder: (context, state) {
@@ -75,28 +75,28 @@ class SettingList extends StatelessWidget {
       ),
       SettingItem(
         text: context.translate(LangKeys.security),
-        icon: Assets.imagesLockSetting,
+        icon: Assets.svgLockSetting,
         onTap: () {
           context.pushNamed(AppRoutes.securityPage);
         },
       ),
       SettingItem(
         text: context.translate(LangKeys.privacyPolicy),
-        icon: Assets.imagesSecurityWarning,
+        icon: Assets.svgSecurityWarning,
         onTap: () {
           context.pushNamed(AppRoutes.privacyPage);
         },
       ),
       SettingItem(
         text: context.translate(LangKeys.help),
-        icon: Assets.imagesHelp,
+        icon: Assets.svgHelp,
         onTap: () {
           context.pushNamed(AppRoutes.helpPage);
         },
       ),
       SettingItem(
         text: context.translate(LangKeys.logout),
-        icon: Assets.imagesLogout,
+        icon: Assets.svgLogout,
         onTap: () {
           showLogoutDialog(context);
         },

@@ -1,5 +1,6 @@
 class ApiConstants {
   static const String baseUrl = "https://fitness.elevateegy.com/";
+  static const String mealsBaseUrl = "https://www.themealdb.com/api/json/v1/1/";
   static const String forgetPassword = "api/v1/auth/forgotPassword";
   static const String verifyOtp = "api/v1/auth/verifyResetCode";
   static const String resetPassword = "api/v1/auth/resetPassword";
@@ -10,5 +11,7 @@ class ApiConstants {
   static const String uploadPhoto = "api/v1/auth/upload-photo";
   static const String getAllWorkouts = "api/v1/muscles";
   static const String getWorkoutsById = "api/v1/musclesGroup/67c79f3526895f87ce0aa96d";
-
+  static const String mealsCategories = "categories.php";
+  static const String mealsByCategory = "filter.php";
+  static const String mealById = "lookup.php";
 }

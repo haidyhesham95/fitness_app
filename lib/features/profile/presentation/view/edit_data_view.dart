@@ -44,7 +44,7 @@ class EditDataView extends StatelessWidget {
           case EditProfileStep.weight:
             title = context.translate(LangKeys.whatIsYourWeight);
             text = context.translate(LangKeys.kg);
-            initialValue = cubit.selectedWeight ?? 0;
+            initialValue = cubit.selectedWeight ;
             minValue = 35;
             maxValue = 300;
             onSelected = (value) {

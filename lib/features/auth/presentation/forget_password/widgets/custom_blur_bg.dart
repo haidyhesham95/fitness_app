@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/widgets/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,7 @@ class CustomBlurBg extends StatelessWidget {
   final bool? isShow , isShowTextBar;
   final double? progress ,height;
   final String? value , image ,text;
-  final void Function()? onTap;
+  final  VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -58,15 +59,17 @@ class CustomBlurBg extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 isShow == true
-                    ? Container(
-                      height: 24.h,
-                      width: 24.w,
-                      decoration: BoxDecoration(
-                          color: context.colors.baseColor,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      child: InkWell(
-                        onTap: ()=>onTap ?? () => Navigator.pop(context),
+                    ? InkWell(
+                      onTap: () {
+                        context.pop();
+                      },
+                      child: Container(
+                        height: 24.h,
+                        width: 24.w,
+                        decoration: BoxDecoration(
+                            color: context.colors.baseColor,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
                         child: Center(
                             child: Image.asset(Assets.imagesArrowBack,
                                 width: 10.w, height: 10.h),

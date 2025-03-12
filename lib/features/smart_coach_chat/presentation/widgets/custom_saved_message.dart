@@ -1,10 +1,8 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
-import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_action.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 import 'package:isar/isar.dart';
 
 import '../../../../core/styles/fonts/my_fonts.dart';
