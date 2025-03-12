@@ -15,6 +15,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/networking/common/register_context_module.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
+import '../../../meals/presentation/viewModel/meals_view_model_cubit.dart';
 import '../../../profile/presentation/view_model/profile_actions.dart';
 import '../widgets/custom_container_category.dart';
 import '../widgets/home_loading_widget.dart';
@@ -30,10 +31,11 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   late HomeViewModelCubit homeViewModel;
 
+  MealsViewModelCubit get viewModel => context.read<MealsViewModelCubit>();
+
   @override
   void initState() {
     homeViewModel = getIt.get<HomeViewModelCubit>();
-    homeViewModel.doAction(GetRandomMuscles());
     super.initState();
   }
 
@@ -61,114 +63,121 @@ class _HomeViewState extends State<HomeView> {
         title: context.translate(LangKeys.trainer),
       ),
     ];
-    return BlocProvider(
-      create: (context) =>
-          getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),
-      child: BlocBuilder<ProfileViewModelCubit, ProfileViewModelState>(
-        builder: (context, state) {
-          switch (state) {
-            case getProfileSuccess():
-              return BaseView(
-                image: Assets.imagesHomeBg,
-                isArrowBackShow: false,
-                title:
-                    '${context.translate(LangKeys.hi)}  ${state.data.user!.firstName},',
-                subTitle: context.translate(LangKeys.letsStartYourDay),
-                child: [
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          verticalSpacing(24.h),
-                          Text(
-                            "Categories",
-                            style: MyFonts.styleSemiBold600_16
-                                .copyWith(color: context.colors.white),
+    return BlocBuilder<ProfileViewModelCubit, ProfileViewModelState>(
+      builder: (context, state) {
+        switch (state) {
+          case getProfileSuccess():
+            return BaseView(
+              image: Assets.imagesHomeBg,
+              isArrowBackShow: false,
+              title:
+                  '${context.translate(LangKeys.hi)}  ${state.data.user!.firstName},',
+              subTitle: context.translate(LangKeys.letsStartYourDay),
+              child: [
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        verticalSpacing(24.h),
+                        Text(
+                          "Categories",
+                          style: MyFonts.styleSemiBold600_16
+                              .copyWith(color: context.colors.white),
+                        ),
+                        verticalSpacing(7.h),
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: context.colors.darkGray,
+                            borderRadius: BorderRadius.circular(20.r),
                           ),
-                          verticalSpacing(7.h),
-                          Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: context.colors.darkGray,
-                              borderRadius: BorderRadius.circular(20.r),
-                            ),
-                            child: SizedBox(
-                              height: 116.h,
-                              child: ListView.separated(
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemCount: items.length,
-                                itemBuilder: (context, index) => FadeInRight(
-                                  child: CustomContainerCategory(
-                                      model: items[index]),
-                                ),
-                                separatorBuilder: (context, index) =>
-                                    VerticalDivider(
-                                  endIndent: 20,
-                                  indent: 20,
-                                  color: context.colors.gray,
-                                ),
+                          child: SizedBox(
+                            height: 116.h,
+                            child: ListView.separated(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: items.length,
+                              itemBuilder: (context, index) => FadeInRight(
+                                child: CustomContainerCategory(
+                                    model: items[index]),
+                              ),
+                              separatorBuilder: (context, index) =>
+                                  VerticalDivider(
+                                endIndent: 20,
+                                indent: 20,
+                                color: context.colors.gray,
                               ),
                             ),
                           ),
-                          verticalSpacing(24.h),
-                        ],
-                      ),
+                        ),
+                        verticalSpacing(24.h),
+                      ],
                     ),
                   ),
-                  BlocProvider(
-                    create: (context) => homeViewModel,
-                    child: SliverToBoxAdapter(child:
-                        BlocBuilder<HomeViewModelCubit, HomeViewModelState>(
-                            builder: (context, state) {
-                      switch (state) {
-                        case GetRandomMusclesLoading():
-                          return const HomeLoadingWidget();
-                        case GetRandomMusclesSuccess():
-                          return FadeInLeft(
-                            child: RecommendationSection(
-                                data: state.muscles.muscles ?? [],
-                                title: 'Recommendation To Day'),
-                          );
-                        case GetRandomMusclesError():
-                          return Center(
-                            child: Text(state.errorMessage.error ?? ""),
-                          );
-                        default:
-                          null;
-                      }
-                      return const SizedBox();
-                    })),
+                ),
+                SliverToBoxAdapter(child:
+                    BlocBuilder<HomeViewModelCubit, HomeViewModelState>(
+                        builder: (context, state) {
+                  switch (state) {
+                    case GetRandomMusclesLoading():
+                      return const HomeLoadingWidget();
+                    case GetRandomMusclesSuccess():
+                      return FadeInLeft(
+                        child: RecommendationSection(
+                            data: state.muscles.muscles ?? [],
+                            title: "Recommendation To Day"),
+                      );
+                    case GetRandomMusclesError():
+                      return Center(
+                        child: Text(state.errorMessage.error ?? ""),
+                      );
+                    default:
+                      null;
+                  }
+                  return const SizedBox();
+                })),
+                SliverToBoxAdapter(child: verticalSpacing(24.h)),
+                SliverToBoxAdapter(
+                  child: FadeInRight(
+                    child: const RecommendationSection(
+                        title: 'Upcoming Workouts', showSeeAll: true),
                   ),
-                  SliverToBoxAdapter(child: verticalSpacing(24.h)),
-                  SliverToBoxAdapter(
-                    child: FadeInRight(
-                      child: const RecommendationSection(
-                          title: 'Upcoming Workouts', showSeeAll: true),
-                    ),
-                  ),
-                  SliverToBoxAdapter(child: verticalSpacing(24.h)),
-                  SliverToBoxAdapter(
-                    child: FadeInLeft(
-                      child: const RecommendationSection(
-                          title: 'Recommendation For You', showSeeAll: true),
-                    ),
-                  ),
-                  const SliverToBoxAdapter(
-                    child: PopularTrainingSection(),
-                  )
-                ],
-              );
-            case getProfileLoading():
-              return const HomeLoadingWidget();
-            default:
-              null;
-          }
-          return const SizedBox();
-        },
-      ),
+                ),
+                SliverToBoxAdapter(child: verticalSpacing(24.h)),
+                SliverToBoxAdapter(
+                  child: BlocBuilder<MealsViewModelCubit, MealsViewModelState>(
+                      builder: (context, state) {
+                    switch (state) {
+                      case MealsCategoriesLoading():
+                        const HomeLoadingWidget();
+                        break;
+                      case MealsCategoriesSuccess():
+                        return FadeInLeft(
+                          child: RecommendationSection(
+                              data: viewModel.categories,
+                              title: "Recommendation For You"),
+                        );
+                      case MealsCategoriesError():
+                      default:
+                        null;
+                    }
+                    return const SizedBox();
+                  }),
+                ),
+                const SliverToBoxAdapter(
+                  child: PopularTrainingSection(),
+                )
+              ],
+            );
+          case getProfileLoading():
+            return const HomeLoadingWidget();
+          default:
+            null;
+        }
+        return const SizedBox();
+      },
     );
   }
 }

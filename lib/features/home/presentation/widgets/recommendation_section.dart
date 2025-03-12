@@ -51,6 +51,7 @@ class RecommendationSection extends StatelessWidget {
               itemCount: data?.length ?? 0,
               itemBuilder: (context, index) {
                 return RecommendationCard(
+                  title: title,
                   data: data![index],
                 );
               },

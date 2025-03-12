@@ -3,9 +3,15 @@ import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_intro_view.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/networking/common/register_context_module.dart';
+import '../../../meals/presentation/viewModel/meals_actions.dart';
+import '../../../meals/presentation/viewModel/meals_view_model_cubit.dart';
 import '../../../profile/presentation/view/profile_view.dart';
+import '../viewModel/home_action.dart';
+import '../viewModel/home_view_model_cubit.dart';
 import 'home_view.dart';
 
 class HomeLayout extends StatefulWidget {
@@ -19,7 +25,17 @@ class _HomeLayoutState extends State<HomeLayout> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    const HomeView(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+            create: (context) =>
+                getIt.get<HomeViewModelCubit>()..doAction(GetRandomMuscles())),
+        BlocProvider(
+            create: (context) => getIt.get<MealsViewModelCubit>()
+              ..doAction(LoadMealsCategories())),
+      ],
+      child: const HomeView(),
+    ),
     const SmartChatIntroView(),
     Container(),
     const ProfileView()
