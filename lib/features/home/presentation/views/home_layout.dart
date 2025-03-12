@@ -5,6 +5,7 @@ import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../exercies/presentation/view/exercise_view.dart';
 import '../../../profile/presentation/view/profile_view.dart';
 
 class HomeLayout extends StatefulWidget {
@@ -18,7 +19,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    Container(),
+    ExerciseView(),
     const SmartChatIntroView(),
     Container(),
     const ProfileView()
