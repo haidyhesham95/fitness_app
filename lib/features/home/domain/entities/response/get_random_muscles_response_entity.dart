@@ -1,13 +1,13 @@
-class GetRandomMusclesResponseDto {
-  final List<GetRandomMusclesResponseDtoMuscles?>? muscles;
+class GetRandomMusclesResponseEntity {
+  final List<GetRandomMusclesResponseEntityMuscles?>? muscles;
 
-  GetRandomMusclesResponseDto(this.muscles);
+  GetRandomMusclesResponseEntity(this.muscles);
 }
 
-class GetRandomMusclesResponseDtoMuscles {
+class GetRandomMusclesResponseEntityMuscles {
   final String? id;
   final String? name;
   final String? image;
 
-  GetRandomMusclesResponseDtoMuscles(this.id, this.name, this.image);
+  GetRandomMusclesResponseEntityMuscles(this.id, this.name, this.image);
 }
