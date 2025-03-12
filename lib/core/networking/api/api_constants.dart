@@ -1,6 +1,6 @@
 class ApiConstants {
   static const String baseUrl = "https://fitness.elevateegy.com/";
-  static const String mealsBaseUrl = "https://www.themealdb.com/api/json/v1/1/categories.php/";
+  static const String mealsBaseUrl = "https://www.themealdb.com/api/json/v1/1/";
   static const String forgetPassword = "api/v1/auth/forgotPassword";
   static const String verifyOtp = "api/v1/auth/verifyResetCode";
   static const String resetPassword = "api/v1/auth/resetPassword";

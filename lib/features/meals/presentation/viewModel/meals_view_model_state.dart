@@ -52,6 +52,27 @@ final class MealsByCategoryError extends MealsViewModelState {
   List<Object?> get props => [errorModel];
 }
 
+/// Random Meals
+
+final class RandomMealsLoading extends MealsViewModelState {
+  @override
+  List<Object?> get props => [];
+}
+
+final class RandomMealsSuccess extends MealsViewModelState {
+  final List<MealEntity> randomMeals;
+  const RandomMealsSuccess(this.randomMeals);
+  @override
+  List<Object?> get props => [randomMeals];
+}
+
+final class RandomMealsError extends MealsViewModelState {
+  final ErrorModel errorModel;
+  const RandomMealsError(this.errorModel);
+  @override
+  List<Object?> get props => [errorModel];
+}
+
 /// Meal Info
 
 final class MealInfoLoading extends MealsViewModelState {
@@ -72,3 +93,6 @@ final class MealInfoError extends MealsViewModelState {
   @override
   List<Object?> get props => [errorModel];
 }
+
+
+
