@@ -21,9 +21,9 @@ abstract class MealsApiManager {
   Future<MealsCategoriesResponseDto> getMealsCategories();
 
   @GET(ApiConstants.mealsByCategory)
-  Future<MealsByCategoryResponseDto> getMealsByCategory(@Path("c") String category);
+  Future<MealsByCategoryResponseDto> getMealsByCategory(@Query("c") String category);
 
   @GET(ApiConstants.mealById)
-  Future<MealsDetailsResponseDto> getMealById(@Path("i") String id);
+  Future<MealsDetailsResponseDto> getMealById(@Query("i") String id);
 
 }
