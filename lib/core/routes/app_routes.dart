@@ -33,6 +33,7 @@ import '../../features/auth/presentation/register/view/gender/old_view.dart';
 import '../../features/auth/presentation/register/view/gender/weight_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/activity_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/goal_view.dart';
+import '../../features/home/presentation/views/home_view.dart';
 import '../utils/screens/under_build_screen.dart';
 
 class AppRoutes {
@@ -59,8 +60,8 @@ class AppRoutes {
   static const String homeLayout = "homeLayout";
   static const String editDataView = "editDataView";
   static const String mealsView = "mealsView";
+  static const String homeView = "homeView";
   static const String mealDetails = "mealDetails";
-
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
@@ -183,6 +184,8 @@ class AppRoutes {
           create: (context) => getIt.get<MealsViewModelCubit>(),
           child: const MealsView(),
         ));
+      case homeView:
+        return BaseRoute(page: HomeView());
       case mealDetails:
         return BaseRoute(
             page: BlocProvider(
