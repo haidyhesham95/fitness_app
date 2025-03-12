@@ -20,10 +20,10 @@ import '../core/app_cubit/app_cubit.dart' as _i3;
 import '../core/networking/api/api_manager.dart' as _i25;
 import '../core/networking/api/meals_api_manager/meals_api_manager.dart'
     as _i11;
-import '../core/networking/common/register_context_module.dart' as _i58;
-import '../core/networking/network_factory.dart' as _i57;
+import '../core/networking/common/register_context_module.dart' as _i59;
+import '../core/networking/network_factory.dart' as _i58;
 import '../core/services/gemini_helper.dart' as _i8;
-import '../core/services/isar_service.dart' as _i59;
+import '../core/services/isar_service.dart' as _i60;
 import '../features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart'
     as _i4;
 import '../features/auth/data/data_sources/contracts/online_data_sources/auth_online_data_source.dart'
@@ -50,9 +50,10 @@ import '../features/home/data/data_sources/online/impl/home_online_data_source_i
     as _i37;
 import '../features/home/data/repositories/home_repo_impl.dart' as _i39;
 import '../features/home/domain/contracts/home_repo.dart' as _i38;
+import '../features/home/domain/use_cases/category_meals_use_case.dart' as _i54;
 import '../features/home/domain/use_cases/random_muscles_use_case.dart' as _i49;
 import '../features/home/presentation/viewModel/home_view_model_cubit.dart'
-    as _i55;
+    as _i56;
 import '../features/meals/data/data_sources/contracts/meals_data_source.dart'
     as _i12;
 import '../features/meals/data/data_sources/impl/meals_data_source_impl.dart'
@@ -73,12 +74,12 @@ import '../features/profile/data/data_sources/impl/profile_online_data_source_im
 import '../features/profile/data/repositories/profile_repo_impl.dart' as _i47;
 import '../features/profile/domain/repositories/profile_repo.dart' as _i46;
 import '../features/profile/domain/use_cases/edit_profile_use_case.dart'
-    as _i54;
+    as _i55;
 import '../features/profile/domain/use_cases/profile_use_case.dart' as _i48;
 import '../features/profile/domain/use_cases/upload_photo_use_case.dart'
     as _i53;
 import '../features/profile/presentation/view_model/profile_view_model_cubit.dart'
-    as _i56;
+    as _i57;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/contract/offline_data_source.dart'
     as _i16;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/impl/offline_data_source_impl.dart'
@@ -192,22 +193,26 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i53.UploadPhotoUseCase>(
         () => _i53.UploadPhotoUseCase(gh<_i46.ProfileRepo>()));
-    gh.factory<_i54.EditProfileUseCase>(
-        () => _i54.EditProfileUseCase(gh<_i46.ProfileRepo>()));
-    gh.factory<_i55.HomeViewModelCubit>(
-        () => _i55.HomeViewModelCubit(gh<_i49.RandomMusclesUseCase>()));
-    gh.factory<_i56.ProfileViewModelCubit>(() => _i56.ProfileViewModelCubit(
+    gh.factory<_i54.CategoryMealsUseCase>(
+        () => _i54.CategoryMealsUseCase(gh<_i38.HomeRepo>()));
+    gh.factory<_i55.EditProfileUseCase>(
+        () => _i55.EditProfileUseCase(gh<_i46.ProfileRepo>()));
+    gh.factory<_i56.HomeViewModelCubit>(() => _i56.HomeViewModelCubit(
+          gh<_i49.RandomMusclesUseCase>(),
+          gh<_i54.CategoryMealsUseCase>(),
+        ));
+    gh.factory<_i57.ProfileViewModelCubit>(() => _i57.ProfileViewModelCubit(
           gh<_i48.ProfileUseCase>(),
           gh<_i4.AuthOfflineDataSource>(),
-          gh<_i54.EditProfileUseCase>(),
+          gh<_i55.EditProfileUseCase>(),
           gh<_i53.UploadPhotoUseCase>(),
         ));
     return this;
   }
 }
 
-class _$NetworkFactory extends _i57.NetworkFactory {}
+class _$NetworkFactory extends _i58.NetworkFactory {}
 
-class _$AppModule extends _i58.AppModule {}
+class _$AppModule extends _i59.AppModule {}
 
-class _$IsarModule extends _i59.IsarModule {}
+class _$IsarModule extends _i60.IsarModule {}
