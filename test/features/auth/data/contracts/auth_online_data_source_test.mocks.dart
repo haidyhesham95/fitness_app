@@ -3,20 +3,20 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i10;
-import 'dart:io' as _i16;
+import 'dart:async' as _i12;
+import 'dart:io' as _i18;
 
-import 'package:fitness_app/core/networking/api/api_manager.dart' as _i9;
+import 'package:fitness_app/core/networking/api/api_manager.dart' as _i11;
 import 'package:fitness_app/features/auth/data/models/request/forget_password_request_dto.dart'
-    as _i11;
-import 'package:fitness_app/features/auth/data/models/request/login_request_dto.dart'
-    as _i12;
-import 'package:fitness_app/features/auth/data/models/request/reset_password_request_dto.dart'
-    as _i15;
-import 'package:fitness_app/features/auth/data/models/request/signup_request_dto.dart'
     as _i13;
-import 'package:fitness_app/features/auth/data/models/request/verify_otp_request_dto.dart'
+import 'package:fitness_app/features/auth/data/models/request/login_request_dto.dart'
     as _i14;
+import 'package:fitness_app/features/auth/data/models/request/reset_password_request_dto.dart'
+    as _i17;
+import 'package:fitness_app/features/auth/data/models/request/signup_request_dto.dart'
+    as _i15;
+import 'package:fitness_app/features/auth/data/models/request/verify_otp_request_dto.dart'
+    as _i16;
 import 'package:fitness_app/features/auth/data/models/response/forget_response_dto.dart'
     as _i2;
 import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart'
@@ -26,11 +26,15 @@ import 'package:fitness_app/features/auth/data/models/response/reset_password_re
 import 'package:fitness_app/features/auth/data/models/response/signup_response_dto.dart'
     as _i4;
 import 'package:fitness_app/features/profile/data/models/response/edit_profile_response_dto.dart'
-    as _i7;
+    as _i9;
 import 'package:fitness_app/features/profile/data/models/response/profile_response_model.dart'
     as _i6;
 import 'package:fitness_app/features/profile/data/models/response/upload_photo_response_dto.dart'
+    as _i10;
+import 'package:fitness_app/features/workouts/data/models/response/get_all_workout_by_id_dto.dart'
     as _i8;
+import 'package:fitness_app/features/workouts/data/models/response/workouts_response_dto.dart'
+    as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -101,9 +105,9 @@ class _FakeProfileResponseDto_4 extends _i1.SmartFake
         );
 }
 
-class _FakeEditProfileResponseDto_5 extends _i1.SmartFake
-    implements _i7.EditProfileResponseDto {
-  _FakeEditProfileResponseDto_5(
+class _FakeWorkoutsResponseDto_5 extends _i1.SmartFake
+    implements _i7.WorkoutsResponseDto {
+  _FakeWorkoutsResponseDto_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -112,9 +116,31 @@ class _FakeEditProfileResponseDto_5 extends _i1.SmartFake
         );
 }
 
-class _FakeUploadPhotoResponseDto_6 extends _i1.SmartFake
-    implements _i8.UploadPhotoResponseDto {
-  _FakeUploadPhotoResponseDto_6(
+class _FakeGetAllWorkoutsByIdDto_6 extends _i1.SmartFake
+    implements _i8.GetAllWorkoutsByIdDto {
+  _FakeGetAllWorkoutsByIdDto_6(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeEditProfileResponseDto_7 extends _i1.SmartFake
+    implements _i9.EditProfileResponseDto {
+  _FakeEditProfileResponseDto_7(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeUploadPhotoResponseDto_8 extends _i1.SmartFake
+    implements _i10.UploadPhotoResponseDto {
+  _FakeUploadPhotoResponseDto_8(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -126,20 +152,20 @@ class _FakeUploadPhotoResponseDto_6 extends _i1.SmartFake
 /// A class which mocks [ApiManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiManager extends _i1.Mock implements _i9.ApiManager {
+class MockApiManager extends _i1.Mock implements _i11.ApiManager {
   MockApiManager() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<_i2.ForgetPasswordResponseDto> forgetPassword(
-          _i11.ForgetPasswordRequestDto? request) =>
+  _i12.Future<_i2.ForgetPasswordResponseDto> forgetPassword(
+          _i13.ForgetPasswordRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #forgetPassword,
           [request],
         ),
-        returnValue: _i10.Future<_i2.ForgetPasswordResponseDto>.value(
+        returnValue: _i12.Future<_i2.ForgetPasswordResponseDto>.value(
             _FakeForgetPasswordResponseDto_0(
           this,
           Invocation.method(
@@ -147,61 +173,61 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
             [request],
           ),
         )),
-      ) as _i10.Future<_i2.ForgetPasswordResponseDto>);
+      ) as _i12.Future<_i2.ForgetPasswordResponseDto>);
 
   @override
-  _i10.Future<_i3.LoginResponseDto> login(_i12.LoginRequestDto? request) =>
+  _i12.Future<_i3.LoginResponseDto> login(_i14.LoginRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
         returnValue:
-            _i10.Future<_i3.LoginResponseDto>.value(_FakeLoginResponseDto_1(
+            _i12.Future<_i3.LoginResponseDto>.value(_FakeLoginResponseDto_1(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i10.Future<_i3.LoginResponseDto>);
+      ) as _i12.Future<_i3.LoginResponseDto>);
 
   @override
-  _i10.Future<_i4.SignUpResponseDto> signup(_i13.SignUpRequestDto? request) =>
+  _i12.Future<_i4.SignUpResponseDto> signup(_i15.SignUpRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #signup,
           [request],
         ),
         returnValue:
-            _i10.Future<_i4.SignUpResponseDto>.value(_FakeSignUpResponseDto_2(
+            _i12.Future<_i4.SignUpResponseDto>.value(_FakeSignUpResponseDto_2(
           this,
           Invocation.method(
             #signup,
             [request],
           ),
         )),
-      ) as _i10.Future<_i4.SignUpResponseDto>);
+      ) as _i12.Future<_i4.SignUpResponseDto>);
 
   @override
-  _i10.Future<dynamic> verifyOtp(_i14.VerifyOtpRequestDto? request) =>
+  _i12.Future<dynamic> verifyOtp(_i16.VerifyOtpRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #verifyOtp,
           [request],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i12.Future<dynamic>.value(),
+      ) as _i12.Future<dynamic>);
 
   @override
-  _i10.Future<_i5.ResetPasswordResponseDto> resetPassword(
-          _i15.ResetPasswordRequestDto? request) =>
+  _i12.Future<_i5.ResetPasswordResponseDto> resetPassword(
+          _i17.ResetPasswordRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #resetPassword,
           [request],
         ),
-        returnValue: _i10.Future<_i5.ResetPasswordResponseDto>.value(
+        returnValue: _i12.Future<_i5.ResetPasswordResponseDto>.value(
             _FakeResetPasswordResponseDto_3(
           this,
           Invocation.method(
@@ -209,57 +235,90 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
             [request],
           ),
         )),
-      ) as _i10.Future<_i5.ResetPasswordResponseDto>);
+      ) as _i12.Future<_i5.ResetPasswordResponseDto>);
 
   @override
-  _i10.Future<_i6.ProfileResponseDto> getLoggedUserData() =>
+  _i12.Future<_i6.ProfileResponseDto> getLoggedUserData() =>
       (super.noSuchMethod(
         Invocation.method(
           #getLoggedUserData,
           [],
         ),
         returnValue:
-            _i10.Future<_i6.ProfileResponseDto>.value(_FakeProfileResponseDto_4(
+            _i12.Future<_i6.ProfileResponseDto>.value(_FakeProfileResponseDto_4(
           this,
           Invocation.method(
             #getLoggedUserData,
             [],
           ),
         )),
-      ) as _i10.Future<_i6.ProfileResponseDto>);
+      ) as _i12.Future<_i6.ProfileResponseDto>);
 
   @override
-  _i10.Future<_i7.EditProfileResponseDto> editProfile(
+  _i12.Future<_i7.WorkoutsResponseDto> getAllWorkouts() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllWorkouts,
+          [],
+        ),
+        returnValue: _i12.Future<_i7.WorkoutsResponseDto>.value(
+            _FakeWorkoutsResponseDto_5(
+          this,
+          Invocation.method(
+            #getAllWorkouts,
+            [],
+          ),
+        )),
+      ) as _i12.Future<_i7.WorkoutsResponseDto>);
+
+  @override
+  _i12.Future<_i8.GetAllWorkoutsByIdDto> getWorkoutsById() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getWorkoutsById,
+          [],
+        ),
+        returnValue: _i12.Future<_i8.GetAllWorkoutsByIdDto>.value(
+            _FakeGetAllWorkoutsByIdDto_6(
+          this,
+          Invocation.method(
+            #getWorkoutsById,
+            [],
+          ),
+        )),
+      ) as _i12.Future<_i8.GetAllWorkoutsByIdDto>);
+
+  @override
+  _i12.Future<_i9.EditProfileResponseDto> editProfile(
           Map<String, dynamic>? profileData) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
           [profileData],
         ),
-        returnValue: _i10.Future<_i7.EditProfileResponseDto>.value(
-            _FakeEditProfileResponseDto_5(
+        returnValue: _i12.Future<_i9.EditProfileResponseDto>.value(
+            _FakeEditProfileResponseDto_7(
           this,
           Invocation.method(
             #editProfile,
             [profileData],
           ),
         )),
-      ) as _i10.Future<_i7.EditProfileResponseDto>);
+      ) as _i12.Future<_i9.EditProfileResponseDto>);
 
   @override
-  _i10.Future<_i8.UploadPhotoResponseDto> uploadPhoto(_i16.File? photo) =>
+  _i12.Future<_i10.UploadPhotoResponseDto> uploadPhoto(_i18.File? photo) =>
       (super.noSuchMethod(
         Invocation.method(
           #uploadPhoto,
           [photo],
         ),
-        returnValue: _i10.Future<_i8.UploadPhotoResponseDto>.value(
-            _FakeUploadPhotoResponseDto_6(
+        returnValue: _i12.Future<_i10.UploadPhotoResponseDto>.value(
+            _FakeUploadPhotoResponseDto_8(
           this,
           Invocation.method(
             #uploadPhoto,
             [photo],
           ),
         )),
-      ) as _i10.Future<_i8.UploadPhotoResponseDto>);
+      ) as _i12.Future<_i10.UploadPhotoResponseDto>);
 }

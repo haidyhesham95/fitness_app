@@ -1,12 +1,13 @@
 import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_intro_view.dart';
+import 'package:fitness_app/features/workouts/presentation/view/workouts_view.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../exercies/presentation/view/exercise_view.dart';
 import '../../../profile/presentation/view/profile_view.dart';
+import 'home_view.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -19,9 +20,9 @@ class _HomeLayoutState extends State<HomeLayout> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    ExerciseView(),
+    const HomeView(),
     const SmartChatIntroView(),
-    Container(),
+    WorkoutsView(),
     const ProfileView()
   ];
 

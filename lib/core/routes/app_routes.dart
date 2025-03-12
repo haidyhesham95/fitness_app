@@ -6,6 +6,7 @@ import 'package:fitness_app/features/auth/presentation/register/view/gender/gend
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
+import 'package:fitness_app/features/meals/presentation/view/meal_details_view.dart';
 import 'package:fitness_app/features/meals/presentation/view/meal_view.dart';
 import 'package:fitness_app/features/meals/presentation/viewModel/meals_actions.dart';
 import 'package:fitness_app/features/meals/presentation/viewModel/meals_view_model_cubit.dart';
@@ -20,6 +21,12 @@ import 'package:fitness_app/features/profile/presentation/widgets/privcya_page.d
 import 'package:fitness_app/features/profile/presentation/widgets/security_page.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_view.dart';
+import 'package:fitness_app/features/profile/presentation/view/edit_data_view.dart';
+import 'package:fitness_app/features/profile/presentation/view/edit_profile_view.dart';
+import 'package:fitness_app/features/profile/presentation/view_model/profile_actions.dart';
+import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
+import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
+import 'package:fitness_app/features/workouts/presentation/view/workouts_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,6 +39,7 @@ import '../../features/auth/presentation/register/view/gender/old_view.dart';
 import '../../features/auth/presentation/register/view/gender/weight_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/activity_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/goal_view.dart';
+import '../../features/home/presentation/views/home_view.dart';
 import '../utils/screens/under_build_screen.dart';
 
 class AppRoutes {
@@ -57,8 +65,12 @@ class AppRoutes {
   static const String smartChatView = "smartChatView";
   static const String homeLayout = "homeLayout";
   static const String editDataView = "editDataView";
+  static const String workoutsCard = "workoutsCard";
+  static const String workoutsView = "workoutsView";
   static const String mealsView = "mealsView";
-
+  static const String homeView = "homeView";
+  static const String mealDetails = "mealDetails";
+  
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
@@ -156,6 +168,9 @@ class AppRoutes {
         return BaseRoute(page: const PrivacyPage());
       case helpPage:
         return BaseRoute(page: const HelpPage());
+        case workoutsCard:
+        return BaseRoute(page:  WorkoutsView());
+
       case smartChatView:
         return BaseRoute(
             page: MultiBlocProvider(
@@ -178,9 +193,19 @@ class AppRoutes {
       case mealsView:
         return BaseRoute(
             page: BlocProvider(
-          create: (context) =>
-              getIt.get<MealsViewModelCubit>()..doAction(LoadMealsCategories()),
+          create: (context) => getIt.get<MealsViewModelCubit>(),
           child: const MealsView(),
+        ));
+      case homeView:
+        return BaseRoute(page: HomeView());
+      case mealDetails:
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) => getIt.get<MealsViewModelCubit>()
+            ..doAction(GetMealInfo(args)),
+          child: MealDetailsView(
+            mealId: args as String,
+          ),
         ));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
