@@ -5,6 +5,7 @@ import 'package:fitness_app/core/utils/widgets/base/base_view.dart';
 import 'package:fitness_app/features/meals/presentation/viewModel/meals_actions.dart';
 import 'package:fitness_app/features/meals/presentation/viewModel/meals_view_model_cubit.dart';
 import 'package:fitness_app/features/meals/presentation/widget/food_item.dart';
+import 'package:fitness_app/features/meals/presentation/widget/pinned_sliver_widget.dart';
 import 'package:fitness_app/features/meals/presentation/widget/tab_bar_widget.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
@@ -33,30 +34,25 @@ class _MealsViewState extends State<MealsView> {
       builder: (context, state) {
         return BaseView(
           child: [
-            SliverPersistentHeader(
-              pinned: true,
-              floating: true,
-              delegate: _PinnedHeaderDelegate(
+            PinnedSliverWidget(
                 child: DefaultTabController(
-                  length: viewModel.categories.length,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 8.0),
-                    child: tabBarWidget(
-                      tabs: [
-                        ...viewModel.categories
-                            .map((item) => Tab(text: item.categoryName)),
-                      ],
-                      onTap: (index) {
-                        viewModel.doAction(FilterMealsByCategory(
-                            viewModel.categories[index].categoryName));
-                      },
-                      context: context,
-                    ),
-                  ),
+              length: viewModel.categories.length,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: tabBarWidget(
+                  tabs: [
+                    ...viewModel.categories
+                        .map((item) => Tab(text: item.categoryName)),
+                  ],
+                  onTap: (index) {
+                    viewModel.doAction(FilterMealsByCategory(
+                        viewModel.categories[index].categoryName));
+                  },
+                  context: context,
                 ),
               ),
-            ),
+            )),
             SliverPadding(
               padding: const EdgeInsets.all(16.0),
               sliver: SliverGrid(
@@ -97,31 +93,5 @@ class _MealsViewState extends State<MealsView> {
         }
       },
     );
-  }
-}
-
-class _PinnedHeaderDelegate extends SliverPersistentHeaderDelegate {
-  final Widget child;
-
-  _PinnedHeaderDelegate({required this.child});
-
-  @override
-  double get minExtent => 60.0;
-
-  @override
-  double get maxExtent => 60.0;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Material(
-      color: context.colors.transparent,
-      child: child,
-    );
-  }
-
-  @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return true;
   }
 }

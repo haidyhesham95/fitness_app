@@ -59,7 +59,6 @@ class _SmartChatViewState extends State<SmartChatView> {
 
   @override
   Widget build(BuildContext context) {
-    var chatId;
     return BaseView(
       scaffoldKey: _scaffoldKey,
       image: Assets.imagesChatBg,
