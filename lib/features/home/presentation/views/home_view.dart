@@ -16,6 +16,7 @@ import '../../../../core/networking/common/register_context_module.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../profile/presentation/view_model/profile_actions.dart';
 import '../widgets/custom_container_category.dart';
+import '../widgets/home_loading_widget.dart';
 import '../widgets/popular_training_section.dart';
 
 class HomeView extends StatelessWidget {
@@ -128,11 +129,7 @@ class HomeView extends StatelessWidget {
                 ],
               );
             case getProfileLoading():
-              return Center(
-                  child: SpinKitWave(
-                color: context.colors.baseColor,
-                size: 50.0,
-              ));
+              return const HomeLoadingWidget();
             default:
               null;
           }
