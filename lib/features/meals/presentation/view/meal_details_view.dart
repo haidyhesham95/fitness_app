@@ -4,15 +4,18 @@ import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
 import 'package:fitness_app/core/utils/widgets/base/base_view.dart';
 import 'package:fitness_app/di/di.dart';
+import 'package:fitness_app/features/meals/presentation/provider/youtube_player_provider.dart';
 import 'package:fitness_app/features/meals/presentation/viewModel/meals_actions.dart';
 import 'package:fitness_app/features/meals/presentation/viewModel/meals_view_model_cubit.dart';
 import 'package:fitness_app/features/meals/presentation/widget/food_item.dart';
 import 'package:fitness_app/features/meals/presentation/widget/food_video_widget.dart';
+import 'package:fitness_app/features/meals/presentation/widget/pinned_sliver_widget.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+import 'package:provider/provider.dart';
 
 class MealDetailsView extends StatefulWidget {
   final String mealId;
@@ -41,12 +44,18 @@ class _MealDetailsViewState extends State<MealDetailsView> {
             ? BaseView(
                 extendBodyBehindAppBar: true,
                 child: [
-                  SliverToBoxAdapter(
-                    child: FoodVideoWidget(
-                        imageUrl: state.mealDetailsEntity.image,
-                        title: state.mealDetailsEntity.name,
-                        description: state.mealDetailsEntity.instructions),
-                  ),
+                  PinnedSliverWidget(
+                    height: context.height * 0.4,
+                    child: ChangeNotifierProvider(
+                      create: (context) => YoutubePlayerProvider()..initialize(state.mealDetailsEntity.youtube),
+                      child: FoodVideoWidget(
+                            videoUrl: state.mealDetailsEntity.youtube,
+                            imageUrl: state.mealDetailsEntity.image,
+                            title: state.mealDetailsEntity.name,
+                            description: state.mealDetailsEntity.instructions),
+                    ),
+                    ),
+
                   SliverToBoxAdapter(
                     child: Padding(
                       padding:
@@ -121,26 +130,32 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                         BlocBuilder<MealsViewModelCubit, MealsViewModelState>(
                       builder: (context, state) {
                         if (state is RandomMealsSuccess) {
-                          return Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Container(
-                              height: 160.h,
-                              padding: const EdgeInsets.all(8.0),
-                              child: ListView.separated(
-                                padding: EdgeInsets.zero,
-                                scrollDirection: Axis.horizontal,
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) => SizedBox(
-                                  height: 160.h,
-                                  width: 160.w,
-                                  child: FoodItem(
-                                    meal: state.randomMeals[index],
+                          return InkWell(
+                            onTap: () {
+                              Provider.of<YoutubePlayerProvider>(context, listen: false)
+                                  .disposeController();
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Container(
+                                height: 160.h,
+                                padding: const EdgeInsets.all(8.0),
+                                child: ListView.separated(
+                                  padding: EdgeInsets.zero,
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) => SizedBox(
+                                    height: 160.h,
+                                    width: 160.w,
+                                    child: FoodItem(
+                                      meal: state.randomMeals[index],
+                                    ),
                                   ),
-                                ),
-                                itemCount: state.randomMeals.length,
-                                separatorBuilder:
-                                    (BuildContext context, int index) => SizedBox(
-                                  width: 10.w,
+                                  itemCount: state.randomMeals.length,
+                                  separatorBuilder:
+                                      (BuildContext context, int index) => SizedBox(
+                                    width: 10.w,
+                                  ),
                                 ),
                               ),
                             ),

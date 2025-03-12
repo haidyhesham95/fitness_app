@@ -17,7 +17,6 @@ class CustomSavedMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<SmartChatViewModel>();
-    final bool isSelected = viewModel.currentChatId == chatId;
     return Column(
       children: [
         Row(
