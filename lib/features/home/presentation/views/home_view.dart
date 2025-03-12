@@ -3,13 +3,14 @@ import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/widgets/base/base_view.dart';
 import 'package:fitness_app/core/utils/widgets/spacing.dart';
 import 'package:fitness_app/features/home/presentation/models/category_container_model.dart';
+import 'package:fitness_app/features/home/presentation/viewModel/home_action.dart';
+import 'package:fitness_app/features/home/presentation/viewModel/home_view_model_cubit.dart';
 import 'package:fitness_app/features/home/presentation/widgets/recommendation_section.dart';
 import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/networking/common/register_context_module.dart';
@@ -19,8 +20,22 @@ import '../widgets/custom_container_category.dart';
 import '../widgets/home_loading_widget.dart';
 import '../widgets/popular_training_section.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  late HomeViewModelCubit homeViewModel;
+
+  @override
+  void initState() {
+    homeViewModel = getIt.get<HomeViewModelCubit>();
+    homeViewModel.doAction(GetRandomMuscles());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,11 +118,29 @@ class HomeView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SliverToBoxAdapter(
-                    child: FadeInLeft(
-                      child: const RecommendationSection(
-                          title: 'Recommendation To Day'),
-                    ),
+                  BlocProvider(
+                    create: (context) => homeViewModel,
+                    child: SliverToBoxAdapter(child:
+                        BlocBuilder<HomeViewModelCubit, HomeViewModelState>(
+                            builder: (context, state) {
+                      switch (state) {
+                        case GetRandomMusclesLoading():
+                          return const HomeLoadingWidget();
+                        case GetRandomMusclesSuccess():
+                          return FadeInLeft(
+                            child: RecommendationSection(
+                                data: state.muscles.muscles ?? [],
+                                title: 'Recommendation To Day'),
+                          );
+                        case GetRandomMusclesError():
+                          return Center(
+                            child: Text(state.errorMessage.error ?? ""),
+                          );
+                        default:
+                          null;
+                      }
+                      return const SizedBox();
+                    })),
                   ),
                   SliverToBoxAdapter(child: verticalSpacing(24.h)),
                   SliverToBoxAdapter(

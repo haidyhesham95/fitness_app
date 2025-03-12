@@ -1,13 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/styles/fonts/my_fonts.dart';
-import '../../../../core/utils/widgets/spacing.dart';
-import '../../../../generated/assets.dart';
+import 'home_loading_widget.dart';
 
 class RecommendationCard extends StatelessWidget {
-  const RecommendationCard({super.key});
+  const RecommendationCard({super.key, this.data});
+
+  final data;
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +16,21 @@ class RecommendationCard extends StatelessWidget {
       height: 104.h,
       width: 104.w,
       decoration: BoxDecoration(
+        color: const Color(0xFF505050),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Stack(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: SizedBox.expand(
-              child: Image.asset(
-                Assets.imagesJogging,
+            child: SizedBox(
+              height: 104.h,
+              width: 104.w,
+              child: CachedNetworkImage(
+                imageUrl: data.image ?? "",
                 fit: BoxFit.cover,
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+                placeholder: (context, url) => const HomeLoadingWidget(),
               ),
             ),
           ),
@@ -40,10 +46,14 @@ class RecommendationCard extends StatelessWidget {
               alignment: Alignment.center,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Jogging",
-                  style: MyFonts.styleSemiBold600_16
-                      .copyWith(color: context.colors.white),
+                child: FittedBox(
+                  alignment: Alignment.bottomCenter,
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    data.name ?? "",
+                    style: MyFonts.styleSemiBold600_16
+                        .copyWith(color: context.colors.white),
+                  ),
                 ),
               ),
             ),

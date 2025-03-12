@@ -13,4 +13,5 @@ class ApiConstants {
   static const String mealsByCategory = "filter.php";
   static const String mealById = "lookup.php";
   static const String randomMuscles = "api/v1/muscles/random";
+  static const String categoryMeals = "categories.php";
 }

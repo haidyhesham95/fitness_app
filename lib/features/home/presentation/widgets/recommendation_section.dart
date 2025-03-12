@@ -8,13 +8,13 @@ import 'recommendation_card.dart';
 
 class RecommendationSection extends StatelessWidget {
   final String title;
+  final List? data;
   final bool showSeeAll;
 
   const RecommendationSection({
     Key? key,
     required this.title,
-    this.showSeeAll = false,
-  }) : super(key: key);
+    this.showSeeAll = false, this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +48,11 @@ class RecommendationSection extends StatelessWidget {
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              itemCount: 3,
+              itemCount: data?.length ?? 0,
               itemBuilder: (context, index) {
-                return const RecommendationCard();
+                return RecommendationCard(
+                  data: data![index],
+                );
               },
               separatorBuilder: (context, index) => horizontalSpacing(16),
             ),

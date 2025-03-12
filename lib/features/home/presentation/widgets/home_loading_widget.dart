@@ -10,7 +10,7 @@ class HomeLoadingWidget extends StatelessWidget {
     return Center(
       child: SpinKitWave(
         color: context.colors.baseColor,
-        size: 50.0,
+        size: 30.0,
       ),
     );
   }
