@@ -8,6 +8,7 @@ import 'package:fitness_app/features/auth/data/models/request/login_request_dto.
 import 'package:fitness_app/features/auth/data/models/request/signup_request_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/signup_response_dto.dart';
+import 'package:fitness_app/features/home/data/models/response/get_random_muscles_response_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/edit_profile_response_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/upload_photo_response_dto.dart';
 import 'package:injectable/injectable.dart';
@@ -49,4 +50,7 @@ abstract class ApiManager {
   Future<UploadPhotoResponseDto> uploadPhoto(
     @Part(name: "photo") File photo,
   );
+
+  @GET(ApiConstants.randomMuscles)
+  Future<GetRandomMusclesResponseDto> getRandomMuscles();
 }
