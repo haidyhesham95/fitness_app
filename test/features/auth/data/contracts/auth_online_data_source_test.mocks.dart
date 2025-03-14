@@ -30,11 +30,15 @@ import 'package:fitness_app/features/home/data/models/response/get_meals_categor
 import 'package:fitness_app/features/home/data/models/response/get_random_muscles_response_dto.dart'
     as _i9;
 import 'package:fitness_app/features/profile/data/models/response/edit_profile_response_dto.dart'
-    as _i7;
+    as _i9;
 import 'package:fitness_app/features/profile/data/models/response/profile_response_model.dart'
     as _i6;
 import 'package:fitness_app/features/profile/data/models/response/upload_photo_response_dto.dart'
+    as _i10;
+import 'package:fitness_app/features/workouts/data/models/response/get_all_workout_by_id_dto.dart'
     as _i8;
+import 'package:fitness_app/features/workouts/data/models/response/workouts_response_dto.dart'
+    as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -105,9 +109,9 @@ class _FakeProfileResponseDto_4 extends _i1.SmartFake
         );
 }
 
-class _FakeEditProfileResponseDto_5 extends _i1.SmartFake
-    implements _i7.EditProfileResponseDto {
-  _FakeEditProfileResponseDto_5(
+class _FakeWorkoutsResponseDto_5 extends _i1.SmartFake
+    implements _i7.WorkoutsResponseDto {
+  _FakeWorkoutsResponseDto_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -116,9 +120,31 @@ class _FakeEditProfileResponseDto_5 extends _i1.SmartFake
         );
 }
 
-class _FakeUploadPhotoResponseDto_6 extends _i1.SmartFake
-    implements _i8.UploadPhotoResponseDto {
-  _FakeUploadPhotoResponseDto_6(
+class _FakeGetAllWorkoutsByIdDto_6 extends _i1.SmartFake
+    implements _i8.GetAllWorkoutsByIdDto {
+  _FakeGetAllWorkoutsByIdDto_6(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeEditProfileResponseDto_7 extends _i1.SmartFake
+    implements _i9.EditProfileResponseDto {
+  _FakeEditProfileResponseDto_7(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeUploadPhotoResponseDto_8 extends _i1.SmartFake
+    implements _i10.UploadPhotoResponseDto {
+  _FakeUploadPhotoResponseDto_8(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -255,6 +281,40 @@ class MockApiManager extends _i1.Mock implements _i11.ApiManager {
       ) as _i12.Future<_i6.ProfileResponseDto>);
 
   @override
+  _i12.Future<_i7.WorkoutsResponseDto> getAllWorkouts() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllWorkouts,
+          [],
+        ),
+        returnValue: _i12.Future<_i7.WorkoutsResponseDto>.value(
+            _FakeWorkoutsResponseDto_5(
+          this,
+          Invocation.method(
+            #getAllWorkouts,
+            [],
+          ),
+        )),
+      ) as _i12.Future<_i7.WorkoutsResponseDto>);
+
+  @override
+  _i12.Future<_i8.GetAllWorkoutsByIdDto> getWorkoutsById() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getWorkoutsById,
+          [],
+        ),
+        returnValue: _i12.Future<_i8.GetAllWorkoutsByIdDto>.value(
+            _FakeGetAllWorkoutsByIdDto_6(
+          this,
+          Invocation.method(
+            #getWorkoutsById,
+            [],
+          ),
+        )),
+      ) as _i12.Future<_i8.GetAllWorkoutsByIdDto>);
+
+  @override
+  _i12.Future<_i9.EditProfileResponseDto> editProfile(
   _i12.Future<_i7.EditProfileResponseDto> editProfile(
           Map<String, dynamic>? profileData) =>
       (super.noSuchMethod(
@@ -262,32 +322,32 @@ class MockApiManager extends _i1.Mock implements _i11.ApiManager {
           #editProfile,
           [profileData],
         ),
-        returnValue: _i12.Future<_i7.EditProfileResponseDto>.value(
-            _FakeEditProfileResponseDto_5(
+        returnValue: _i12.Future<_i9.EditProfileResponseDto>.value(
+            _FakeEditProfileResponseDto_7(
           this,
           Invocation.method(
             #editProfile,
             [profileData],
           ),
         )),
-      ) as _i12.Future<_i7.EditProfileResponseDto>);
+      ) as _i12.Future<_i9.EditProfileResponseDto>);
 
   @override
-  _i12.Future<_i8.UploadPhotoResponseDto> uploadPhoto(_i18.File? photo) =>
+  _i12.Future<_i10.UploadPhotoResponseDto> uploadPhoto(_i18.File? photo) =>
       (super.noSuchMethod(
         Invocation.method(
           #uploadPhoto,
           [photo],
         ),
-        returnValue: _i12.Future<_i8.UploadPhotoResponseDto>.value(
-            _FakeUploadPhotoResponseDto_6(
+        returnValue: _i12.Future<_i10.UploadPhotoResponseDto>.value(
+            _FakeUploadPhotoResponseDto_8(
           this,
           Invocation.method(
             #uploadPhoto,
             [photo],
           ),
         )),
-      ) as _i12.Future<_i8.UploadPhotoResponseDto>);
+      ) as _i12.Future<_i10.UploadPhotoResponseDto>);
 
   @override
   _i12.Future<_i9.GetRandomMusclesResponseDto> getRandomMuscles() =>

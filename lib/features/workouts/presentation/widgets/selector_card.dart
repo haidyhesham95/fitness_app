@@ -2,8 +2,7 @@ import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
 
-Widget buildCategory(String text, BuildContext context,
-    {bool isSelected = false}) {
+Widget buildCategory(String text, BuildContext context, {bool isSelected = false}) {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
     decoration: BoxDecoration(

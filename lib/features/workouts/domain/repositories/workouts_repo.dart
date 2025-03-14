@@ -3,6 +3,7 @@ import 'package:fitness_app/features/workouts/domain/entities/response/get_all_w
 import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_entity.dart';
 
 abstract class WorkoutsRepo {
+
   Future<DataResult<AllMusclesResponseEntity>> getAllWorkouts();
 
   Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById();

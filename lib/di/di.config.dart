@@ -102,6 +102,16 @@ import '../features/smart_coach_chat/domain/use_cases/offline/local_storage_use_
     as _i40;
 import '../features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart'
     as _i52;
+import '../features/workouts/data/data_sources/online_data_sources/contracts/get_all_workouts_online_data_source.dart'
+    as _i49;
+import '../features/workouts/data/data_sources/online_data_sources/impl/get_all_workouts_online_data_source_impl.dart'
+    as _i50;
+import '../features/workouts/data/repositories/workouts_repo_impl.dart' as _i52;
+import '../features/workouts/domain/repositories/workouts_repo.dart' as _i51;
+import '../features/workouts/domain/use_cases/get_workout_by_id.dart' as _i55;
+import '../features/workouts/domain/use_cases/workouts_use_case.dart' as _i53;
+import '../features/workouts/presentation/view_model/workouts_view_model.dart'
+    as _i57;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -206,6 +216,10 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i4.AuthOfflineDataSource>(),
           gh<_i55.EditProfileUseCase>(),
           gh<_i53.UploadPhotoUseCase>(),
+        ));
+    gh.factory<_i57.WorkoutsViewModelCubit>(() => _i57.WorkoutsViewModelCubit(
+          gh<_i53.WorkoutsUseCase>(),
+          gh<_i55.GetWorkoutsByIdUseCase>(),
         ));
     return this;
   }

@@ -71,7 +71,7 @@ class _WorkoutsViewState extends State<WorkoutsView> {
                     type: MessageTypeConst.failure);
             }
             return Container(
-              decoration: const BoxDecoration(
+                decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(Assets.imagesEditBg),
                   fit: BoxFit.cover,

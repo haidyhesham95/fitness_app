@@ -9,7 +9,7 @@ class WorkoutsResponseDto {
   @JsonKey(name: "musclesGroup")
   final List<MusclesGroup>? musclesGroup;
 
-  WorkoutsResponseDto({
+  WorkoutsResponseDto ({
     this.message,
     this.musclesGroup,
   });
@@ -30,7 +30,7 @@ class MusclesGroup {
   @JsonKey(name: "name")
   final String? name;
 
-  MusclesGroup({
+  MusclesGroup ({
     this.Id,
     this.name,
   });

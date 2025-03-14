@@ -11,7 +11,7 @@ class GetAllWorkoutsByIdDto {
   @JsonKey(name: "muscles")
   final List<Muscles>? muscles;
 
-  GetAllWorkoutsByIdDto({
+  GetAllWorkoutsByIdDto ({
     this.message,
     this.muscleGroup,
     this.muscles,
@@ -33,7 +33,7 @@ class MuscleGroup {
   @JsonKey(name: "name")
   final String? name;
 
-  MuscleGroup({
+  MuscleGroup ({
     this.Id,
     this.name,
   });
@@ -56,7 +56,7 @@ class Muscles {
   @JsonKey(name: "image")
   final String? image;
 
-  Muscles({
+  Muscles ({
     this.Id,
     this.name,
     this.image,
@@ -70,3 +70,5 @@ class Muscles {
     return _$MusclesToJson(this);
   }
 }
+
+

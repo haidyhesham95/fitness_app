@@ -21,7 +21,6 @@ class GetAllWorkoutsError extends WorkoutsViewModelState {
 
   GetAllWorkoutsError({required this.errorMessage});
 }
-
 class GetWorkoutsByIdViewModelInitial extends WorkoutsViewModelState {}
 
 class GetWorkoutsByIdLoading extends WorkoutsViewModelState {}

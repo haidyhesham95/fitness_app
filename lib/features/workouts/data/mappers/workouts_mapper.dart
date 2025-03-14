@@ -35,10 +35,10 @@ class WorkoutsMapper {
   }
 
   static MuscleEntity toMuscleEntity(Muscles workouts) {
-    return MuscleEntity(
-      id: workouts.Id,
-      name: workouts.name,
-      image: workouts.image,
-    );
-  }
+      return MuscleEntity(
+        id: workouts.Id,
+        name: workouts.name,
+        image: workouts.image,
+      );
+    }
 }

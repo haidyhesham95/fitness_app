@@ -12,6 +12,8 @@ import 'package:fitness_app/features/home/data/models/response/get_meals_categor
 import 'package:fitness_app/features/home/data/models/response/get_random_muscles_response_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/edit_profile_response_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/upload_photo_response_dto.dart';
+import 'package:fitness_app/features/workouts/data/models/response/get_all_workout_by_id_dto.dart';
+import 'package:fitness_app/features/workouts/data/models/response/workouts_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -43,6 +45,10 @@ abstract class ApiManager {
       @Body() ResetPasswordRequestDto request);
   @GET(ApiConstants.profileData)
   Future<ProfileResponseDto> getLoggedUserData();
+  @GET(ApiConstants.getAllWorkouts)
+  Future<WorkoutsResponseDto> getAllWorkouts();
+  @GET(ApiConstants.getWorkoutsById)
+  Future<GetAllWorkoutsByIdDto> getWorkoutsById();
   @PUT(ApiConstants.editProfileApi)
   Future<EditProfileResponseDto> editProfile(
       @Body() Map<String, dynamic> profileData);

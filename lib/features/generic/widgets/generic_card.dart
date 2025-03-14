@@ -38,7 +38,7 @@ class GenericCard extends StatelessWidget {
             imageBuilder: (context, imageProvider) => Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: imageProvider,
+                    image: imageProvider,
                   fit: BoxFit.cover,
                 ),
               ),
