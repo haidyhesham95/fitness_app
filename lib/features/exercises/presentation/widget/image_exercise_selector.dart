@@ -13,6 +13,7 @@ class ImageExerciseSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
+      clipBehavior: Clip.hardEdge,
       child: Container(
         height: 88,
         width: 81,
