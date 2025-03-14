@@ -2,7 +2,6 @@
 class Assets {
   Assets._();
 
-  static const String fitnessApp.env = '.env.appKeys';
   static const String fontsBalooThambi2Bold = 'assets/fonts/BalooThambi2-Bold.ttf';
   static const String fontsBalooThambi2Medium = 'assets/fonts/BalooThambi2-Medium.ttf';
   static const String fontsBalooThambi2Regular = 'assets/fonts/BalooThambi2-Regular.ttf';
@@ -21,7 +20,6 @@ class Assets {
   static const String imagesFit = 'assets/images/fit.png';
   static const String imagesFitnessH = 'assets/images/fitnessH.png';
   static const String imagesForgetPasswordBg = 'assets/images/forget_password_bg.png';
-  static const String imagesFrame 88 = 'assets/images/Frame 88.png';
   static const String imagesGoogle = 'assets/images/google.png';
   static const String imagesGym = 'assets/images/gym.png';
   static const String imagesGymH = 'assets/images/gymH.png';

@@ -20,10 +20,10 @@ import '../core/app_cubit/app_cubit.dart' as _i3;
 import '../core/networking/api/api_manager.dart' as _i25;
 import '../core/networking/api/meals_api_manager/meals_api_manager.dart'
     as _i11;
-import '../core/networking/common/register_context_module.dart' as _i59;
-import '../core/networking/network_factory.dart' as _i58;
+import '../core/networking/common/register_context_module.dart' as _i65;
+import '../core/networking/network_factory.dart' as _i64;
 import '../core/services/gemini_helper.dart' as _i8;
-import '../core/services/isar_service.dart' as _i60;
+import '../core/services/isar_service.dart' as _i66;
 import '../features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart'
     as _i4;
 import '../features/auth/data/data_sources/contracts/online_data_sources/auth_online_data_source.dart'
@@ -35,41 +35,51 @@ import '../features/auth/data/data_sources/impl/auth_online_data_source_impl.dar
 import '../features/auth/data/repositories/auth_repo_impl.dart' as _i29;
 import '../features/auth/domain/contracts/auth_repo.dart' as _i28;
 import '../features/auth/domain/use_cases/forget_password_use_case.dart'
-    as _i31;
-import '../features/auth/domain/use_cases/login_use_case.dart' as _i37;
-import '../features/auth/domain/use_cases/signup_use_case.dart' as _i45;
+    as _i37;
+import '../features/auth/domain/use_cases/login_use_case.dart' as _i43;
+import '../features/auth/domain/use_cases/signup_use_case.dart' as _i51;
 import '../features/auth/presentation/forget_password/viewModel/forget_password_view_model_cubit.dart'
-    as _i32;
-import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dart'
     as _i38;
+import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dart'
+    as _i44;
 import '../features/auth/presentation/register/view_model/signup_view_model_cubit.dart'
-    as _i46;
+    as _i52;
+import '../features/exercises/data/data_sources/contract/exercise_data_sources.dart'
+    as _i30;
+import '../features/exercises/data/data_sources/impl/exercise_data_source_impl.dart'
+    as _i31;
+import '../features/exercises/data/repositories/exercise_repo_impl.dart'
+    as _i33;
+import '../features/exercises/domain/repositories/exercise_repo.dart' as _i32;
+import '../features/exercises/domain/use_case/exercise_use_case.dart' as _i34;
+import '../features/exercises/presentation/viewModel/exercise_view_model_cubit.dart'
+    as _i35;
 import '../features/meals/data/data_sources/contracts/meals_data_source.dart'
     as _i12;
 import '../features/meals/data/data_sources/impl/meals_data_source_impl.dart'
     as _i13;
 import '../features/meals/data/repositories/meals_repository_impl.dart' as _i15;
 import '../features/meals/domain/repositories/meals_repository.dart' as _i14;
-import '../features/meals/domain/use_cases/get_meal_by_id_case.dart' as _i33;
+import '../features/meals/domain/use_cases/get_meal_by_id_case.dart' as _i39;
 import '../features/meals/domain/use_cases/get_meals_by_category_case.dart'
-    as _i34;
-import '../features/meals/domain/use_cases/get_meals_categories_case.dart'
-    as _i35;
-import '../features/meals/presentation/viewModel/meals_view_model_cubit.dart'
-    as _i39;
-import '../features/profile/data/data_sources/contracts/online_data_sources/profile_online_data_source.dart'
     as _i40;
-import '../features/profile/data/data_sources/impl/profile_online_data_source_impl.dart'
+import '../features/meals/domain/use_cases/get_meals_categories_case.dart'
     as _i41;
-import '../features/profile/data/repositories/profile_repo_impl.dart' as _i43;
-import '../features/profile/domain/repositories/profile_repo.dart' as _i42;
+import '../features/meals/presentation/viewModel/meals_view_model_cubit.dart'
+    as _i45;
+import '../features/profile/data/data_sources/contracts/online_data_sources/profile_online_data_source.dart'
+    as _i46;
+import '../features/profile/data/data_sources/impl/profile_online_data_source_impl.dart'
+    as _i47;
+import '../features/profile/data/repositories/profile_repo_impl.dart' as _i49;
+import '../features/profile/domain/repositories/profile_repo.dart' as _i48;
 import '../features/profile/domain/use_cases/edit_profile_use_case.dart'
-    as _i54;
-import '../features/profile/domain/use_cases/profile_use_case.dart' as _i44;
+    as _i60;
+import '../features/profile/domain/use_cases/profile_use_case.dart' as _i50;
 import '../features/profile/domain/use_cases/upload_photo_use_case.dart'
-    as _i48;
+    as _i54;
 import '../features/profile/presentation/view_model/profile_view_model_cubit.dart'
-    as _i56;
+    as _i62;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/contract/offline_data_source.dart'
     as _i16;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/impl/offline_data_source_impl.dart'
@@ -87,21 +97,21 @@ import '../features/smart_coach_chat/domain/repositories/offline/offline_contrac
 import '../features/smart_coach_chat/domain/repositories/smart_chat_repo.dart'
     as _i23;
 import '../features/smart_coach_chat/domain/use_cases/fetch_smart_chat_case.dart'
-    as _i30;
-import '../features/smart_coach_chat/domain/use_cases/offline/local_storage_use_case.dart'
     as _i36;
+import '../features/smart_coach_chat/domain/use_cases/offline/local_storage_use_case.dart'
+    as _i42;
 import '../features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart'
-    as _i47;
+    as _i53;
 import '../features/workouts/data/data_sources/online_data_sources/contracts/get_all_workouts_online_data_source.dart'
-    as _i49;
+    as _i55;
 import '../features/workouts/data/data_sources/online_data_sources/impl/get_all_workouts_online_data_source_impl.dart'
-    as _i50;
-import '../features/workouts/data/repositories/workouts_repo_impl.dart' as _i52;
-import '../features/workouts/domain/repositories/workouts_repo.dart' as _i51;
-import '../features/workouts/domain/use_cases/get_workout_by_id.dart' as _i55;
-import '../features/workouts/domain/use_cases/workouts_use_case.dart' as _i53;
+    as _i56;
+import '../features/workouts/data/repositories/workouts_repo_impl.dart' as _i58;
+import '../features/workouts/domain/repositories/workouts_repo.dart' as _i57;
+import '../features/workouts/domain/use_cases/get_workout_by_id.dart' as _i61;
+import '../features/workouts/domain/use_cases/workouts_use_case.dart' as _i59;
 import '../features/workouts/presentation/view_model/workouts_view_model.dart'
-    as _i57;
+    as _i63;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -149,70 +159,78 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i27.AuthOnlineDataSourceImpl(gh<_i25.ApiManager>()));
     gh.factory<_i28.AuthRepo>(
         () => _i29.AuthRepoImpl(gh<_i26.AuthOnlineDataSource>()));
-    gh.factory<_i30.FetchSmartChatCase>(
-        () => _i30.FetchSmartChatCase(gh<_i23.SmartChatRepo>()));
-    gh.factory<_i31.ForgetPasswordUseCase>(
-        () => _i31.ForgetPasswordUseCase(gh<_i28.AuthRepo>()));
-    gh.factory<_i32.ForgetPasswordViewModelCubit>(() =>
-        _i32.ForgetPasswordViewModelCubit(gh<_i31.ForgetPasswordUseCase>()));
-    gh.factory<_i33.GetMealByIdCase>(
-        () => _i33.GetMealByIdCase(gh<_i14.MealsRepository>()));
-    gh.factory<_i34.GetMealsByCategoryCase>(
-        () => _i34.GetMealsByCategoryCase(gh<_i14.MealsRepository>()));
-    gh.factory<_i35.GetMealsCategories>(
-        () => _i35.GetMealsCategories(gh<_i14.MealsRepository>()));
-    gh.factory<_i36.IsarUseCase>(
-        () => _i36.IsarUseCase(gh<_i18.OfflineRepo>()));
-    gh.factory<_i37.LoginUseCase>(() => _i37.LoginUseCase(gh<_i28.AuthRepo>()));
-    gh.factory<_i38.LoginViewModel>(
-        () => _i38.LoginViewModel(gh<_i37.LoginUseCase>()));
-    gh.factory<_i39.MealsViewModelCubit>(() => _i39.MealsViewModelCubit(
-          gh<_i35.GetMealsCategories>(),
-          gh<_i34.GetMealsByCategoryCase>(),
-          gh<_i33.GetMealByIdCase>(),
+    gh.factory<_i30.ExerciseDataSource>(
+        () => _i31.ExerciseDataSourceImpl(gh<_i25.ApiManager>()));
+    gh.factory<_i32.ExerciseRepo>(
+        () => _i33.ExerciseRepoImpl(gh<_i30.ExerciseDataSource>()));
+    gh.factory<_i34.ExerciseUseCase>(
+        () => _i34.ExerciseUseCase(gh<_i32.ExerciseRepo>()));
+    gh.factory<_i35.ExerciseViewModelCubit>(
+        () => _i35.ExerciseViewModelCubit(gh<_i34.ExerciseUseCase>()));
+    gh.factory<_i36.FetchSmartChatCase>(
+        () => _i36.FetchSmartChatCase(gh<_i23.SmartChatRepo>()));
+    gh.factory<_i37.ForgetPasswordUseCase>(
+        () => _i37.ForgetPasswordUseCase(gh<_i28.AuthRepo>()));
+    gh.factory<_i38.ForgetPasswordViewModelCubit>(() =>
+        _i38.ForgetPasswordViewModelCubit(gh<_i37.ForgetPasswordUseCase>()));
+    gh.factory<_i39.GetMealByIdCase>(
+        () => _i39.GetMealByIdCase(gh<_i14.MealsRepository>()));
+    gh.factory<_i40.GetMealsByCategoryCase>(
+        () => _i40.GetMealsByCategoryCase(gh<_i14.MealsRepository>()));
+    gh.factory<_i41.GetMealsCategories>(
+        () => _i41.GetMealsCategories(gh<_i14.MealsRepository>()));
+    gh.factory<_i42.IsarUseCase>(
+        () => _i42.IsarUseCase(gh<_i18.OfflineRepo>()));
+    gh.factory<_i43.LoginUseCase>(() => _i43.LoginUseCase(gh<_i28.AuthRepo>()));
+    gh.factory<_i44.LoginViewModel>(
+        () => _i44.LoginViewModel(gh<_i43.LoginUseCase>()));
+    gh.factory<_i45.MealsViewModelCubit>(() => _i45.MealsViewModelCubit(
+          gh<_i41.GetMealsCategories>(),
+          gh<_i40.GetMealsByCategoryCase>(),
+          gh<_i39.GetMealByIdCase>(),
         ));
-    gh.factory<_i40.ProfileOnlineDataSource>(
-        () => _i41.ProfileOnlineDataSourceImpl(gh<_i25.ApiManager>()));
-    gh.factory<_i42.ProfileRepo>(
-        () => _i43.ProfileRepoImpl(gh<_i40.ProfileOnlineDataSource>()));
-    gh.factory<_i44.ProfileUseCase>(
-        () => _i44.ProfileUseCase(gh<_i42.ProfileRepo>()));
-    gh.factory<_i45.SignUpUseCase>(
-        () => _i45.SignUpUseCase(gh<_i28.AuthRepo>()));
-    gh.factory<_i46.SignUpViewModel>(
-        () => _i46.SignUpViewModel(gh<_i45.SignUpUseCase>()));
-    gh.factory<_i47.SmartChatViewModel>(() => _i47.SmartChatViewModel(
-          gh<_i30.FetchSmartChatCase>(),
-          gh<_i36.IsarUseCase>(),
+    gh.factory<_i46.ProfileOnlineDataSource>(
+        () => _i47.ProfileOnlineDataSourceImpl(gh<_i25.ApiManager>()));
+    gh.factory<_i48.ProfileRepo>(
+        () => _i49.ProfileRepoImpl(gh<_i46.ProfileOnlineDataSource>()));
+    gh.factory<_i50.ProfileUseCase>(
+        () => _i50.ProfileUseCase(gh<_i48.ProfileRepo>()));
+    gh.factory<_i51.SignUpUseCase>(
+        () => _i51.SignUpUseCase(gh<_i28.AuthRepo>()));
+    gh.factory<_i52.SignUpViewModel>(
+        () => _i52.SignUpViewModel(gh<_i51.SignUpUseCase>()));
+    gh.factory<_i53.SmartChatViewModel>(() => _i53.SmartChatViewModel(
+          gh<_i36.FetchSmartChatCase>(),
+          gh<_i42.IsarUseCase>(),
         ));
-    gh.factory<_i48.UploadPhotoUseCase>(
-        () => _i48.UploadPhotoUseCase(gh<_i42.ProfileRepo>()));
-    gh.factory<_i49.WorkoutsOnlineDataSource>(
-        () => _i50.WorkoutsOnlineDataSourceImpl(gh<_i25.ApiManager>()));
-    gh.factory<_i51.WorkoutsRepo>(
-        () => _i52.WorkoutsRepoImpl(gh<_i49.WorkoutsOnlineDataSource>()));
-    gh.factory<_i53.WorkoutsUseCase>(
-        () => _i53.WorkoutsUseCase(gh<_i51.WorkoutsRepo>()));
-    gh.factory<_i54.EditProfileUseCase>(
-        () => _i54.EditProfileUseCase(gh<_i42.ProfileRepo>()));
-    gh.factory<_i55.GetWorkoutsByIdUseCase>(
-        () => _i55.GetWorkoutsByIdUseCase(gh<_i51.WorkoutsRepo>()));
-    gh.factory<_i56.ProfileViewModelCubit>(() => _i56.ProfileViewModelCubit(
-          gh<_i44.ProfileUseCase>(),
+    gh.factory<_i54.UploadPhotoUseCase>(
+        () => _i54.UploadPhotoUseCase(gh<_i48.ProfileRepo>()));
+    gh.factory<_i55.WorkoutsOnlineDataSource>(
+        () => _i56.WorkoutsOnlineDataSourceImpl(gh<_i25.ApiManager>()));
+    gh.factory<_i57.WorkoutsRepo>(
+        () => _i58.WorkoutsRepoImpl(gh<_i55.WorkoutsOnlineDataSource>()));
+    gh.factory<_i59.WorkoutsUseCase>(
+        () => _i59.WorkoutsUseCase(gh<_i57.WorkoutsRepo>()));
+    gh.factory<_i60.EditProfileUseCase>(
+        () => _i60.EditProfileUseCase(gh<_i48.ProfileRepo>()));
+    gh.factory<_i61.GetWorkoutsByIdUseCase>(
+        () => _i61.GetWorkoutsByIdUseCase(gh<_i57.WorkoutsRepo>()));
+    gh.factory<_i62.ProfileViewModelCubit>(() => _i62.ProfileViewModelCubit(
+          gh<_i50.ProfileUseCase>(),
           gh<_i4.AuthOfflineDataSource>(),
-          gh<_i54.EditProfileUseCase>(),
-          gh<_i48.UploadPhotoUseCase>(),
+          gh<_i60.EditProfileUseCase>(),
+          gh<_i54.UploadPhotoUseCase>(),
         ));
-    gh.factory<_i57.WorkoutsViewModelCubit>(() => _i57.WorkoutsViewModelCubit(
-          gh<_i53.WorkoutsUseCase>(),
-          gh<_i55.GetWorkoutsByIdUseCase>(),
+    gh.factory<_i63.WorkoutsViewModelCubit>(() => _i63.WorkoutsViewModelCubit(
+          gh<_i59.WorkoutsUseCase>(),
+          gh<_i61.GetWorkoutsByIdUseCase>(),
         ));
     return this;
   }
 }
 
-class _$NetworkFactory extends _i58.NetworkFactory {}
+class _$NetworkFactory extends _i64.NetworkFactory {}
 
-class _$AppModule extends _i59.AppModule {}
+class _$AppModule extends _i65.AppModule {}
 
-class _$IsarModule extends _i60.IsarModule {}
+class _$IsarModule extends _i66.IsarModule {}
