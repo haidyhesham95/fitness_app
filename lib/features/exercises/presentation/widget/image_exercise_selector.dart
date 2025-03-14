@@ -11,17 +11,16 @@ class ImageExerciseSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      clipBehavior: Clip.hardEdge,
-      padding: EdgeInsets.zero,
-      height: 88,
-      width: 81,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: CachedNetworkWidget(
-        imageUrl: _getThumbnailUrl(exercise.shortYoutubeDemonstrationLink.toString()),
-        fit: BoxFit.cover,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        height: 88,
+        width: 81,
+        child: CachedNetworkWidget(
+          imageUrl: _getThumbnailUrl(
+              exercise.shortYoutubeDemonstrationLink.toString()),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

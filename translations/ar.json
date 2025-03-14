@@ -144,5 +144,8 @@
   "trainer": "المدرب",
   "ingredients": "المكونات",
   "recommendation": "التوصية",
-  "novice": "مستجد"
+  "novice": "مستجد",
+  "thirtyMinutes" : "30 دقيقة",
+  "cal" : "30 كالوريز",
+  "exercisesDescription":"العميل سعيد جدًا بمتابعته. حان وقت عطلة نهاية الأسبوع لإنقاذ المريض."
 }

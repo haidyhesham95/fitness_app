@@ -70,6 +70,7 @@ class AppRoutes {
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
+
     switch (settings.name) {
       case login:
         return BaseRoute(
@@ -194,7 +195,13 @@ class AppRoutes {
           child: const MealsView(),
         ));
       case exerciseView:
-        return BaseRoute(page: const ExerciseView());
+        return BaseRoute(
+          page: ExerciseView(
+            imageUrl: (args as Map<String, String>)['imageUrl'] ?? '',
+            title: (args)['title'] ?? '',
+          ),
+        );
+
       case homeView:
         return BaseRoute(page: const HomeView());
       case mealDetails:

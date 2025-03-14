@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
 import 'package:fitness_app/features/exercises/presentation/widget/container_selectable_widget.dart';
@@ -73,8 +74,10 @@ class _ExerciseSelectorState extends State<ExerciseSelector> {
                         itemCount: filteredExercises.length,
                         itemBuilder: (context, index) {
                           final exercise = filteredExercises[index];
-                          return BuildItemExerciseSelector(
-                            exercise: exercise,
+                          return FadeInRight(
+                            child: BuildItemExerciseSelector(
+                              exercise: exercise,
+                            ),
                           );
                         },
                         separatorBuilder: (context, index) => Divider(

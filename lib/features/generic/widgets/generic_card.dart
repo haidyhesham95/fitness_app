@@ -33,8 +33,14 @@ class GenericCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pushNamed(AppRoutes.exerciseView);
-      },
+        context.pushNamed(
+          AppRoutes.exerciseView,
+          arguments: {
+            'imageUrl': imageUrl,
+            'title': title,
+          },
+        );
+        },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius),
         child: Stack(
