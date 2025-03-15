@@ -76,7 +76,7 @@ dev_dependencies:
   retrofit_generator:
   json_serializable:
   dartz:
-  test:
+  test: ^1.25.2
   flutter_native_splash: ^2.4.4
   icons_launcher: ^3.0.0
   mockito:
