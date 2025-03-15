@@ -45,7 +45,7 @@ class WorkoutsViewModelCubit extends Cubit<WorkoutsViewModelState> {
       case Success<MusclesByIdResponseEntity>():
         emit(GetWorkoutsByIdSuccess(data: result.data));
       case Fail<MusclesByIdResponseEntity>():
-        emit(GetAllWorkoutsError(
+        emit(GetWorkoutsByIdError(
             errorMessage: ErrorHandler.handle(result.exception!)));
     }
   }
