@@ -5,10 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../../../../generated/assets.dart';
+import '../../domain/entities/response/get_random_exercises_response_entity.dart';
 import 'custom_chip.dart';
 
 class PopularTrainingWidget extends StatelessWidget {
-  const PopularTrainingWidget({super.key});
+  const PopularTrainingWidget({super.key, required this.exercises});
+
+  final GetRandomExercisesResponseEntityExercises? exercises;
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +37,9 @@ class PopularTrainingWidget extends StatelessWidget {
             top: 120.h,
             left: 0,
             right: 0,
-            child: FittedBox(
-              alignment: Alignment.center,
-              fit: BoxFit.scaleDown,
+            child: Expanded(
               child: Text(
-                "Trainer Name",
+                exercises?.exercise ?? "",
                 textAlign: TextAlign.center,
                 style: MyFonts.styleSemiBold600_16.copyWith(
                   color: Colors.white,
@@ -55,13 +56,13 @@ class PopularTrainingWidget extends StatelessWidget {
               children: [
                 Expanded(
                     child: CustomChip(
-                  text: '24 Tasks',
+                  text: exercises?.primaryItems.toString() ?? "0",
                   txtColor: context.colors.white,
                 )),
                 horizontalSpacing(8.w),
                 Expanded(
                   child: CustomChip(
-                    text: 'Beginners',
+                    text: exercises?.difficultyLevel.toString() ?? "",
                     txtColor: context.colors.baseColor,
                   ),
                 ),

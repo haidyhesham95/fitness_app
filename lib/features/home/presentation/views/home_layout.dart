@@ -2,6 +2,8 @@ import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_intro_view.dart';
 import 'package:fitness_app/features/workouts/presentation/view/workouts_view.dart';
+import 'package:fitness_app/features/workouts/presentation/view_model/workouts_actions.dart';
+import 'package:fitness_app/features/workouts/presentation/view_model/workouts_view_model.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,11 +31,14 @@ class _HomeLayoutState extends State<HomeLayout> {
     MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) =>
-                getIt.get<HomeViewModelCubit>()..doAction(GetRandomMuscles())),
-        BlocProvider(
             create: (context) => getIt.get<MealsViewModelCubit>()
               ..doAction(LoadMealsCategories())),
+        BlocProvider(
+            create: (context) => getIt.get<WorkoutsViewModelCubit>()
+              ..doAction(GetAllWorkouts())),
+        BlocProvider(
+            create: (context) => getIt.get<HomeViewModelCubit>()
+              ..doAction(GetRandomExercises())),
       ],
       child: const HomeView(),
     ),

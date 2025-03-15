@@ -9,17 +9,6 @@ class AllMusclesResponseEntity extends Equatable {
     this.musclesGroup,
   });
 
-  factory AllMusclesResponseEntity.fromJson(Map<String, dynamic> json) {
-    return AllMusclesResponseEntity(
-      message: json["message"],
-      musclesGroup: json["musclesGroup"] != null
-          ? (json["musclesGroup"] as List)
-              .map((muscleGroup) => MuscleGroupEntity.fromJson(muscleGroup))
-              .toList()
-          : null,
-    );
-  }
-
   @override
   List<Object?> get props => [message, musclesGroup];
 }
@@ -32,13 +21,6 @@ class MuscleGroupEntity extends Equatable {
     this.id,
     this.name,
   });
-
-  factory MuscleGroupEntity.fromJson(Map<String, dynamic> json) {
-    return MuscleGroupEntity(
-      id: json["_id"],
-      name: json["name"],
-    );
-  }
 
   @override
   List<Object?> get props => [id, name];

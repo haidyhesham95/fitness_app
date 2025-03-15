@@ -1,11 +1,8 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/widgets/base/base_view.dart';
 import 'package:fitness_app/core/utils/widgets/spacing.dart';
-import 'package:fitness_app/features/home/presentation/models/category_container_model.dart';
-import 'package:fitness_app/features/home/presentation/viewModel/home_action.dart';
 import 'package:fitness_app/features/home/presentation/viewModel/home_view_model_cubit.dart';
-import 'package:fitness_app/features/home/presentation/widgets/recommendation_section.dart';
+import 'package:fitness_app/features/home/presentation/widgets/muscles_section.dart';
 import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +11,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/networking/common/register_context_module.dart';
-import '../../../../core/styles/fonts/my_fonts.dart';
-import '../../../meals/presentation/viewModel/meals_view_model_cubit.dart';
-import '../../../profile/presentation/view_model/profile_actions.dart';
-import '../widgets/custom_container_category.dart';
+import '../widgets/category_section.dart';
 import '../widgets/home_loading_widget.dart';
-import '../widgets/popular_training_section.dart';
+import '../widgets/meals_section.dart';
+import '../widgets/popular_training.dart';
+import '../widgets/workout_section.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -31,8 +27,6 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   late HomeViewModelCubit homeViewModel;
 
-  MealsViewModelCubit get viewModel => context.read<MealsViewModelCubit>();
-
   @override
   void initState() {
     homeViewModel = getIt.get<HomeViewModelCubit>();
@@ -41,28 +35,6 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final List<CategoryContainerModel> items = [
-      CategoryContainerModel(
-        image: Assets.imagesGymH,
-        title: context.translate(LangKeys.gym),
-      ),
-      CategoryContainerModel(
-        image: Assets.imagesFitnessH,
-        title: context.translate(LangKeys.fitness),
-      ),
-      CategoryContainerModel(
-        image: Assets.imagesYogaH,
-        title: context.translate(LangKeys.yoga),
-      ),
-      CategoryContainerModel(
-        image: Assets.imagesAerobicsH,
-        title: context.translate(LangKeys.aerobics),
-      ),
-      CategoryContainerModel(
-        image: Assets.imagesTrainerH,
-        title: context.translate(LangKeys.trainer),
-      ),
-    ];
     return BlocBuilder<ProfileViewModelCubit, ProfileViewModelState>(
       builder: (context, state) {
         switch (state) {
@@ -74,101 +46,15 @@ class _HomeViewState extends State<HomeView> {
                   '${context.translate(LangKeys.hi)}  ${state.data.user!.firstName},',
               subTitle: context.translate(LangKeys.letsStartYourDay),
               child: [
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        verticalSpacing(24.h),
-                        Text(
-                          "Categories",
-                          style: MyFonts.styleSemiBold600_16
-                              .copyWith(color: context.colors.white),
-                        ),
-                        verticalSpacing(7.h),
-                        Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: context.colors.darkGray,
-                            borderRadius: BorderRadius.circular(20.r),
-                          ),
-                          child: SizedBox(
-                            height: 116.h,
-                            child: ListView.separated(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: items.length,
-                              itemBuilder: (context, index) => FadeInRight(
-                                child: CustomContainerCategory(
-                                    model: items[index]),
-                              ),
-                              separatorBuilder: (context, index) =>
-                                  VerticalDivider(
-                                endIndent: 20,
-                                indent: 20,
-                                color: context.colors.gray,
-                              ),
-                            ),
-                          ),
-                        ),
-                        verticalSpacing(24.h),
-                      ],
-                    ),
-                  ),
-                ),
-                SliverToBoxAdapter(child:
-                    BlocBuilder<HomeViewModelCubit, HomeViewModelState>(
-                        builder: (context, state) {
-                  switch (state) {
-                    case GetRandomMusclesLoading():
-                      return const HomeLoadingWidget();
-                    case GetRandomMusclesSuccess():
-                      return FadeInLeft(
-                        child: RecommendationSection(
-                            data: state.muscles.muscles ?? [],
-                            title: "Recommendation To Day"),
-                      );
-                    case GetRandomMusclesError():
-                      return Center(
-                        child: Text(state.errorMessage.error ?? ""),
-                      );
-                    default:
-                      null;
-                  }
-                  return const SizedBox();
-                })),
+                const SliverToBoxAdapter(child: CategorySection()),
+                const SliverToBoxAdapter(child: MusclesSection()),
                 SliverToBoxAdapter(child: verticalSpacing(24.h)),
-                SliverToBoxAdapter(
-                  child: FadeInRight(
-                    child: const RecommendationSection(
-                        title: 'Upcoming Workouts', showSeeAll: true),
-                  ),
-                ),
+                const SliverToBoxAdapter(child: WorkoutSection()),
                 SliverToBoxAdapter(child: verticalSpacing(24.h)),
-                SliverToBoxAdapter(
-                  child: BlocBuilder<MealsViewModelCubit, MealsViewModelState>(
-                      builder: (context, state) {
-                    switch (state) {
-                      case MealsCategoriesLoading():
-                        const HomeLoadingWidget();
-                        break;
-                      case MealsCategoriesSuccess():
-                        return FadeInLeft(
-                          child: RecommendationSection(
-                              data: viewModel.categories,
-                              title: "Recommendation For You"),
-                        );
-                      case MealsCategoriesError():
-                      default:
-                        null;
-                    }
-                    return const SizedBox();
-                  }),
-                ),
                 const SliverToBoxAdapter(
-                  child: PopularTrainingSection(),
-                )
+                  child: MealsSection(),
+                ),
+                const SliverToBoxAdapter(child: PopularTraining())
               ],
             );
           case getProfileLoading():

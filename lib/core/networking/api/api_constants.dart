@@ -16,4 +16,6 @@ class ApiConstants {
   static const String mealById = "lookup.php";
   static const String randomMuscles = "api/v1/muscles/random";
   static const String categoryMeals = "categories.php";
+  static const String randomExercises =
+      "/api/v1/exercises/random?targetMuscleGroupId=67c79f3526895f87ce0aa96b&difficultyLevelId=67c797e226895f87ce0aa94b&limit=5";
 }

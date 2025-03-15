@@ -6,9 +6,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
+import '../../domain/entities/response/get_random_exercises_response_entity.dart';
 
 class PopularTrainingSection extends StatelessWidget {
-  const PopularTrainingSection({super.key});
+  const PopularTrainingSection({super.key, this.exercises});
+
+  final List<GetRandomExercisesResponseEntityExercises?>? exercises;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +32,13 @@ class PopularTrainingSection extends StatelessWidget {
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return FadeInRight(child: const PopularTrainingWidget());
+                  return FadeInRight(
+                      child: PopularTrainingWidget(
+                    exercises: exercises?[index],
+                  ));
                 },
                 separatorBuilder: (context, index) => horizontalSpacing(16.h),
-                itemCount: 3),
+                itemCount: exercises?.length ?? 0),
           ),
           verticalSpacing(80)
         ],

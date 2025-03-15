@@ -34,3 +34,18 @@ final class GetMealsCategoriesError extends HomeViewModelState {
 
   GetMealsCategoriesError(this.errorMessage);
 }
+
+/** random exercises **/
+final class GetRandomExercisesLoading extends HomeViewModelState {}
+
+final class GetRandomExercisesSuccess extends HomeViewModelState {
+  final GetRandomExercisesResponseEntity exercises;
+
+  GetRandomExercisesSuccess(this.exercises);
+}
+
+final class GetRandomExercisesError extends HomeViewModelState {
+  final ErrorModel errorMessage;
+
+  GetRandomExercisesError(this.errorMessage);
+}

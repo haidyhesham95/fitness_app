@@ -18,6 +18,7 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import '../../../features/auth/data/models/request/forget_password_request_dto.dart';
+import '../../../features/home/data/models/response/get_random_exercises_response_dto.dart';
 import '../../../features/profile/data/models/response/profile_response_model.dart';
 import 'api_constants.dart';
 part 'api_manager.g.dart';
@@ -63,4 +64,7 @@ abstract class ApiManager {
 
   @GET(ApiConstants.mealsCategories)
   Future<GetMealsCategoriesResponseDto> getMealsCategories();
+
+  @GET(ApiConstants.randomExercises)
+  Future<GetRandomExercisesResponseDto> getRandomExercises();
 }
