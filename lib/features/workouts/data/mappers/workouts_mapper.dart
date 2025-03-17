@@ -24,7 +24,7 @@ class WorkoutsMapper {
       message: response.message,
       muscleGroup: response.muscleGroup != null
           ? MuscleGroupEntityById(
-              id: response.muscleGroup!.Id,
+              id: response.muscleGroup!.id,
               name: response.muscleGroup!.name,
             )
           : null,

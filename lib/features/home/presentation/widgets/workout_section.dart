@@ -22,78 +22,69 @@ class _WorkoutSectionState extends State<WorkoutSection> {
       context.read<WorkoutsViewModelCubit>();
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WorkoutsViewModelCubit, WorkoutsViewModelState>(
-        builder: (context, state) {
-      switch (state) {
-        case GetAllWorkoutsLoading():
-          return const HomeLoadingWidget();
-        case GetAllWorkoutsSuccess():
-          return DefaultTabController(
-            length: state.data.musclesGroup?.length ?? 0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-                  child: tabBarWidget(
-                    tabs: [
-                      ...state.data.musclesGroup!
-                          .map((item) => Tab(text: item.name ?? "No Name")),
-                    ],
-                    onTap: (index) {
-                      viewModel.doAction(GetWorkoutsById(
-                          state.data.musclesGroup![index].id ?? ""));
-                    },
-                    context: context,
-                  ),
+    return BlocConsumer<WorkoutsViewModelCubit, WorkoutsViewModelState>(
+      builder: (context, state) {
+        return DefaultTabController(
+          length: viewModel.musclesGroup.length,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+                child: tabBarWidget(
+                  tabs: [
+                    ...viewModel.musclesGroup
+                        .map((item) => Tab(text: item.name ?? "No Name")),
+                  ],
+                  onTap: (index) {
+                    viewModel.doAction(GetWorkoutsById(
+                        viewModel.musclesGroup[index].id ?? ""));
+                  },
+                  context: context,
                 ),
-                SizedBox(
-                    height: 120.h,
-                    child: TabBarView(
-                      children: state.data.musclesGroup?.map((muscle) {
-                            return Center(
-                              child: BlocBuilder<WorkoutsViewModelCubit,
-                                      WorkoutsViewModelState>(
-                                  builder: (context, state) {
-                                switch (state) {
-                                  case GetWorkoutsByIdLoading():
-                                    return const HomeLoadingWidget();
-                                  case GetWorkoutsByIdSuccess():
-                                    return FadeInLeft(
-                                      child: RecommendationSection(
-                                          data: state.data.muscles ?? [],
-                                          title: "Upcoming Workouts"),
-                                    );
-                                  case GetWorkoutsByIdError():
-                                    return Center(
-                                      child:
-                                          Text(state.errorMessage.error ?? ""),
-                                    );
-                                  default:
-                                    null;
-                                }
-                                return const SizedBox();
-                              }),
-                            );
-                          }).toList() ??
-                          [],
-                    )),
-              ],
-            ),
-          );
-
-        case GetAllWorkoutsError():
-          return Container(
-            height: 104.h,
-            child: Center(
-              child: Text(state.errorMessage.error ?? ""),
-            ),
-          );
-        default:
-          null;
-      }
-      return const SizedBox();
-    });
+              ),
+              SizedBox(
+                  height: 120.h,
+                  child: TabBarView(
+                    children: viewModel.musclesGroup.map((muscle) {
+                          return Center(
+                            child: BlocBuilder<WorkoutsViewModelCubit,
+                                    WorkoutsViewModelState>(
+                                builder: (context, state) {
+                              switch (state) {
+                                case GetWorkoutsByIdLoading():
+                                  return const HomeLoadingWidget();
+                                case GetWorkoutsByIdSuccess():
+                                  return FadeInLeft(
+                                    child: RecommendationSection(
+                                        data: state.data.muscles ?? [],
+                                        title: "Upcoming Workouts"),
+                                  );
+                                case GetWorkoutsByIdError():
+                                  return Center(
+                                    child: Text(state.errorMessage.error ?? ""),
+                                  );
+                                default:
+                                  null;
+                              }
+                              return const SizedBox();
+                            }),
+                          );
+                        }).toList() ??
+                        [],
+                  )),
+            ],
+          ),
+        );
+        return const SizedBox();
+      },
+      listener: (context, state) {
+        if (state is GetAllWorkoutsSuccess) {
+          context
+              .read<WorkoutsViewModelCubit>()
+              .doAction(GetWorkoutsById(viewModel.musclesGroup[0].id ?? ""));
+        }
+      },
+    );
   }
 }

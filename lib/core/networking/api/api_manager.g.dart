@@ -268,7 +268,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          'api/v1/musclesGroup/67c79f3526895f87ce0aa96d',
+          'api/v1/musclesGroup/${id}}',
           queryParameters: queryParameters,
           data: _data,
         )

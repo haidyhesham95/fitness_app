@@ -11,6 +11,8 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class WorkoutsViewModelCubit extends Cubit<WorkoutsViewModelState> {
+  List<MuscleEntity> muscles = [];
+  List<MuscleGroupEntity> musclesGroup = [];
   WorkoutsViewModelCubit(
     this.workoutsUseCase,
     this.getWorkoutsByIdUseCase,
@@ -35,6 +37,7 @@ class WorkoutsViewModelCubit extends Cubit<WorkoutsViewModelState> {
     final result = await workoutsUseCase.getAllWorkouts();
     switch (result) {
       case Success<AllMusclesResponseEntity>():
+        musclesGroup = result.data.musclesGroup ?? [];
         emit(GetAllWorkoutsSuccess(data: result.data));
       case Fail<AllMusclesResponseEntity>():
         emit(GetAllWorkoutsError(
@@ -47,6 +50,7 @@ class WorkoutsViewModelCubit extends Cubit<WorkoutsViewModelState> {
     final result = await getWorkoutsByIdUseCase.getWorkoutById(id);
     switch (result) {
       case Success<MusclesByIdResponseEntity>():
+        muscles = result.data.muscles ?? [];
         emit(GetWorkoutsByIdSuccess(data: result.data));
       case Fail<MusclesByIdResponseEntity>():
         emit(GetAllWorkoutsError(
