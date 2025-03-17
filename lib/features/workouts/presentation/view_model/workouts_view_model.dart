@@ -16,6 +16,8 @@ class WorkoutsViewModelCubit extends Cubit<WorkoutsViewModelState> {
 
   final WorkoutsUseCase workoutsUseCase;
   final GetWorkoutsByIdUseCase getWorkoutsByIdUseCase;
+  List<MuscleGroupEntity>? data = [];
+  List<MuscleEntity>? dataById = [];
 
   void doAction(WorkoutsActions action) {
     switch (action) {
