@@ -159,6 +159,27 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i27.AuthOnlineDataSourceImpl(gh<_i25.ApiManager>()));
     gh.factory<_i28.AuthRepo>(
         () => _i29.AuthRepoImpl(gh<_i26.AuthOnlineDataSource>()));
+    gh.factory<_i30.FetchSmartChatCase>(
+        () => _i30.FetchSmartChatCase(gh<_i23.SmartChatRepo>()));
+    gh.factory<_i31.ForgetPasswordUseCase>(
+        () => _i31.ForgetPasswordUseCase(gh<_i28.AuthRepo>()));
+    gh.factory<_i32.ForgetPasswordViewModelCubit>(() =>
+        _i32.ForgetPasswordViewModelCubit(gh<_i31.ForgetPasswordUseCase>()));
+    gh.factory<_i33.GetMealByIdCase>(
+        () => _i33.GetMealByIdCase(gh<_i14.MealsRepository>()));
+    gh.factory<_i34.GetMealsByCategoryCase>(
+        () => _i34.GetMealsByCategoryCase(gh<_i14.MealsRepository>()));
+    gh.factory<_i35.GetMealsCategoriesCase>(
+        () => _i35.GetMealsCategoriesCase(gh<_i14.MealsRepository>()));
+    gh.factory<_i36.IsarUseCase>(
+        () => _i36.IsarUseCase(gh<_i18.OfflineRepo>()));
+    gh.factory<_i37.LoginUseCase>(() => _i37.LoginUseCase(gh<_i28.AuthRepo>()));
+    gh.factory<_i38.LoginViewModel>(
+        () => _i38.LoginViewModel(gh<_i37.LoginUseCase>()));
+    gh.factory<_i39.MealsViewModelCubit>(() => _i39.MealsViewModelCubit(
+          gh<_i35.GetMealsCategoriesCase>(),
+          gh<_i34.GetMealsByCategoryCase>(),
+          gh<_i33.GetMealByIdCase>(),
     gh.factory<_i30.ExerciseDataSource>(
         () => _i31.ExerciseDataSourceImpl(gh<_i25.ApiManager>()));
     gh.factory<_i32.ExerciseRepo>(
