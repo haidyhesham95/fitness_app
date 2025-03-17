@@ -60,6 +60,10 @@ class MyFonts {
     fontWeight: FontWeight.w500,
     fontSize: 20,
   );
+  static TextStyle styleMedium500_24 = GoogleFonts.balooThambi2(
+    fontWeight: FontWeight.w500,
+    fontSize: 24,
+  );
 
   static TextStyle styleSemiBold600_12 =  GoogleFonts.balooThambi2(
     fontWeight: FontWeight.w600,

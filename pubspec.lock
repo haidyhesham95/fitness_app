@@ -1117,6 +1117,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  patch_package:
+    dependency: "direct main"
+    description:
+      name: patch_package
+      sha256: ade4baf6e726395435e1d74cfe035978cf089024663e479e80fbe6c9d94b90a3
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.8"
   path:
     dependency: transitive
     description:

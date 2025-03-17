@@ -16,6 +16,7 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import '../../../features/auth/data/models/request/forget_password_request_dto.dart';
+import '../../../features/exercises/data/model/exercises_response_dto.dart';
 import '../../../features/profile/data/models/response/profile_response_model.dart';
 import 'api_constants.dart';
 part 'api_manager.g.dart';
@@ -55,4 +56,6 @@ abstract class ApiManager {
   Future<UploadPhotoResponseDto> uploadPhoto(
     @Part(name: "photo") File photo,
   );
+  @GET(ApiConstants.exercises)
+  Future<ExercisesResponseDto> getExercises();
 }
