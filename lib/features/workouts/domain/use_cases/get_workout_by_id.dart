@@ -9,7 +9,7 @@ class GetWorkoutsByIdUseCase {
 
   GetWorkoutsByIdUseCase(this._repository);
 
-  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById() {
-    return _repository.getWorkoutById();
+  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById(String id) {
+    return _repository.getWorkoutById(id);
   }
 }

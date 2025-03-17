@@ -128,7 +128,8 @@ class _WorkoutsViewState extends State<WorkoutsView> {
                         return BlocProvider(
                           create: (context) =>
                               getIt.get<WorkoutsViewModelCubit>()
-                                ..doAction(GetWorkoutsById()),
+                            ..doAction(GetWorkoutsById(
+                                dataById?[selectedIndex].id.toString() ?? "0")),
                           child: BlocBuilder<WorkoutsViewModelCubit,
                               WorkoutsViewModelState>(
                             builder: (context, state) {

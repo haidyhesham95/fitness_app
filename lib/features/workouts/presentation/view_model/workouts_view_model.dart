@@ -25,7 +25,7 @@ class WorkoutsViewModelCubit extends Cubit<WorkoutsViewModelState> {
         _getAllWorkouts();
         break;
       case GetWorkoutsById():
-        _getWorkoutsById();
+        _getWorkoutsById(action.id);
         break;
     }
   }
@@ -42,9 +42,9 @@ class WorkoutsViewModelCubit extends Cubit<WorkoutsViewModelState> {
     }
   }
 
-  Future<void> _getWorkoutsById() async {
+  Future<void> _getWorkoutsById(String id) async {
     emit(GetWorkoutsByIdLoading());
-    final result = await getWorkoutsByIdUseCase.getWorkoutById();
+    final result = await getWorkoutsByIdUseCase.getWorkoutById(id);
     switch (result) {
       case Success<MusclesByIdResponseEntity>():
         emit(GetWorkoutsByIdSuccess(data: result.data));

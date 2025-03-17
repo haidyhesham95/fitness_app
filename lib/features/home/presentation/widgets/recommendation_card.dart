@@ -116,6 +116,57 @@ class RecommendationCard extends StatelessWidget {
             ],
           ),
         );
+      case "Upcoming Workouts":
+        return Container(
+          height: 104.h,
+          width: 104.w,
+          decoration: BoxDecoration(
+            color: const Color(0xFF505050),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: SizedBox(
+                  height: 104.h,
+                  width: 104.w,
+                  child: CachedNetworkImage(
+                    imageUrl: data.image ?? "",
+                    fit: BoxFit.cover,
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                    placeholder: (context, url) => const HomeLoadingWidget(),
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: context.colors.darkGray.withValues(alpha: 0.8),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FittedBox(
+                      alignment: Alignment.bottomCenter,
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        data.name ?? "",
+                        style: MyFonts.styleSemiBold600_16
+                            .copyWith(color: context.colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
       default:
         return const SizedBox();
     }

@@ -5,5 +5,5 @@ import 'package:fitness_app/features/workouts/domain/entities/response/get_all_w
 abstract class WorkoutsOnlineDataSource {
   Future<DataResult<AllMusclesResponseEntity>> getAllWorkouts();
 
-  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById();
+  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById(String id);
 }

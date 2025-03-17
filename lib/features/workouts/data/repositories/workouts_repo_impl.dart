@@ -17,7 +17,7 @@ class WorkoutsRepoImpl extends WorkoutsRepo {
   }
 
   @override
-  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById() {
-    return _onlineDataSource.getWorkoutById();
+  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById(String id) {
+    return _onlineDataSource.getWorkoutById(id);
   }
 }

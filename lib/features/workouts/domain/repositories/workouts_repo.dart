@@ -6,5 +6,5 @@ abstract class WorkoutsRepo {
 
   Future<DataResult<AllMusclesResponseEntity>> getAllWorkouts();
 
-  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById();
+  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById(String id);
 }

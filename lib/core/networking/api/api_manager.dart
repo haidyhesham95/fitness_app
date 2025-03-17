@@ -49,7 +49,7 @@ abstract class ApiManager {
   @GET(ApiConstants.getAllWorkouts)
   Future<WorkoutsResponseDto> getAllWorkouts();
   @GET(ApiConstants.getWorkoutsById)
-  Future<GetAllWorkoutsByIdDto> getWorkoutsById();
+  Future<GetAllWorkoutsByIdDto> getWorkoutsById(@Path() String id);
   @PUT(ApiConstants.editProfileApi)
   Future<EditProfileResponseDto> editProfile(
       @Body() Map<String, dynamic> profileData);

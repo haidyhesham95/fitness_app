@@ -256,7 +256,7 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<GetAllWorkoutsByIdDto> getWorkoutsById() async {
+  Future<GetAllWorkoutsByIdDto> getWorkoutsById(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

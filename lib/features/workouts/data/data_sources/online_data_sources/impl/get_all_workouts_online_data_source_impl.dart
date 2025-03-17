@@ -22,9 +22,9 @@ class WorkoutsOnlineDataSourceImpl implements WorkoutsOnlineDataSource {
   }
 
   @override
-  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById() {
+  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById(String id) {
     return executeApi(() async {
-      final response = await _apiManager.getWorkoutsById();
+      final response = await _apiManager.getWorkoutsById(id);
       return WorkoutsMapper.toEntityById(response);
     });
   }

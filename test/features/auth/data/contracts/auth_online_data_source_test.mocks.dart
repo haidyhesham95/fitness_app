@@ -310,18 +310,18 @@ class MockApiManager extends _i1.Mock implements _i14.ApiManager {
       ) as _i15.Future<_i7.WorkoutsResponseDto>);
 
   @override
-  _i15.Future<_i8.GetAllWorkoutsByIdDto> getWorkoutsById() =>
+  _i15.Future<_i8.GetAllWorkoutsByIdDto> getWorkoutsById(String? id) =>
       (super.noSuchMethod(
         Invocation.method(
           #getWorkoutsById,
-          [],
+          [id],
         ),
         returnValue: _i15.Future<_i8.GetAllWorkoutsByIdDto>.value(
             _FakeGetAllWorkoutsByIdDto_6(
           this,
           Invocation.method(
             #getWorkoutsById,
-            [],
+            [id],
           ),
         )),
       ) as _i15.Future<_i8.GetAllWorkoutsByIdDto>);
