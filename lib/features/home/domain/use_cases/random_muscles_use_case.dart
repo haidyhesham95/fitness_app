@@ -11,5 +11,5 @@ class RandomMusclesUseCase {
   const RandomMusclesUseCase(this._homeRepo);
 
   Future<DataResult<GetRandomMusclesResponseEntity>> getRandomMuscles() async =>
-      await _homeRepo.getRandomMuscles();
+      await _homeRepo.getRandomMusclesRecommended();
 }

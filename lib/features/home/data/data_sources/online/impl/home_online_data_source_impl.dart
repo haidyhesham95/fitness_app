@@ -2,7 +2,6 @@ import 'package:fitness_app/core/networking/api_execute.dart';
 import 'package:fitness_app/core/networking/common/api_result.dart';
 import 'package:fitness_app/features/home/data/data_sources/online/contracts/home_online_data_source.dart';
 import 'package:fitness_app/features/home/data/mapper/home_mapper.dart';
-import 'package:fitness_app/features/home/domain/entities/response/get_meals_categories_response_entity.dart';
 import 'package:fitness_app/features/home/domain/entities/response/get_random_exercises_response_entity.dart';
 import 'package:fitness_app/features/home/domain/entities/response/get_random_muscles_response_entity.dart';
 import 'package:injectable/injectable.dart';
@@ -17,18 +16,11 @@ class HomeOnlineDataSourceImpl implements HomeOnlineDataSource {
   HomeOnlineDataSourceImpl(this._apiManager);
 
   @override
-  Future<DataResult<GetRandomMusclesResponseEntity>> getRandomMuscles() {
+  Future<DataResult<
+      GetRandomMusclesResponseEntity>> getRandomMusclesRecommended() {
     return executeApi(() async {
-      var response = await _apiManager.getRandomMuscles();
+      var response = await _apiManager.getRandomMusclesRecommendation();
       return HomeMapper.mapRandomMusclesToEntity(response);
-    });
-  }
-
-  @override
-  Future<DataResult<GetMealsCategoriesResponseEntity>> getMealsCategories() {
-    return executeApi(() async {
-      var response = await _apiManager.getMealsCategories();
-      return HomeMapper.mapMealsCategoriesToEntity(response);
     });
   }
 
@@ -39,4 +31,8 @@ class HomeOnlineDataSourceImpl implements HomeOnlineDataSource {
       return HomeMapper.mapRandomExercisesToEntity(response);
     });
   }
+
+
 }
+
+

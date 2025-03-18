@@ -29,7 +29,7 @@ class _ProfileDateSectionState extends State<ProfileDateSection> {
           case getProfileSuccess():
           final user = state.data.user!;
           return Padding(
-            padding: EdgeInsets.all(24.sp),
+            padding: EdgeInsets.all(16.sp),
             child: Column(
               children: [
                 CustomTextFormField(

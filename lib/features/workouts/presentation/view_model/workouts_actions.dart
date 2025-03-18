@@ -7,3 +7,9 @@ class GetWorkoutsById extends WorkoutsActions {
 
   GetWorkoutsById(this.id);
 }
+
+class GetMusclesByMuscleGroupId extends WorkoutsActions {
+  final String id;
+
+  GetMusclesByMuscleGroupId(this.id);
+}

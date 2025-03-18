@@ -6,7 +6,6 @@ import 'package:fitness_app/features/auth/presentation/register/view/gender/gend
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/exercises/presentation/view/exercise_view.dart';
-import 'package:fitness_app/features/home/presentation/viewModel/home_view_model_cubit.dart';
 import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
 import 'package:fitness_app/features/meals/presentation/view/meal_details_view.dart';
 import 'package:fitness_app/features/meals/presentation/view/meal_view.dart';
@@ -36,7 +35,6 @@ import '../../features/auth/presentation/register/view/gender/old_view.dart';
 import '../../features/auth/presentation/register/view/gender/weight_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/activity_view.dart';
 import '../../features/auth/presentation/register/view/goal_activity/goal_view.dart';
-import '../../features/home/presentation/viewModel/home_action.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../utils/screens/under_build_screen.dart';
 

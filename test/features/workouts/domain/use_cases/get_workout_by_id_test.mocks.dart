@@ -10,6 +10,8 @@ import 'package:fitness_app/features/workouts/domain/entities/response/get_all_w
     as _i7;
 import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_entity.dart'
     as _i5;
+import 'package:fitness_app/features/workouts/domain/entities/response/muscles_by_muscle_group_id_entity.dart'
+    as _i8;
 import 'package:fitness_app/features/workouts/domain/repositories/workouts_repo.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -55,11 +57,12 @@ class MockWorkoutsRepo extends _i1.Mock implements _i2.WorkoutsRepo {
       ) as _i3.Future<_i4.DataResult<_i5.AllMusclesResponseEntity>>);
 
   @override
-  _i3.Future<_i4.DataResult<_i7.MusclesByIdResponseEntity>> getWorkoutById() =>
+  _i3.Future<_i4.DataResult<_i7.MusclesByIdResponseEntity>> getWorkoutById(
+          String? id) =>
       (super.noSuchMethod(
         Invocation.method(
           #getWorkoutById,
-          [],
+          [id],
         ),
         returnValue:
             _i3.Future<_i4.DataResult<_i7.MusclesByIdResponseEntity>>.value(
@@ -67,8 +70,29 @@ class MockWorkoutsRepo extends _i1.Mock implements _i2.WorkoutsRepo {
           this,
           Invocation.method(
             #getWorkoutById,
-            [],
+            [id],
           ),
         )),
       ) as _i3.Future<_i4.DataResult<_i7.MusclesByIdResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.DataResult<List<_i8.MusclesByMuscleGroupIdEntity>>>
+      getMusclesByMuscleGroupId(String? id) => (super.noSuchMethod(
+            Invocation.method(
+              #getMusclesByMuscleGroupId,
+              [id],
+            ),
+            returnValue: _i3.Future<
+                    _i4
+                    .DataResult<List<_i8.MusclesByMuscleGroupIdEntity>>>.value(
+                _i6.dummyValue<
+                    _i4.DataResult<List<_i8.MusclesByMuscleGroupIdEntity>>>(
+              this,
+              Invocation.method(
+                #getMusclesByMuscleGroupId,
+                [id],
+              ),
+            )),
+          ) as _i3
+              .Future<_i4.DataResult<List<_i8.MusclesByMuscleGroupIdEntity>>>);
 }

@@ -14,12 +14,13 @@ void main() {
     mockWorkoutsRepo =MockWorkoutsRepo();
     useCase = WorkoutsUseCase(mockWorkoutsRepo);
     provideDummy<DataResult<AllMusclesResponseEntity>>(
-      Success(const AllMusclesResponseEntity()),
+      Success(const AllMusclesResponseEntity(message: 'Success', musclesGroup: [])),
     );
   });
 
   test('when call (get all muscles) method it should get it from workoutsRepo.getAllWorkouts', ()async {
     final allMuscleResponseEntity = const AllMusclesResponseEntity(
+      message: 'Success',
       musclesGroup: [
         MuscleGroupEntity(name: 'High Chest', id: '2'),
       ],

@@ -27,7 +27,7 @@ void main() {
       final workoutsResponseDto = WorkoutsResponseDto(
         message: 'Success',
         musclesGroup: [
-          MusclesGroup(name: 'High Chest', Id: '1'),
+          MusclesGroup(name: 'High Chest', id: '1'),
         ],
       );
 
@@ -42,18 +42,18 @@ void main() {
     test('getWorkoutById should return data from ApiManager', () async {
       final getAllWorkoutsBuIdDto = GetAllWorkoutsByIdDto(
         message: 'Success',
-        muscleGroup: MuscleGroup(name: 'High Chest', Id: '1'),
+        muscleGroup: MuscleGroup(name: 'High Chest', id: '1'),
         muscles: [
           Muscles(Id: '2', name: 'Abdominals', image: Assets.imagesEditBg),
         ],
       );
 
-      when(mockApiManager.getWorkoutsById()).thenAnswer(
+      when(mockApiManager.getWorkoutsById('1')).thenAnswer(
             (_) async => getAllWorkoutsBuIdDto,
       );
-      var result = await workoutsOnlineDataSourceImpl.getWorkoutById();
+      var result = await workoutsOnlineDataSourceImpl.getWorkoutById( '1');
       expect(result, isA<Success<MusclesByIdResponseEntity>>());
-      verify(mockApiManager.getWorkoutsById()).called(1);
+      verify(mockApiManager.getWorkoutsById('1')).called(1);
     });
   });
 }

@@ -1,6 +1,6 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/styles/fonts/my_fonts.dart';
+import '../../styles/fonts/my_fonts.dart';
 
 Widget tabBarWidget({
   required List<Widget> tabs,

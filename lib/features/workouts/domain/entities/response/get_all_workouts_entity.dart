@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class AllMusclesResponseEntity extends Equatable {
-  final String? message;
-  final List<MuscleGroupEntity>? musclesGroup;
+  final String message;
+  final List<MuscleGroupEntity> musclesGroup;
 
   const AllMusclesResponseEntity({
-    this.message,
-    this.musclesGroup,
+    required this.message,
+    required this.musclesGroup,
   });
 
   @override
@@ -14,12 +14,12 @@ class AllMusclesResponseEntity extends Equatable {
 }
 
 class MuscleGroupEntity extends Equatable {
-  final String? id;
-  final String? name;
+  final String id;
+  final String name;
 
   const MuscleGroupEntity({
-    this.id,
-    this.name,
+    required this.id,
+    required this.name,
   });
 
   @override

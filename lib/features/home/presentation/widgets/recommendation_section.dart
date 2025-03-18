@@ -10,10 +10,12 @@ class RecommendationSection extends StatelessWidget {
   final String title;
   final List? data;
   final bool showSeeAll;
+  final void Function()? onTapSeeAll;
 
   const RecommendationSection({
     Key? key,
     required this.title,
+    this.onTapSeeAll,
     this.showSeeAll = false, this.data}) : super(key: key);
 
   @override
@@ -33,7 +35,7 @@ class RecommendationSection extends StatelessWidget {
               ),
               if (showSeeAll)
                 TextButton(
-                  onPressed: () {},
+                  onPressed:  onTapSeeAll,
                   child: Text(
                     "See All",
                     style: MyFonts.styleSemiBold600_14

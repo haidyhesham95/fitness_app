@@ -18,6 +18,7 @@ void main() {
    late MockGetWorkoutsByIdUseCase mockGetWorkoutsByIdUseCase;
    late WorkoutsViewModelCubit workoutsViewModelCubit;
    final allMuscleResponseEntity = const AllMusclesResponseEntity(
+      message: ' success',
      musclesGroup: [
        MuscleGroupEntity(name: 'High Chest', id: '2'),
      ],
@@ -72,16 +73,16 @@ void main() {
          var mockedResult = Success<MusclesByIdResponseEntity>(
            musclesByIdResponseEntity,
          );
-         when(mockGetWorkoutsByIdUseCase.getWorkoutById()).thenAnswer((_) async => mockedResult);
+         when(mockGetWorkoutsByIdUseCase.getWorkoutById('1')).thenAnswer((_) async => mockedResult);
          return workoutsViewModelCubit;
        },
-       act: (workoutsViewModelCubit) => workoutsViewModelCubit.doAction(GetWorkoutsById()),
+       act: (workoutsViewModelCubit) => workoutsViewModelCubit.doAction(GetWorkoutsById('1')),
        expect: () => [
          isA<GetWorkoutsByIdLoading>(),
          isA<GetWorkoutsByIdSuccess>(),
        ],
        verify: (_) {
-         verify(mockGetWorkoutsByIdUseCase.getWorkoutById()).called(1);
+         verify(mockGetWorkoutsByIdUseCase.getWorkoutById('1')).called(1);
        },
      );
    });
@@ -110,18 +111,18 @@ void main() {
      build: () {
        var mockedResult = Fail<MusclesByIdResponseEntity>(Exception('Invalid credentials'));
 
-       when(mockGetWorkoutsByIdUseCase.getWorkoutById())
+       when(mockGetWorkoutsByIdUseCase.getWorkoutById('1'))
            .thenAnswer((_) async => mockedResult);
 
        return workoutsViewModelCubit;
      },
-     act: (workoutsViewModelCubit) => workoutsViewModelCubit.doAction(GetWorkoutsById()),
+     act: (workoutsViewModelCubit) => workoutsViewModelCubit.doAction(GetWorkoutsById('1')),
      expect: () => [
        isA<GetWorkoutsByIdLoading>(),
        isA<GetWorkoutsByIdError>(),
      ],
      verify: (_) {
-       verify(mockGetWorkoutsByIdUseCase.getWorkoutById()).called(1);
+       verify(mockGetWorkoutsByIdUseCase.getWorkoutById('1')).called(1);
      },
    );
 

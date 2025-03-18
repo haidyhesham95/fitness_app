@@ -1,7 +1,6 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/widgets/base/base_view.dart';
 import 'package:fitness_app/core/utils/widgets/spacing.dart';
-import 'package:fitness_app/features/home/presentation/viewModel/home_view_model_cubit.dart';
 import 'package:fitness_app/features/home/presentation/widgets/muscles_section.dart';
 import 'package:fitness_app/features/profile/presentation/view_model/profile_view_model_cubit.dart';
 import 'package:fitness_app/generated/assets.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/localization/lang_keys.dart';
-import '../../../../core/networking/common/register_context_module.dart';
 import '../widgets/category_section.dart';
 import '../widgets/home_loading_widget.dart';
 import '../widgets/meals_section.dart';
@@ -25,13 +23,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  late HomeViewModelCubit homeViewModel;
 
-  @override
-  void initState() {
-    homeViewModel = getIt.get<HomeViewModelCubit>();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
                 const SliverToBoxAdapter(
                   child: MealsSection(),
                 ),
-                const SliverToBoxAdapter(child: PopularTraining())
+                const SliverToBoxAdapter(child: PopularTraining()),
               ],
             );
           case getProfileLoading():

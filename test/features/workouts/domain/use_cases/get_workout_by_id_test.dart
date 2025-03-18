@@ -34,9 +34,9 @@ void main() {
         ],
         message: 'success'
     );
-    when(mockWorkoutsRepo.getWorkoutById()).thenAnswer((_) async=> Success(musclesByIdResponseEntity));
-    final result = await useCase.getWorkoutById();
+    when(mockWorkoutsRepo.getWorkoutById('1')).thenAnswer((_) async=> Success(musclesByIdResponseEntity));
+    final result = await useCase.getWorkoutById('1');
     expect(result, isA<Success<MusclesByIdResponseEntity>>());
-    verify(mockWorkoutsRepo.getWorkoutById()).called(1);
+    verify(mockWorkoutsRepo.getWorkoutById('1')).called(1);
   });
 }

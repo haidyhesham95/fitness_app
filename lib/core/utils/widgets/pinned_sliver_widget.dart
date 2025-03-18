@@ -1,4 +1,4 @@
-import 'package:fitness_app/features/meals/presentation/widget/pinned_header_widget.dart';
+import 'package:fitness_app/core/utils/widgets/pinned_header_widget.dart';
 import 'package:flutter/material.dart';
 
 class PinnedSliverWidget extends StatelessWidget {
