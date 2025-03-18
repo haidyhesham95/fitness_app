@@ -20,6 +20,8 @@ class WorkoutsViewModelCubit extends Cubit<WorkoutsViewModelState> {
 
   final WorkoutsUseCase workoutsUseCase;
   final GetWorkoutsByIdUseCase getWorkoutsByIdUseCase;
+  List<MuscleGroupEntity>? data = [];
+  List<MuscleEntity>? dataById = [];
 
   void doAction(WorkoutsActions action) {
     switch (action) {
@@ -53,7 +55,7 @@ class WorkoutsViewModelCubit extends Cubit<WorkoutsViewModelState> {
         muscles = result.data.muscles ?? [];
         emit(GetWorkoutsByIdSuccess(data: result.data));
       case Fail<MusclesByIdResponseEntity>():
-        emit(GetAllWorkoutsError(
+        emit(GetWorkoutsByIdError(
             errorMessage: ErrorHandler.handle(result.exception!)));
     }
   }

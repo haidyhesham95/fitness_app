@@ -5,7 +5,7 @@ buildscript {
     }
     dependencies {
         // Use a compatible AGP version
-        classpath 'com.android.tools.build:gradle:8.1.1'
+        classpath 'com.android.tools.build:gradle:8.2.1'
     }
 }
 
