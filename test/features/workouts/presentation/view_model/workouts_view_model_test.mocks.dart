@@ -10,6 +10,8 @@ import 'package:fitness_app/features/workouts/domain/entities/response/get_all_w
     as _i8;
 import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_entity.dart'
     as _i5;
+import 'package:fitness_app/features/workouts/domain/entities/response/muscles_by_muscle_group_id_entity.dart'
+    as _i9;
 import 'package:fitness_app/features/workouts/domain/use_cases/get_workout_by_id.dart'
     as _i7;
 import 'package:fitness_app/features/workouts/domain/use_cases/workouts_use_case.dart'
@@ -84,4 +86,24 @@ class MockGetWorkoutsByIdUseCase extends _i1.Mock
           ),
         )),
       ) as _i3.Future<_i4.DataResult<_i8.MusclesByIdResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.DataResult<List<_i9.MusclesByMuscleGroupIdEntity>>> call(
+          String? id) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [id],
+        ),
+        returnValue: _i3.Future<
+                _i4.DataResult<List<_i9.MusclesByMuscleGroupIdEntity>>>.value(
+            _i6.dummyValue<
+                _i4.DataResult<List<_i9.MusclesByMuscleGroupIdEntity>>>(
+          this,
+          Invocation.method(
+            #call,
+            [id],
+          ),
+        )),
+      ) as _i3.Future<_i4.DataResult<List<_i9.MusclesByMuscleGroupIdEntity>>>);
 }

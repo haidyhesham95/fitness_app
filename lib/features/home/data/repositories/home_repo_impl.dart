@@ -1,5 +1,4 @@
 import 'package:fitness_app/core/networking/common/api_result.dart';
-import 'package:fitness_app/features/home/domain/entities/response/get_meals_categories_response_entity.dart';
 import 'package:fitness_app/features/home/domain/entities/response/get_random_exercises_response_entity.dart';
 import 'package:fitness_app/features/home/domain/entities/response/get_random_muscles_response_entity.dart';
 import 'package:injectable/injectable.dart';
@@ -15,14 +14,8 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl(this._homeOnlineDataSource);
 
   @override
-  Future<DataResult<GetRandomMusclesResponseEntity>> getRandomMuscles() async {
-    return await _homeOnlineDataSource.getRandomMuscles();
-  }
-
-  @override
-  Future<DataResult<GetMealsCategoriesResponseEntity>>
-      getMealsCategories() async {
-    return await _homeOnlineDataSource.getMealsCategories();
+  Future<DataResult<GetRandomMusclesResponseEntity>> getRandomMusclesRecommended() async {
+    return await _homeOnlineDataSource.getRandomMusclesRecommended();
   }
 
   @override
@@ -30,4 +23,6 @@ class HomeRepoImpl implements HomeRepo {
       getRandomExercises() async {
     return await _homeOnlineDataSource.getRandomExercises();
   }
+
+
 }

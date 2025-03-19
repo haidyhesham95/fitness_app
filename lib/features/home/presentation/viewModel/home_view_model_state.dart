@@ -20,20 +20,7 @@ final class GetRandomMusclesError extends HomeViewModelState {
   GetRandomMusclesError(this.errorMessage);
 }
 
-/** category meals **/
-final class GetMealsCategoriesLoading extends HomeViewModelState {}
 
-final class GetMealsCategoriesSuccess extends HomeViewModelState {
-  final GetMealsCategoriesResponseEntity categories;
-
-  GetMealsCategoriesSuccess(this.categories);
-}
-
-final class GetMealsCategoriesError extends HomeViewModelState {
-  final ErrorModel errorMessage;
-
-  GetMealsCategoriesError(this.errorMessage);
-}
 
 /** random exercises **/
 final class GetRandomExercisesLoading extends HomeViewModelState {}

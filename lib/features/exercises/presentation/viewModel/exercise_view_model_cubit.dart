@@ -22,6 +22,7 @@ class ExerciseViewModelCubit extends Cubit<ExerciseViewModelState> {
       case GetExercises():
         _getExercises();
         break;
+
     }
   }
 

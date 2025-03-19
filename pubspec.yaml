@@ -66,6 +66,7 @@ dependencies:
   isar: ^3.0.0
   path_provider: ^2.1.5
   isar_flutter_libs: ^3.1.0+1
+  patch_package: ^0.0.8
 
 dev_dependencies:
   flutter_test:
@@ -76,11 +77,14 @@ dev_dependencies:
   retrofit_generator:
   json_serializable:
   dartz:
-  test:
+  test: ^1.25.2
   flutter_native_splash: ^2.4.4
   icons_launcher: ^3.0.0
   mockito:
-  isar_generator: ^3.0.0
+  isar_generator: ^3.0.1
+
+dependency_overrides:
+  matcher: ^0.12.17
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

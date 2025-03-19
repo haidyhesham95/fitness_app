@@ -22,6 +22,7 @@ void main() {
   });
 
   group('getAllWorkouts and getWorkoutById tests', () {
+
     test('getAllWorkouts should return data from ApiManager', () async {
       final workoutsResponseDto = WorkoutsResponseDto(
         message: 'Success',
@@ -31,7 +32,7 @@ void main() {
       );
 
       when(mockApiManager.getAllWorkouts()).thenAnswer(
-        (_) async => workoutsResponseDto,
+            (_) async => workoutsResponseDto,
       );
       var result = await workoutsOnlineDataSourceImpl.getAllWorkouts();
       expect(result, isA<Success<AllMusclesResponseEntity>>());
@@ -48,9 +49,9 @@ void main() {
       );
 
       when(mockApiManager.getWorkoutsById('1')).thenAnswer(
-        (_) async => getAllWorkoutsBuIdDto,
+            (_) async => getAllWorkoutsBuIdDto,
       );
-      var result = await workoutsOnlineDataSourceImpl.getWorkoutById('1');
+      var result = await workoutsOnlineDataSourceImpl.getWorkoutById( '1');
       expect(result, isA<Success<MusclesByIdResponseEntity>>());
       verify(mockApiManager.getWorkoutsById('1')).called(1);
     });

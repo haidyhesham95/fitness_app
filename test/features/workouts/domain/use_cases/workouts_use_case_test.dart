@@ -11,18 +11,15 @@ import 'get_workout_by_id_test.mocks.dart';
 void main() {
   late MockWorkoutsRepo mockWorkoutsRepo;
   late WorkoutsUseCase useCase;
-  setUp(() {
-    mockWorkoutsRepo = MockWorkoutsRepo();
+  setUp((){
+    mockWorkoutsRepo =MockWorkoutsRepo();
     useCase = WorkoutsUseCase(mockWorkoutsRepo);
     provideDummy<DataResult<AllMusclesResponseEntity>>(
-      Success(
-          const AllMusclesResponseEntity(message: 'Success', musclesGroup: [])),
+      Success(const AllMusclesResponseEntity(message: 'Success', musclesGroup: [])),
     );
   });
 
-  test(
-      'when call (get all muscles) method it should get it from workoutsRepo.getAllWorkouts',
-      () async {
+  test('when call (get all muscles) method it should get it from workoutsRepo.getAllWorkouts', ()async {
     final allMuscleResponseEntity = const AllMusclesResponseEntity(
       message: 'Success',
       musclesGroup: [

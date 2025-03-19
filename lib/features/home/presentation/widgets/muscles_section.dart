@@ -1,41 +1,40 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:fitness_app/core/networking/common/register_context_module.dart';
+import 'package:fitness_app/features/home/presentation/viewModel/home_action.dart';
 import 'package:fitness_app/features/home/presentation/widgets/recommendation_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/networking/common/register_context_module.dart';
-import '../viewModel/home_action.dart';
 import '../viewModel/home_view_model_cubit.dart';
-import 'home_loading_widget.dart';
 
-class MusclesSection extends StatelessWidget {
+class MusclesSection extends StatefulWidget {
   const MusclesSection({super.key});
 
   @override
+  State<MusclesSection> createState() => _MusclesSectionState();
+}
+
+class _MusclesSectionState extends State<MusclesSection> {
+  var viewModel = getIt<HomeViewModelCubit>();
+  @override
+  void initState() {
+    context.read<HomeViewModelCubit>().doAction(GetRandomMuscles());
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          getIt.get<HomeViewModelCubit>()..doAction(GetRandomMuscles()),
-      child: BlocBuilder<HomeViewModelCubit, HomeViewModelState>(
-          builder: (context, state) {
-        switch (state) {
-          case GetRandomMusclesLoading():
-            return const HomeLoadingWidget();
-          case GetRandomMusclesSuccess():
-            return FadeInLeft(
-              child: RecommendationSection(
-                  data: state.muscles.muscles ?? [],
-                  title: "Recommendation To Day"),
-            );
-          case GetRandomMusclesError():
-            return Center(
-              child: Text(state.errorMessage.error ?? ""),
-            );
-          default:
-            null;
-        }
-        return const SizedBox();
-      }),
-    );
+    return BlocBuilder<HomeViewModelCubit, HomeViewModelState>(
+        builder: (context, state) {
+          if (state is GetRandomMusclesSuccess) {
+            var randomMusclesEntity = state.muscles;
+            viewModel.randomMusclesEntity = randomMusclesEntity;
+          }
+          debugPrint('Recommendation To Day 2 ${viewModel.randomMusclesEntity.muscles}');
+          return FadeInLeft(
+            child: RecommendationSection(
+                data: viewModel.randomMusclesEntity.muscles ?? [],
+                title: "Recommendation To Day"),
+          );
+    });
   }
 }

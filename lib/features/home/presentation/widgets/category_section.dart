@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/features/home/data/models/category_container_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,7 +8,6 @@ import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../../../../generated/assets.dart';
-import '../models/category_container_model.dart';
 import 'custom_container_category.dart';
 
 class CategorySection extends StatelessWidget {

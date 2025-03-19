@@ -26,12 +26,12 @@ class WorkoutsResponseDto {
 @JsonSerializable()
 class MusclesGroup {
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
   @JsonKey(name: "name")
   final String? name;
 
   MusclesGroup ({
-    this.Id,
+    this.id,
     this.name,
   });
 

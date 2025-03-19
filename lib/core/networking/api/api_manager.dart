@@ -1,26 +1,30 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:fitness_app/features/auth/data/models/request/login_request_dto.dart';
 import 'package:fitness_app/features/auth/data/models/request/reset_password_request_dto.dart';
+import 'package:fitness_app/features/auth/data/models/request/signup_request_dto.dart';
 import 'package:fitness_app/features/auth/data/models/request/verify_otp_request_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/forget_response_dto.dart';
-import 'package:fitness_app/features/auth/data/models/response/reset_password_response_dto.dart';
-import 'package:fitness_app/features/auth/data/models/request/login_request_dto.dart';
-import 'package:fitness_app/features/auth/data/models/request/signup_request_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart';
+import 'package:fitness_app/features/auth/data/models/response/reset_password_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/signup_response_dto.dart';
-import 'package:fitness_app/features/home/data/models/response/get_meals_categories_response_dto.dart';
+import 'package:fitness_app/features/home/data/models/response/get_random_exercises_response_dto.dart';
 import 'package:fitness_app/features/home/data/models/response/get_random_muscles_response_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/edit_profile_response_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/upload_photo_response_dto.dart';
 import 'package:fitness_app/features/workouts/data/models/response/get_all_workout_by_id_dto.dart';
+import 'package:fitness_app/features/workouts/data/models/response/muscles_by_muscle_group_id_dto.dart';
 import 'package:fitness_app/features/workouts/data/models/response/workouts_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
+
 import '../../../features/auth/data/models/request/forget_password_request_dto.dart';
-import '../../../features/home/data/models/response/get_random_exercises_response_dto.dart';
+import '../../../features/exercises/data/model/exercises_response_dto.dart';
 import '../../../features/profile/data/models/response/profile_response_model.dart';
 import 'api_constants.dart';
+
 part 'api_manager.g.dart';
 
 @singleton
@@ -33,8 +37,10 @@ abstract class ApiManager {
   @POST(ApiConstants.forgetPassword)
   Future<ForgetPasswordResponseDto> forgetPassword(
       @Body() ForgetPasswordRequestDto request);
+
   @POST(ApiConstants.signInApi)
   Future<LoginResponseDto> login(@Body() LoginRequestDto request);
+
   @POST(ApiConstants.signUpApi)
   Future<SignUpResponseDto> signup(@Body() SignUpRequestDto request);
 
@@ -44,27 +50,35 @@ abstract class ApiManager {
   @PUT(ApiConstants.resetPassword)
   Future<ResetPasswordResponseDto> resetPassword(
       @Body() ResetPasswordRequestDto request);
+
   @GET(ApiConstants.profileData)
   Future<ProfileResponseDto> getLoggedUserData();
+
   @GET(ApiConstants.getAllWorkouts)
   Future<WorkoutsResponseDto> getAllWorkouts();
 
   @GET("${ApiConstants.getWorkoutsById}/{id}}")
   Future<GetAllWorkoutsByIdDto> getWorkoutsById(@Path("id") String id);
+
   @PUT(ApiConstants.editProfileApi)
   Future<EditProfileResponseDto> editProfile(
       @Body() Map<String, dynamic> profileData);
+
   @PUT(ApiConstants.uploadPhoto)
   @MultiPart()
   Future<UploadPhotoResponseDto> uploadPhoto(
     @Part(name: "photo") File photo,
   );
 
-  @GET(ApiConstants.randomMuscles)
-  Future<GetRandomMusclesResponseDto> getRandomMuscles();
+  @GET(ApiConstants.exercises)
+  Future<ExercisesResponseDto> getExercises();
 
-  @GET(ApiConstants.mealsCategories)
-  Future<GetMealsCategoriesResponseDto> getMealsCategories();
+  @GET(ApiConstants.getWorkoutsByMuscleGroupId)
+  Future<MusclesByMuscleGroupIdResponseDto> getMusclesByMuscleGroupId(
+      @Query("muscleGroupId") String id);
+
+  @GET(ApiConstants.randomMusclesRecommendation)
+  Future<GetRandomMusclesResponseDto> getRandomMusclesRecommendation();
 
   @GET(ApiConstants.randomExercises)
   Future<GetRandomExercisesResponseDto> getRandomExercises();

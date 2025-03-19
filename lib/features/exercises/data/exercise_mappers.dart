@@ -3,7 +3,7 @@ import 'package:fitness_app/features/exercises/data/model/exercises_response_dto
 import '../domain/entities/exercises_entity.dart';
 
 class ExerciseMapper {
-  static ExercisesEntity toEntity(ExercisesResponseDto dto) {
+    static ExercisesEntity toEntity(ExercisesResponseDto dto) {
     return ExercisesEntity(
       message: dto.message,
       totalExercises: dto.totalExercises,
@@ -101,3 +101,4 @@ class ExerciseMapper {
     );
   }
 }
+

@@ -139,7 +139,7 @@ void main() {
           );
         },
       );
-      group(' when call doAction function call get MealById from useCase', () {
+      group( ' when call doAction function call get MealById from useCase', () {
         blocTest<MealsViewModelCubit, MealsViewModelState>(
           ' when call doAction function it should call getMealById from useCase and change state with the right sequence',
           build: () {
@@ -180,6 +180,7 @@ void main() {
           verify(mockGetMealByIdCase(any)).called(1);
         },
       );
+
     },
   );
 }

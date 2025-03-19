@@ -6,10 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GenericGridView extends StatelessWidget {
-  String imageUrl;
-  String title;
+  const GenericGridView(this.imageUrl, this.title);
 
-  GenericGridView(this.imageUrl, this.title);
+  final String imageUrl;
+  final String title;
 
   @override
   Widget build(BuildContext context) {

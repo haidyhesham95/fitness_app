@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/routes/app_routes.dart';
 
 class GenericCard extends StatelessWidget {
   final String imageUrl;
@@ -28,7 +31,17 @@ class GenericCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
+    return InkWell(
+      onTap: () {
+        context.pushNamed(
+          AppRoutes.exerciseView,
+          arguments: {
+            'imageUrl': imageUrl,
+            'title': title,
+          },
+        );
+        },
+      child:ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius),
       child: Stack(
         fit: StackFit.expand,
@@ -69,7 +82,7 @@ class GenericCard extends StatelessWidget {
               ),
             ),
           ),
-        ],
+        ],),
       ),
     );
   }

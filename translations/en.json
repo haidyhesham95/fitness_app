@@ -147,5 +147,9 @@
   "trainer": "Trainer",
   "ingredients": "Ingredients",
   "recommendation": "Recommendation",
+  "novice": "Novice",
+  "thirtyMinutes" : "30 MIN",
+  "cal" : "130 Cal",
+  "exercisesDescription": "Lorem ipsum dolor sit amet consectetur. Tempus volutpat ut nisi morbi.",
   "categories": "Categories"
 }

@@ -12,6 +12,8 @@ import 'package:fitness_app/features/workouts/domain/entities/response/get_all_w
     as _i7;
 import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_entity.dart'
     as _i5;
+import 'package:fitness_app/features/workouts/domain/entities/response/muscles_by_muscle_group_id_entity.dart'
+    as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
 
@@ -73,4 +75,25 @@ class MockWorkoutsOnlineDataSource extends _i1.Mock
           ),
         )),
       ) as _i3.Future<_i4.DataResult<_i7.MusclesByIdResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.DataResult<List<_i8.MusclesByMuscleGroupIdEntity>>>
+      getMusclesByMuscleGroupId(String? id) => (super.noSuchMethod(
+            Invocation.method(
+              #getMusclesByMuscleGroupId,
+              [id],
+            ),
+            returnValue: _i3.Future<
+                    _i4
+                    .DataResult<List<_i8.MusclesByMuscleGroupIdEntity>>>.value(
+                _i6.dummyValue<
+                    _i4.DataResult<List<_i8.MusclesByMuscleGroupIdEntity>>>(
+              this,
+              Invocation.method(
+                #getMusclesByMuscleGroupId,
+                [id],
+              ),
+            )),
+          ) as _i3
+              .Future<_i4.DataResult<List<_i8.MusclesByMuscleGroupIdEntity>>>);
 }

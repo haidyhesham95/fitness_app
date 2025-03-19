@@ -1,6 +1,4 @@
-import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
-import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/profile_info.dart';
 import 'package:fitness_app/features/profile/presentation/widgets/setting_list.dart';
 import 'package:fitness_app/generated/assets.dart';
@@ -25,11 +23,7 @@ class ProfileView extends StatelessWidget {
       widget: Column(
         spacing: 20.h,
         children: [
-          InkWell(
-              onTap: () {
-                context.pushNamed(AppRoutes.mealsView);
-              },
-              child: const ProfileInfo()),
+          const ProfileInfo(),
           const SettingList(),
           verticalSpacing(50.h)
         ],

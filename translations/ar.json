@@ -68,7 +68,7 @@
   "gainMoreFlexible": "كن أكثر مرونة",
   "learnTheBasics": "تعلم الاساسيات",
   "rookie": "روكي",
-  "beginner": "ابتدائي",
+  "beginner": "مبتدئ",
   "intermediate": "متوسط",
   "advanced": "متقدم",
   "trueBeast": "خبير",
@@ -143,6 +143,10 @@
   "aerobics": "الايروبيكس",
   "trainer": "المدرب",
   "ingredients": "المكونات",
+  "categories": "التصنيفات",
   "recommendation": "التوصية",
-  "categories": "التصنيفات"
+  "novice": "مستجد",
+  "thirtyMinutes" : "30 دقيقة",
+  "cal" : "30 كالوريز",
+  "exercisesDescription":"العميل سعيد جدًا بمتابعته. حان وقت عطلة نهاية الأسبوع لإنقاذ المريض."
 }

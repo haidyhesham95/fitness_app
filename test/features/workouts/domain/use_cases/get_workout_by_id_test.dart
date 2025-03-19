@@ -42,3 +42,6 @@ void main() {
     verify(mockWorkoutsRepo.getWorkoutById('1')).called(1);
   });
 }
+=======
+}
+>>>>>>> origin/feature/POW-24-Home

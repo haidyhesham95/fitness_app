@@ -5,7 +5,8 @@ import 'package:fitness_app/features/meals/presentation/provider/youtube_player_
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import '../../../../core/utils/widgets/youtube_player_widget.dart';
 
 class FoodVideoWidget extends StatefulWidget {
   final String imageUrl, title, description, videoUrl;
@@ -60,28 +61,14 @@ class _FoodVideoWidgetState extends State<FoodVideoWidget> {
             children: [
               if (provider.controller != null)
                 Positioned.fill(
-                  child: YoutubePlayer(
-                    controller: provider.controller!,
-                    showVideoProgressIndicator: true,
-                    progressIndicatorColor: context.colors.baseColor,
-                    progressColors: ProgressBarColors(
-                      bufferedColor:
-                          context.colors.baseColor.withValues(alpha: .5),
-                      playedColor: context.colors.baseColor,
-                      backgroundColor:
-                          context.colors.bgColor.withValues(alpha: .2),
-                      handleColor: context.colors.baseColor,
-                    ),
+                  child: YoutubePlayerWidget(
                     thumbnail: _buildThumbnail(context),
-                    aspectRatio: 16 / 9,
-                    onReady: () {
-                      //provider.notifyListeners();
-                    },
+                    controller: provider.controller!,
+
                   ),
                 ),
 
               // _buildPlayPauseOverlay(context, provider),
-
             ],
           ),
         );
@@ -98,21 +85,21 @@ class _FoodVideoWidgetState extends State<FoodVideoWidget> {
           fit: BoxFit.cover,
           width: double.infinity,
           height: context.height * 0.4,
-
         ),
-    Container(
-    decoration: BoxDecoration(
-    gradient: LinearGradient(
-    begin: Alignment.bottomCenter,
-    end: Alignment.topCenter,
-    colors: [
-    Colors.black.withValues(alpha: 0.6),
-    Colors.black.withValues(alpha: .7),
-      context.colors.transparent,
-      context.colors.transparent,
-    ],
-    ),
-    ),),
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              colors: [
+                Colors.black.withValues(alpha: 0.6),
+                Colors.black.withValues(alpha: .7),
+                context.colors.transparent,
+                context.colors.transparent,
+              ],
+            ),
+          ),
+        ),
         _buildVideoInfo(context),
       ],
     );

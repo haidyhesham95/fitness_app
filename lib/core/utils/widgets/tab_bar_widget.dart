@@ -20,7 +20,7 @@ Widget tabBarWidget(
     unselectedLabelColor: context.colors.white,
     unselectedLabelStyle: MyFonts.styleBold700_14,
     labelStyle: MyFonts.styleBold700_14,
-    indicatorAnimation: TabIndicatorAnimation.elastic,
+    indicatorAnimation: TabIndicatorAnimation.elastic ,
     indicator: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
         color: context.colors.baseColor),

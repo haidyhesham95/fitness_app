@@ -8,7 +8,6 @@ import 'package:mockito/mockito.dart';
 
 import '../../dummy_meals_helper.dart';
 import 'get_meals_categories_case_test.mocks.dart';
-
 @GenerateMocks([MealsRepository])
 void main() {
   late MockMealsRepository mockMealsRepository;

@@ -5,6 +5,7 @@ import 'package:fitness_app/features/workouts/data/data_sources/online_data_sour
 import 'package:fitness_app/features/workouts/data/mappers/workouts_mapper.dart';
 import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_by_id_entity.dart';
 import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_entity.dart';
+import 'package:fitness_app/features/workouts/domain/entities/response/muscles_by_muscle_group_id_entity.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: WorkoutsOnlineDataSource)
@@ -28,6 +29,15 @@ class WorkoutsOnlineDataSourceImpl implements WorkoutsOnlineDataSource {
       return WorkoutsMapper.toEntityById(response);
     });
   }
+
+  @override
+  Future<DataResult<List<MusclesByMuscleGroupIdEntity>>> getMusclesByMuscleGroupId(String id) {
+    return executeApi(() async {
+      final response = await _apiManager.getMusclesByMuscleGroupId(id);
+      return WorkoutsMapper.toEntityByMuscleGroupId(response);
+    });
+  }
+
 
 
   }
