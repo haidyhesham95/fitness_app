@@ -1,12 +1,13 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:fitness_app/core/app_cubit/app_cubit.dart';
 import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/widgets/base/base_view.dart';
 import 'package:fitness_app/core/utils/widgets/pinned_sliver_widget.dart';
+import 'package:fitness_app/core/utils/widgets/tab_bar_widget.dart';
 import 'package:fitness_app/features/meals/presentation/viewModel/meals_actions.dart';
 import 'package:fitness_app/features/meals/presentation/viewModel/meals_view_model_cubit.dart';
 import 'package:fitness_app/features/meals/presentation/widget/food_item.dart';
-import 'package:fitness_app/core/utils/widgets/tab_bar_widget.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,14 +20,21 @@ class MealsView extends StatefulWidget {
   _MealsViewState createState() => _MealsViewState();
 }
 
-class _MealsViewState extends State<MealsView> {
-  MealsViewModelCubit get viewModel => context.read<MealsViewModelCubit>();
+class _MealsViewState extends State<MealsView> with TickerProviderStateMixin {
+  MealsViewModelCubit get mealsViewModel => context.read<MealsViewModelCubit>();
+  AppCubit get appCubit => context.read<AppCubit>();
+
+  bool isTabControllerInitialized = false;
 
   @override
   void initState() {
     super.initState();
-    viewModel.doAction(LoadMealsCategories());
+    debugPrint('Initial selected index: ${appCubit.selectedIndex}');
+
+    // Load meal categories first
+    mealsViewModel.doAction(LoadMealsCategories());
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,25 +42,28 @@ class _MealsViewState extends State<MealsView> {
       builder: (context, state) {
         return BaseView(
           child: [
-            PinnedSliverWidget(
+            if (mealsViewModel.categories.isNotEmpty)
+              PinnedSliverWidget(
                 child: DefaultTabController(
-              length: viewModel.categories.length,
-              child: Padding(
-                padding:
+                  initialIndex: appCubit.selectedIndex,
+                  length: mealsViewModel.categories.length,
+                  child: Padding(
+                    padding:
                     const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: tabBarWidget(
-                  tabs: [
-                    ...viewModel.categories
-                        .map((item) => Tab(text: item.categoryName)),
-                  ],
-                  onTap: (index) {
-                    viewModel.doAction(FilterMealsByCategory(
-                        viewModel.categories[index].categoryName));
-                  },
-                  context: context,
+                    child: tabBarWidget(
+                      tabs: mealsViewModel.categories
+                          .map((item) => Tab(text: item.categoryName))
+                          .toList(),
+                      onTap: (index) {
+                        mealsViewModel.doAction(FilterMealsByCategory(
+                          mealsViewModel.categories[index].categoryName,
+                        ));
+                      },
+                      context: context,
+                    ),
+                  ),
                 ),
               ),
-            )),
             SliverPadding(
               padding: const EdgeInsets.all(16.0),
               sliver: SliverGrid(
@@ -63,20 +74,20 @@ class _MealsViewState extends State<MealsView> {
                   childAspectRatio: 1,
                 ),
                 delegate: SliverChildBuilderDelegate(
-                  (context, index) {
+                      (context, index) {
                     return index % 2 == 1
                         ? FadeInUpBig(
-                            child: FoodItem(
-                              meal: viewModel.meals[index],
-                            ),
-                          )
+                      child: FoodItem(
+                        meal: mealsViewModel.meals[index],
+                      ),
+                    )
                         : FadeInDownBig(
-                            child: FoodItem(
-                              meal: viewModel.meals[index],
-                            ),
-                          );
+                      child: FoodItem(
+                        meal: mealsViewModel.meals[index],
+                      ),
+                    );
                   },
-                  childCount: viewModel.meals.length,
+                  childCount: mealsViewModel.meals.length,
                 ),
               ),
             ),
@@ -88,8 +99,11 @@ class _MealsViewState extends State<MealsView> {
       },
       listener: (context, state) {
         if (state is MealsCategoriesSuccess) {
-          viewModel.doAction(
-              FilterMealsByCategory(viewModel.categories[0].categoryName));
+
+            mealsViewModel.doAction(FilterMealsByCategory(
+              mealsViewModel.categories[appCubit.selectedIndex].categoryName,
+            ));
+
         }
       },
     );

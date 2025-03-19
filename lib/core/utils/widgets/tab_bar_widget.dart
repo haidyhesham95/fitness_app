@@ -6,6 +6,7 @@ Widget tabBarWidget({
   required List<Widget> tabs,
   required void Function(int)? onTap,
   TabAlignment? tabAlignment,
+  TabController ? controller,
   required BuildContext context
 }) {
   return TabBar(
@@ -26,6 +27,6 @@ Widget tabBarWidget({
         color: context.colors.baseColor),
     tabs: tabs,
     onTap: onTap,
-
+controller: controller,
   );
 }

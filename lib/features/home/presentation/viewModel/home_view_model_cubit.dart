@@ -4,6 +4,7 @@ import 'package:fitness_app/core/networking/error/error_model.dart';
 import 'package:fitness_app/features/home/domain/entities/response/get_random_muscles_response_entity.dart';
 import 'package:fitness_app/features/home/domain/use_cases/random_execrcises_use_case.dart';
 import 'package:fitness_app/features/home/presentation/viewModel/home_action.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
@@ -18,9 +19,14 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
   final RandomMusclesUseCase _getRandomMusclesUseCase;
   final RandomExercisesUseCase _getRandomExercisesUseCase;
 
-  HomeViewModelCubit(this._getRandomMusclesUseCase,
-      this._getRandomExercisesUseCase)
+  HomeViewModelCubit(
+      this._getRandomMusclesUseCase, this._getRandomExercisesUseCase)
       : super(HomeViewModelInitial());
+  List<GetRandomExercisesResponseEntityExercises?> randomExercises =
+      []; // exercises
+  GetRandomMusclesResponseEntity randomMusclesEntity = GetRandomMusclesResponseEntity(
+    [],
+  );
 
   void doAction(HomeAction action) {
     switch (action) {
@@ -39,7 +45,10 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
     final result = await _getRandomMusclesUseCase.getRandomMuscles();
     switch (result) {
       case Success<GetRandomMusclesResponseEntity>():
-        emit(GetRandomMusclesSuccess(result.data));
+        randomMusclesEntity = result.data;
+        debugPrint('Recommendation To Day ${randomMusclesEntity.muscles}');
+
+              emit(GetRandomMusclesSuccess(result.data));
         break;
       case Fail<GetRandomMusclesResponseEntity>():
         emit(GetRandomMusclesError(ErrorHandler.handle(result.exception!)));
@@ -47,12 +56,12 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
     }
   }
 
-
   Future<void> _getRandomExercises() async {
     emit(GetRandomExercisesLoading());
     final result = await _getRandomExercisesUseCase.getRandomExercises();
     switch (result) {
       case Success<GetRandomExercisesResponseEntity>():
+        randomExercises = result.data.exercises ?? [];
         emit(GetRandomExercisesSuccess(result.data));
         break;
       case Fail<GetRandomExercisesResponseEntity>():
