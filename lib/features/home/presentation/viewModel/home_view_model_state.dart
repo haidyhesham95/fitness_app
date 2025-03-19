@@ -37,18 +37,18 @@ final class GetRandomExercisesError extends HomeViewModelState {
   GetRandomExercisesError(this.errorMessage);
 }
 
-/** get all difficult levels **/
+/** get popular training items **/
 
-final class GetAllDifficultLevelsLoading extends HomeViewModelState {}
+final class GetPopularTrainingLoading extends HomeViewModelState {}
 
-final class GetAllDifficultLevelsSuccess extends HomeViewModelState {
-  final GetAllDifficultLevelsResponseEntity difficultLevels;
+final class GetPopularTrainingSuccess extends HomeViewModelState {
+  final List<PopularTrainingEntity> items;
 
-  GetAllDifficultLevelsSuccess(this.difficultLevels);
+  GetPopularTrainingSuccess(this.items);
 }
 
-final class GetAllDifficultLevelsError extends HomeViewModelState {
+final class GetPopularTrainingError extends HomeViewModelState {
   final ErrorModel errorMessage;
 
-  GetAllDifficultLevelsError(this.errorMessage);
+  GetPopularTrainingError(this.errorMessage);
 }

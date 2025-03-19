@@ -5,7 +5,7 @@ class PopularTrainingEntity {
   final String? muscleName;
   final String? image;
 
-  const PopularTrainingEntity(
+  PopularTrainingEntity(
       {this.levelId,
       this.levelName,
       this.muscleId,

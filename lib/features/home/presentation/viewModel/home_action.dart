@@ -4,4 +4,4 @@ class GetRandomMuscles extends HomeAction {}
 
 class GetRandomExercises extends HomeAction {}
 
-class GetAllDifficultLevels extends HomeAction {}
+class GetPopularTraining extends HomeAction {}

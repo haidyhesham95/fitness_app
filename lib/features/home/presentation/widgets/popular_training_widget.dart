@@ -29,7 +29,7 @@ class PopularTrainingWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.r),
             child: SizedBox.expand(
               child: Image.asset(
-                Assets.imagesPopularTrainer,
+                popularTrainingItems?.image ?? "",
                 fit: BoxFit.cover,
               ),
             ),

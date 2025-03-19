@@ -46,7 +46,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                 getIt.get<HomeViewModelCubit>()..doAction(GetRandomMuscles())..doAction( GetRandomExercises())),
         BlocProvider(
             create: (context) => getIt.get<HomeViewModelCubit>()
-              ..doAction(GetAllDifficultLevels())),
+              ..doAction(GetPopularTraining())),
       ],
       child: const HomeView(),
     ),

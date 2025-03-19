@@ -3,6 +3,7 @@ import 'package:fitness_app/core/networking/error/error_handler.dart';
 import 'package:fitness_app/core/networking/error/error_model.dart';
 import 'package:fitness_app/features/home/domain/entities/response/get_random_muscles_response_entity.dart';
 import 'package:fitness_app/features/home/domain/use_cases/all_difficult_levels_use_case.dart';
+import 'package:fitness_app/features/home/domain/use_cases/popular_training_use_case.dart';
 import 'package:fitness_app/features/home/domain/use_cases/random_execrcises_use_case.dart';
 import 'package:fitness_app/features/home/presentation/constants/popular_section_images.dart';
 import 'package:fitness_app/features/home/presentation/viewModel/home_action.dart';
@@ -23,13 +24,13 @@ part 'home_view_model_state.dart';
 class HomeViewModelCubit extends Cubit<HomeViewModelState> {
   final RandomMusclesUseCase _getRandomMusclesUseCase;
   final RandomExercisesUseCase _getRandomExercisesUseCase;
-  final AllDifficultLevelsUseCase _allDifficultLevelsUseCase;
+  final PopularTrainingUseCase _popularTrainingUseCase;
   List<GetAllDifficultLevelsResponseEntityLevels?>? levels = [];
   List<MuscleGroupEntity?>? muscles = [];
   List<PopularTrainingEntity> popularTrainingItems = [];
 
   HomeViewModelCubit(this._getRandomMusclesUseCase,
-      this._getRandomExercisesUseCase, this._allDifficultLevelsUseCase)
+      this._getRandomExercisesUseCase, this._popularTrainingUseCase)
       : super(HomeViewModelInitial());
   List<GetRandomExercisesResponseEntityExercises?> randomExercises =
       []; // exercises
@@ -46,8 +47,8 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
       case GetRandomExercises():
         _getRandomExercises();
         break;
-      case GetAllDifficultLevels():
-        _getAllDifficultLevel();
+      case GetPopularTraining():
+        _getPopularTrainingItems();
         break;
     }
   }
@@ -60,7 +61,7 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
         randomMusclesEntity = result.data;
         debugPrint('Recommendation To Day ${randomMusclesEntity.muscles}');
 
-              emit(GetRandomMusclesSuccess(result.data));
+        emit(GetRandomMusclesSuccess(result.data));
         break;
       case Fail<GetRandomMusclesResponseEntity>():
         emit(GetRandomMusclesError(ErrorHandler.handle(result.exception!)));
@@ -82,29 +83,17 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
     }
   }
 
-  Future<void> _getAllDifficultLevel() async {
-    emit(GetAllDifficultLevelsLoading());
-    final result = await _allDifficultLevelsUseCase.getAllDifficultLevel();
+  Future<void> _getPopularTrainingItems() async {
+    emit(GetPopularTrainingLoading());
+    final result = await _popularTrainingUseCase.getPopularTraining();
     switch (result) {
-      case Success<GetAllDifficultLevelsResponseEntity>():
-        emit(GetAllDifficultLevelsSuccess(result.data));
-        levels = result.data.levels ?? [];
-        if (levels!.length < muscles!.length) {
-          for (int i = 0; i < levels!.length; i++) {
-            popularTrainingItems.add(PopularTrainingEntity(
-              levelId: levels?[i]?.id ?? "",
-              levelName: levels?[i]?.name ?? "",
-              muscleName: muscles?[i]?.name ?? "",
-              muscleId: muscles?[i]?.id ?? "",
-              image: images?[i] ?? "",
-            ));
-          }
-        }
+      case Success<List<PopularTrainingEntity>>():
+        debugPrint("popular training view model : ${popularTrainingItems.map(
+          (e) =>
+              "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",
+        )}");
+        emit(GetPopularTrainingSuccess(result));
 
-        break;
-      case Fail<GetAllDifficultLevelsResponseEntity>():
-        emit(
-            GetAllDifficultLevelsError(ErrorHandler.handle(result.exception!)));
         break;
     }
   }

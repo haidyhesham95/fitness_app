@@ -21,25 +21,10 @@ class _PopularTrainingState extends State<PopularTraining> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeViewModelCubit, HomeViewModelState>(
         builder: (context, state) {
-      switch (state) {
-        case GetAllDifficultLevelsLoading():
-          return const AppLoader();
-        case GetAllDifficultLevelsSuccess():
           return FadeInLeft(
               child: PopularTrainingSection(
-            popularTrainingItems: viewModel.popularTrainingItems,
-          ));
-        case GetAllDifficultLevelsError():
-          return Container(
-            height: 104.h,
-            child: Center(
-              child: Text(state.errorMessage.error ?? ""),
-            ),
-          );
-        default:
-          null;
-      }
-      return const SizedBox();
+        popularTrainingItems: viewModel.popularTrainingItems,
+      ));
     });
   }
 }
