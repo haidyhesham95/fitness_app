@@ -20,10 +20,10 @@ import '../core/app_cubit/app_cubit.dart' as _i3;
 import '../core/networking/api/api_manager.dart' as _i25;
 import '../core/networking/api/meals_api_manager/meals_api_manager.dart'
     as _i11;
-import '../core/networking/common/register_context_module.dart' as _i72;
-import '../core/networking/network_factory.dart' as _i71;
+import '../core/networking/common/register_context_module.dart' as _i73;
+import '../core/networking/network_factory.dart' as _i72;
 import '../core/services/gemini_helper.dart' as _i8;
-import '../core/services/isar_service.dart' as _i73;
+import '../core/services/isar_service.dart' as _i74;
 import '../features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart'
     as _i4;
 import '../features/auth/data/data_sources/contracts/online_data_sources/auth_online_data_source.dart'
@@ -60,6 +60,8 @@ import '../features/home/data/data_sources/online/impl/home_online_data_source_i
     as _i43;
 import '../features/home/data/repositories/home_repo_impl.dart' as _i45;
 import '../features/home/domain/contracts/home_repo.dart' as _i44;
+import '../features/home/domain/use_cases/all_difficult_levels_use_case.dart'
+    as _i69;
 import '../features/home/domain/use_cases/random_execrcises_use_case.dart'
     as _i55;
 import '../features/home/domain/use_cases/random_muscles_use_case.dart' as _i56;
@@ -90,7 +92,7 @@ import '../features/profile/domain/use_cases/profile_use_case.dart' as _i54;
 import '../features/profile/domain/use_cases/upload_photo_use_case.dart'
     as _i60;
 import '../features/profile/presentation/view_model/profile_view_model_cubit.dart'
-    as _i69;
+    as _i70;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/contract/offline_data_source.dart'
     as _i16;
 import '../features/smart_coach_chat/data/data_sources/offline_data_source/impl/offline_data_source_impl.dart'
@@ -122,7 +124,7 @@ import '../features/workouts/domain/repositories/workouts_repo.dart' as _i63;
 import '../features/workouts/domain/use_cases/get_workout_by_id.dart' as _i67;
 import '../features/workouts/domain/use_cases/workouts_use_case.dart' as _i65;
 import '../features/workouts/presentation/view_model/workouts_view_model.dart'
-    as _i70;
+    as _i71;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -237,14 +239,15 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i68.HomeViewModelCubit>(() => _i68.HomeViewModelCubit(
           gh<_i56.RandomMusclesUseCase>(),
           gh<_i55.RandomExercisesUseCase>(),
+          gh<_i69.AllDifficultLevelsUseCase>(),
         ));
-    gh.factory<_i69.ProfileViewModelCubit>(() => _i69.ProfileViewModelCubit(
+    gh.factory<_i70.ProfileViewModelCubit>(() => _i70.ProfileViewModelCubit(
           gh<_i54.ProfileUseCase>(),
           gh<_i4.AuthOfflineDataSource>(),
           gh<_i66.EditProfileUseCase>(),
           gh<_i60.UploadPhotoUseCase>(),
         ));
-    gh.factory<_i70.WorkoutsViewModelCubit>(() => _i70.WorkoutsViewModelCubit(
+    gh.factory<_i71.WorkoutsViewModelCubit>(() => _i71.WorkoutsViewModelCubit(
           gh<_i65.WorkoutsUseCase>(),
           gh<_i67.GetWorkoutsByIdUseCase>(),
         ));
@@ -252,8 +255,8 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$NetworkFactory extends _i71.NetworkFactory {}
+class _$NetworkFactory extends _i72.NetworkFactory {}
 
-class _$AppModule extends _i72.AppModule {}
+class _$AppModule extends _i73.AppModule {}
 
-class _$IsarModule extends _i73.IsarModule {}
+class _$IsarModule extends _i74.IsarModule {}

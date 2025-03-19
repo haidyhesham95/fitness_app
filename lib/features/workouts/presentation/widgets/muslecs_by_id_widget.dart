@@ -38,11 +38,10 @@ class _MusclesByIdWidgetState extends State<MusclesByIdWidget> {
                       selectedIndex < cubit.dataById.length) {
                     name = cubit.dataById[selectedIndex].name ??
                         context.translate(LangKeys.highChest);
-                    image = cubit.dataById[selectedIndex].image ??
-                        '${Assets.imagesMuscles}';
+                    image = cubit.dataById[selectedIndex].image ?? '';
                   } else {
                     name = context.translate(LangKeys.highChest);
-                    image = '${Assets.imagesMuscles}';
+                    image = '';
                   }
                 }
                 return GenericGridView(

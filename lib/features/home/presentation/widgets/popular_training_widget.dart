@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/features/home/domain/entities/response/popular_training_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,9 +10,9 @@ import '../../domain/entities/response/get_random_exercises_response_entity.dart
 import 'custom_chip.dart';
 
 class PopularTrainingWidget extends StatelessWidget {
-  const PopularTrainingWidget({super.key, required this.exercises});
+  const PopularTrainingWidget({super.key, required this.popularTrainingItems});
 
-  final GetRandomExercisesResponseEntityExercises? exercises;
+  final PopularTrainingEntity? popularTrainingItems;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class PopularTrainingWidget extends StatelessWidget {
             right: 0,
             child: Expanded(
               child: Text(
-                exercises?.exercise ?? "",
+                popularTrainingItems?.muscleName ?? "",
                 textAlign: TextAlign.center,
                 style: MyFonts.styleSemiBold600_16.copyWith(
                   color: Colors.white,
@@ -51,22 +52,9 @@ class PopularTrainingWidget extends StatelessWidget {
             bottom: 12.h,
             left: 16.w,
             right: 16.w,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                    child: CustomChip(
-                  text: exercises?.primaryItems.toString() ?? "0",
-                  txtColor: context.colors.white,
-                )),
-                horizontalSpacing(8.w),
-                Expanded(
-                  child: CustomChip(
-                    text: exercises?.difficultyLevel.toString() ?? "",
-                    txtColor: context.colors.baseColor,
-                  ),
-                ),
-              ],
+            child: CustomChip(
+              text: popularTrainingItems?.levelName.toString() ?? "",
+              txtColor: context.colors.baseColor,
             ),
           ),
         ],

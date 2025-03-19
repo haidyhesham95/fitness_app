@@ -1,3 +1,6 @@
+import 'package:fitness_app/features/home/data/models/response/get_all_difficult_levels_response_dto.dart';
+
+import '../../domain/entities/response/get_all_difficult_levels_response_entity.dart';
 import '../../domain/entities/response/get_random_exercises_response_entity.dart';
 import '../../domain/entities/response/get_random_muscles_response_entity.dart';
 import '../models/response/get_random_exercises_response_dto.dart';
@@ -61,6 +64,17 @@ class HomeMapper {
           exercise.inDepthYoutubeExplanationLink,
         );
       }).toList(),
+    );
+  }
+
+  static GetAllDifficultLevelsResponseEntity mapAllDifficultLevelsToEntity(
+      GetAllDifficultLevelsResponseDto dto) {
+    return GetAllDifficultLevelsResponseEntity(
+      dto.levels
+          ?.map((level) => level == null
+              ? null
+              : GetAllDifficultLevelsResponseEntityLevels(level.id, level.name))
+          .toList(),
     );
   }
 }

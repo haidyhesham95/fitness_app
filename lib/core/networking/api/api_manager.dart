@@ -9,6 +9,7 @@ import 'package:fitness_app/features/auth/data/models/response/forget_response_d
 import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/reset_password_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/signup_response_dto.dart';
+import 'package:fitness_app/features/home/data/models/response/get_all_difficult_levels_response_dto.dart';
 import 'package:fitness_app/features/home/data/models/response/get_random_exercises_response_dto.dart';
 import 'package:fitness_app/features/home/data/models/response/get_random_muscles_response_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/edit_profile_response_dto.dart';
@@ -82,4 +83,7 @@ abstract class ApiManager {
 
   @GET(ApiConstants.randomExercises)
   Future<GetRandomExercisesResponseDto> getRandomExercises();
+
+  @GET(ApiConstants.allLevels)
+  Future<GetAllDifficultLevelsResponseDto> getAllDifficultLevels();
 }
