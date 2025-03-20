@@ -8,6 +8,7 @@ import 'package:fitness_app/features/auth/data/models/request/login_request_dto.
 import 'package:fitness_app/features/auth/data/models/request/signup_request_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/signup_response_dto.dart';
+import 'package:fitness_app/features/exercises/data/model/levels_prime_over_muscle_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/edit_profile_response_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/upload_photo_response_dto.dart';
 import 'package:fitness_app/features/workouts/data/models/response/get_all_workout_by_id_dto.dart';
@@ -19,6 +20,7 @@ import '../../../features/auth/data/models/request/forget_password_request_dto.d
 import '../../../features/exercises/data/model/exercises_response_dto.dart';
 import '../../../features/profile/data/models/response/profile_response_model.dart';
 import 'api_constants.dart';
+
 part 'api_manager.g.dart';
 
 @singleton
@@ -31,8 +33,10 @@ abstract class ApiManager {
   @POST(ApiConstants.forgetPassword)
   Future<ForgetPasswordResponseDto> forgetPassword(
       @Body() ForgetPasswordRequestDto request);
+
   @POST(ApiConstants.signInApi)
   Future<LoginResponseDto> login(@Body() LoginRequestDto request);
+
   @POST(ApiConstants.signUpApi)
   Future<SignUpResponseDto> signup(@Body() SignUpRequestDto request);
 
@@ -42,20 +46,34 @@ abstract class ApiManager {
   @PUT(ApiConstants.resetPassword)
   Future<ResetPasswordResponseDto> resetPassword(
       @Body() ResetPasswordRequestDto request);
+
   @GET(ApiConstants.profileData)
   Future<ProfileResponseDto> getLoggedUserData();
+
   @GET(ApiConstants.getAllWorkouts)
   Future<WorkoutsResponseDto> getAllWorkouts();
+
   @GET(ApiConstants.getWorkoutsById)
   Future<GetAllWorkoutsByIdDto> getWorkoutsById();
+
   @PUT(ApiConstants.editProfileApi)
   Future<EditProfileResponseDto> editProfile(
       @Body() Map<String, dynamic> profileData);
+
   @PUT(ApiConstants.uploadPhoto)
   @MultiPart()
   Future<UploadPhotoResponseDto> uploadPhoto(
     @Part(name: "photo") File photo,
   );
-  @GET(ApiConstants.exercises)
-  Future<ExercisesResponseDto> getExercises();
+
+  @GET("api/v1/exercises/by-muscle-difficulty")
+  Future<ExercisesResponseDto> getExercises({
+    @Query("primeMoverMuscleId") required String primeMoverMuscleId,
+    @Query("difficultyLevelId") required String difficultyLevelId,
+  });
+
+  @GET("api/v1/levels/difficulty-levels/by-prime-mover")
+  Future<LevelsPrimeOverMuscleDto> getDifficultyLevelsByPrimeMoverMuscle({
+    @Query("primeMoverMuscleId") required String primeMoverMuscleId,
+  });
 }

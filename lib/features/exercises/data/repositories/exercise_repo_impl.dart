@@ -1,3 +1,4 @@
+import 'package:fitness_app/features/exercises/domain/entities/levels_prime_over_muscle_entity.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/networking/common/api_result.dart';
@@ -12,7 +13,13 @@ class ExerciseRepoImpl implements ExerciseRepo {
   ExerciseRepoImpl(this._exerciseDataSource);
 
   @override
-  Future<DataResult<ExercisesEntity>> getExercises() async {
-    return await _exerciseDataSource.getExercises();
+  Future<DataResult<ExercisesEntity>> getExercises( String primeMoverMuscleId ,String difficultyLevelId) async {
+    return await _exerciseDataSource.getExercises( primeMoverMuscleId,difficultyLevelId);
+  }
+
+  @override
+  Future<DataResult<LevelsPrimeMoverMuscleEntity>> getLevels(
+      String primeMoverMuscleId) async {
+    return await _exerciseDataSource.getLevels(primeMoverMuscleId);
   }
 }

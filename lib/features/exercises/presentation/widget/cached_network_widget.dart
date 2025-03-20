@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
-import '../../../../core/utils/widgets/base/app_loader.dart';
+import '../../../../generated/assets.dart';
 
 class CachedNetworkWidget extends StatelessWidget {
   const CachedNetworkWidget(
@@ -18,7 +19,9 @@ class CachedNetworkWidget extends StatelessWidget {
       imageUrl: imageUrl,
       width: width ?? double.infinity,
       fit: fit ?? BoxFit.fitWidth,
-      placeholder: (context, url) => const AppLoader(),
+      placeholder: (context, url) => Lottie.asset(
+        Assets.jsonFitnessLoader,
+      ),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }

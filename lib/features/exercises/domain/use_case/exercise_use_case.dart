@@ -10,7 +10,7 @@ class ExerciseUseCase {
 
   ExerciseUseCase(this._repository);
 
-  Future<DataResult<ExercisesEntity>> getExercises() async {
-    return await _repository.getExercises();
+  Future<DataResult<ExercisesEntity>> getExercises( String primeMoverMuscleId ,String difficultyLevelId) async {
+    return await _repository.getExercises( primeMoverMuscleId,difficultyLevelId);
   }
 }

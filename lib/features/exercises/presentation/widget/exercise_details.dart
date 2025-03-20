@@ -11,11 +11,11 @@ import 'border_container_widget.dart';
 import 'icon_video_widget.dart';
 
 class ExerciseDetails extends StatelessWidget {
-  final String imageUrl, title;
+  final String id, title;
 
   const ExerciseDetails({
     Key? key,
-    required this.imageUrl,
+    required this.id,
     required this.title,
   }) : super(key: key);
 
@@ -26,7 +26,7 @@ class ExerciseDetails extends StatelessWidget {
       child: Stack(
         children: [
           CachedNetworkWidget(
-            imageUrl: imageUrl,
+            imageUrl: id,
             fit: BoxFit.cover,
             width: double.infinity,
             height: context.height * 0.4,

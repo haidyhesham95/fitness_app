@@ -20,7 +20,7 @@ class ImageExerciseSelector extends StatelessWidget {
         child: CachedNetworkWidget(
           imageUrl: _getThumbnailUrl(
               exercise.shortYoutubeDemonstrationLink.toString()),
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         ),
       ),
     );

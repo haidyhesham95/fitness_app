@@ -1,28 +1,34 @@
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/networking/common/register_context_module.dart';
 import '../../../../core/utils/widgets/base/base_view.dart';
+import '../viewModel/exercise_view_model_cubit.dart';
 import '../widget/exercise_details.dart';
 import '../widget/exercise_selector.dart';
 
 class ExerciseView extends StatelessWidget {
-  const ExerciseView({super.key, required this.imageUrl, required this.title});
+  const ExerciseView({super.key, required this.id, required this.title});
 
-  final String imageUrl, title;
+  final String id, title;
 
   @override
   Widget build(BuildContext context) {
-    return BaseView(
-        extendBodyBehindAppBar: true,
-        child: [
-          ExerciseDetails(
-            imageUrl: imageUrl,
-            title: title,
-          ),
-          const ExerciseSelector(),
-        ],
-        image: Assets.imagesMealBg,
-        isArrowBackShow: true,
-        blur: 7);
+    return BlocProvider(
+      create: (context) => getIt<ExerciseViewModelCubit>(),
+    child: BaseView(
+          extendBodyBehindAppBar: true,
+          child: [
+            ExerciseDetails(
+              id: id,
+              title: title,
+            ),
+            ExerciseSelector(primeMoverMuscleId: '67c8499726895f87ce0aa9be'),
+          ],
+          image: Assets.imagesMealBg,
+          isArrowBackShow: true,
+          blur: 7),
+    );
   }
 }
