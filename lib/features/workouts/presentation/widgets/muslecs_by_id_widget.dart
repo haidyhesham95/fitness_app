@@ -5,7 +5,6 @@ import 'package:fitness_app/features/generic/widgets/generic_grid_view.dart';
 import 'package:fitness_app/features/workouts/presentation/view_model/workouts_actions.dart';
 import 'package:fitness_app/features/workouts/presentation/view_model/workouts_states.dart';
 import 'package:fitness_app/features/workouts/presentation/view_model/workouts_view_model.dart';
-import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
 import 'package:fitness_app/features/generic/widgets/generic_card.dart';
 import 'package:fitness_app/features/workouts/presentation/view_model/workouts_actions.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _WorkoutSectionState extends State<WorkoutSection> {
     return BlocConsumer<WorkoutsViewModelCubit, WorkoutsViewModelState>(
       builder: (context, state) {
         if (viewModel.muscles.isEmpty) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: AppLoader());
         }
 
         return Column(

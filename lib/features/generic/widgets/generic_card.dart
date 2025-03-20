@@ -3,7 +3,9 @@ import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
+import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/routes/app_routes.dart';
 
@@ -57,7 +59,11 @@ class GenericCard extends StatelessWidget {
               ),
             ),
             placeholder: (context, url) => const AppLoader(),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
+            errorWidget: (context, url, error) =>  Image.asset(
+              Assets.imagesFit,
+              width: 70.w,
+              height: 48.h,
+            ),
           ),
           Container(
             decoration: BoxDecoration(

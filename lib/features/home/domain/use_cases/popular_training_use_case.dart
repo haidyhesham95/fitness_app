@@ -37,19 +37,16 @@ class PopularTrainingUseCase {
         allMuscles is Success<AllMusclesResponseEntity>) {
       levels = List.from(allLevels.data.levels!)..shuffle(Random());
       muscles = allMuscles.data.musclesGroup;
-      if (levels.length < muscles.length) {
-        itemLength = levels.length;
-      } else {
-        itemLength = muscles.length;
-      }
+     List<int> lengthsList =[levels.length, muscles.length,images.length];
+      itemLength = lengthsList.reduce(min);
 
-      for (int i = 0; i < 7; i++) {
+      for (int i = 0; i < itemLength; i++) {
         popularTrainingItems.add(PopularTrainingEntity(
           levelId: levels[i]?.id ?? "",
           levelName: levels[i]?.name ?? "",
           muscleName: muscles[i].name,
           muscleId: muscles[i].id,
-          image: images![i],
+          image: images[i],
         ));
       }
     }

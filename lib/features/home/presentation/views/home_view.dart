@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
 import 'package:fitness_app/core/utils/widgets/base/base_view.dart';
 import 'package:fitness_app/core/utils/widgets/spacing.dart';
 import 'package:fitness_app/features/home/presentation/widgets/muscles_section.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/localization/lang_keys.dart';
 import '../widgets/category_section.dart';
-import '../widgets/home_loading_widget.dart';
 import '../widgets/meals_section.dart';
 import '../widgets/popular_training.dart';
 import '../widgets/workout_section.dart';
@@ -50,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
               ],
             );
           case getProfileLoading():
-            return const HomeLoadingWidget();
+            return const AppLoader();
           default:
             null;
         }

@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/styles/fonts/my_fonts.dart';
 import 'home_loading_widget.dart';
 
@@ -32,8 +34,11 @@ class RecommendationCard extends StatelessWidget {
                   child: CachedNetworkImage(
                     imageUrl: data.image ?? "",
                     fit: BoxFit.cover,
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    errorWidget: (context, url, error) => Image.asset(
+                      Assets.imagesFit,
+                      width: 70.w,
+                      height: 48.h,
+                    ),
                     placeholder: (context, url) => const HomeLoadingWidget(),
                   ),
                 ),
@@ -84,7 +89,11 @@ class RecommendationCard extends StatelessWidget {
                     imageUrl: data.categoryImage ?? "",
                     fit: BoxFit.cover,
                     errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                        Image.asset(
+                          Assets.imagesFit,
+                          width: 70.w,
+                          height: 48.h,
+                        ),
                     placeholder: (context, url) => const HomeLoadingWidget(),
                   ),
                 ),
@@ -135,7 +144,11 @@ class RecommendationCard extends StatelessWidget {
                     imageUrl: data.image ?? "",
                     fit: BoxFit.cover,
                     errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                        Image.asset(
+                          Assets.imagesFit,
+                          width: 70.w,
+                          height: 48.h,
+                        ),
                     placeholder: (context, url) => const HomeLoadingWidget(),
                   ),
                 ),

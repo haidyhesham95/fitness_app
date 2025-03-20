@@ -2,14 +2,11 @@ import 'package:bloc/bloc.dart';
 import 'package:fitness_app/core/networking/error/error_handler.dart';
 import 'package:fitness_app/core/networking/error/error_model.dart';
 import 'package:fitness_app/features/home/domain/entities/response/get_random_muscles_response_entity.dart';
-import 'package:fitness_app/features/home/domain/use_cases/all_difficult_levels_use_case.dart';
 import 'package:fitness_app/features/home/domain/use_cases/popular_training_use_case.dart';
 import 'package:fitness_app/features/home/domain/use_cases/random_execrcises_use_case.dart';
-import 'package:fitness_app/features/home/presentation/constants/popular_section_images.dart';
 import 'package:fitness_app/features/home/presentation/viewModel/home_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../core/networking/common/api_result.dart';
 import '../../../workouts/domain/entities/response/get_all_workouts_entity.dart';
@@ -86,11 +83,9 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
   Future<void> _getPopularTrainingItems() async {
     emit(GetPopularTrainingLoading());
     final result = await _popularTrainingUseCase.getPopularTraining();
-    if (result != null) {
-      popularTrainingItems = result;
+    popularTrainingItems = result;
 
-    }
-    debugPrint("popular training view model result : ${result.map(
+      debugPrint("popular training view model result : ${result.map(
           (e) =>
       "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",
     )}");

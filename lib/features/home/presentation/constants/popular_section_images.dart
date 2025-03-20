@@ -1,6 +1,6 @@
 import 'package:fitness_app/generated/assets.dart';
 
-List<String>? images = [
+List<String> images = [
   Assets.images1,
   Assets.images2,
   Assets.images3,
