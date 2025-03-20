@@ -24,7 +24,10 @@ class ExerciseView extends StatelessWidget {
               id: id,
               title: title,
             ),
-            ExerciseSelector(primeMoverMuscleId: '67c8499726895f87ce0aa9be'),
+            ExerciseSelector(primeMoverMuscleId:
+                id
+            //'67c8499726895f87ce0aa9be'
+            ),
           ],
           image: Assets.imagesMealBg,
           isArrowBackShow: true,
