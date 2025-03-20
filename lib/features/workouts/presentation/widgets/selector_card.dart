@@ -18,7 +18,8 @@ Widget buildCategory(String text, BuildContext context, {bool isSelected = false
         child: Text(
           text,
           style: MyFonts.styleBold700_16.copyWith(
-            color: isSelected ? context.colors.white : context.colors.iconsColor,
+            color:
+                isSelected ? context.colors.white : context.colors.iconsColor,
           ),
         ),
       ),

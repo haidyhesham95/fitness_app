@@ -1,17 +1,17 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:fitness_app/core/localization/lang_keys.dart';
-import 'package:fitness_app/core/networking/common/register_context_module.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
-import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
-import 'package:fitness_app/core/utils/widgets/base/snack_bar.dart';
-import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_by_id_entity.dart';
-import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_entity.dart';
+import 'package:fitness_app/core/utils/widgets/base/base_view.dart';
+import 'package:fitness_app/core/utils/widgets/pinned_sliver_widget.dart';
+import 'package:fitness_app/core/utils/widgets/tab_bar_widget.dart';
+import 'package:fitness_app/features/generic/widgets/generic_card.dart';
 import 'package:fitness_app/features/workouts/presentation/view_model/workouts_actions.dart';
 import 'package:fitness_app/features/workouts/presentation/view_model/workouts_states.dart';
 import 'package:fitness_app/features/workouts/presentation/view_model/workouts_view_model.dart';
-import 'package:fitness_app/features/workouts/presentation/widgets/all_muscles_widgetdart';
-import 'package:fitness_app/features/workouts/presentation/widgets/muslecs_by_id_widget.dart';
+import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WorkoutsView extends StatefulWidget {
   WorkoutsView({super.key});
@@ -21,53 +21,80 @@ class WorkoutsView extends StatefulWidget {
 }
 
 class _WorkoutsViewState extends State<WorkoutsView> {
+  WorkoutsViewModelCubit get viewModel => context.read<WorkoutsViewModelCubit>();
+
+  @override
+  void initState() {
+    super.initState();
+    viewModel.doAction(GetAllWorkouts());
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocProvider(
-        create: (context) =>
-            getIt.get<WorkoutsViewModelCubit>()..doAction(GetAllWorkouts()),
-        child: BlocBuilder<WorkoutsViewModelCubit, WorkoutsViewModelState>(
-          builder: (context, state) {
-            final cubit = context.read<WorkoutsViewModelCubit>();
-            switch (state) {
-              case GetAllWorkoutsViewModelInitial():
-              case GetAllWorkoutsLoading():
-                return const Center(child: AppLoader());
-              case GetAllWorkoutsSuccess():
-                cubit.data = state.data.musclesGroup!
-                    .map((e) => MuscleGroupEntity(id: e.id, name: e.name))
-                    .toList();
-              case GetAllWorkoutsError():
-                aweSnackBar(
-                    msg: context.translate(LangKeys.error),
-                    context: context,
-                    type: MessageTypeConst.failure);
-              case GetWorkoutsByIdViewModelInitial():
-              case GetWorkoutsByIdLoading():
-                return const Center(child: AppLoader());
-              case GetWorkoutsByIdSuccess():
-                cubit.dataById = state.data.muscles!
-                    .map(
-                      (e) => MuscleEntity(
-                        id: e.id,
-                        name: e.name,
-                        image: e.image,
+    return BlocConsumer<WorkoutsViewModelCubit, WorkoutsViewModelState>(
+      builder: (context, state) {
+        return BaseView(
+
+          child: [
+            PinnedSliverWidget(
+                child: DefaultTabController(
+                  length: viewModel.muscles.length,
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    child: tabBarWidget(
+                      tabs: [
+                        ...viewModel.muscles
+                            .map((item) => Tab(text: item.name)),
+                      ],
+                      onTap: (index) {
+                        viewModel.doAction(GetMusclesByMuscleGroupId(
+                            viewModel.muscles[index].id));
+                      },
+                      context: context,
+                    ),
+                  ),
+                )),
+            SliverPadding(
+              padding: const EdgeInsets.all(16.0),
+              sliver: SliverGrid(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 17.h,
+                  mainAxisSpacing: 17.w,
+                  childAspectRatio: 1,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                    return index % 2 == 1
+                        ? FadeInUpBig(
+                      child: GenericCard(
+                        title: viewModel.musclesGroup[index].name,
+                        imageUrl: viewModel.musclesGroup[index].image,
                       ),
                     )
-                    .toList();
-              case GetWorkoutsByIdError():
-                aweSnackBar(
-                    msg: context.translate(LangKeys.error),
-                    context: context,
-                    type: MessageTypeConst.failure);
-            }
-            return Column(
-              children: [AllMusclesList(), const MusclesByIdWidget()],
-            );
-          },
-        ),
-      ),
+                        : FadeInDownBig(
+                      child: GenericCard(
+                        title: viewModel.musclesGroup[index].name,
+                        imageUrl: viewModel.musclesGroup[index].image,
+                      ),
+                    );
+                  },
+                  childCount: viewModel.musclesGroup.length,
+                ),
+              ),
+            ),
+          ],
+          image: Assets.imagesMealBg,
+          isArrowBackShow: false,
+          subTitle: context.translate(LangKeys.workouts),
+        );
+      },
+      listener: (context, state) {
+        if (state is GetAllWorkoutsSuccess) {
+          viewModel.doAction(
+              GetMusclesByMuscleGroupId(viewModel.muscles[0].id));
+        }
+      },
     );
   }
 }

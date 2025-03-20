@@ -134,6 +134,7 @@ class LangKeys {
   static const String trainer = 'trainer';
   static const String ingredients = 'ingredients';
   static const String recommendation = 'recommendation';
+  static const String categories = 'categories';
   static const String novice = 'novice';
   static const String  thirtyMinutes = 'thirtyMinutes';
   static const String  cal = 'cal';
