@@ -1,14 +1,15 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/features/home/domain/entities/response/popular_training_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/styles/fonts/my_fonts.dart';
-import '../../../../core/utils/widgets/spacing.dart';
-import '../../../../generated/assets.dart';
 import 'custom_chip.dart';
 
 class PopularTrainingWidget extends StatelessWidget {
-  const PopularTrainingWidget({super.key});
+  const PopularTrainingWidget({super.key, required this.popularTrainingItems});
+
+  final PopularTrainingEntity? popularTrainingItems;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,18 @@ class PopularTrainingWidget extends StatelessWidget {
       height: 176.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
+        gradient: LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [
+            Colors.black.withValues(alpha: 0.9),
+            Colors.black.withValues(alpha: 0.7),
+            Colors.black.withValues(alpha: 0.6),
+            Colors.black.withValues(alpha: 0.4),
+            Colors.transparent
+          ],
+        ),
+
       ),
       child: Stack(
         alignment: Alignment.center,
@@ -25,20 +38,36 @@ class PopularTrainingWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.r),
             child: SizedBox.expand(
               child: Image.asset(
-                Assets.imagesPopularTrainer,
+                popularTrainingItems?.image ?? "",
                 fit: BoxFit.cover,
               ),
             ),
           ),
+          Positioned.fill(child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.r),
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [
+                  Colors.black.withValues(alpha: 0.7),
+                  Colors.black.withValues(alpha: 0.7),
+                  Colors.black.withValues(alpha: 0.6),
+                  Colors.black.withValues(alpha: 0.4),
+                  Colors.transparent,
+                  Colors.transparent,
+                ],
+              ),
+
+            ),
+          )),
           Positioned(
-            top: 120.h,
+            bottom: 90.h,
             left: 0,
             right: 0,
-            child: FittedBox(
-              alignment: Alignment.center,
-              fit: BoxFit.scaleDown,
+            child: Expanded(
               child: Text(
-                "Trainer Name",
+                popularTrainingItems?.muscleName ?? "",
                 textAlign: TextAlign.center,
                 style: MyFonts.styleSemiBold600_16.copyWith(
                   color: Colors.white,
@@ -46,26 +75,15 @@ class PopularTrainingWidget extends StatelessWidget {
               ),
             ),
           ),
+
+
           Positioned(
             bottom: 12.h,
             left: 16.w,
             right: 16.w,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                    child: CustomChip(
-                  text: '24 Tasks',
-                  txtColor: context.colors.white,
-                )),
-                horizontalSpacing(8.w),
-                Expanded(
-                  child: CustomChip(
-                    text: 'Beginners',
-                    txtColor: context.colors.baseColor,
-                  ),
-                ),
-              ],
+            child: CustomChip(
+              text: popularTrainingItems?.levelName.toString() ?? "",
+              txtColor: context.colors.baseColor,
             ),
           ),
         ],

@@ -41,7 +41,7 @@ Widget loginWidget(BuildContext context) {
         width: double.infinity,
         onPressed: () {
           cubit.signInButtonPressed(context);
-          Navigator.pushReplacementNamed(context, AppRoutes.profileView);
+          Navigator.pushReplacementNamed(context, AppRoutes.homeLayout);
         },
       ),
       SizedBox(height: 10.h),

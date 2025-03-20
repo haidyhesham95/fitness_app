@@ -1,5 +1,7 @@
+import 'package:fitness_app/core/app_cubit/app_cubit.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/styles/fonts/my_fonts.dart';
@@ -8,16 +10,24 @@ import 'recommendation_card.dart';
 
 class RecommendationSection extends StatelessWidget {
   final String title;
+  final List? data;
   final bool showSeeAll;
+  final void Function()? onTapSeeAll;
+  final void Function(int index)? onTapItem;
 
   const RecommendationSection({
     Key? key,
     required this.title,
+    this.onTapSeeAll,
     this.showSeeAll = false,
+    this.onTapItem,
+    this.data,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final appCubit = context.read<AppCubit>();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
@@ -33,7 +43,7 @@ class RecommendationSection extends StatelessWidget {
               ),
               if (showSeeAll)
                 TextButton(
-                  onPressed: () {},
+                  onPressed: onTapSeeAll,
                   child: Text(
                     "See All",
                     style: MyFonts.styleSemiBold600_14
@@ -48,9 +58,20 @@ class RecommendationSection extends StatelessWidget {
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              itemCount: 3,
+              itemCount: data?.length ?? 0,
               itemBuilder: (context, index) {
-                return const RecommendationCard();
+                return InkWell(
+                  onTap: () {
+                    // Update selected index in HomeViewModelCubit
+                    appCubit.updateIndex(index);
+                    debugPrint('Updated selected index: ${appCubit.selectedIndex}');
+                    if (onTapItem != null) onTapItem!(index);
+                  },
+                  child: RecommendationCard(
+                    title: title,
+                    data: data![index],
+                  ),
+                );
               },
               separatorBuilder: (context, index) => horizontalSpacing(16),
             ),

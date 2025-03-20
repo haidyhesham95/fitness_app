@@ -85,7 +85,7 @@ class EditableData extends StatelessWidget {
                 parenthesisColor: context.colors.white,
               ),
             ),
-            SizedBox(height: 8.h,),
+            // SizedBox(height: 8.h,),
             CustomTextFormField(hintTxt: user.activityLevel ?? '',),
           ],
         );

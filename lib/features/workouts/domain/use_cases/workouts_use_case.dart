@@ -9,8 +9,7 @@ class WorkoutsUseCase {
 
   WorkoutsUseCase(this._repository);
 
-  Future<DataResult<AllMusclesResponseEntity>> getAllWorkouts(){
+  Future<DataResult<AllMusclesResponseEntity>> getAllWorkouts() {
     return _repository.getAllWorkouts();
   }
-
 }

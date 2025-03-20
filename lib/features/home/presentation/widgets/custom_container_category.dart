@@ -1,5 +1,5 @@
 import 'package:fitness_app/core/utils/extension/my_context.dart';
-import 'package:fitness_app/features/home/presentation/models/category_container_model.dart';
+import 'package:fitness_app/features/home/data/models/category_container_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

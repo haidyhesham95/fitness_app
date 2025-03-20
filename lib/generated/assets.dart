@@ -7,6 +7,13 @@ class Assets {
   static const String fontsBalooThambi2Regular = 'assets/fonts/BalooThambi2-Regular.ttf';
   static const String fontsBalooThambi2SemiBold = 'assets/fonts/BalooThambi2-SemiBold.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
+  static const String images1 = 'assets/images/1.png';
+  static const String images2 = 'assets/images/2.png';
+  static const String images3 = 'assets/images/3.png';
+  static const String images4 = 'assets/images/4.png';
+  static const String images5 = 'assets/images/5.png';
+  static const String images6 = 'assets/images/6.png';
+  static const String images7 = 'assets/images/7.png';
   static const String imagesAerobicsH = 'assets/images/aerobicsH.png';
   static const String imagesApple = 'assets/images/Apple.png';
   static const String imagesArrowBack = 'assets/images/arrow_back.png';
@@ -34,14 +41,11 @@ class Assets {
   static const String imagesOn1 = 'assets/images/on_1.png';
   static const String imagesOn2 = 'assets/images/on_2.png';
   static const String imagesOn3 = 'assets/images/on_3.png';
-  static const String imagesMuscles = 'https://images.pexels.com/photos/5327534/pexels-photo-5327534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
   static const String imagesOnBoardingBg = 'assets/images/on_boarding_bg.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
-  static const String imagesPopularTrainer =
-      'assets/images/popularTrainer.jpeg';
+  static const String imagesPopularTrainer = 'assets/images/popularTrainer.jpeg';
   static const String imagesProfile = 'assets/images/profile.png';
-  static const String imagesRecoomendation =
-      'assets/images/recoomendation.jpeg';
+  static const String imagesRecoomendation = 'assets/images/recoomendation.jpeg';
   static const String imagesRobotWithRope = 'assets/images/robot_with_rope.png';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String imagesTrainerH = 'assets/images/trainerH.png';

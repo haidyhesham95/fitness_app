@@ -9,7 +9,6 @@ class ErrorHandler {
 
   ErrorHandler(this.errorMessage);
 
-  // Handle the exception and return an ErrorModel
   static ErrorModel handle(Exception error) {
     if (error is DioException) {
       return ErrorHandler.networkError(error, error.response?.statusCode);
@@ -21,7 +20,6 @@ class ErrorHandler {
     }
   }
 
-  // This method should return ErrorModel, not ErrorHandler
   static ErrorModel serverError(int? statusCode, ErrorModel response) {
     switch (statusCode) {
       case 400:
@@ -60,7 +58,6 @@ class ErrorHandler {
         return const ErrorModel(
             error: "Gateway Timeout. The server took too long to respond.");
       default:
-      // Ensure we convert response data to ErrorModel
         if (error.response?.data is Map<String, dynamic>) {
           final errorModel = ErrorModel.fromMap(error.response!.data as Map<String, dynamic>);
           return ErrorHandler.serverError(error.response?.statusCode, errorModel);
