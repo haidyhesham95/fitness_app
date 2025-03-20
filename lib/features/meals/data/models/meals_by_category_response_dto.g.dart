@@ -17,6 +17,7 @@ MealsByCategoryResponseDto _$MealsByCategoryResponseDtoFromJson(
     );
 
 
+
 MealsByCategoryDto _$MealsByCategoryDtoFromJson(Map<String, dynamic> json) =>
     MealsByCategoryDto(
       json['strMeal'] as String?,

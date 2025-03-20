@@ -70,12 +70,14 @@ class _WorkoutsViewState extends State<WorkoutsView> {
                       child: GenericCard(
                         title: viewModel.musclesGroup[index].name,
                         imageUrl: viewModel.musclesGroup[index].image,
+                        id: viewModel.musclesGroup[index].id,
                       ),
                     )
                         : FadeInDownBig(
                       child: GenericCard(
                         title: viewModel.musclesGroup[index].name,
                         imageUrl: viewModel.musclesGroup[index].image,
+                        id: viewModel.musclesGroup[index].id,
                       ),
                     );
                   },

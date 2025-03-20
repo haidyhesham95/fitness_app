@@ -9,25 +9,26 @@ import '../widget/exercise_details.dart';
 import '../widget/exercise_selector.dart';
 
 class ExerciseView extends StatelessWidget {
-  const ExerciseView({super.key, required this.id, required this.title});
+  const ExerciseView(
+      {super.key,
+      required this.id,
+      required this.title,
+      required this.imageUrl});
 
-  final String id, title;
+  final String id, title, imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<ExerciseViewModelCubit>(),
-    child: BaseView(
+      child: BaseView(
           extendBodyBehindAppBar: true,
           child: [
             ExerciseDetails(
-              id: id,
+              imageUrl: imageUrl,
               title: title,
             ),
-            ExerciseSelector(primeMoverMuscleId:
-                id
-            //'67c8499726895f87ce0aa9be'
-            ),
+            ExerciseSelector(primeMoverMuscleId: id),
           ],
           image: Assets.imagesMealBg,
           isArrowBackShow: true,

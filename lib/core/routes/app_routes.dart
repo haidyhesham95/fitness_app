@@ -205,8 +205,9 @@ class AppRoutes {
       case exerciseView:
         return BaseRoute(
           page: ExerciseView(
-            id: (args as Map<String, String>)['imageUrl'] ?? '',
+            id: (args as Map<String, String>)['id'] ?? '',
             title: (args)['title'] ?? '',
+            imageUrl: (args)['imageUrl'] ?? '',
           ),
         );
 

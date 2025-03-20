@@ -9,10 +9,10 @@ import 'package:fitness_app/features/auth/data/models/response/forget_response_d
 import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/reset_password_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/signup_response_dto.dart';
+import 'package:fitness_app/features/exercises/data/model/levels_prime_over_muscle_dto.dart';
 import 'package:fitness_app/features/home/data/models/response/get_all_difficult_levels_response_dto.dart';
 import 'package:fitness_app/features/home/data/models/response/get_random_exercises_response_dto.dart';
 import 'package:fitness_app/features/home/data/models/response/get_random_muscles_response_dto.dart';
-import 'package:fitness_app/features/exercises/data/model/levels_prime_over_muscle_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/edit_profile_response_dto.dart';
 import 'package:fitness_app/features/profile/data/models/response/upload_photo_response_dto.dart';
 import 'package:fitness_app/features/workouts/data/models/response/get_all_workout_by_id_dto.dart';
@@ -61,6 +61,7 @@ abstract class ApiManager {
 
   @GET("${ApiConstants.getWorkoutsById}/{id}}")
   Future<GetAllWorkoutsByIdDto> getWorkoutsById(@Path("id") String id);
+
   @PUT(ApiConstants.editProfileApi)
   Future<EditProfileResponseDto> editProfile(
       @Body() Map<String, dynamic> profileData);
@@ -70,9 +71,6 @@ abstract class ApiManager {
   Future<UploadPhotoResponseDto> uploadPhoto(
     @Part(name: "photo") File photo,
   );
-
-  @GET(ApiConstants.exercises)
-  Future<ExercisesResponseDto> getExercises();
 
   @GET(ApiConstants.getWorkoutsByMuscleGroupId)
   Future<MusclesByMuscleGroupIdResponseDto> getMusclesByMuscleGroupId(
