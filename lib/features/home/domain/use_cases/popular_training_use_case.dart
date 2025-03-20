@@ -28,6 +28,7 @@ class PopularTrainingUseCase {
     List<PopularTrainingEntity> popularTrainingItems = [];
     List<GetAllDifficultLevelsResponseEntityLevels?>? levels = [];
     List<MuscleGroupEntity> muscles = [];
+    int itemLength = 0;
 
     var allLevels = await getAllLevels();
     var allMuscles = await getAllWorkouts();
@@ -36,14 +37,13 @@ class PopularTrainingUseCase {
         allMuscles is Success<AllMusclesResponseEntity>) {
       levels = List.from(allLevels.data.levels!)..shuffle(Random());
       muscles = allMuscles.data.musclesGroup;
-      int itemLength = 0;
       if (levels.length < muscles.length) {
         itemLength = levels.length;
       } else {
         itemLength = muscles.length;
       }
 
-      for (int i = 0; i < itemLength; i++) {
+      for (int i = 0; i < 7; i++) {
         popularTrainingItems.add(PopularTrainingEntity(
           levelId: levels[i]?.id ?? "",
           levelName: levels[i]?.name ?? "",
@@ -53,6 +53,12 @@ class PopularTrainingUseCase {
         ));
       }
     }
+    debugPrint('muscle Name = ${muscles.map((e) => 'muscle Name : ${e.name}',).toList()}');
+    debugPrint('muscle length = ${muscles.length}');
+
+    debugPrint('levels Name = ${levels.map((e) => 'levels Name${e?.name}',).toList()}');
+    debugPrint('levels length = ${levels.length}');
+
     debugPrint("popular training use case : ${popularTrainingItems.map(
       (e) =>
           "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",

@@ -9,9 +9,9 @@ import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 
 class PopularTrainingSection extends StatelessWidget {
-  const PopularTrainingSection({super.key, this.popularTrainingItems});
+  const PopularTrainingSection({super.key, required this.popularTrainingItems});
 
-  final List<PopularTrainingEntity?>? popularTrainingItems;
+  final List<PopularTrainingEntity> popularTrainingItems;
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +34,11 @@ class PopularTrainingSection extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return FadeInRight(
                       child: PopularTrainingWidget(
-                    popularTrainingItems: popularTrainingItems?[index],
+                    popularTrainingItems: popularTrainingItems[index],
                   ));
                 },
                 separatorBuilder: (context, index) => horizontalSpacing(16.h),
-                itemCount: popularTrainingItems?.length ?? 0),
+                itemCount: popularTrainingItems.length ),
           ),
           verticalSpacing(80)
         ],

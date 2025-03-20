@@ -86,15 +86,18 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
   Future<void> _getPopularTrainingItems() async {
     emit(GetPopularTrainingLoading());
     final result = await _popularTrainingUseCase.getPopularTraining();
-    switch (result) {
-      case Success<List<PopularTrainingEntity>>():
-        debugPrint("popular training view model : ${popularTrainingItems.map(
-          (e) =>
-              "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",
-        )}");
-        emit(GetPopularTrainingSuccess(result));
+    if (result != null) {
+      popularTrainingItems = result;
 
-        break;
     }
+    debugPrint("popular training view model result : ${result.map(
+          (e) =>
+      "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",
+    )}");
+    debugPrint("popular training view model : ${popularTrainingItems.map(
+          (e) =>
+      "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",
+    )}");
+    emit(GetPopularTrainingSuccess(result));
   }
 }

@@ -2,18 +2,18 @@
 class Assets {
   Assets._();
 
-  static const String assetsSvgPause = 'assets/svg/pause.svg~';
   static const String fontsBalooThambi2Bold = 'assets/fonts/BalooThambi2-Bold.ttf';
   static const String fontsBalooThambi2Medium = 'assets/fonts/BalooThambi2-Medium.ttf';
   static const String fontsBalooThambi2Regular = 'assets/fonts/BalooThambi2-Regular.ttf';
   static const String fontsBalooThambi2SemiBold = 'assets/fonts/BalooThambi2-SemiBold.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
-  static const String images1 = 'assets/images/1.jpg';
-  static const String images2 = 'assets/images/2.jpg';
-  static const String images3 = 'assets/images/3.jpg';
-  static const String images4 = 'assets/images/4.jpg';
-  static const String images5 = 'assets/images/5.jpg';
-  static const String images6 = 'assets/images/6.jpg';
+  static const String images1 = 'assets/images/1.png';
+  static const String images2 = 'assets/images/2.png';
+  static const String images3 = 'assets/images/3.png';
+  static const String images4 = 'assets/images/4.png';
+  static const String images5 = 'assets/images/5.png';
+  static const String images6 = 'assets/images/6.png';
+  static const String images7 = 'assets/images/7.png';
   static const String imagesAerobicsH = 'assets/images/aerobicsH.png';
   static const String imagesApple = 'assets/images/Apple.png';
   static const String imagesArrowBack = 'assets/images/arrow_back.png';
@@ -43,11 +43,9 @@ class Assets {
   static const String imagesOn3 = 'assets/images/on_3.png';
   static const String imagesOnBoardingBg = 'assets/images/on_boarding_bg.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
-  static const String imagesPopularTrainer =
-      'assets/images/popularTrainer.jpeg';
+  static const String imagesPopularTrainer = 'assets/images/popularTrainer.jpeg';
   static const String imagesProfile = 'assets/images/profile.png';
-  static const String imagesRecoomendation =
-      'assets/images/recoomendation.jpeg';
+  static const String imagesRecoomendation = 'assets/images/recoomendation.jpeg';
   static const String imagesRobotWithRope = 'assets/images/robot_with_rope.png';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String imagesTrainerH = 'assets/images/trainerH.png';

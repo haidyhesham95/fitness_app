@@ -21,6 +21,18 @@ class PopularTrainingWidget extends StatelessWidget {
       height: 176.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
+        gradient: LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [
+            Colors.black.withValues(alpha: 0.9),
+            Colors.black.withValues(alpha: 0.7),
+            Colors.black.withValues(alpha: 0.6),
+            Colors.black.withValues(alpha: 0.4),
+            Colors.transparent
+          ],
+        ),
+
       ),
       child: Stack(
         alignment: Alignment.center,
@@ -34,8 +46,26 @@ class PopularTrainingWidget extends StatelessWidget {
               ),
             ),
           ),
+          Positioned.fill(child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.r),
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [
+                  Colors.black.withValues(alpha: 0.7),
+                  Colors.black.withValues(alpha: 0.7),
+                  Colors.black.withValues(alpha: 0.6),
+                  Colors.black.withValues(alpha: 0.4),
+                  Colors.transparent,
+                  Colors.transparent,
+                ],
+              ),
+
+            ),
+          )),
           Positioned(
-            top: 120.h,
+            bottom: 90.h,
             left: 0,
             right: 0,
             child: Expanded(
@@ -48,6 +78,8 @@ class PopularTrainingWidget extends StatelessWidget {
               ),
             ),
           ),
+
+
           Positioned(
             bottom: 12.h,
             left: 16.w,

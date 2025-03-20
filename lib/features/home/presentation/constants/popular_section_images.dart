@@ -7,4 +7,5 @@ List<String>? images = [
   Assets.images4,
   Assets.images5,
   Assets.images6,
+  Assets.images7
 ];
