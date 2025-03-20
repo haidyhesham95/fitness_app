@@ -1,6 +1,4 @@
-import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/networking/common/register_context_module.dart';
-import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/features/generic/widgets/generic_grid_view.dart';
 import 'package:fitness_app/features/workouts/presentation/view_model/workouts_actions.dart';
 import 'package:fitness_app/features/workouts/presentation/view_model/workouts_states.dart';
@@ -19,6 +17,7 @@ class _MusclesByIdWidgetState extends State<MusclesByIdWidget> {
   int selectedIndex = 0;
   String image = '';
   String name = '';
+  String id = '';
 
   @override
   Widget build(BuildContext context) {
@@ -35,18 +34,12 @@ class _MusclesByIdWidgetState extends State<MusclesByIdWidget> {
                   cubit.dataById = state.data.muscles ?? [];
                   if (cubit.dataById.isNotEmpty &&
                       selectedIndex < cubit.dataById.length) {
-                    name = cubit.dataById[selectedIndex].name ??
-                        context.translate(LangKeys.highChest);
                     image = cubit.dataById[selectedIndex].image ?? '';
-                  } else {
-                    name = context.translate(LangKeys.highChest);
-                    image = '';
+                    name = cubit.dataById[selectedIndex].name ?? '';
+                    id = cubit.dataById[selectedIndex].id ?? '';
                   }
                 }
-                return GenericGridView(
-                  image,
-                  name,
-                );
+                return GenericGridView(image, name, id);
               },
             ),
           );

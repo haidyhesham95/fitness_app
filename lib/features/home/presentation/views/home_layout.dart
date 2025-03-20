@@ -1,7 +1,5 @@
 import 'package:fitness_app/core/localization/lang_keys.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
-import 'package:fitness_app/features/exercises/presentation/viewModel/exercise_action.dart';
-import 'package:fitness_app/features/exercises/presentation/viewModel/exercise_view_model_cubit.dart';
 import 'package:fitness_app/features/smart_coach_chat/presentation/views/smart_chat_intro_view.dart';
 import 'package:fitness_app/features/workouts/presentation/view/workouts_view.dart';
 import 'package:fitness_app/features/workouts/presentation/view_model/workouts_actions.dart';
@@ -38,9 +36,9 @@ class _HomeLayoutState extends State<HomeLayout> {
         BlocProvider(
             create: (context) => getIt.get<WorkoutsViewModelCubit>()
               ..doAction(GetAllWorkouts())),
-        BlocProvider(
-            create: (context) =>
-                getIt.get<ExerciseViewModelCubit>()..doAction(GetExercises())),
+        // BlocProvider(
+        //     create: (context) =>
+        //         getIt.get<ExerciseViewModelCubit>()..doAction(GetExercises())),
         BlocProvider(
             create: (context) => getIt.get<HomeViewModelCubit>()
               ..doAction(GetRandomMuscles())

@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/routes/app_routes.dart';
 
 class GenericCard extends StatelessWidget {
-  final String imageUrl;
+  final String imageUrl , id;
   final String title;
   final double borderRadius;
   final TextStyle? textStyle;
@@ -22,6 +22,7 @@ class GenericCard extends StatelessWidget {
   const GenericCard({
     super.key,
     required this.imageUrl,
+    required this.id,
     required this.title,
     this.borderRadius = 15.0,
     this.textStyle,
@@ -38,8 +39,9 @@ class GenericCard extends StatelessWidget {
         context.pushNamed(
           AppRoutes.exerciseView,
           arguments: {
-            'imageUrl': imageUrl,
+            'id': id,
             'title': title,
+            'imageUrl': imageUrl,
           },
         );
         },

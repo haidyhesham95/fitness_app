@@ -1,9 +1,11 @@
 import 'package:fitness_app/features/exercises/data/model/exercises_response_dto.dart';
 
 import '../domain/entities/exercises_entity.dart';
+import '../domain/entities/levels_prime_over_muscle_entity.dart';
+import 'model/levels_prime_over_muscle_dto.dart';
 
 class ExerciseMapper {
-    static ExercisesEntity toEntity(ExercisesResponseDto dto) {
+  static ExercisesEntity toEntity(ExercisesResponseDto dto) {
     return ExercisesEntity(
       message: dto.message,
       totalExercises: dto.totalExercises,
@@ -100,5 +102,37 @@ class ExerciseMapper {
       inDepthYoutubeExplanationLink: entity.inDepthYoutubeExplanationLink,
     );
   }
-}
 
+  static LevelsPrimeMoverMuscleEntity toLevels(LevelsPrimeOverMuscleDto dto) {
+    return LevelsPrimeMoverMuscleEntity(
+      message: dto.message!,
+      totalLevels: dto.totalLevels!,
+      difficultyLevels:
+          dto.difficultyLevels!.map((e) => toDifficultyLevel(e)).toList(),
+    );
+  }
+
+  static DifficultyLevel toDifficultyLevel(DifficultyLevelsDto dto) {
+    return DifficultyLevel(
+      id: dto.id!,
+      name: dto.name!,
+    );
+  }
+
+  static LevelsPrimeOverMuscleDto toLevelsDto(
+      LevelsPrimeMoverMuscleEntity entity) {
+    return LevelsPrimeOverMuscleDto(
+      message: entity.message,
+      totalLevels: entity.totalLevels,
+      difficultyLevels:
+          entity.difficultyLevels.map((e) => toDifficultyLevelDto(e)).toList(),
+    );
+  }
+
+  static DifficultyLevelsDto toDifficultyLevelDto(DifficultyLevel entity) {
+    return DifficultyLevelsDto(
+      id: entity.id,
+      name: entity.name,
+    );
+  }
+}

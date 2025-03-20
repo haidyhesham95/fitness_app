@@ -27,7 +27,7 @@ class ExerciseDetails extends StatelessWidget {
         children: [
           CachedNetworkWidget(
             imageUrl: imageUrl,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
             width: double.infinity,
             height: context.height * 0.4,
           ),
