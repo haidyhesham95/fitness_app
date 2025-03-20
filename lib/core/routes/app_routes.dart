@@ -6,6 +6,7 @@ import 'package:fitness_app/features/auth/presentation/register/view/gender/gend
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/exercises/presentation/view/exercise_view.dart';
+import 'package:fitness_app/features/home/presentation/viewModel/home_view_model_cubit.dart';
 import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
 import 'package:fitness_app/features/meals/presentation/view/meal_details_view.dart';
 import 'package:fitness_app/features/meals/presentation/view/meal_view.dart';
@@ -190,15 +191,23 @@ class AppRoutes {
 
       case mealsView:
         return BaseRoute(
-            page: BlocProvider(
-          create: (context) => getIt.get<MealsViewModelCubit>(),
+            page: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt.get<MealsViewModelCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt.get<HomeViewModelCubit>(),
+            )
+          ],
           child: const MealsView(),
         ));
       case exerciseView:
         return BaseRoute(
           page: ExerciseView(
-            imageUrl: (args as Map<String, String>)['imageUrl'] ?? '',
+            id: (args as Map<String, String>)['id'] ?? '',
             title: (args)['title'] ?? '',
+            imageUrl: (args)['imageUrl'] ?? '',
           ),
         );
 

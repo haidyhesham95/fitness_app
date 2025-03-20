@@ -19,8 +19,8 @@ class MusclesByIdResponseEntity extends Equatable {
           : null,
       muscles: json["muscles"] != null
           ? (json["muscles"] as List)
-          .map((muscle) => MuscleEntity.fromJson(muscle))
-          .toList()
+              .map((muscle) => MuscleEntity.fromJson(muscle))
+              .toList()
           : null,
     );
   }

@@ -256,7 +256,7 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<GetAllWorkoutsByIdDto> getWorkoutsById() async {
+  Future<GetAllWorkoutsByIdDto> getWorkoutsById(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -268,7 +268,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          'api/v1/musclesGroup/67c79f3526895f87ce0aa96d',
+          'api/v1/musclesGroup/${id}}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -365,9 +365,148 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<ExercisesResponseDto> getExercises() async {
+  Future<MusclesByMuscleGroupIdResponseDto> getMusclesByMuscleGroupId(
+      String id) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'muscleGroupId': id};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<MusclesByMuscleGroupIdResponseDto>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'api/v1/musclesGroup/by-muscle-group',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MusclesByMuscleGroupIdResponseDto _value;
+    try {
+      _value = MusclesByMuscleGroupIdResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<GetRandomMusclesResponseDto> getRandomMusclesRecommendation() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetRandomMusclesResponseDto>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'api/v1/muscles/random',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetRandomMusclesResponseDto _value;
+    try {
+      _value = GetRandomMusclesResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<GetRandomExercisesResponseDto> getRandomExercises() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetRandomExercisesResponseDto>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/exercises/random?targetMuscleGroupId=67c79f3526895f87ce0aa96b&difficultyLevelId=67c797e226895f87ce0aa94b&limit=5',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetRandomExercisesResponseDto _value;
+    try {
+      _value = GetRandomExercisesResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<GetAllDifficultLevelsResponseDto> getAllDifficultLevels() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetAllDifficultLevelsResponseDto>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'api/v1/levels',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetAllDifficultLevelsResponseDto _value;
+    try {
+      _value = GetAllDifficultLevelsResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ExercisesResponseDto> getExercises({
+    required String primeMoverMuscleId,
+    required String difficultyLevelId,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'primeMoverMuscleId': primeMoverMuscleId,
+      r'difficultyLevelId': difficultyLevelId,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<ExercisesResponseDto>(Options(
@@ -377,7 +516,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          'api/v1/exercises',
+          'api/v1/exercises/by-muscle-difficulty',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -390,6 +529,42 @@ class _ApiManager implements ApiManager {
     late ExercisesResponseDto _value;
     try {
       _value = ExercisesResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<LevelsPrimeOverMuscleDto> getDifficultyLevelsByPrimeMoverMuscle(
+      {required String primeMoverMuscleId}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'primeMoverMuscleId': primeMoverMuscleId
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<LevelsPrimeOverMuscleDto>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'api/v1/levels/difficulty-levels/by-prime-mover',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late LevelsPrimeOverMuscleDto _value;
+    try {
+      _value = LevelsPrimeOverMuscleDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -11,7 +11,7 @@ class ContainerExerciseSelectorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 12.w),
-      padding: EdgeInsets.only(top: 0.h, bottom: 8.h, left: 8.w, right: 8.w),
+      padding: EdgeInsets.only(top: 4.h, bottom: 8.h, left: 8.w, right: 8.w),
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
