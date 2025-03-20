@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
-import '../../../../generated/assets.dart';
 
 class CustomContainerCategory extends StatelessWidget {
   const CustomContainerCategory({super.key, required this.model});

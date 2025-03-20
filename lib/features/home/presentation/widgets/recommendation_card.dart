@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/styles/fonts/my_fonts.dart';
-import '../../../../core/utils/widgets/spacing.dart';
 import '../../../../generated/assets.dart';
 
 class RecommendationCard extends StatelessWidget {

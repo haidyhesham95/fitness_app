@@ -16,11 +16,6 @@ MealsCategoriesResponseDto _$MealsCategoriesResponseDtoFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$MealsCategoriesResponseDtoToJson(
-        MealsCategoriesResponseDto instance) =>
-    <String, dynamic>{
-      'categories': instance.categories,
-    };
 
 MealsCategoriesDto _$MealsCategoriesDtoFromJson(Map<String, dynamic> json) =>
     MealsCategoriesDto(
@@ -30,10 +25,3 @@ MealsCategoriesDto _$MealsCategoriesDtoFromJson(Map<String, dynamic> json) =>
       json['strCategoryDescription'] as String?,
     );
 
-Map<String, dynamic> _$MealsCategoriesDtoToJson(MealsCategoriesDto instance) =>
-    <String, dynamic>{
-      'idCategory': instance.idCategory,
-      'strCategory': instance.strCategory,
-      'strCategoryThumb': instance.strCategoryThumb,
-      'strCategoryDescription': instance.strCategoryDescription,
-    };
