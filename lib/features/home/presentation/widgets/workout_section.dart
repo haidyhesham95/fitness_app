@@ -78,6 +78,7 @@ class _WorkoutSectionState extends State<WorkoutSection> {
                         child: GenericCard(
                           title: viewModel.musclesGroup[index].name,
                           imageUrl: viewModel.musclesGroup[index].image,
+                          id: viewModel.musclesGroup[index].id,
                         ),
                       ),
                     );

@@ -24,4 +24,3 @@ MealsCategoriesDto _$MealsCategoriesDtoFromJson(Map<String, dynamic> json) =>
       json['strCategoryThumb'] as String?,
       json['strCategoryDescription'] as String?,
     );
-

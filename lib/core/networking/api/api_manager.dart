@@ -9,6 +9,7 @@ import 'package:fitness_app/features/auth/data/models/response/forget_response_d
 import 'package:fitness_app/features/auth/data/models/response/login_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/reset_password_response_dto.dart';
 import 'package:fitness_app/features/auth/data/models/response/signup_response_dto.dart';
+import 'package:fitness_app/features/exercises/data/model/levels_prime_over_muscle_dto.dart';
 import 'package:fitness_app/features/home/data/models/response/get_all_difficult_levels_response_dto.dart';
 import 'package:fitness_app/features/home/data/models/response/get_random_exercises_response_dto.dart';
 import 'package:fitness_app/features/home/data/models/response/get_random_muscles_response_dto.dart';
@@ -71,9 +72,6 @@ abstract class ApiManager {
     @Part(name: "photo") File photo,
   );
 
-  @GET(ApiConstants.exercises)
-  Future<ExercisesResponseDto> getExercises();
-
   @GET(ApiConstants.getWorkoutsByMuscleGroupId)
   Future<MusclesByMuscleGroupIdResponseDto> getMusclesByMuscleGroupId(
       @Query("muscleGroupId") String id);
@@ -86,4 +84,15 @@ abstract class ApiManager {
 
   @GET(ApiConstants.allLevels)
   Future<GetAllDifficultLevelsResponseDto> getAllDifficultLevels();
+
+  @GET("api/v1/exercises/by-muscle-difficulty")
+  Future<ExercisesResponseDto> getExercises({
+    @Query("primeMoverMuscleId") required String primeMoverMuscleId,
+    @Query("difficultyLevelId") required String difficultyLevelId,
+  });
+
+  @GET("api/v1/levels/difficulty-levels/by-prime-mover")
+  Future<LevelsPrimeOverMuscleDto> getDifficultyLevelsByPrimeMoverMuscle({
+    @Query("primeMoverMuscleId") required String primeMoverMuscleId,
+  });
 }
