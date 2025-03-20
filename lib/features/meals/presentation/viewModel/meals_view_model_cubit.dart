@@ -33,6 +33,7 @@ class MealsViewModelCubit extends Cubit<MealsViewModelState> {
   List<MealEntity> meals = [];
   List<MealEntity> randomMeals = [];
 
+
   String currentCategory = '';
 
   Future<void> doAction(MealsActions action) async {

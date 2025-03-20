@@ -12,6 +12,7 @@ class ContainerSelectableWidget extends StatelessWidget {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         width: double.infinity,
+        height: 50.h,
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(20),

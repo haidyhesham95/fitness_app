@@ -5,11 +5,13 @@ import 'package:fitness_app/features/workouts/data/data_sources/online_data_sour
 import 'package:fitness_app/features/workouts/data/mappers/workouts_mapper.dart';
 import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_by_id_entity.dart';
 import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_entity.dart';
+import 'package:fitness_app/features/workouts/domain/entities/response/muscles_by_muscle_group_id_entity.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: WorkoutsOnlineDataSource)
 class WorkoutsOnlineDataSourceImpl implements WorkoutsOnlineDataSource {
   final ApiManager _apiManager;
+
   WorkoutsOnlineDataSourceImpl(this._apiManager);
 
   @override
@@ -21,12 +23,21 @@ class WorkoutsOnlineDataSourceImpl implements WorkoutsOnlineDataSource {
   }
 
   @override
-  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById() {
+  Future<DataResult<MusclesByIdResponseEntity>> getWorkoutById(String id) {
     return executeApi(() async {
-      final response = await _apiManager.getWorkoutsById();
+      final response = await _apiManager.getWorkoutsById(id);
       return WorkoutsMapper.toEntityById(response);
     });
   }
+
+  @override
+  Future<DataResult<List<MusclesByMuscleGroupIdEntity>>> getMusclesByMuscleGroupId(String id) {
+    return executeApi(() async {
+      final response = await _apiManager.getMusclesByMuscleGroupId(id);
+      return WorkoutsMapper.toEntityByMuscleGroupId(response);
+    });
+  }
+
 
 
   }
