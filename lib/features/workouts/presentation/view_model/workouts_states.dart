@@ -1,7 +1,9 @@
 import 'package:fitness_app/core/networking/error/error_model.dart';
 import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_by_id_entity.dart';
 import 'package:fitness_app/features/workouts/domain/entities/response/get_all_workouts_entity.dart';
+import 'package:fitness_app/features/workouts/domain/entities/response/muscles_by_muscle_group_id_entity.dart';
 import 'package:flutter/material.dart';
+
 @immutable
 sealed class WorkoutsViewModelState {}
 
@@ -34,4 +36,19 @@ class GetWorkoutsByIdError extends WorkoutsViewModelState {
   final ErrorModel errorMessage;
 
   GetWorkoutsByIdError({required this.errorMessage});
+}
+
+class GetMusclesByGroupIdLoading extends WorkoutsViewModelState {}
+
+class GetMusclesByGroupIdSuccess extends WorkoutsViewModelState {
+  final List<MusclesByMuscleGroupIdEntity> data;
+
+  GetMusclesByGroupIdSuccess({required this.data});
+
+}
+
+class GetMusclesByGroupIdError extends WorkoutsViewModelState {
+  final ErrorModel errorMessage;
+
+  GetMusclesByGroupIdError({required this.errorMessage});
 }

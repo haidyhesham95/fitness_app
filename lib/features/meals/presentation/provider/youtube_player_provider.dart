@@ -8,8 +8,11 @@ class YoutubePlayerProvider extends ChangeNotifier {
   String? _error;
 
   YoutubePlayerController? get controller => _controller;
+
   bool get isReady => _isReady;
+
   bool get isPlaying => _isPlaying;
+
   String? get error => _error;
 
   void initialize(String videoUrl) {

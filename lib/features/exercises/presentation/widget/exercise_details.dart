@@ -1,12 +1,12 @@
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
+import 'package:fitness_app/core/utils/widgets/pinned_sliver_widget.dart';
 import 'package:fitness_app/core/utils/widgets/spacing.dart';
 import 'package:fitness_app/features/exercises/presentation/widget/cached_network_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/localization/lang_keys.dart';
-import '../../../meals/presentation/widget/pinned_sliver_widget.dart';
 import 'border_container_widget.dart';
 import 'icon_video_widget.dart';
 

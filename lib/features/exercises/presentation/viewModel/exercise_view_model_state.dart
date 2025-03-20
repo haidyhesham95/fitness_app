@@ -9,10 +9,12 @@ final class ExerciseViewModelLoading extends ExerciseViewModelState {}
 
 final class ExerciseViewModelSuccess extends ExerciseViewModelState {
   final ExercisesEntity data;
+
   ExerciseViewModelSuccess({required this.data});
 }
 
 final class ExerciseViewModelError extends ExerciseViewModelState {
   final ErrorModel errorMessage;
+
   ExerciseViewModelError({required this.errorMessage});
 }

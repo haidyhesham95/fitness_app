@@ -4,5 +4,4 @@ import '../../../../../core/networking/common/api_result.dart';
 
 abstract class ExerciseDataSource {
   Future<DataResult<ExercisesEntity>> getExercises();
-
 }

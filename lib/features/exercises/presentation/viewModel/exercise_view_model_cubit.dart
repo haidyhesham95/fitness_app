@@ -16,6 +16,7 @@ class ExerciseViewModelCubit extends Cubit<ExerciseViewModelState> {
   ExerciseViewModelCubit(this._exerciseUseCase)
       : super(ExerciseViewModelInitial());
   final ExerciseUseCase _exerciseUseCase;
+
   void doAction(ExerciseAction action) {
     switch (action) {
       case GetExercises():

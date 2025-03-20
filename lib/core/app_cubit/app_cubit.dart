@@ -13,7 +13,7 @@ class AppCubit extends Cubit<AppStates> {
   bool isDark = true;
   String currentLanguage = 'en';
 
-
+  int selectedIndex = 0;
 
   // * change Language logic *
 
@@ -44,4 +44,9 @@ class AppCubit extends Cubit<AppStates> {
   void toArabic() => _changeLanguage(langCode: 'ar');
 
   void toEnglish() => _changeLanguage(langCode: 'en');
+
+  Future<void> updateIndex(int index) async {
+    selectedIndex = index;
+    emit(UpdateIndexState());
+  }
 }

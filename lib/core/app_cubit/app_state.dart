@@ -10,6 +10,12 @@ sealed class AppStates  {}
   class    LanguageChangeState extends AppStates{
   final  Locale local;
   LanguageChangeState({required this.local});
+
+  }
+
+  class UpdateIndexState extends AppStates{
+  UpdateIndexState();
+
   }
 
 
