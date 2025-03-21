@@ -47,6 +47,7 @@ class AppCubit extends Cubit<AppStates> {
 
   Future<void> updateIndex(int index) async {
     selectedIndex = index;
+
     emit(UpdateIndexState());
   }
 }
