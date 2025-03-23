@@ -1,12 +1,11 @@
+import 'package:fitness_app/core/app_cubit/app_cubit.dart';
+import 'package:fitness_app/core/networking/common/register_context_module.dart';
+import 'package:fitness_app/core/utils/widgets/pinned_sliver_widget.dart';
+import 'package:fitness_app/core/utils/widgets/tab_bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/utils/widgets/spacing.dart';
 import '../viewModel/exercise_action.dart';
 import '../viewModel/exercise_view_model_cubit.dart';
-import 'difficulty_level_selector_widget.dart';
-import 'exercise_list_widget.dart';
 
 class ExerciseSelector extends StatefulWidget {
   final String primeMoverMuscleId;
@@ -21,41 +20,54 @@ class ExerciseSelector extends StatefulWidget {
 class _ExerciseSelectorState extends State<ExerciseSelector> {
   String? selectedDifficultyName;
   String? selectedDifficultyId;
+  ExerciseViewModelCubit viewModel = getIt.get<ExerciseViewModelCubit>();
+  AppCubit appCubit = getIt.get<AppCubit>();
 
-  @override
-  void initState() {
-    super.initState();
-    context.read<ExerciseViewModelCubit>().doAction(
-          GetLevelsPrimeMoverMuscle(
-              primeMoverMuscleId: widget.primeMoverMuscleId),
-        );
-  }
+
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            DifficultyLevelSelectorWidget(
-              primeMoverMuscleId: widget.primeMoverMuscleId,
-              onSelected: (difficultyId, difficultyName) {
-                setState(() {
-                  selectedDifficultyId = difficultyId;
-                  selectedDifficultyName = difficultyName;
-                });
-                context.read<ExerciseViewModelCubit>().doAction(
-                  GetExercises(
-                    primeMoverMuscleId: widget.primeMoverMuscleId,
-                    difficultyLevelId: difficultyId,
-                  ),
-                );
-              },
+      child: CustomScrollView(
+        slivers: [
+          PinnedSliverWidget(
+            child: DefaultTabController(
+              initialIndex: appCubit.selectedIndex,
+              length: viewModel.difficultyLevels.length,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: tabBarWidget(
+                  tabs: viewModel.difficultyLevels
+                      .map((item) => Tab(text: item.name))
+                      .toList(),
+                  onTap: (index) {
+                    viewModel.doAction(GetLevelsPrimeMoverMuscle(
+                      primeMoverMuscleId: viewModel.difficultyLevels[index].id,
+                    ));
+                  },
+                  context: context,
+                ),
+              ),
             ),
-            verticalSpacing(8.h),
-            ExerciseListWidget(selectedDifficultyName: selectedDifficultyName)
-          ],
-        ),
+          ),
+          // DifficultyLevelSelectorWidget(
+          //   primeMoverMuscleId: widget.primeMoverMuscleId,
+          //   onSelected: (difficultyId, difficultyName) {
+          //     setState(() {
+          //       selectedDifficultyId = difficultyId;
+          //       selectedDifficultyName = difficultyName;
+          //     });
+          //     context.read<ExerciseViewModelCubit>().doAction(
+          //           GetExercises(
+          //             primeMoverMuscleId: widget.primeMoverMuscleId,
+          //             difficultyLevelId: difficultyId,
+          //           ),
+          //         );
+          //   },
+          // ),
+
+        ],
       ),
     );
   }

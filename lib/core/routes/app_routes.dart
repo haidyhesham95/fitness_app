@@ -6,6 +6,8 @@ import 'package:fitness_app/features/auth/presentation/register/view/gender/gend
 import 'package:fitness_app/features/auth/presentation/register/view/sign_up_view.dart';
 import 'package:fitness_app/features/auth/presentation/register/view_model/signup_view_model_cubit.dart';
 import 'package:fitness_app/features/exercises/presentation/view/exercise_view.dart';
+import 'package:fitness_app/features/exercises/presentation/viewModel/exercise_action.dart';
+import 'package:fitness_app/features/exercises/presentation/viewModel/exercise_view_model_cubit.dart';
 import 'package:fitness_app/features/home/presentation/viewModel/home_view_model_cubit.dart';
 import 'package:fitness_app/features/home/presentation/views/home_layout.dart';
 import 'package:fitness_app/features/meals/presentation/view/meal_details_view.dart';
@@ -76,15 +78,15 @@ class AppRoutes {
       case login:
         return BaseRoute(
             page: BlocProvider(
-          create: (context) => getIt.get<LoginViewModel>(),
-          child: const LoginView(),
-        ));
+              create: (context) => getIt.get<LoginViewModel>(),
+              child: const LoginView(),
+            ));
       case signUp:
         return BaseRoute(
             page: BlocProvider(
-          create: (context) => getIt.get<SignUpViewModel>(),
-          child: const SignUpView(),
-        ));
+              create: (context) => getIt.get<SignUpViewModel>(),
+              child: const SignUpView(),
+            ));
       case onBoarding:
         return BaseRoute(page: OnboardingScreen());
       case forgetPasswordView:
@@ -96,65 +98,68 @@ class AppRoutes {
       case goalView:
         return BaseRoute(
             page: GoalView(
-          viewModel: args as SignUpViewModel,
-        ));
+              viewModel: args as SignUpViewModel,
+            ));
       case activityView:
         return BaseRoute(
             page: ActivityView(
-          viewModel: args as SignUpViewModel,
-        ));
+              viewModel: args as SignUpViewModel,
+            ));
       case genderView:
         return BaseRoute(
             page: GenderView(
-          viewModel: args as SignUpViewModel,
-        ));
+              viewModel: args as SignUpViewModel,
+            ));
       case oldView:
         return BaseRoute(
             page: OldView(
-          viewModel: args as SignUpViewModel,
-        ));
+              viewModel: args as SignUpViewModel,
+            ));
       case heightView:
         return BaseRoute(
             page: HeightView(
-          viewModel: args as SignUpViewModel,
-        ));
+              viewModel: args as SignUpViewModel,
+            ));
       case weightView:
         return BaseRoute(
             page: MultiBlocProvider(
-          providers: [
-            BlocProvider(
-                create: (context) => getIt.get<ProfileViewModelCubit>()
-                  ..doAction(GetUserData())),
-            BlocProvider(create: (context) => getIt.get<SignUpViewModel>()),
-          ],
-          child: WeightView(
-            weight: args as int,
-          ),
-        ));
+              providers: [
+                BlocProvider(
+                    create: (context) =>
+                    getIt.get<ProfileViewModelCubit>()
+                      ..doAction(GetUserData())),
+                BlocProvider(create: (context) => getIt.get<SignUpViewModel>()),
+              ],
+              child: WeightView(
+                weight: args as int,
+              ),
+            ));
       case editProfileView:
         return BaseRoute(
             page: BlocProvider(
-          create: (context) => getIt.get<ProfileViewModelCubit>(),
-          child: const EditProfileView(),
-        ));
+              create: (context) => getIt.get<ProfileViewModelCubit>(),
+              child: const EditProfileView(),
+            ));
       case healthDataPage:
         return BaseRoute(
             page: HealthDataView(
-          viewModel: args as SignUpViewModel,
-        ));
+              viewModel: args as SignUpViewModel,
+            ));
       case profileView:
         return BaseRoute(
             page: BlocProvider(
-          create: (context) =>
-              getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),
-          child: const ProfileView(),
-        ));
+              create: (context) =>
+              getIt.get<ProfileViewModelCubit>()
+                ..doAction(GetUserData()),
+              child: const ProfileView(),
+            ));
       case editDataView:
         final args = settings.arguments as Map<String, dynamic>;
         return BaseRoute(
           page: BlocProvider(
             create: (context) =>
-                getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),
+            getIt.get<ProfileViewModelCubit>()
+              ..doAction(GetUserData()),
             child: EditDataView(
               viewModel: args['viewModel'],
               step: args['step'],
@@ -173,41 +178,54 @@ class AppRoutes {
       case smartChatView:
         return BaseRoute(
             page: MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (context) => getIt.get<SmartChatViewModel>()),
-            BlocProvider(
-                create: (context) => getIt.get<ProfileViewModelCubit>()
-                  ..doAction(GetUserData())),
-          ],
-          child: const SmartChatView(),
-        ));
+              providers: [
+                BlocProvider(
+                    create: (context) => getIt.get<SmartChatViewModel>()),
+                BlocProvider(
+                    create: (context) =>
+                    getIt.get<ProfileViewModelCubit>()
+                      ..doAction(GetUserData())),
+              ],
+              child: const SmartChatView(),
+            ));
       case homeLayout:
         return BaseRoute(
             page: MultiBlocProvider(providers: [
-          BlocProvider(
-              create: (context) =>
-                  getIt.get<ProfileViewModelCubit>()..doAction(GetUserData())),
-        ], child: const HomeLayout()));
+              BlocProvider(
+                  create: (context) =>
+                  getIt.get<ProfileViewModelCubit>()
+                    ..doAction(GetUserData())),
+            ], child: const HomeLayout()));
 
       case mealsView:
         return BaseRoute(
             page: MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => getIt.get<MealsViewModelCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt.get<HomeViewModelCubit>(),
-            )
-          ],
-          child: const MealsView(),
-        ));
+              providers: [
+                BlocProvider(
+                  create: (context) => getIt.get<MealsViewModelCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt.get<HomeViewModelCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) =>
+                  getIt.get<ExerciseViewModelCubit>(),
+                ),
+              ],
+              child: const MealsView(),
+            ));
       case exerciseView:
+        final args = settings.arguments as Map<String, String?>;
         return BaseRoute(
-          page: ExerciseView(
-            id: (args as Map<String, String>)['id'] ?? '',
-            title: (args)['title'] ?? '',
-            imageUrl: (args)['imageUrl'] ?? '',
+          page: BlocProvider(
+            create: (context) =>
+            getIt.get<ExerciseViewModelCubit>()
+              ..doAction(GetLevelsPrimeMoverMuscle(primeMoverMuscleId:args['id'] as String)),
+            child: ExerciseView(
+              id: args['id'] ?? '',
+              title: args['title'] ?? '',
+              imageUrl: args['imageUrl'] ?? '',
+            ),
           ),
         );
 
@@ -216,12 +234,13 @@ class AppRoutes {
       case mealDetails:
         return BaseRoute(
             page: BlocProvider(
-          create: (context) =>
-              getIt.get<MealsViewModelCubit>()..doAction(GetMealInfo(args)),
-          child: MealDetailsView(
-            mealId: args as String,
-          ),
-        ));
+              create: (context) =>
+              getIt.get<MealsViewModelCubit>()
+                ..doAction(GetMealInfo(args)),
+              child: MealDetailsView(
+                mealId: args as String,
+              ),
+            ));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

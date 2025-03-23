@@ -28,3 +28,4 @@ final class LevelsPrimeMoverMuscleError extends ExerciseViewModelState {
   final ErrorModel errorMessage;
   LevelsPrimeMoverMuscleError({required this.errorMessage});
 }
+class GetLevelIndexSuccess extends ExerciseViewModelState{}

@@ -22,16 +22,18 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
   final RandomMusclesUseCase _getRandomMusclesUseCase;
   final RandomExercisesUseCase _getRandomExercisesUseCase;
   final PopularTrainingUseCase _popularTrainingUseCase;
-  List<GetAllDifficultLevelsResponseEntityLevels?>? levels = [];
+  List<GetAllDifficultLevelsResponseEntityLevels?> levels = [];
   List<MuscleGroupEntity?>? muscles = [];
   List<PopularTrainingEntity> popularTrainingItems = [];
+  int selectedIndex = 0;
 
   HomeViewModelCubit(this._getRandomMusclesUseCase,
       this._getRandomExercisesUseCase, this._popularTrainingUseCase)
       : super(HomeViewModelInitial());
   List<GetRandomExercisesResponseEntityExercises?> randomExercises =
       []; // exercises
-  GetRandomMusclesResponseEntity randomMusclesEntity = GetRandomMusclesResponseEntity(
+  GetRandomMusclesResponseEntity randomMusclesEntity =
+      GetRandomMusclesResponseEntity(
     [],
   );
 
@@ -72,6 +74,7 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
     switch (result) {
       case Success<GetRandomExercisesResponseEntity>():
         randomExercises = result.data.exercises ?? [];
+
         emit(GetRandomExercisesSuccess(result.data));
         break;
       case Fail<GetRandomExercisesResponseEntity>():
@@ -85,14 +88,16 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
     final result = await _popularTrainingUseCase.getPopularTraining();
     popularTrainingItems = result;
 
-      debugPrint("popular training view model result : ${result.map(
-          (e) =>
-      "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",
+    debugPrint("popular training view model result : ${result.map(
+      (e) =>
+          "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",
     )}");
     debugPrint("popular training view model : ${popularTrainingItems.map(
-          (e) =>
-      "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",
+      (e) =>
+          "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",
     )}");
     emit(GetPopularTrainingSuccess(result));
   }
+
+
 }

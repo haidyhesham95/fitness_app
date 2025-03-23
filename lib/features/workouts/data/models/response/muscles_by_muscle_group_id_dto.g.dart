@@ -19,6 +19,14 @@ MusclesByMuscleGroupIdResponseDto _$MusclesByMuscleGroupIdResponseDtoFromJson(
           .toList(),
     );
 
+// ignore: unused_element
+Map<String, dynamic> _$MusclesByMuscleGroupIdResponseDtoToJson(
+        MusclesByMuscleGroupIdResponseDto instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'totalMuscles': instance.totalMuscles,
+      'muscles': instance.muscles,
+    };
 
 MusclesByMuscleGroupIdMusclesDto _$MusclesByMuscleGroupIdMusclesDtoFromJson(
         Map<String, dynamic> json) =>
@@ -28,3 +36,11 @@ MusclesByMuscleGroupIdMusclesDto _$MusclesByMuscleGroupIdMusclesDtoFromJson(
       json['image'] as String?,
     );
 
+// ignore: unused_element
+Map<String, dynamic> _$MusclesByMuscleGroupIdMusclesDtoToJson(
+        MusclesByMuscleGroupIdMusclesDto instance) =>
+    <String, dynamic>{
+      '_id': instance.id,
+      'name': instance.name,
+      'image': instance.image,
+    };
