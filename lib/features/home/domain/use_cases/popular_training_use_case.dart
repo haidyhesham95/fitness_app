@@ -15,11 +15,12 @@ import '../contracts/home_repo.dart';
 class PopularTrainingUseCase {
   final HomeRepo _homeRepo;
   final WorkoutsRepo _workoutsRepo;
+  int levelIndex = 0;
 
-  const PopularTrainingUseCase(this._workoutsRepo, this._homeRepo);
+  PopularTrainingUseCase(this._workoutsRepo, this._homeRepo);
 
   Future<DataResult<GetAllDifficultLevelsResponseEntity>?>
-      getAllLevels() async => await _homeRepo.getAllDifficultLevel();
+  getAllLevels() async => await _homeRepo.getAllDifficultLevel();
 
   Future<DataResult<AllMusclesResponseEntity>> getAllWorkouts() async =>
       await _workoutsRepo.getAllWorkouts();
@@ -35,11 +36,11 @@ class PopularTrainingUseCase {
 
     if (allLevels is Success<GetAllDifficultLevelsResponseEntity> &&
         allMuscles is Success<AllMusclesResponseEntity>) {
-      levels = List.from(allLevels.data.levels!)..shuffle(Random());
-      muscles = allMuscles.data.musclesGroup;
-     List<int> lengthsList =[levels.length, muscles.length,images.length];
+      muscles = List.from( allMuscles.data.musclesGroup)
+        ..shuffle(Random());
+      levels = allLevels.data.levels!;
+      List<int> lengthsList = [levels.length, muscles.length, images.length];
       itemLength = lengthsList.reduce(min);
-
       for (int i = 0; i < itemLength; i++) {
         popularTrainingItems.add(PopularTrainingEntity(
           levelId: levels[i]?.id ?? "",
@@ -49,17 +50,29 @@ class PopularTrainingUseCase {
           image: images[i],
         ));
       }
+      int index = allLevels.data.levels!.indexWhere((element) =>
+      element!.id == popularTrainingItems.map((e) =>e.levelId,));
+      levelIndex = index;
     }
-    debugPrint('muscle Name = ${muscles.map((e) => 'muscle Name : ${e.name}',).toList()}');
+    debugPrint('muscle Name = ${muscles
+        .map((e) => 'muscle Name : ${e.name}',)
+        .toList()}');
     debugPrint('muscle length = ${muscles.length}');
+    debugPrint('Level index = ${levelIndex}');
 
-    debugPrint('levels Name = ${levels.map((e) => 'levels Name${e?.name}',).toList()}');
+    debugPrint('levels Name = ${levels
+        .map((e) => 'levels Name${e?.name}',)
+        .toList()}');
     debugPrint('levels length = ${levels.length}');
 
     debugPrint("popular training use case : ${popularTrainingItems.map(
-      (e) =>
-          "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e.levelId} ",
+          (e) =>
+      "${e.levelName} -- ${e.muscleName} -- ${e.image} -- ${e.muscleId} -- ${e
+          .levelId} ",
     )}");
     return popularTrainingItems;
   }
+
+
+
 }

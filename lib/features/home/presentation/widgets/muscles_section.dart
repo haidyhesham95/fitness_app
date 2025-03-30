@@ -1,5 +1,8 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:fitness_app/core/app_cubit/app_cubit.dart';
 import 'package:fitness_app/core/networking/common/register_context_module.dart';
+import 'package:fitness_app/core/routes/app_routes.dart';
+import 'package:fitness_app/core/utils/extension/navigation.dart';
 import 'package:fitness_app/features/home/presentation/viewModel/home_action.dart';
 import 'package:fitness_app/features/home/presentation/widgets/recommendation_section.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +35,17 @@ class _MusclesSectionState extends State<MusclesSection> {
           debugPrint('Recommendation To Day 2 ${viewModel.randomMusclesEntity.muscles}');
           return FadeInLeft(
             child: RecommendationSection(
+              onTapItem: (index) {
+                context.read<AppCubit>().updateIndex(0);
+                context.pushNamed(
+                  AppRoutes.exerciseView,
+                  arguments: {
+                    'id': viewModel.randomMusclesEntity.muscles![index]!.id!,
+                    'title': viewModel.randomMusclesEntity.muscles![index]!.name!,
+                    'imageUrl': viewModel.randomMusclesEntity.muscles![index]!.image??'',
+                  },
+                );
+              },
                 data: viewModel.randomMusclesEntity.muscles ?? [],
                 title: "Recommendation To Day"),
           );
