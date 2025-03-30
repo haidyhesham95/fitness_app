@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/widgets/base/base_view.dart';
 import '../viewModel/exercise_view_model_cubit.dart';
+import '../viewModel/exercise_view_model_state.dart';
 import '../widget/exercise_details.dart';
 
 class ExerciseView extends StatefulWidget {

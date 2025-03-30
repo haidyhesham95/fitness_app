@@ -5,7 +5,7 @@ import '../../../../../core/networking/api/api_manager.dart';
 import '../../../../../core/networking/api_execute.dart';
 import '../../../../../core/networking/common/api_result.dart';
 import '../../../domain/entities/exercises_entity.dart';
-import '../../exercise_mappers.dart';
+import '../../mapper/exercise_mappers.dart';
 import '../contract/exercise_data_sources.dart';
 
 @Injectable(as: ExerciseDataSource)

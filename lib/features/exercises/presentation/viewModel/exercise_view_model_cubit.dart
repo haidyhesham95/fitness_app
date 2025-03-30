@@ -7,11 +7,9 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/networking/common/api_result.dart';
 import '../../../../core/networking/error/error_handler.dart';
-import '../../../../core/networking/error/error_model.dart';
 import '../../domain/entities/exercises_entity.dart';
 import 'exercise_action.dart';
-
-part 'exercise_view_model_state.dart';
+import 'exercise_view_model_state.dart';
 
 @injectable
 class ExerciseViewModelCubit extends Cubit<ExerciseViewModelState> {
@@ -81,5 +79,4 @@ class ExerciseViewModelCubit extends Cubit<ExerciseViewModelState> {
         ));
     }
   }
-
 }

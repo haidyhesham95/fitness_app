@@ -1,8 +1,8 @@
 import 'package:fitness_app/features/exercises/data/model/exercises_response_dto.dart';
 
-import '../domain/entities/exercises_entity.dart';
-import '../domain/entities/levels_prime_over_muscle_entity.dart';
-import 'model/levels_prime_over_muscle_dto.dart';
+import '../../domain/entities/exercises_entity.dart';
+import '../../domain/entities/levels_prime_over_muscle_entity.dart';
+import '../model/levels_prime_over_muscle_dto.dart';
 
 class ExerciseMapper {
   static ExercisesEntity toEntity(ExercisesResponseDto dto) {
@@ -105,8 +105,8 @@ class ExerciseMapper {
 
   static LevelsPrimeMoverMuscleEntity toLevels(LevelsPrimeOverMuscleDto dto) {
     return LevelsPrimeMoverMuscleEntity(
-      message: dto.message!,
-      totalLevels: dto.totalLevels!,
+      message: dto.message ?? '',
+      totalLevels: dto.totalLevels ?? 0,
       difficultyLevels:
           dto.difficultyLevels!.map((e) => toDifficultyLevel(e)).toList(),
     );
