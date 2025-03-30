@@ -4,6 +4,7 @@ import '../../../../core/networking/error/error_model.dart';
 import '../../domain/entities/exercises_entity.dart';
 import '../../domain/entities/levels_prime_over_muscle_entity.dart';
 
+
 sealed class ExerciseViewModelState extends Equatable {
   const ExerciseViewModelState();
 
