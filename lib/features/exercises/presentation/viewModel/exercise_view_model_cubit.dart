@@ -2,16 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:fitness_app/features/exercises/domain/entities/levels_prime_over_muscle_entity.dart';
 import 'package:fitness_app/features/exercises/domain/use_case/exercise_use_case.dart';
 import 'package:fitness_app/features/exercises/domain/use_case/levels_prime_muscle_use_case.dart';
+import 'package:fitness_app/features/exercises/presentation/viewModel/exercise_view_model_state.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../core/networking/common/api_result.dart';
 import '../../../../core/networking/error/error_handler.dart';
-import '../../../../core/networking/error/error_model.dart';
 import '../../domain/entities/exercises_entity.dart';
 import 'exercise_action.dart';
-
-part 'exercise_view_model_state.dart';
 
 @injectable
 class ExerciseViewModelCubit extends Cubit<ExerciseViewModelState> {
@@ -33,10 +30,11 @@ class ExerciseViewModelCubit extends Cubit<ExerciseViewModelState> {
     }
   }
 
-  void _getExercises(String primeMoverMuscleId, String difficultyLevelId) async {
+  void _getExercises(
+      String primeMoverMuscleId, String difficultyLevelId) async {
     emit(ExerciseViewModelLoading());
-    final result =
-    await _exerciseUseCase.getExercises(primeMoverMuscleId, difficultyLevelId);
+    final result = await _exerciseUseCase.getExercises(
+        primeMoverMuscleId, difficultyLevelId);
 
     switch (result) {
       case Success<ExercisesEntity>(:final data):
@@ -51,7 +49,8 @@ class ExerciseViewModelCubit extends Cubit<ExerciseViewModelState> {
 
   void _getLevelsLevelsPrimeMuscle(String primeMoverMuscleId) async {
     emit(ExerciseViewModelLoading());
-    final result = await _levelsPrimeMuscleUseCase.getLevels(primeMoverMuscleId);
+    final result =
+        await _levelsPrimeMuscleUseCase.getLevels(primeMoverMuscleId);
 
     switch (result) {
       case Success<LevelsPrimeMoverMuscleEntity>(:final data):
@@ -64,5 +63,3 @@ class ExerciseViewModelCubit extends Cubit<ExerciseViewModelState> {
     }
   }
 }
-
-

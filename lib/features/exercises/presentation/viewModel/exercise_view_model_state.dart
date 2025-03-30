@@ -1,7 +1,15 @@
-part of 'exercise_view_model_cubit.dart';
+import 'package:equatable/equatable.dart';
 
-@immutable
-sealed class ExerciseViewModelState {}
+import '../../../../core/networking/error/error_model.dart';
+import '../../domain/entities/exercises_entity.dart';
+import '../../domain/entities/levels_prime_over_muscle_entity.dart';
+
+sealed class ExerciseViewModelState extends Equatable {
+  const ExerciseViewModelState();
+
+  @override
+  List<Object?> get props => [];
+}
 
 final class ExerciseViewModelInitial extends ExerciseViewModelState {}
 
@@ -10,21 +18,35 @@ final class ExerciseViewModelLoading extends ExerciseViewModelState {}
 final class ExerciseViewModelSuccess extends ExerciseViewModelState {
   final ExercisesEntity data;
 
-  ExerciseViewModelSuccess({required this.data});
+  const ExerciseViewModelSuccess({required this.data});
+
+  @override
+  List<Object?> get props => [data];
 }
 
 final class ExerciseViewModelError extends ExerciseViewModelState {
   final ErrorModel errorMessage;
 
-  ExerciseViewModelError({required this.errorMessage});
+  const ExerciseViewModelError({required this.errorMessage});
+
+  @override
+  List<Object?> get props => [errorMessage];
 }
 
 final class LevelsPrimeMoverMuscleSuccess extends ExerciseViewModelState {
   final LevelsPrimeMoverMuscleEntity data;
-  LevelsPrimeMoverMuscleSuccess({required this.data});
+
+  const LevelsPrimeMoverMuscleSuccess({required this.data});
+
+  @override
+  List<Object?> get props => [data];
 }
 
 final class LevelsPrimeMoverMuscleError extends ExerciseViewModelState {
   final ErrorModel errorMessage;
-  LevelsPrimeMoverMuscleError({required this.errorMessage});
+
+  const LevelsPrimeMoverMuscleError({required this.errorMessage});
+
+  @override
+  List<Object?> get props => [errorMessage];
 }
