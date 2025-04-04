@@ -67,13 +67,11 @@ class PopularTrainingWidget extends StatelessWidget {
               bottom: 90.h,
               left: 0,
               right: 0,
-              child: Expanded(
-                child: Text(
-                  popularTrainingItems.muscleName ?? "",
-                  textAlign: TextAlign.center,
-                  style: MyFonts.styleSemiBold600_16.copyWith(
-                    color: Colors.white,
-                  ),
+              child: Text(
+                popularTrainingItems.muscleName ?? "",
+                textAlign: TextAlign.center,
+                style: MyFonts.styleSemiBold600_16.copyWith(
+                  color: Colors.white,
                 ),
               ),
             ),
