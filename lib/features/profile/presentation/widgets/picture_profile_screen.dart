@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
@@ -116,7 +117,7 @@ class _PictureProfileScreenState extends State<PictureProfileScreen> {
           case UploadPhotoLoading():
             const AppLoader();
           case UploadPhotoError():
-          aweSnackBar(msg: 'Fail', context: context, type: MessageTypeConst.failure);
+          aweSnackBar(msg: state.error.error!, context: context, type: MessageTypeConst.failure);
           case UploadPhotoSuccess():
             aweSnackBar(msg: 'Success', context: context, type: MessageTypeConst.success);
         }

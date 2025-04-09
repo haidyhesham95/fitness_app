@@ -3,7 +3,9 @@ import 'package:fitness_app/core/routes/app_routes.dart';
 import 'package:fitness_app/core/styles/fonts/my_fonts.dart';
 import 'package:fitness_app/core/utils/extension/my_context.dart';
 import 'package:fitness_app/core/utils/extension/navigation.dart';
+import 'package:fitness_app/core/utils/widgets/base/app_loader.dart';
 import 'package:fitness_app/core/utils/widgets/buttons/custom_button.dart';
+import 'package:fitness_app/core/utils/widgets/custom_toast.dart';
 import 'package:fitness_app/features/auth/presentation/login/viewModel/login_view_model_cubit.dart';
 import 'package:fitness_app/features/auth/presentation/widgets/custom_text_span.dart';
 import 'package:fitness_app/features/auth/presentation/widgets/social_design.dart';
@@ -41,17 +43,33 @@ Widget loginWidget(BuildContext context) {
         width: double.infinity,
         onPressed: () {
           cubit.signInButtonPressed(context);
-          Navigator.pushReplacementNamed(context, AppRoutes.homeLayout);
         },
       ),
       SizedBox(height: 10.h),
-      GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(context, AppRoutes.signUp);
+      BlocListener<LoginViewModel, LoginViewModelState>(
+        listener: (context, state) {
+          switch (state) {
+
+            case LoginViewModelInitial():
+            case LoginViewModelLoading():
+               const AppLoader();
+            case LoginViewModelSuccess():
+              Navigator.pushReplacementNamed(context, AppRoutes.homeLayout);
+
+            case LoginViewModelError():
+              CustomToast.showErrorToast(
+                  message: state.errorMessage.error.toString());
+              break;
+          }
         },
-        child: CustomTextSpanWidget(
-          title: context.translate(LangKeys.doNotHaveAnAccount),
-          subTitle: context.translate(LangKeys.register),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.signUp);
+          },
+          child: CustomTextSpanWidget(
+            title: context.translate(LangKeys.doNotHaveAnAccount),
+            subTitle: context.translate(LangKeys.register),
+          ),
         ),
       ),
     ],
