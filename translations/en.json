@@ -18,10 +18,8 @@
   "offline_message": "You are currently offline",
   "enter_your_email": "Enter Your Email",
   "sent_otp": "Sent OTP",
-
   "otp_code": "OTP CODE",
   "enter_your_otp_check_your_email": "Enter your OTP check your email",
-
   "did_not_receive_verification_code": "Didn't receive verification code?",
   "resend_code": "Resend Code?",
   "enter_otp": "Enter OTP",
@@ -88,6 +86,7 @@
   "thisHelpsUsPersonalizeYourPlan": "This helps us personalize your plan",
   "editProfile": "Edit Profile",
   "changePassword": "Change Password",
+  "password" : "Password",
   "selectLanguage": "Select Language",
   "security": "Security",
   "privacyPolicy": "Privacy Policy",
@@ -151,5 +150,6 @@
   "thirtyMinutes" : "30 MIN",
   "cal" : "130 Cal",
   "exercisesDescription": "Lorem ipsum dolor sit amet consectetur. Tempus volutpat ut nisi morbi.",
-  "categories": "Categories"
+  "categories": "Categories",
+  "imageError": "Only image files are allowed."
 }

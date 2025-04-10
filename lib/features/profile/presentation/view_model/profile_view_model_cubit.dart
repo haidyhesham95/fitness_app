@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:fitness_app/core/networking/error/error_model.dart';
 import 'package:fitness_app/features/auth/data/data_sources/contracts/offline_data_sources/auth_offline_data_source.dart';
@@ -12,8 +13,10 @@ import 'package:fitness_app/features/profile/presentation/view_model/profile_act
 import 'package:fitness_app/features/profile/presentation/widgets/edit_profile_steps.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../core/networking/common/api_result.dart';
 import '../../../../core/networking/error/error_handler.dart';
+
 part 'profile_view_model_state.dart';
 
 
@@ -85,14 +88,32 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
   }
   Future<void> _uploadPhoto(File photo) async {
     emit(UploadPhotoLoading());
+
+    // تحقق من نوع الصورة
+
+
     final result = await _useCase.uploadPhoto(photo);
+    if (!_isValidImage(photo) && result is Fail<UploadPhotoResponseEntity>) {
+      emit(UploadPhotoError(error:ErrorHandler.handle(result.exception!)));
+      return;
+    }
     switch (result) {
       case Success<UploadPhotoResponseEntity>():
         await _offlineDataSource.cacheToken(result.data.token ?? "");
         debugPrint("${_offlineDataSource.getToken()}");
         emit(UploadPhotoSuccess(data: result.data));
+        break;
       case Fail<UploadPhotoResponseEntity>():
         emit(UploadPhotoError(error: ErrorHandler.handle(result.exception!)));
+        break;
     }
   }
+
+  bool _isValidImage(File photo) {
+    // تحقق من أن الملف هو صورة: JPG, PNG, JPEG
+    final validExtensions = ['jpg', 'jpeg', 'png'];
+    final fileExtension = photo.path.split('.').last.toLowerCase();
+    return validExtensions.contains(fileExtension);
+  }
+
 }

@@ -10,6 +10,8 @@ import 'package:injectable/injectable.dart';
   final ProfileRepo _repository;
    UploadPhotoUseCase(this._repository);
 
-  Future<DataResult<UploadPhotoResponseEntity>> uploadPhoto(File photo) =>
-      _repository.uploadPhoto(photo);
+  Future<DataResult<UploadPhotoResponseEntity>> uploadPhoto(File photo) {
+
+    return _repository.uploadPhoto(photo);
+  }
  }

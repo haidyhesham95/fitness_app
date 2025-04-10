@@ -139,6 +139,6 @@ class LangKeys {
   static const String  thirtyMinutes = 'thirtyMinutes';
   static const String  cal = 'cal';
   static const String exercisesDescription = 'exercisesDescription';
-
-
+  static const String heightChest = 'high_chest';
+  static const String imageError = 'imageError';
 }
