@@ -4,15 +4,15 @@ import 'package:equatable/equatable.dart';
 
 abstract class SmartChatResponseEntity extends Equatable {
   final bool isUser;
-  final String senderImageUrl;
+  final String imageUrl;
 
   const SmartChatResponseEntity({
     required this.isUser,
-    required this.senderImageUrl,
+    required this.imageUrl,
   });
 
   @override
-  List<Object?> get props => [isUser, senderImageUrl];
+  List<Object?> get props => [isUser, imageUrl];
 }
 
 class TextMessage extends SmartChatResponseEntity {
@@ -20,7 +20,7 @@ class TextMessage extends SmartChatResponseEntity {
 
   TextMessage({
     required super.isUser,
-    required super.senderImageUrl,
+    required super.imageUrl,
     required this.text,
   });
 
@@ -34,7 +34,7 @@ class ImageMessage extends SmartChatResponseEntity {
 
   ImageMessage({
     required super.isUser,
-    required super.senderImageUrl,
+    required super.imageUrl,
     required this.imageFile,
      this.text,
 

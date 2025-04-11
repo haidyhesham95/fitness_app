@@ -42,7 +42,7 @@ class _BuildMessageInputState extends State<BuildMessageInput> {
     });
   }
 
-  void _sendMessage() {
+  void _sendMessage() async {
     String promptText = promptController.text.trim();
 
     if (promptText.isEmpty && _imageFile == null) return;
@@ -57,7 +57,7 @@ class _BuildMessageInputState extends State<BuildMessageInput> {
       userProfileImage = Assets.imagesUser;
     }
 
-    context.read<SmartChatViewModel>().doAction(
+    await context.read<SmartChatViewModel>().doAction(
           SendMessageAction(promptText, userProfileImage, _imageFile),
         );
 

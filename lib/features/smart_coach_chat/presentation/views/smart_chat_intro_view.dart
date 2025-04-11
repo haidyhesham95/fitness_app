@@ -10,7 +10,6 @@ import 'package:fitness_app/core/utils/widgets/spacing.dart';
 import 'package:fitness_app/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SmartChatIntroView extends StatelessWidget {
   const SmartChatIntroView({Key? key}) : super(key: key);
@@ -19,14 +18,14 @@ class SmartChatIntroView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView(
         image: Assets.imagesChatBg,
-        isArrowBackShow: true,
-        actions: [
-          InkWell(
-            onTap: () {},
-            child: SvgPicture.asset(Assets.svgMenu, width: 24.w, height: 24.h),
-          ),
-        ],
-        title: '${context.translate(LangKeys.hi)} Ahmed ,',
+        isArrowBackShow: false,
+        // actions: [
+        //   InkWell(
+        //     onTap: () {},
+        //     child: SvgPicture.asset(Assets.svgMenu, width: 24.w, height: 24.h),
+        //   ),
+        // ],
+        title: '${context.translate(LangKeys.hi)},',
         subTitle: context.translate(LangKeys.smartCoachBot),
         child: [
           SliverPadding(

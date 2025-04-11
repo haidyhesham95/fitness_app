@@ -10,31 +10,43 @@ import 'package:path_provider/path_provider.dart';
 class MessageMapper {
   static Future<MessageIsar> toMessageIsar(SmartChatResponseEntity entity) async {
     if (entity is TextMessage) {
-      return MessageIsar(text: entity.text, isUser: entity.isUser);
+      return MessageIsar(
+        text: entity.text,
+        isUser: entity.isUser,
+        imageUrl: entity.imageUrl,
+      );
     } else if (entity is ImageMessage) {
-      String imageUrl = await fileToBase64(entity.imageFile);
-      return MessageIsar(imageUrl: imageUrl, isUser: entity.isUser);
+      String base64Image = await fileToBase64(entity.imageFile);
+
+      return MessageIsar(
+        text: entity.text,
+        isUser: entity.isUser,
+        imageUrl: entity.imageUrl,
+        imageFile: base64Image,
+      );
     }
+
     throw Exception("Unknown message type");
   }
 
+
   /// Convert a [MessageIsar] to a [SmartChatResponseEntity]
   static Future<SmartChatResponseEntity> toSmartChatResponse(MessageIsar message) async {
-    if (message.imageUrl != null && message.imageUrl!.isNotEmpty) {
-      File imageFile = await base64ToFile(message.imageUrl!);
+    if (message.imageFile != null && message.imageFile!.isNotEmpty) {
+      File imageFile = await base64ToFile(message.imageFile!);
       return ImageMessage(
         isUser: message.isUser ?? false,
-        senderImageUrl: message.imageUrl ?? '',
+        imageUrl: message.imageUrl ?? '',
         imageFile: imageFile,
         text: message.text ?? '',
       );
-    } else {
-      return TextMessage(
-        isUser: message.isUser ?? false,
-        senderImageUrl: message.imageUrl ?? '',
-        text: message.text ?? '',
-      );
     }
+
+    return TextMessage(
+      isUser: message.isUser ?? false,
+      imageUrl: message.imageUrl ?? '',
+      text: message.text ?? '',
+    );
   }
 
   /// Convert a list of [SmartChatResponseEntity] to a [ChatIsar] object.

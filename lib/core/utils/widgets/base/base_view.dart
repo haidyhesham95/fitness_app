@@ -39,6 +39,7 @@ class BaseView extends StatelessWidget {
       key: scaffoldKey,
       endDrawer: drawer,
       appBar: AppBar(
+        centerTitle: true,
         leading: isArrowBackShow
             ? InkWell(
                 onTap: () {
