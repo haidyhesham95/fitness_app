@@ -7,7 +7,7 @@ import 'app_color_theme.dart';
 ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: LightColor.bgColor,
   fontFamily: 'BalooThambi2',
-  appBarTheme: const AppBarTheme(color: LightColor.transparent),
+  appBarTheme: const AppBarTheme(backgroundColor: LightColor.transparent),
 
 
 
@@ -21,7 +21,7 @@ ThemeData lightTheme = ThemeData(
 ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: DarkColor.bgColor,
   fontFamily: 'BalooThambi2',
-  appBarTheme: const AppBarTheme(color: DarkColor.transparent),
+  appBarTheme: const AppBarTheme(backgroundColor: DarkColor.transparent),
   extensions:  <ThemeExtension<dynamic>>[
     AppColorTheme.dark,
 

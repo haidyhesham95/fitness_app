@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:isar/isar.dart';
 import '../../domain/entities/smart_chat_response_entity.dart';
 
 sealed class SmartChatState extends Equatable {
@@ -33,7 +32,7 @@ class SmartChatError extends SmartChatState {
 
 class SmartChatTitlesLoaded extends SmartChatState {
   final List<String> titles;
-  final List<Id> chatId;
+  final List<String> chatId;
 
   SmartChatTitlesLoaded(this.titles, this.chatId);
 }

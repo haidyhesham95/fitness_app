@@ -1,12 +1,8 @@
-import 'package:isar/isar.dart';
+import 'package:fitness_app/features/smart_coach_chat/data/models/offline/message_hive.dart';
 
-import '../../../models/offline/message_isar.dart';
-
-abstract interface class OfflineDataSource {
-  Future<void> saveMessages(List<ChatIsar> chats);
-  Future<List<ChatIsar>> getMessages();
-
-  Future<List<ChatIsar>> getMessagesById(Id chatId);
-
-  Future<void> deleteMessagesById(Id chatId);
+abstract class OfflineDataSource {
+  Future<void> saveMessages(List<ChatHive> messages);
+  Future<List<ChatHive>> getMessages();
+  Future<List<ChatHive>> getMessagesById(String chatId);
+  Future<void> deleteMessagesById(String chatId);
 }

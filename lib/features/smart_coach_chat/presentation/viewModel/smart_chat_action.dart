@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:isar/isar.dart';
-
 sealed class SmartChatAction {}
 
 class SendMessageAction extends SmartChatAction {
@@ -17,7 +15,7 @@ class SaveMessagesAction extends SmartChatAction {}
 class GetTitlesAction extends SmartChatAction {}
 
 class GetChatAction extends SmartChatAction {
-  final Id chatId;
+  final String chatId;
 
   GetChatAction(this.chatId);
 }

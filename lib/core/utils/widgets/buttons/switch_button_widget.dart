@@ -32,7 +32,7 @@ class _SwitchButtonWidgetState extends State<SwitchButtonWidget> {
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               inactiveTrackColor: context.colors.white,
               inactiveThumbColor: context.colors.baseColor,
-              activeColor: context.colors.white,
+              activeThumbColor: context.colors.white,
               activeTrackColor: context.colors.baseColor,
               value: widget.value.value,
               onChanged: (value) {

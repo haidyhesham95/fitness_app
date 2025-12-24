@@ -3,7 +3,6 @@ import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/sma
 import 'package:fitness_app/features/smart_coach_chat/presentation/viewModel/smart_chat_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:isar/isar.dart';
 
 import '../../../../core/styles/fonts/my_fonts.dart';
 
@@ -12,7 +11,7 @@ class CustomSavedMessage extends StatelessWidget {
       {super.key, required this.text, required this.chatId});
 
   final String text;
-  final Id chatId;
+  final String chatId;
 
   @override
   Widget build(BuildContext context) {
