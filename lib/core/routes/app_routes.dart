@@ -179,12 +179,11 @@ class AppRoutes {
         return BaseRoute(
             page: MultiBlocProvider(
               providers: [
-                BlocProvider(
-                    create: (context) => getIt.get<SmartChatViewModel>()),
-                BlocProvider(
-                    create: (context) =>
-                    getIt.get<ProfileViewModelCubit>()
-                      ..doAction(GetUserData())),
+                BlocProvider.value(
+                    value: getIt.get<SmartChatViewModel>()),
+                BlocProvider.value(
+                  value: getIt.get<ProfileViewModelCubit>()..doAction(GetUserData()),
+                ),
               ],
               child: const SmartChatView(),
             ));

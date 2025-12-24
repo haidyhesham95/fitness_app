@@ -4,10 +4,10 @@ sealed class SmartChatAction {}
 
 class SendMessageAction extends SmartChatAction {
   final String prompt;
-  final String userImageUrl;
-  final File? image;
+  final String imageProfile;
+  final File? imageFile;
 
-  SendMessageAction(this.prompt, this.userImageUrl, [this.image]);
+  SendMessageAction(this.prompt, this.imageProfile, this.imageFile);
 }
 
 class SaveMessagesAction extends SmartChatAction {}

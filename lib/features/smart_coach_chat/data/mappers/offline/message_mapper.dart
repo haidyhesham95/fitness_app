@@ -16,6 +16,7 @@ class MessageMapper {
       String imageUrl = await fileToBase64(entity.imageFile);
       return MessageHive(imageUrl: imageUrl, isUser: entity.isUser);
     }
+
     throw Exception("Unknown message type");
   }
 
@@ -26,17 +27,17 @@ class MessageMapper {
       File imageFile = await base64ToFile(message.imageUrl!);
       return ImageMessage(
         isUser: message.isUser ?? false,
-        senderImageUrl: message.imageUrl ?? '',
+        imageUrl: message.imageUrl ?? '',
         imageFile: imageFile,
         text: message.text ?? '',
       );
-    } else {
-      return TextMessage(
-        isUser: message.isUser ?? false,
-        senderImageUrl: message.imageUrl ?? '',
-        text: message.text ?? '',
-      );
     }
+
+    return TextMessage(
+      isUser: message.isUser ?? false,
+      imageUrl: message.imageUrl ?? '',
+      text: message.text ?? '',
+    );
   }
 
   /// Convert a list of [SmartChatResponseEntity] to a [ChatHive] object.

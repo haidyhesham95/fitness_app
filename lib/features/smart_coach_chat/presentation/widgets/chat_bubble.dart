@@ -32,7 +32,7 @@ class ChatBubble extends StatelessWidget {
           mainAxisAlignment:
               isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [
-            if (!isUser) AvatarWithShadow(imageUrl: message.senderImageUrl),
+            if (!isUser) AvatarWithShadow(imageUrl: message.imageUrl),
             horizontalSpacing(10.w),
             Flexible(
               child: Column(
@@ -75,7 +75,7 @@ class ChatBubble extends StatelessWidget {
               ),
             ),
             horizontalSpacing(10.w),
-            if (isUser) AvatarWithShadow(imageUrl: message.senderImageUrl),
+            if (isUser) AvatarWithShadow(imageUrl: message.imageUrl),
           ],
         ),
       ),

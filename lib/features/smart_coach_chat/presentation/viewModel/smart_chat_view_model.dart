@@ -30,7 +30,7 @@ class SmartChatViewModel extends Cubit<SmartChatState> {
     switch (action) {
       case SendMessageAction():
         hasNewMessages = true;
-        await _sendMessage(action.prompt, action.userImageUrl, action.image);
+        await _sendMessage(action.prompt, action.imageProfile, action.imageFile);
         break;
       case SaveMessagesAction():
         if (hasNewMessages) {

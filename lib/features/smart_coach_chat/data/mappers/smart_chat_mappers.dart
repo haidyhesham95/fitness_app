@@ -13,14 +13,14 @@ class SmartChatMappers {
     if (model is ImageMessageModel) {
       return ImageMessage(
         isUser: model.isUser,
-        senderImageUrl: model.senderImageUrl,
+        imageUrl: model.senderImageUrl,
         imageFile: model.imageFile!,
         text: model.text,
       );
     } else if (model is TextMessageModel) {
       return TextMessage(
         isUser: model.isUser,
-        senderImageUrl: model.senderImageUrl,
+        imageUrl: model.senderImageUrl,
         text: model.text,
       );
     } else {
@@ -33,14 +33,14 @@ class SmartChatMappers {
     if (entity is ImageMessage) {
       return ImageMessageModel(
         isUser: entity.isUser,
-        senderImageUrl: entity.senderImageUrl,
+        senderImageUrl: entity.imageUrl,
         imageFile: entity.imageFile,
         text: entity.text,
       );
     } else if (entity is TextMessage) {
       return TextMessageModel(
         isUser: entity.isUser,
-        senderImageUrl: entity.senderImageUrl,
+        senderImageUrl: entity.imageUrl,
         text: entity.text,
       );
     } else {

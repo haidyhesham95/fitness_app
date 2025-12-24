@@ -19,6 +19,8 @@ class GeminiSmartChatDataSource implements SmartChatOnlineDataSource {
   Stream<DataResult<List<SmartChatResponseEntity>>> fetchSmartChatResponse(
       String prompt, String userImageUrl, File? imageFile) {
     try {
+      debugPrint("User Image URL: $userImageUrl");
+
       List<Part> parts = [];
 
       if (prompt.isNotEmpty) {
@@ -37,37 +39,35 @@ class GeminiSmartChatDataSource implements SmartChatOnlineDataSource {
         }
 
         final userRequestEntity =
-        _createEntity(prompt, userImageUrl, imageFile, true);
+            _createEntity(prompt, userImageUrl, imageFile, true);
         final botResponseEntity =
-        _createEntity(event!.output!, Assets.imagesBot, null, false);
+            _createEntity(event!.output!, Assets.imagesBot, null, false);
 
         return Success([userRequestEntity, botResponseEntity]);
       });
     } catch (e) {
-      debugPrint(" Error: ${e.toString()}");
+      debugPrint("Error: ${e.toString()}");
       return Stream.value(
           Fail(Exception("Failed to fetch chat response: ${e.toString()}")));
     }
   }
 
-
-
-SmartChatResponseEntity _createEntity(
-    String text, String senderImageUrl, File? imageFile, bool isUser) {
-  if (imageFile != null) {
-    return ImageMessage(
-      isUser: isUser,
-      senderImageUrl: senderImageUrl,
-      imageFile: imageFile,
-      text: text.isNotEmpty ? text : null,
-    );
-  } else if (text.isNotEmpty) {
-    return TextMessage(
-      isUser: isUser,
-      senderImageUrl: senderImageUrl,
-      text: text,
-    );
+  SmartChatResponseEntity _createEntity(
+      String text, String senderImageUrl, File? imageFile, bool isUser) {
+    if (imageFile != null) {
+      return ImageMessage(
+        isUser: isUser,
+        imageUrl: senderImageUrl,
+        imageFile: imageFile,
+        text: text.isNotEmpty ? text : null,
+      );
+    } else if (text.isNotEmpty) {
+      return TextMessage(
+        isUser: isUser,
+        imageUrl: senderImageUrl,
+        text: text,
+      );
+    }
+    throw Exception("Invalid message: Both text and image are empty");
   }
-  throw Exception("Invalid message: Both text and image are empty");
-}
 }
