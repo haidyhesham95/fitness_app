@@ -59,7 +59,7 @@ class SettingList extends StatelessWidget {
           builder: (context, state) {
             final cubit = context.read<AppCubit>();
             return Switch(
-              activeColor: context.colors.white,
+              activeThumbColor: context.colors.white,
               activeTrackColor: context.colors.baseColor,
               inactiveThumbColor: context.colors.baseColor,
               inactiveTrackColor: context.colors.darkGray,

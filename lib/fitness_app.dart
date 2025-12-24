@@ -15,9 +15,6 @@ import 'di/di.dart';
 class FitnessApp extends StatelessWidget {
   FitnessApp({super.key});
 
-  final GlobalKey<NavigatorState> navigatorKey =
-      getIt<GlobalKey<NavigatorState>>();
-
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(

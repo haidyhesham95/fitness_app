@@ -76,7 +76,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               );
             },
           ),
-          if (_currentPage != onboardingData.length - 1 )
+          if (_currentPage != onboardingData.length - 1)
             Positioned(
               top: 60,
               right: 20,
