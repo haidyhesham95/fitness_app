@@ -19,14 +19,6 @@ MusclesByMuscleGroupIdResponseDto _$MusclesByMuscleGroupIdResponseDtoFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$MusclesByMuscleGroupIdResponseDtoToJson(
-        MusclesByMuscleGroupIdResponseDto instance) =>
-    <String, dynamic>{
-      'message': instance.message,
-      'totalMuscles': instance.totalMuscles,
-      'muscles': instance.muscles,
-    };
-
 MusclesByMuscleGroupIdMusclesDto _$MusclesByMuscleGroupIdMusclesDtoFromJson(
         Map<String, dynamic> json) =>
     MusclesByMuscleGroupIdMusclesDto(
@@ -34,11 +26,3 @@ MusclesByMuscleGroupIdMusclesDto _$MusclesByMuscleGroupIdMusclesDtoFromJson(
       json['name'] as String?,
       json['image'] as String?,
     );
-
-Map<String, dynamic> _$MusclesByMuscleGroupIdMusclesDtoToJson(
-        MusclesByMuscleGroupIdMusclesDto instance) =>
-    <String, dynamic>{
-      '_id': instance.id,
-      'name': instance.name,
-      'image': instance.image,
-    };

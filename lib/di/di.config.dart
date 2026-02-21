@@ -162,16 +162,18 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i551.AuthOfflineDataSource>(
         () => _i1036.AuthOfflineDataSourceImpl());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
-    gh.singleton<_i851.MealsApiManager>(
-        () => _i851.MealsApiManager(gh<_i361.Dio>()));
     gh.factory<_i796.WorkoutsOnlineDataSource>(
         () => _i927.WorkoutsOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.lazySingleton<_i361.Dio>(
+      () => networkFactory.provideMealsDio(),
+      instanceName: 'mealsDio',
+    );
     gh.factory<_i474.OfflineDataSource>(
         () => _i470.OfflineDataSourceImpl(gh<_i738.Box<_i267.ChatHive>>()));
     gh.factory<_i78.WorkoutsRepo>(
         () => _i31.WorkoutsRepoImpl(gh<_i796.WorkoutsOnlineDataSource>()));
-    gh.factory<_i165.MealsDataSource>(
-        () => _i311.MealsDataSourceImpl(gh<_i851.MealsApiManager>()));
+    gh.singleton<_i851.MealsApiManager>(
+        () => _i851.MealsApiManager(gh<_i361.Dio>(instanceName: 'mealsDio')));
     gh.singleton<_i896.GeminiHelper>(
         () => _i896.GeminiHelper(gh<_i257.Gemini>()));
     gh.factory<_i321.OfflineRepo>(
@@ -194,27 +196,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i642.HiveUseCase(gh<_i321.OfflineRepo>()));
     gh.factory<_i49.ProfileRepo>(
         () => _i933.ProfileRepoImpl(gh<_i1039.ProfileOnlineDataSource>()));
-    gh.factory<_i251.MealsRepository>(
-        () => _i1066.MealsRepositoryImpl(gh<_i165.MealsDataSource>()));
     gh.factory<_i950.HomeRepo>(
         () => _i21.HomeRepoImpl(gh<_i505.HomeOnlineDataSource>()));
     gh.factory<_i868.WorkoutsViewModelCubit>(() => _i868.WorkoutsViewModelCubit(
           gh<_i183.WorkoutsUseCase>(),
           gh<_i1021.GetWorkoutsByIdUseCase>(),
         ));
-    gh.factory<_i122.GetMealsByCategoryCase>(
-        () => _i122.GetMealsByCategoryCase(gh<_i251.MealsRepository>()));
-    gh.factory<_i525.GetMealsCategoriesCase>(
-        () => _i525.GetMealsCategoriesCase(gh<_i251.MealsRepository>()));
-    gh.factory<_i378.GetMealByIdCase>(
-        () => _i378.GetMealByIdCase(gh<_i251.MealsRepository>()));
+    gh.factory<_i165.MealsDataSource>(
+        () => _i311.MealsDataSourceImpl(gh<_i851.MealsApiManager>()));
     gh.factory<_i665.AuthRepo>(
         () => _i990.AuthRepoImpl(gh<_i97.AuthOnlineDataSource>()));
-    gh.factory<_i501.MealsViewModelCubit>(() => _i501.MealsViewModelCubit(
-          gh<_i525.GetMealsCategoriesCase>(),
-          gh<_i122.GetMealsByCategoryCase>(),
-          gh<_i378.GetMealByIdCase>(),
-        ));
     gh.factory<_i652.SmartChatRepo>(
         () => _i937.SmartChatRepoImpl(gh<_i318.SmartChatOnlineDataSource>()));
     gh.factory<_i230.ForgetPasswordUseCase>(
@@ -245,8 +236,21 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i783.ExerciseUseCase(gh<_i750.ExerciseRepo>()));
     gh.factory<_i965.LevelsPrimeMuscleUseCase>(
         () => _i965.LevelsPrimeMuscleUseCase(gh<_i750.ExerciseRepo>()));
+    gh.factory<_i251.MealsRepository>(
+        () => _i1066.MealsRepositoryImpl(gh<_i165.MealsDataSource>()));
     gh.factory<_i289.ForgetPasswordViewModelCubit>(() =>
         _i289.ForgetPasswordViewModelCubit(gh<_i230.ForgetPasswordUseCase>()));
+    gh.factory<_i122.GetMealsByCategoryCase>(
+        () => _i122.GetMealsByCategoryCase(gh<_i251.MealsRepository>()));
+    gh.factory<_i525.GetMealsCategoriesCase>(
+        () => _i525.GetMealsCategoriesCase(gh<_i251.MealsRepository>()));
+    gh.factory<_i378.GetMealByIdCase>(
+        () => _i378.GetMealByIdCase(gh<_i251.MealsRepository>()));
+    gh.factory<_i501.MealsViewModelCubit>(() => _i501.MealsViewModelCubit(
+          gh<_i525.GetMealsCategoriesCase>(),
+          gh<_i122.GetMealsByCategoryCase>(),
+          gh<_i378.GetMealByIdCase>(),
+        ));
     gh.factory<_i544.FetchSmartChatCase>(
         () => _i544.FetchSmartChatCase(gh<_i652.SmartChatRepo>()));
     gh.factory<_i864.SignUpViewModel>(

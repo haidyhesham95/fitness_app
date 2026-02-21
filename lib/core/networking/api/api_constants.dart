@@ -11,7 +11,8 @@ class ApiConstants {
   static const String uploadPhoto = "api/v1/auth/upload-photo";
   static const String getAllWorkouts = "api/v1/muscles";
   static const String getWorkoutsById = "api/v1/musclesGroup";
-  static const String getWorkoutsByMuscleGroupId = "api/v1/musclesGroup/by-muscle-group";
+  static const String getWorkoutsByMuscleGroupId =
+      "api/v1/musclesGroup/by-muscle-group";
   static const String mealsCategories = "categories.php";
   static const String mealsByCategory = "filter.php";
   static const String mealById = "lookup.php";

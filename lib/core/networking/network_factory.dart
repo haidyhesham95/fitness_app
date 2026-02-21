@@ -23,18 +23,34 @@ abstract class NetworkFactory {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          final token = await SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);
+          final token =
+              await SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);
           options.headers['Authorization'] = 'Bearer $token';
-          options.headers['accept-language'] = await SharedPrefHelper().getString(key: SharedPrefKeys.language);
+          options.headers['accept-language'] =
+              await SharedPrefHelper().getString(key: SharedPrefKeys.language);
           return handler.next(options);
         },
         onError: (error, handler) {
-          if (error.response != null && error.response!.statusCode == 401) {
-          }
+          if (error.response != null && error.response!.statusCode == 401) {}
           return handler.next(error);
         },
       ),
     );
+
+    return dio;
+  }
+
+  @Named('mealsDio')
+  @lazySingleton
+  Dio provideMealsDio() {
+    final dio = Dio();
+    dio.options = BaseOptions(
+      connectTimeout: const Duration(seconds: 60),
+      receiveTimeout: const Duration(seconds: 60),
+      baseUrl: ApiConstants.mealsBaseUrl,
+    );
+
+    dio.interceptors.add(prettyDioLogger());
 
     return dio;
   }

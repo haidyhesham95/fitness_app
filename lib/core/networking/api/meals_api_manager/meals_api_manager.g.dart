@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: unused_element_parameter
+
 part of 'meals_api_manager.dart';
 
 // **************************************************************************
@@ -9,7 +11,7 @@ part of 'meals_api_manager.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _MealsApiManager implements MealsApiManager {
-  _MealsApiManager(this._dio, {String? baseUrl, ParseErrorLogger? errorLogger}) : errorLogger = errorLogger, baseUrl = baseUrl {
+  _MealsApiManager(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??= 'https://www.themealdb.com/api/json/v1/1/';
   }
 

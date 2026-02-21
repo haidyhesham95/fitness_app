@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:fitness_app/core/networking/api/api_constants.dart';
 import 'package:fitness_app/features/meals/data/models/meals_by_category_response_dto.dart';
@@ -15,15 +14,15 @@ part 'meals_api_manager.g.dart';
 @RestApi(baseUrl: ApiConstants.mealsBaseUrl)
 abstract class MealsApiManager {
   @factoryMethod
-  factory MealsApiManager(Dio dio) = _MealsApiManager;
+  factory MealsApiManager(@Named('mealsDio') Dio dio) = _MealsApiManager;
 
   @GET(ApiConstants.mealsCategories)
   Future<MealsCategoriesResponseDto> getMealsCategories();
 
   @GET(ApiConstants.mealsByCategory)
-  Future<MealsByCategoryResponseDto> getMealsByCategory(@Query("c") String category);
+  Future<MealsByCategoryResponseDto> getMealsByCategory(
+      @Query("c") String category);
 
   @GET(ApiConstants.mealById)
   Future<MealsDetailsResponseDto> getMealById(@Query("i") String id);
-
 }
