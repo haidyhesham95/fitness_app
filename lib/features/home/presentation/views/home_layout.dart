@@ -44,7 +44,6 @@ class _HomeLayoutState extends State<HomeLayout> {
               ..doAction(GetRandomMuscles())
               ..doAction(GetRandomExercises())
               ..doAction(GetPopularTraining())),
-
       ],
       child: const HomeView(),
     ),
@@ -63,7 +62,6 @@ class _HomeLayoutState extends State<HomeLayout> {
       extendBody: true,
       body: _screens[_currentIndex],
       bottomNavigationBar: Container(
-        height: 69,
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
         decoration: const BoxDecoration(
           borderRadius: const BorderRadius.only(

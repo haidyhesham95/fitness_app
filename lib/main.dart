@@ -13,12 +13,11 @@ Future<void> main() async {
   await SharedPrefHelper().instantiatePreferences();
   Bloc.observer = MyBlocObserver();
 
-
   // Load .env file
   await dotenv.load(fileName: '.env.appKeys');
 
   // Now initialize dependency injection
-  configureDependencies();
+  await configureDependencies();
   Gemini.init(apiKey: dotenv.get('GEMINI_API_KEY'));
   runApp(
     FitnessApp(),
